@@ -1,0 +1,90 @@
+ArnoldDisplacement
+==================
+
+Creates displacements to be applied to meshes for
+rendering in Arnold. A displacement consists of a
+shader to provide the displacement map and several
+attributes to control the height and other displacement
+properties.
+
+Use an ArnoldAttributes node to control the subdivision
+settings of the mesh, which in turn controls the detail
+of the displacement. Use a ShaderAssignment node to assign
+the ArnoldDisplacement to specific objects.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+name
+----
+
+The name of the shader being represented. This should
+be considered read-only. Use the Shader.loadShader()
+method to load a shader.
+
+type
+----
+
+The type of the shader being represented. This should
+be considered read-only. Use the Shader.loadShader()
+method to load a shader.
+
+parameters
+----------
+
+Where the parameters for the shader are represented.
+
+enabled
+-------
+
+Turns the node on and off.
+
+map
+---
+
+The Arnold shader that provides the displacement
+map. Connect a float or colour input to displace
+along the object normals or a vector input to displace
+in a specific direction.
+
+height
+------
+
+Controls the amount of displacement. Only used when
+performing displacement along the normal.
+
+padding
+-------
+
+Padding added to an object's bounding box to take
+into account displacement. Arnold will subdivide
+and displace an object the first time a ray intersects
+its bounding box, so if the padding is too small,
+parts of the object will be clipped. If the padding
+is too large, rendertime will suffer and Arnold
+will emit a warning message.
+
+zeroValue
+---------
+
+Defines a value that will cause no displacement to
+occur. For instance, if the displacement map contains
+a greyscale noise between 0 and 1, a zero value of 0.5
+will mean that the displacement pushes into the object
+in some places and out in others.
+
+autoBump
+--------
+
+Automatically turns the details of the displacement map
+into bump, wherever the mesh is not subdivided enough
+to properly capture them.
+
+out
+---
+
+The output from the shader.
