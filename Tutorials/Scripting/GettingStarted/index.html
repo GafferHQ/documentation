@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started &mdash; Gaffer 0.27.0.0 documentation</title>
+  <title>Getting Started &mdash; Gaffer 0.29.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.27.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.29.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="Scripting" href="../index.html"/>
         <link rel="next" title="Creating Configuration Files" href="../CreatingConfigurationFiles/index.html"/>
         <link rel="prev" title="Scripting" href="../index.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.27.0.0
+                0.29.0.0
               </div>
             
           
@@ -100,15 +100,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../CreatingConfigurationFiles/index.html">Creating Configuration Files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../AddingAMenuItem/index.html">Adding a Menu Item</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../QueryingAScene/index.html">Querying a Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../UsingTheOSLCodeNode/index.html">Using the OSLCode Node</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../ManagingComplexity/index.html">Managing Complexity</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../UIReference/index.html">UI Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../NodeReference/index.html">Node Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../ScriptingReference/index.html">Scripting Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../CommandLineReference/index.html">Command Line Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Reference/index.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Appendices/index.html">Appendices</a></li>
 </ul>
 
@@ -160,7 +158,7 @@
             
   <div class="section" id="getting-started">
 <span id="getting-started"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<p>Gaffer&#8217;s Python scripting API is fairly frugal, so learning a few fundamental concepts goes a long way. Here we&#8217;ll take a quick tour through these fundamentals using Gaffer&#8217;s <a class="reference internal" href="../../../UIReference/ScriptEditor.html"><span class="doc">ScriptEditor</span></a>. We&#8217;ll see how we can enter Python code within the ScriptEditor to create nodes and plugs, and edit their values and connections. We&#8217;ll also see how we can use drag and drop to conveniently enter text into the ScriptEditor itself.</p>
+<p>Gaffer&#8217;s Python scripting API is fairly frugal, so learning a few fundamental concepts goes a long way. Here we&#8217;ll take a quick tour through these fundamentals using Gaffer&#8217;s <a class="reference external" href="UIReference/ScriptEditor.md">ScriptEditor</a>. We&#8217;ll see how we can enter Python code within the ScriptEditor to create nodes and plugs, and edit their values and connections. We&#8217;ll also see how we can use drag and drop to conveniently enter text into the ScriptEditor itself.</p>
 <div class="section" id="the-scripteditor">
 <span id="the-scripteditor"></span><h2>The ScriptEditor<a class="headerlink" href="#the-scripteditor" title="Permalink to this headline">¶</a></h2>
 <p>After launching Gaffer, the ScriptEditor can be found in its default location on a tab in the bottom right of the main window.</p>
@@ -205,7 +203,7 @@ replacing any existing node of the same name, which is often not what we want.</
 </div>
 <div class="section" id="editing-plug-values">
 <span id="editing-plug-values"></span><h2>Editing plug values<a class="headerlink" href="#editing-plug-values" title="Permalink to this headline">¶</a></h2>
-<p>Our humble node doesn&#8217;t do anything particularly interesting, so let&#8217;s create one that can actually generate a scene. Each node type in Gaffer is a different class in Python, and lives inside a module specific to the sort of processing it performs (a full list of modules and the nodes they provide is available in the <a class="reference internal" href="../../../NodeReference/index.html"><span class="doc">Node Reference</span></a>).</p>
+<p>Our humble node doesn&#8217;t do anything particularly interesting, so let&#8217;s create one that can actually generate a scene. Each node type in Gaffer is a different class in Python, and lives inside a module specific to the sort of processing it performs (a full list of modules and the nodes they provide is available in the <a class="reference external" href="NodeReference/index.md">Node Reference</a>).</p>
 <p>For now we&#8217;ll go ahead and make a Sphere&nbsp;:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">GafferScene</span>
 <span class="n">script</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">Sphere</span><span class="p">()</span> <span class="p">)</span>
@@ -269,7 +267,7 @@ will enter the code for current value of the plug, providing a convenient syntax
 </div>
 <div class="section" id="recap">
 <span id="recap"></span><h2>Recap<a class="headerlink" href="#recap" title="Permalink to this headline">¶</a></h2>
-<p>We&#8217;ve seen that Gaffer&#8217;s node graphs can be constructed using a minimal set of scripting commands, and that the ScriptEditor makes experimenting with these commands relatively easy by allowing nodes and plugs to be dragged and dropped directly into the code. The <a class="reference internal" href="../../../ScriptingReference/index.html"><span class="doc">Scripting Reference</span></a> and <a class="reference internal" href="../../../UIReference/ScriptEditor.html"><span class="doc">ScriptEditor Reference</span></a> sections provide a useful reminder of all we&#8217;ve covered in this tutorial, and additional information useful for further exploration.</p>
+<p>We&#8217;ve seen that Gaffer&#8217;s node graphs can be constructed using a minimal set of scripting commands, and that the ScriptEditor makes experimenting with these commands relatively easy by allowing nodes and plugs to be dragged and dropped directly into the code. The <a class="reference external" href="ScriptingReference/index.md">Scripting Reference</a> and <a class="reference external" href="UIReference/ScriptEditor.md">ScriptEditor Reference</a> sections provide a useful reminder of all we&#8217;ve covered in this tutorial, and additional information useful for further exploration.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p> Gaffer&#8217;s .gfr files are simply Python scripts which contain all the code necessary
@@ -278,7 +276,7 @@ something in the documentation, it can be handy to construct a network by hand a
 the .gfr file in a text editor for use as a cheat sheet. Similarly, you can use <em>Ctrl+C</em>
 to copy a network from the NodeGraph, and paste it as code into the ScriptEditor with <em>Ctrl+V</em>.</p>
 <p class="last">Finally, since Gaffer is open source, you&#8217;ll often find inspiration and examples in the
-<a class="reference external" href="https://github.com/ImageEngine/gaffer/tree/0.27.0.0">source code itself</a>.</p>
+<a class="reference external" href="https://github.com/ImageEngine/gaffer/tree/0.29.0.0">source code itself</a>.</p>
 </div>
 </div>
 </div>
@@ -324,7 +322,7 @@ to copy a network from the NodeGraph, and paste it as code into the ScriptEditor
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.27.0.0',
+            VERSION:'0.29.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
