@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Set &mdash; Gaffer 0.29.0.0 documentation</title>
+  <title>Set &mdash; Gaffer 0.30.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.29.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.30.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferScene" href="index.html"/>
         <link rel="next" title="SetFilter" href="SetFilter.html"/>
         <link rel="prev" title="Seeds" href="Seeds.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.29.0.0
+                0.30.0.0
               </div>
             
           
@@ -121,6 +121,7 @@
 <li class="toctree-l4"><a class="reference internal" href="ExternalProcedural.html">ExternalProcedural</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Filter.html">Filter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="FilterProcessor.html">FilterProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="FilterResults.html">FilterResults</a></li>
 <li class="toctree-l4"><a class="reference internal" href="FilterSwitch.html">FilterSwitch</a></li>
 <li class="toctree-l4"><a class="reference internal" href="FilteredSceneProcessor.html">FilteredSceneProcessor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="FreezeTransform.html">FreezeTransform</a></li>
@@ -180,6 +181,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../CommandLineReference/index.html">Command Line Reference</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ReleaseNotes/index.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Appendices/index.html">Appendices</a></li>
 </ul>
 
@@ -259,6 +261,15 @@ so users are free to do as they wish.</p>
 <span id="filter"></span><h2>filter<a class="headerlink" href="#filter" title="Permalink to this headline">¶</a></h2>
 <p>A filter to define additional paths to be added to
 or removed from the set.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"> Using a filter can be very expensive.
+It is advisable to limit use to filters with a
+limited number of matches and/or sets which are
+not used heavily downstream. Wherever possible,
+prefer to use the <code class="docutils literal"><span class="pre">paths</span></code> plug directly instead
+of using a filter.</p>
+</div>
 </div>
 <div class="section" id="mode">
 <span id="mode"></span><h2>mode<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h2>
@@ -324,7 +335,7 @@ You can create multiple set names at once by separating them with spaces.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.29.0.0',
+            VERSION:'0.30.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

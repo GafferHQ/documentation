@@ -18,7 +18,7 @@ fileName
 
 The file to load.
 
-**Supported file extensions** : bw, cin, cob, dexr, dpx, exr, idx, jpeg, jpg, mc, obj, pdc, png, rgb, rgba, sgi, swa, tdl, tga, tif, tiff
+**Supported file extensions** : bw, cin, cob, dexr, dpx, exr, idx, jpeg, jpg, mc, obj, pdc, png, rgb, rgba, sgi, swa, tdl, tga, tif, tiff, tx
 
 out
 ---

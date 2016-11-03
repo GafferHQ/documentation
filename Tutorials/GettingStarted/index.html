@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started &mdash; Gaffer 0.29.0.0 documentation</title>
+  <title>Getting Started &mdash; Gaffer 0.30.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.29.0.0 documentation" href="../../index.html"/>
+    <link rel="top" title="Gaffer 0.30.0.0 documentation" href="../../index.html"/>
         <link rel="up" title="Tutorials" href="../index.html"/>
         <link rel="next" title="Scripting" href="../Scripting/index.html"/>
         <link rel="prev" title="Tutorials" href="../index.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.29.0.0
+                0.30.0.0
               </div>
             
           
@@ -110,6 +110,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Reference/index.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ReleaseNotes/index.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Appendices/index.html">Appendices</a></li>
 </ul>
 
@@ -184,9 +185,9 @@ command&nbsp;:</p>
 <div class="section" id="loading-some-geometry">
 <span id="loading-some-geometry"></span><h2>Loading some geometry<a class="headerlink" href="#loading-some-geometry" title="Permalink to this headline">¶</a></h2>
 <p>As Gaffer is primarily a lighting package, it is expected that modelling and animation will be performed in an external package and then imported into Gaffer in the form of an animation cache. Gaffer supports both the Alembic (.abc) file format and its own native SceneCache (.scc) format.</p>
-<p>Let&#8217;s start by creating a <a class="reference external" href="NodeReference/GafferScene/SceneReader.md">SceneReader</a> node to load some geometry&nbsp;:</p>
+<p>Let&#8217;s start by creating a <a class="reference internal" href="../../Reference/NodeReference/GafferScene/SceneReader.html"><span class="doc">SceneReader</span></a> node to load some geometry&nbsp;:</p>
 <ul class="simple">
-<li>Locate the <a class="reference external" href="UIReference/NodeGraph.md">NodeGraph</a> editor in the lower left pane.</li>
+<li>Locate the <a class="reference internal" href="../../Reference/UIReference/NodeGraph.html"><span class="doc">NodeGraph</span></a> editor in the lower left pane.</li>
 <li><em>Right-Click</em> inside the NodeGraph to pop up a menu for creating nodes.</li>
 <li>Create a SceneReader using the <em>/Scene/File/Reader</em> menu item.</li>
 </ul>
@@ -195,7 +196,7 @@ command&nbsp;:</p>
 <ul class="simple">
 <li>Locate the NodeEditor in the top right pane.</li>
 <li>Enter <code class="docutils literal"><span class="pre">${GAFFER_ROOT}/resources/gafferBot/caches/gafferBot.scc</span></code> into the <strong>File Name</strong> field.</li>
-<li>Move the mouse into the <a class="reference external" href="UIReference/Viewer.md">Viewer</a> in the top left pane and press &#8216;f&#8217; to frame the full scene.</li>
+<li>Move the mouse into the <a class="reference internal" href="../../Reference/UIReference/Viewer.html"><span class="doc">Viewer</span></a> in the top left pane and press &#8216;f&#8217; to frame the full scene.</li>
 </ul>
 <p><img alt="SceneReader Bounding Box" src="../../_images/sceneReaderBound.png" /></p>
 <p>Something seems to be happening, but frankly not much. The SceneHierarchy in the bottom right pane has updated to show we have a &#8220;GAFFERBOT&#8221; located at the root of our scene, and the Viewer in the top left is showing a mysterious new bounding box. It seems that our SceneReader is loading <em>something</em>, but how do we find out what exactly?</p>
@@ -233,7 +234,7 @@ significance whatsoever in these names, and you are free to name your own creati
 </div>
 <div class="section" id="navigating-using-the-viewer">
 <span id="navigating-using-the-viewer"></span><h2>Navigating using the Viewer<a class="headerlink" href="#navigating-using-the-viewer" title="Permalink to this headline">¶</a></h2>
-<p>As we navigated the scene using the SceneHierarchy editor, the <a class="reference external" href="UIReference/Viewer.md">Viewer</a> was loading the geometry we discovered and displaying it. We can also control this expansion process directly within the Viewer itself&nbsp;:</p>
+<p>As we navigated the scene using the SceneHierarchy editor, the <a class="reference internal" href="../../Reference/UIReference/Viewer.html"><span class="doc">Viewer</span></a> was loading the geometry we discovered and displaying it. We can also control this expansion process directly within the Viewer itself&nbsp;:</p>
 <ul class="simple">
 <li><em>Left-Drag</em> over the bounding box of the other leg to select it. It should highlight to show that you have been successful.</li>
 <li>Press <em>Down-Arrow</em> on the keyboard to expand it one level.</li>
@@ -583,7 +584,7 @@ existing contents. The cursor will change from <img alt="Replace Objects" src=".
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.29.0.0',
+            VERSION:'0.30.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

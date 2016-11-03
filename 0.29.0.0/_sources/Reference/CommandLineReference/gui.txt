@@ -1,0 +1,26 @@
+gui
+===
+
+A graphical user interface for editing node graphs. This is
+the primary user facing Gaffer application.
+
+-threads
+--------
+
+The maximum number of threads used for computation. The default value of zero causes the number of threads to  be chosen automatically based on the available hardware.
+
+-profileFileName
+----------------
+
+If this is specified, then the application is run using the cProfile profiling module, and the results saved to the file for later examination.
+
+-scripts
+--------
+
+A list of scripts to edit.
+
+-fullScreen
+-----------
+
+Opens the UI in full screen mode.
+

@@ -27,6 +27,7 @@ GafferImage
 - [ImageWriter](ImageWriter.md)
 - [LUT](LUT.md)
 - [Merge](Merge.md)
+- [Mirror](Mirror.md)
 - [ObjectToImage](ObjectToImage.md)
 - [Offset](Offset.md)
 - [OpenColorIO](OpenColorIO.md)

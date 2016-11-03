@@ -37,6 +37,20 @@ from
 The ancestor to isolate the objects from. Only locations below
 this will be removed.
 
+keepLights
+----------
+
+Keeps all lights, regardless of other settings. This is
+useful when isolating an asset but wanting to render it
+using a light rig located elsewhere in the scene.
+
+keepCameras
+-----------
+
+Keeps all cameras, regardless of other settings. This is
+useful when isolating an asset but wanting to render it
+through a camera located elsewhere in the scene.
+
 adjustBounds
 ------------
 

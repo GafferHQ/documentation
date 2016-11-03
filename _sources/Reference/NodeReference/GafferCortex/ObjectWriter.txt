@@ -63,7 +63,7 @@ fileName
 
 The name of the file to write.
 
-**Supported file extensions** : bw, cin, cob, dexr, dpx, exr, idx, jpeg, jpg, mc, obj, pdc, png, rgb, rgba, sgi, swa, tdl, tga, tif, tiff
+**Supported file extensions** : bw, cin, cob, dexr, dpx, exr, idx, jpeg, jpg, mc, obj, pdc, png, rgb, rgba, sgi, swa, tdl, tga, tif, tiff, tx
 
 parameters
 ----------

@@ -1,0 +1,29 @@
+TimeWarpComputeNode
+===================
+
+Changes the time at which upstream nodes are evaluated using
+the following formula :
+
+`upstreamFrame = frame * speed + offset`
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+enabled
+-------
+
+Turns the node on and off.
+
+speed
+-----
+
+Multiplies the current frame value.
+
+offset
+------
+
+Adds to the current frame value (after multiplication with speed).
