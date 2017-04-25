@@ -1,0 +1,28 @@
+ObjectReader
+============
+
+Loads objects from disk using the readers provided by
+the Cortex project. In most cases it is preferable to
+use a dedicated SceneReader or ImageReader instead of
+this node.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+fileName
+--------
+
+The file to load.
+
+**Supported file extensions** : b, w,  , c, i, n,  , c, o, b,  , d, e, x, r,  , d, p, x,  , e, x, r,  , i, d, x,  , j, p, e, g,  , j, p, g,  , m, c,  , o, b, j,  , p, d, c,  , p, n, g,  , r, g, b,  , r, g, b, a,  , s, g, i,  , s, w, a,  , t, d, l,  , t, g, a,  , t, i, f,  , t, i, f, f,  , t, x
+
+out
+---
+
+The loaded object. Note that the ObjectToScene node may
+be used to convert this for use with the GafferScene
+module.

@@ -1,0 +1,35 @@
+FilterResults
+=============
+
+Searches an input scene for all locations matched
+by a filter.
+
+> Warning : This can be an arbitrarily expensive operation
+depending on the size of the input scene and the filter
+used. In particular it should be noted that the usage of
+`...` in a PathFilter will cause the entire input scene to
+be searched even if there are no matches to be found.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+scene
+-----
+
+The scene to be searched for matching
+locations.
+
+filter
+------
+
+The filter to be used when searching for
+matching locations.
+
+out
+---
+
+The results of the search.

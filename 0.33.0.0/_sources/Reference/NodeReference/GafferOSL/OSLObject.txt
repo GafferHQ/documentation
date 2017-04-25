@@ -1,0 +1,42 @@
+OSLObject
+=========
+
+Executes OSL shaders to perform object processing. Use the shaders from
+the OSL/ObjectProcessing menu to read primitive variables from the input
+object and then write primitive variables back to it.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+shader
+------
+
+The shader to be executed - connect the output from an OSL network here.
+A minimal shader network to process P would look like this :
+
+        InPoint->ProcessingNodes->OutPoint->OutObject

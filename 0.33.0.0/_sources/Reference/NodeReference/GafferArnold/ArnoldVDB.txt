@@ -1,0 +1,95 @@
+ArnoldVDB
+=========
+
+Creates an external procedural for rendering
+VDB volumes in Arnold.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs
+an empty scene.
+
+name
+----
+
+The name of the object in the output scene.
+
+sets
+----
+
+A list of sets to include the object in. The
+names should be separated by spaces.
+
+transform
+---------
+
+The transform applied to the object.
+
+fileName
+--------
+
+The name of the VDB file to be loaded.
+
+**Supported file extensions** : v, d, b
+
+grids
+-----
+
+A space separated list of grids to be loaded and made available as
+channels in the volume shader.
+
+velocityGrids
+-------------
+
+A space separated list of grids used to be used to generate motion
+blur. Should either contain a single vector grid or 3 float grids.
+
+velocityScale
+-------------
+
+A scale factor applied to the velocity grids, to either increase
+or decrease motion blur.
+
+stepSize
+--------
+
+The ray marching step size. This should be small enough to capture
+the smallest details in the volume. Values which are too large will
+cause aliasing artifacts, and values which are too small will cause
+rendering to be excessively slow. The default value of 0 causes the
+size to be calculated automatically based on the resolution of the
+VDB file. The step scale can then be used to make relative adjustments
+on top of this automatic size.
+
+stepScale
+---------
+
+A multiplier applied to the step size. This is most useful when the
+step size is computed automatically. Typically stepScale would be
+increased above 1 to give improved render times when it is known that
+the VDB file doesn't have a lot of fine detail at the voxel level -
+a value of 4 might be a good starting point for such a file.
+
+dso
+---
+
+The file name of the volume plugin that will be used to load
+the VDB file at render time. Currently this plugin is not supplied
+with Arnold itself, but is provided with MtoA as
+`procedurals/volume_vdb.so`, and with HtoA as
+`arnold/procedurals/htoa_volume_openvdb.so`.
+
+**Supported file extensions** : s, o,  , d, y, l, i, b
