@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction &mdash; Gaffer 0.33.0.0 documentation</title>
+  <title>Search &mdash; Gaffer 0.33.0.0 documentation</title>
   
 
   
@@ -32,8 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.33.0.0 documentation" href="#"/>
-        <link rel="next" title="Installation" href="Installation/index.html"/> 
+    <link rel="top" title="Gaffer 0.33.0.0 documentation" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -51,7 +50,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> Gaffer
+            <a href="index.html" class="icon icon-home"> Gaffer
           
 
           
@@ -68,7 +67,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="#" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -101,7 +100,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">Gaffer</a>
+        <a href="index.html">Gaffer</a>
       </nav>
 
 
@@ -110,20 +109,16 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="#">Docs</a> &raquo;</li>
+    <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Introduction</li>
+    <li></li>
       <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="_sources/index.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
   </ul>
@@ -132,33 +127,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="introduction">
-<span id="introduction"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>Gaffer is a node based application for use in CG and VFX production, with a particular focus on lighting and look development. Scenes are generated procedurally via networks of nodes for loading caches, joining and partitioning, adding lights, assigning shaders and attributes and so on. Gaffer is not tied to any particular renderer, and currently provides out-of-the-box support for <a class="reference external" href="http://www.3delight.com">3delight</a>, <a class="reference external" href="https://www.solidangle.com/arnold">Arnold</a> and <a class="reference external" href="http://appleseedhq.net">Appleseed</a>.</p>
-<p>Gaffer also provides basic 2D compositing functionality, suitable for use in lighting slapcomps and automated pipeline processes. Processing on a renderfarm is defined using graphs of tasks within Gaffer&#8217;s node editor, with dispatch currently supported via <a class="reference external" href="https://renderman.pixar.com/view/pixars-tractor">Tractor</a> or a built in local dispatcher.</p>
-<p>In addition to itself being highly extensible, Gaffer&#8217;s underlying frameworks are designed to enable the rapid development of standalone custom tools, both command line and GUI.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Installation/index.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Reference/index.html">Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ReleaseNotes/index.html">Release Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Appendices/index.html">Appendices</a></li>
-</ul>
-</div>
-</div>
+  <noscript>
+  <div id="fallback" class="admonition warning">
+    <p class="last">
+      Please activate JavaScript to enable the search
+      functionality.
+    </p>
+  </div>
+  </noscript>
 
+  
+  <div id="search-results">
+  
+  </div>
 
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="Installation/index.html" class="btn btn-neutral float-right" title="Installation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-    </div>
   
 
   <hr/>
@@ -196,6 +181,7 @@
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/searchtools.js"></script>
 
   
 
@@ -211,7 +197,14 @@
           SphinxRtdTheme.StickyNav.enable();
       });
   </script>
+  
+  <script type="text/javascript">
+    jQuery(function() { Search.loadIndex("searchindex.js"); });
+  </script>
+  
+  <script type="text/javascript" id="searchindexloader"></script>
    
+
 
 </body>
 </html>

@@ -1,0 +1,98 @@
+StandardAttributes
+==================
+
+Modifies the standard attributes on objects - these should
+be respected by all renderers.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+attributes
+----------
+
+The attributes to be applied - arbitrary numbers of user defined
+attributes may be added as children of this plug via the user
+interface, or using the CompoundDataPlug API via python.
+
+attributes.visibility
+---------------------
+
+Whether or not the object can be seen - invisible objects are
+not sent to the renderer at all. Typically more fine
+grained (camera, reflection etc) visibility can be
+specified using a renderer specific attributes node.
+Note that making a parent location invisible will
+always make all the children invisible too, regardless
+of their visibility settings.
+
+attributes.doubleSided
+----------------------
+
+Whether or not the object can be seen from both sides.
+Single sided objects appear invisible when seen from
+the back.
+
+attributes.transformBlur
+------------------------
+
+Whether or not transformation animation on the
+object is taken into account in the rendered image.
+Use the transformBlurSegments plug to specify the number
+of segments used to represent the motion.
+
+attributes.transformBlurSegments
+--------------------------------
+
+The number of segments of transform animation to
+pass to the renderer when transformBlur is on.
+
+attributes.deformationBlur
+--------------------------
+
+Whether or not deformation animation on the
+object is taken into account in the rendered image.
+Use the deformationBlurSegments plug to specify the
+number of segments used to represent the motion.
+
+attributes.deformationBlurSegments
+----------------------------------
+
+The number of segments of transform animation to
+pass to the renderer when transformBlur is on.
+
+attributes.linkedLights
+-----------------------
+
+The lights to be linked to this object. Accepts a
+set expression or a space separated list of lights.
+
+global
+------
+
+Causes the attributes to be applied to the scene globals
+instead of the individual locations defined by the filter.

@@ -1,0 +1,56 @@
+Camera
+======
+
+Produces scenes containing a camera. To choose which camera is
+used for rendering, use a StandardOptions node.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs
+an empty scene.
+
+name
+----
+
+The name of the object in the output scene.
+
+sets
+----
+
+A list of sets to include the object in. The
+names should be separated by spaces.
+
+transform
+---------
+
+The transform applied to the object.
+
+projection
+----------
+
+The basic camera type.
+
+fieldOfView
+-----------
+
+The field of view, specified in degrees, and interpreted
+as defined in the RenderMan specification. This is only
+relevant for perspective cameras.
+
+clippingPlanes
+--------------
+
+The near and far clipping planes.
