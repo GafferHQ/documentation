@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using The OSLCode Node &mdash; Gaffer 0.40.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Gaffer 0.40.0.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Scripting" href="../index.html"/>
+        <link rel="next" title="Managing Complexity" href="../../ManagingComplexity/index.html"/>
+        <link rel="prev" title="Querying A Scene" href="../QueryingAScene/index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Gaffer
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.40.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../Installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../GettingStarted/index.html">Getting Started</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Scripting</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../GettingStarted/index.html">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CreatingConfigurationFiles/index.html">Creating Configuration Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AddingAMenuItem/index.html">Adding a Menu Item</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../QueryingAScene/index.html">Querying a Scene</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using the OSLCode Node</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#a-one-line-shader">A one line shader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-some-more-features">Adding some more features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#osl-resources">OSL Resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ManagingComplexity/index.html">Managing Complexity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Reference/index.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ReleaseNotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Appendices/index.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Gaffer</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="../index.html">Scripting</a> &raquo;</li>
+      
+    <li>Using The OSLCode Node</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/Tutorials/Scripting/UsingTheOSLCodeNode/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-the-oslcode-node">
+<span id="using-the-oslcode-node"></span><h1>Using The OSLCode Node<a class="headerlink" href="#using-the-oslcode-node" title="Permalink to this headline">¶</a></h1>
+<p>Gaffer allows the creation of networks of predefined <a class="reference external" href="https://github.com/imageworks/OpenShadingLanguage">OSL</a> shaders to be used in renderering and image and geometry processing, without any coding required. But sometimes the shader you want doesn&#8217;t exist, or it&#8217;s easier to express your ideas through a few lines of code. In these situations, the OSLCode node allows OSL source code to be entered directly, to create new shaders on the fly.</p>
+<div class="section" id="a-one-line-shader">
+<span id="a-one-line-shader"></span><h2>A one line shader<a class="headerlink" href="#a-one-line-shader" title="Permalink to this headline">¶</a></h2>
+<p>Start by creating an OSLCode node in the GraphEditor. With this selected, the NodeEditor will display a blank shader to be edited.</p>
+<p><img alt="Blank Shader" src="../../../_images/blank.png" /></p>
+<p>We&#8217;ll start by adding some parameters (inputs and outputs) for the shader.</p>
+<ul class="simple">
+<li>Click on the upper <img alt="Plus icon" src="../../../_images/plus1.png" /> and choose &#8220;Float&#8221; from the menu. This creates an input parameter which takes a floating point number.</li>
+<li>Double click the &#8220;Input1&#8221; label that appears, and rename the parameter to <code class="docutils literal"><span class="pre">width</span></code>.</li>
+<li>Enter the value <code class="docutils literal"><span class="pre">0.025</span></code> into the width field.</li>
+<li>Click on the lower <img alt="Plus Icon" src="../../../_images/plus1.png" /> and choose &#8220;Color&#8221; from the menu. This creates an output color parameter.</li>
+<li>Double click the &#8220;Output1&#8221; label, and rename the parameter to &#8220;stripes&#8221;.</li>
+</ul>
+<p><img alt="Parameters" src="../../../_images/parameters.png" /></p>
+<p>We can now enter any OSL code we want to generate the output from the input. Start by entering the following&nbsp;:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">stripes</span> <span class="o">=</span> <span class="n">aastep</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span> <span class="n">v</span> <span class="o">*</span> <span class="n">M_PI</span> <span class="o">/</span> <span class="n">width</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Now hit <em>Control + Enter</em> to update the shader. The Viewer will update to show a shader ball with the shader on it, and adjusting the width parameter will update the render interactively.</p>
+<p><img alt="Shader ball" src="../../../_images/shaderBallStripes.png" /></p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last"> Enter the names for input and outputs into the code easily by dragging
+their labels into the code editor. This is especially useful for color
+spline inputs, where some special syntax is required to evaluate the spline.</p>
+</div>
+</div>
+<div class="section" id="adding-some-more-features">
+<span id="adding-some-more-features"></span><h2>Adding some more features<a class="headerlink" href="#adding-some-more-features" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s add a bit of color and some wobble to our shader, to demonstrate a few more features of OSL&nbsp;:</p>
+<ul class="simple">
+<li>Add a color input and rename it to <code class="docutils literal"><span class="pre">color1</span></code>.</li>
+<li>Add another color input and rename it to <code class="docutils literal"><span class="pre">color2</span></code>.</li>
+<li>Click on the colour swatches to pick some tasteful hues.</li>
+</ul>
+<p>Now update the code&nbsp;:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">float</span> <span class="n">vv</span> <span class="o">=</span> <span class="n">v</span> <span class="o">+</span> <span class="mf">0.05</span> <span class="o">*</span> <span class="n">pnoise</span><span class="p">(</span> <span class="n">u</span> <span class="o">*</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">4</span> <span class="p">);</span>
+<span class="nb">float</span> <span class="n">m</span> <span class="o">=</span> <span class="n">aastep</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span> <span class="n">vv</span> <span class="o">*</span> <span class="n">M_PI</span> <span class="o">/</span> <span class="n">width</span> <span class="p">)</span> <span class="p">);</span>
+<span class="n">stripes</span> <span class="o">=</span> <span class="n">mix</span><span class="p">(</span> <span class="n">color1</span><span class="p">,</span> <span class="n">color2</span><span class="p">,</span> <span class="n">m</span> <span class="p">);</span>
+</pre></div>
+</div>
+<p>And as before, hit <em>Control + Enter</em> to update the shader.</p>
+<p><img alt="Shader ball" src="../../../_images/shaderBallColoredStripes.png" /></p>
+<p>No doubt you didn&#8217;t come here to learn how to make blue and red wobbly stripes, but you are now armed with the ability to add inputs and outputs, edit code and view the results interactively, so are hopefully in a position to create the shader you <em>do</em> want.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last"> Explore the available functions in OSL and add them easily to the code by using the <em>/Insert</em> menu items from the <em>Right Click</em> popup menu.</p>
+</div>
+</div>
+<div class="section" id="osl-resources">
+<span id="osl-resources"></span><h2>OSL Resources<a class="headerlink" href="#osl-resources" title="Permalink to this headline">¶</a></h2>
+<p>This short tutorial has only scratched the surface of what can be done with Open Shading Language. The following resources are a good place to learn more&nbsp;:</p>
+<ul class="simple">
+<li>The <a class="reference external" href="https://github.com/imageworks/OpenShadingLanguage/blob/master/src/doc/osl-languagespec.pdf">language specification</a> (also available from the <em>/Help/OpenShadingLanguage/Language Reference</em> menu item in Gaffer)</li>
+<li>The <a class="reference external" href="https://groups.google.com/forum/#!forum/osl-dev">OSL mailing list</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../ManagingComplexity/index.html" class="btn btn-neutral float-right" title="Managing Complexity" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../QueryingAScene/index.html" class="btn btn-neutral" title="Querying A Scene" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016 John Haddon, 2011-2016 Image Engine Design Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.40.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

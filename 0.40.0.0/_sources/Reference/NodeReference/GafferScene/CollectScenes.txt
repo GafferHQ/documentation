@@ -1,0 +1,55 @@
+CollectScenes
+=============
+
+Builds a scene by bundling multiple input scenes together, each
+under their own root location. Instead of using an array of inputs
+like the Group node, a single input is used instead, and a context
+variable is provided so that a different hierarchy can be generated
+under each root location. This is especially powerful for building
+dynamic scenes where the number of inputs is not known prior to
+building the node graph.
+
+Since merging globals from multiple scenes often doesn't make sense,
+the output globals are taken directly from the scene corresponding to
+`rootNames[0]`.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scenes
+
+rootNames
+---------
+
+The names of the locations to create at the root of
+the output scene. The input scene is copied underneath
+each of these root locations.
+
+Often the rootNames will be driven by an expression that generates
+a dynamic number of root locations, perhaps by querying an asset
+management system or listing cache files on disk.
+
+rootNameVariable
+----------------
+
+The name of a context variable that is set to the current
+root name when evaluating the input scene. This can be used
+in upstream expressions and string substitutions to generate
+a different hierarchy under each root location.

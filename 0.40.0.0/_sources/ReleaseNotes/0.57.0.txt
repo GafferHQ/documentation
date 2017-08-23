@@ -1,0 +1,21 @@
+0.57.0
+======
+
+* Renamed ColorPlug child names to rgba rather than xyzw (issue [#133](https://github.com/GafferHQ/gaffer/issues/133)).
+
+* File->SaveAs... menu item now adds the file to the recent files list.
+
+* Fixed unwanted vertical expansion of color plug widgets.
+
+* Removed the unwanted visualisation of the "name" plug on shaders in the Node Graph.
+
+* Added NodeGraph plugContextMenuSignal() and connectionContextMenuSignal() to allow customisable right click menus for plugs and connections (issue [#122](https://github.com/GafferHQ/gaffer/issues/122)).
+
+* RenderManShader annotations are now correctly reloaded when the shader itself is reloaded.
+
+* RenderManShader UI produces more sensible errors when bad annotations are discovered.
+
+* Fixed parameter ordering in RenderManShader UI (issue [#136](https://github.com/GafferHQ/gaffer/issues/136)).
+
+* Fixed bug which prevented numeric plug entry fields from showing the correct value when values outside the allowable range were entered.
+

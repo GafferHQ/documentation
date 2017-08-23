@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RenderManOptions &mdash; Gaffer 0.40.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Gaffer 0.40.0.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="GafferRenderMan" href="index.html"/>
+        <link rel="next" title="RenderManRender" href="RenderManRender.html"/>
+        <link rel="prev" title="RenderManLight" href="RenderManLight.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Gaffer
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.40.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../Installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../UIReference/index.html">UI Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Node Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Gaffer/index.html">Gaffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferAppleseed/index.html">GafferAppleseed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferArnold/index.html">GafferArnold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferCortex/index.html">GafferCortex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferDispatch/index.html">GafferDispatch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferImage/index.html">GafferImage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferOSL/index.html">GafferOSL</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferRenderMan</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="InteractiveRenderManRender.html">InteractiveRenderManRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RenderManAttributes.html">RenderManAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RenderManLight.html">RenderManLight</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">RenderManOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RenderManRender.html">RenderManRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RenderManShader.html">RenderManShader</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferScene/index.html">GafferScene</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ScriptingReference/index.html">Scripting Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../CommandLineReference/index.html">Command Line Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ReleaseNotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Appendices/index.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Gaffer</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Reference</a> &raquo;</li>
+      
+          <li><a href="../index.html">Node Reference</a> &raquo;</li>
+      
+          <li><a href="index.html">GafferRenderMan</a> &raquo;</li>
+      
+    <li>RenderManOptions</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/Reference/NodeReference/GafferRenderMan/RenderManOptions.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rendermanoptions">
+<span id="rendermanoptions"></span><h1>RenderManOptions<a class="headerlink" href="#rendermanoptions" title="Permalink to this headline">¶</a></h1>
+<p>Sets global scene options applicable to RenderMan
+renderers. Use the StandardOptions node to set
+global options applicable to all renderers.</p>
+<div class="section" id="user">
+<span id="user"></span><h2>user<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
+<p>Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.</p>
+</div>
+<div class="section" id="out">
+<span id="out"></span><h2>out<a class="headerlink" href="#out" title="Permalink to this headline">¶</a></h2>
+<p>The processed output scene.</p>
+</div>
+<div class="section" id="enabled">
+<span id="enabled"></span><h2>enabled<a class="headerlink" href="#enabled" title="Permalink to this headline">¶</a></h2>
+<p>The on/off state of the node. When it is off, the node outputs the input scene unchanged.</p>
+</div>
+<div class="section" id="in">
+<span id="in"></span><h2>in<a class="headerlink" href="#in" title="Permalink to this headline">¶</a></h2>
+<p>The input scene</p>
+</div>
+<div class="section" id="options">
+<span id="options"></span><h2>options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<p>The options to be applied - arbitrary numbers of user defined options may be added
+as children of this plug via the user interface, or using the CompoundDataPlug API via
+python.</p>
+</div>
+<div class="section" id="options-pixelsamples">
+<span id="options-pixelsamples"></span><h2>options.pixelSamples<a class="headerlink" href="#options-pixelsamples" title="Permalink to this headline">¶</a></h2>
+<p>The number of primary samples to divide each pixel into
+in the X and Y directions. For example, 3x3 gives a total of
+9 samples per pixel. This is the primary quality control for
+geometric antialiasing and motion blur.</p>
+</div>
+<div class="section" id="options-hider">
+<span id="options-hider"></span><h2>options.hider<a class="headerlink" href="#options-hider" title="Permalink to this headline">¶</a></h2>
+<p>The &#8220;Hidden&#8221; hider means the classic REYES algorithm
+is used, and the &#8220;Raytrace&#8221; hider means a more modern
+raytraced algorithm is used.</p>
+</div>
+<div class="section" id="options-hiderdepthfilter">
+<span id="options-hiderdepthfilter"></span><h2>options.hiderDepthFilter<a class="headerlink" href="#options-hiderdepthfilter" title="Permalink to this headline">¶</a></h2>
+<p>The filter used to compute a single depth
+value per pixel from the depths in each
+pixel sample.</p>
+</div>
+<div class="section" id="options-hiderjitter">
+<span id="options-hiderjitter"></span><h2>options.hiderJitter<a class="headerlink" href="#options-hiderjitter" title="Permalink to this headline">¶</a></h2>
+<p>Whether or not each pixel sample is
+jittered about the centre of its subpixel
+position, or if they&#8217;re aligned in a
+regular grid. If in doubt, leave this on.</p>
+</div>
+<div class="section" id="options-hidersamplemotion">
+<span id="options-hidersamplemotion"></span><h2>options.hiderSampleMotion<a class="headerlink" href="#options-hidersamplemotion" title="Permalink to this headline">¶</a></h2>
+<p>May be turned off to disable the sampling of
+motion blur, but keep motion vectors available
+for use in shaders. This is useful for
+rendering a motion vector pass to allow
+2D motion blur to be applied as a post process.
+If you simply wish to turn off motion blur
+entirely, then use the motion blur settings
+in the StandardOptions node.</p>
+</div>
+<div class="section" id="options-hiderextrememotiondof">
+<span id="options-hiderextrememotiondof"></span><h2>options.hiderExtremeMotionDOF<a class="headerlink" href="#options-hiderextrememotiondof" title="Permalink to this headline">¶</a></h2>
+<p>An alternative sampling algorithm which
+is more expensive, but gives higher quality
+results when objects are both moving quickly
+and are out of focus.</p>
+</div>
+<div class="section" id="options-hiderprogressive">
+<span id="options-hiderprogressive"></span><h2>options.hiderProgressive<a class="headerlink" href="#options-hiderprogressive" title="Permalink to this headline">¶</a></h2>
+<p>Renders at progressively increasing levels
+of quality, to give quick low quality feedback
+at the start of an interactive render. Only
+applies when the raytrace hider is used.</p>
+</div>
+<div class="section" id="options-statisticslevel">
+<span id="options-statisticslevel"></span><h2>options.statisticsLevel<a class="headerlink" href="#options-statisticslevel" title="Permalink to this headline">¶</a></h2>
+<p>Determines the verbosity of statistics
+output.</p>
+</div>
+<div class="section" id="options-statisticsfilename">
+<span id="options-statisticsfilename"></span><h2>options.statisticsFileName<a class="headerlink" href="#options-statisticsfilename" title="Permalink to this headline">¶</a></h2>
+<p>The name of a file where the statistics
+will be written.</p>
+</div>
+<div class="section" id="options-statisticsprogress">
+<span id="options-statisticsprogress"></span><h2>options.statisticsProgress<a class="headerlink" href="#options-statisticsprogress" title="Permalink to this headline">¶</a></h2>
+<p>Turning this on causes a render progress
+percentage to be printed out continuously
+during rendering.</p>
+</div>
+<div class="section" id="options-shadersearchpath">
+<span id="options-shadersearchpath"></span><h2>options.shaderSearchPath<a class="headerlink" href="#options-shadersearchpath" title="Permalink to this headline">¶</a></h2>
+<p>The filesystem paths where shaders are
+searched for. Paths should be separated
+by &#8216;:&#8217;.</p>
+</div>
+<div class="section" id="options-texturesearchpath">
+<span id="options-texturesearchpath"></span><h2>options.textureSearchPath<a class="headerlink" href="#options-texturesearchpath" title="Permalink to this headline">¶</a></h2>
+<p>The filesystem paths where shaders are
+located. Paths should be separated
+by &#8216;:&#8217;.</p>
+</div>
+<div class="section" id="options-displaysearchpath">
+<span id="options-displaysearchpath"></span><h2>options.displaySearchPath<a class="headerlink" href="#options-displaysearchpath" title="Permalink to this headline">¶</a></h2>
+<p>The filesystem paths where display driver
+plugins are located. These will be used when searching
+for drivers specified using the Outputs
+node. Paths should be separated by &#8216;:&#8217;.</p>
+</div>
+<div class="section" id="options-archivesearchpath">
+<span id="options-archivesearchpath"></span><h2>options.archiveSearchPath<a class="headerlink" href="#options-archivesearchpath" title="Permalink to this headline">¶</a></h2>
+<p>The filesystem paths where RIB archives
+are located. These will be used when searching
+for archives specified using the ExternalProcedural
+node. Paths should be separated by &#8216;:&#8217;.</p>
+</div>
+<div class="section" id="options-proceduralsearchpath">
+<span id="options-proceduralsearchpath"></span><h2>options.proceduralSearchPath<a class="headerlink" href="#options-proceduralsearchpath" title="Permalink to this headline">¶</a></h2>
+<p>The filesystem paths where DSO procedurals
+are located. These will be used when searching
+for procedurals specified using the ExternalProcedural
+node. Paths should be separated by &#8216;:&#8217;.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="RenderManRender.html" class="btn btn-neutral float-right" title="RenderManRender" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="RenderManLight.html" class="btn btn-neutral" title="RenderManLight" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016 John Haddon, 2011-2016 Image Engine Design Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.40.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

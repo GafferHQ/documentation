@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Adding a Menu Item &mdash; Gaffer 0.40.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Gaffer 0.40.0.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Scripting" href="../index.html"/>
+        <link rel="next" title="Querying A Scene" href="../QueryingAScene/index.html"/>
+        <link rel="prev" title="Creating Configuration Files" href="../CreatingConfigurationFiles/index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Gaffer
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.40.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../Installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../GettingStarted/index.html">Getting Started</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Scripting</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../GettingStarted/index.html">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CreatingConfigurationFiles/index.html">Creating Configuration Files</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Adding a Menu Item</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-our-script">Creating our script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-the-menu-item">Creating the menu item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-some-nodes">Creating some nodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-whole-script">The whole script</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../QueryingAScene/index.html">Querying a Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../UsingTheOSLCodeNode/index.html">Using the OSLCode Node</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ManagingComplexity/index.html">Managing Complexity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Reference/index.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ReleaseNotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Appendices/index.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Gaffer</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="../index.html">Scripting</a> &raquo;</li>
+      
+    <li>Adding a Menu Item</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/Tutorials/Scripting/AddingAMenuItem/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="adding-a-menu-item">
+<span id="adding-a-menu-item"></span><h1>Adding a Menu Item<a class="headerlink" href="#adding-a-menu-item" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<span id="introduction"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Rumour has it some other application has a feature for creating equestrian playthings on demand. Here we’ll
+address this deficiency in Gaffer while taking the opportunity to learn about adding menu items.</p>
+</div>
+<div class="section" id="creating-our-script">
+<span id="creating-our-script"></span><h2>Creating our script<a class="headerlink" href="#creating-our-script" title="Permalink to this headline">¶</a></h2>
+<p>If you’ve already read the <a class="reference internal" href="../CreatingConfigurationFiles/index.html"><span class="doc">Configuration Files Tutorial</span></a>, then you’ll know we can add features to Gaffer by creating
+files it runs automatically on startup. We’ll create our script in the following file, and gaffer will load it each time it
+runs&nbsp;:</p>
+<p><code class="docutils literal"><span class="pre">~/gaffer/startup/gui/iWantAPony.py</span></code></p>
+</div>
+<div class="section" id="creating-the-menu-item">
+<span id="creating-the-menu-item"></span><h2>Creating the menu item<a class="headerlink" href="#creating-the-menu-item" title="Permalink to this headline">¶</a></h2>
+<p>We want our menu item to be easily accessible to the user, so we’ll put it in the main menu for the application,
+which is hosted in the script window.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GafferUI</span><span class="o">.</span><span class="n">ScriptWindow</span><span class="o">.</span><span class="n">menuDefinition</span><span class="p">(</span> <span class="n">application</span> <span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="s2">&quot;/Help/I Want A Pony&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;command&quot;</span> <span class="p">:</span> <span class="n">__iWantAPony</span> <span class="p">}</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>You’ll find that most user interfaces in Gaffer can be extended with similar ease. In this case we’ve simply
+specified the path to the menu item, and specified that it should run a python function called <code class="docutils literal"><span class="pre">__iWantAPony</span></code> - we’ll
+define that in the next section.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last"> Here we&#8217;re concentrating on the main menu, but you&#8217;ll find examples for adding menu items to the NodeGraph,
+NodeEditor and more in <a class="reference external" href="https://github.com/GafferHQ/gaffer/tree/0.40.0.0/startup/gui">Gaffer&#8217;s own configuration files</a></p>
+</div>
+</div>
+<div class="section" id="creating-some-nodes">
+<span id="creating-some-nodes"></span><h2>Creating some nodes<a class="headerlink" href="#creating-some-nodes" title="Permalink to this headline">¶</a></h2>
+<p>We want to get on with the business of creating some nodes, but first we have to know where to create them.
+Gaffer can have multiple files (scripts) open at once, so we need to determine which one to operate on right
+now. We’ll do that based on which window our menu was invoked from. Fortunately that turns out to be quite
+easy&nbsp;:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__iWantAPony</span><span class="p">(</span> <span class="n">menu</span> <span class="p">)</span> <span class="p">:</span>
+
+    <span class="n">scriptWindow</span> <span class="o">=</span> <span class="n">menu</span><span class="o">.</span><span class="n">ancestor</span><span class="p">(</span> <span class="n">GafferUI</span><span class="o">.</span><span class="n">ScriptWindow</span> <span class="p">)</span>
+    <span class="n">script</span> <span class="o">=</span> <span class="n">scriptWindow</span><span class="o">.</span><span class="n">scriptNode</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We also want the action performed by the menu item to be undoable - looking after a pony is a big responsibility after all. We do this by using an UndoContext to wrap everything we do into a single undoable step.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">UndoContext</span><span class="p">(</span> <span class="n">script</span> <span class="p">)</span> <span class="p">:</span>
+
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Now we can create a SceneReader node to load a model, set the values of its plugs, and add it to the script.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">read</span> <span class="o">=</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">SceneReader</span><span class="p">(</span> <span class="s2">&quot;Cow&quot;</span> <span class="p">)</span>
+<span class="n">read</span><span class="p">[</span><span class="s2">&quot;fileName&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="s2">&quot;$</span><span class="si">{GAFFER_ROOT}</span><span class="s2">/resources/cow/cow.scc&quot;</span> <span class="p">)</span>
+<span class="n">script</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">read</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>The astute reader may have noticed that the model looks suspiciously bovine, and may not quite fulfil the user’s
+request, but it will on the other hand provide a valuable lesson : you can’t always get what you want. Let&#8217;s see
+if we can offset the disappointment by substituting quantity for quality.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">duplicate</span> <span class="o">=</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">Duplicate</span><span class="p">(</span> <span class="s2">&quot;Herd&quot;</span> <span class="p">)</span>
+<span class="n">duplicate</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="s2">&quot;/cow&quot;</span> <span class="p">)</span>
+<span class="n">duplicate</span><span class="p">[</span><span class="s2">&quot;copies&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="mi">7</span> <span class="p">)</span>
+<span class="n">duplicate</span><span class="p">[</span><span class="s2">&quot;transform&quot;</span><span class="p">][</span><span class="s2">&quot;translate&quot;</span><span class="p">][</span><span class="s2">&quot;x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="mi">16</span> <span class="p">)</span>
+<span class="n">duplicate</span><span class="p">[</span><span class="s2">&quot;transform&quot;</span><span class="p">][</span><span class="s2">&quot;rotate&quot;</span><span class="p">][</span><span class="s2">&quot;y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="mi">45</span> <span class="p">)</span>
+<span class="n">duplicate</span><span class="p">[</span><span class="s2">&quot;in&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setInput</span><span class="p">(</span> <span class="n">read</span><span class="p">[</span><span class="s2">&quot;out&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">script</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">duplicate</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, we can select the newly created scene so the user is plainly aware of their gift.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">script</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="n">script</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span> <span class="n">duplicate</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="Herd" src="../../../_images/herd.png" /></p>
+<p>And there we have it. Perhaps not quite suitable for show jumping but nevertheless a valuable source of milk,
+cheese and finally meat.</p>
+</div>
+<div class="section" id="the-whole-script">
+<span id="the-whole-script"></span><h2>The whole script<a class="headerlink" href="#the-whole-script" title="Permalink to this headline">¶</a></h2>
+<p>Here’s the whole script in all its glory.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+<span class="kn">import</span> <span class="nn">Gaffer</span>
+<span class="kn">import</span> <span class="nn">GafferUI</span>
+<span class="kn">import</span> <span class="nn">GafferScene</span>
+
+<span class="k">def</span> <span class="nf">__iWantAPony</span><span class="p">(</span> <span class="n">menu</span> <span class="p">)</span> <span class="p">:</span>
+
+    <span class="n">scriptWindow</span> <span class="o">=</span> <span class="n">menu</span><span class="o">.</span><span class="n">ancestor</span><span class="p">(</span> <span class="n">GafferUI</span><span class="o">.</span><span class="n">ScriptWindow</span> <span class="p">)</span>
+    <span class="n">script</span> <span class="o">=</span> <span class="n">scriptWindow</span><span class="o">.</span><span class="n">scriptNode</span><span class="p">()</span>
+
+    <span class="k">with</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">UndoContext</span><span class="p">(</span> <span class="n">script</span> <span class="p">)</span> <span class="p">:</span>
+
+        <span class="n">read</span> <span class="o">=</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">SceneReader</span><span class="p">(</span> <span class="s2">&quot;Cow&quot;</span> <span class="p">)</span>
+        <span class="n">read</span><span class="p">[</span><span class="s2">&quot;fileName&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="s2">&quot;$</span><span class="si">{GAFFER_ROOT}</span><span class="s2">/resources/cow/cow.scc&quot;</span> <span class="p">)</span>
+        <span class="n">script</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">read</span> <span class="p">)</span>
+
+        <span class="n">duplicate</span> <span class="o">=</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">Duplicate</span><span class="p">(</span> <span class="s2">&quot;Herd&quot;</span> <span class="p">)</span>
+        <span class="n">duplicate</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="s2">&quot;/cow&quot;</span> <span class="p">)</span>
+        <span class="n">duplicate</span><span class="p">[</span><span class="s2">&quot;copies&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="mi">7</span> <span class="p">)</span>
+        <span class="n">duplicate</span><span class="p">[</span><span class="s2">&quot;transform&quot;</span><span class="p">][</span><span class="s2">&quot;translate&quot;</span><span class="p">][</span><span class="s2">&quot;x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="mi">16</span> <span class="p">)</span>
+        <span class="n">duplicate</span><span class="p">[</span><span class="s2">&quot;transform&quot;</span><span class="p">][</span><span class="s2">&quot;rotate&quot;</span><span class="p">][</span><span class="s2">&quot;y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="mi">45</span> <span class="p">)</span>
+        <span class="n">duplicate</span><span class="p">[</span><span class="s2">&quot;in&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setInput</span><span class="p">(</span> <span class="n">read</span><span class="p">[</span><span class="s2">&quot;out&quot;</span><span class="p">]</span> <span class="p">)</span>
+        <span class="n">script</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">duplicate</span> <span class="p">)</span>
+
+    <span class="n">script</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">script</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span> <span class="n">duplicate</span> <span class="p">)</span>
+
+<span class="n">GafferUI</span><span class="o">.</span><span class="n">ScriptWindow</span><span class="o">.</span><span class="n">menuDefinition</span><span class="p">(</span><span class="n">application</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="s2">&quot;/Help/I Want A Pony&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="s2">&quot;command&quot;</span> <span class="p">:</span> <span class="n">__iWantAPony</span> <span class="p">}</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../QueryingAScene/index.html" class="btn btn-neutral float-right" title="Querying A Scene" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../CreatingConfigurationFiles/index.html" class="btn btn-neutral" title="Creating Configuration Files" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016 John Haddon, 2011-2016 Image Engine Design Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.40.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

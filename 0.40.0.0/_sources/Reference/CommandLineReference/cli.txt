@@ -1,0 +1,24 @@
+cli
+===
+
+A python command line interpreter which has all the
+Gaffer modules available to it.
+
+> Warning : This application is deprecated.
+> Use `gaffer env python` instead.
+
+-help
+-----
+
+Prints names and descriptions of each parameter rather than running the application.
+
+-threads
+--------
+
+The maximum number of threads used for computation. The default value of zero causes the number of threads to  be chosen automatically based on the available hardware.
+
+-profileFileName
+----------------
+
+If this is specified, then the application is run using the cProfile profiling module, and the results saved to the file for later examination.
+

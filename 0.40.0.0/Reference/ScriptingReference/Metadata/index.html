@@ -1,0 +1,502 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Metadata &mdash; Gaffer 0.40.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Gaffer 0.40.0.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Scripting Reference" href="../index.html"/>
+        <link rel="next" title="Command Line Reference" href="../../CommandLineReference/index.html"/>
+        <link rel="prev" title="Set Expressions" href="../SetExpressions/index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Gaffer
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.40.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../Installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../UIReference/index.html">UI Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../NodeReference/index.html">Node Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Scripting Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../CommonOperations/index.html">Common Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../StringSubstitutionSyntax/index.html">String Substitution Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Expressions/index.html">Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SetExpressions/index.html">Set Expressions</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Metadata</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nodeeditor-layout">NodeEditor Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nodegraph-layout">NodeGraph Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#viewer-layout">Viewer Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plugvaluewidgets">PlugValueWidgets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../CommandLineReference/index.html">Command Line Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ReleaseNotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Appendices/index.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Gaffer</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Reference</a> &raquo;</li>
+      
+          <li><a href="../index.html">Scripting Reference</a> &raquo;</li>
+      
+    <li>Metadata</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/Reference/ScriptingReference/Metadata/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="metadata">
+<span id="metadata"></span><h1>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h1>
+<p>Gaffer&#8217;s UIs for plugs and nodes are defined using a metadata convention. This
+makes it easy to customise the UI for a specific node type, or even for a
+specific node instance. This document provides a reference for the most common
+metadata items.</p>
+<div class="section" id="general">
+<span id="general"></span><h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="40%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Purpose</th>
+<th class="head">Example Values</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>label</td>
+<td>Label used instead of plug name</td>
+<td>&#8220;My Label&#8221;</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>Describes the purpose of a
+node or plug</td>
+<td>&#8220;Turns on the thingammajig&#8221;</td>
+</tr>
+<tr class="row-even"><td>icon</td>
+<td>Name of an image file used to
+represent a node</td>
+<td>&#8220;myAwesomeNode.png&#8221;</td>
+</tr>
+<tr class="row-odd"><td>documentation:url</td>
+<td>Link to node documentation</td>
+<td><a class="reference external" href="http://www.gafferhq.org">http://www.gafferhq.org</a></td>
+</tr>
+<tr class="row-even"><td>userDefault</td>
+<td>Overrides the default value of
+a plug</td>
+<td>10.5</td>
+</tr>
+<tr class="row-odd"><td>preset:&lt;name&gt;</td>
+<td>Specifies a named preset value</td>
+<td>&#8220;preset:Max&#8221;, 1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="nodeeditor-layout">
+<span id="nodeeditor-layout"></span><h2>NodeEditor Layout<a class="headerlink" href="#nodeeditor-layout" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="40%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Purpose</th>
+<th class="head">Example Values</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>layout:divider</td>
+<td>Places a divider after the plug</td>
+<td>True</td>
+</tr>
+<tr class="row-odd"><td>layout:index</td>
+<td>Integer index in the layout
+order</td>
+<td>0 (first), -1 (last)</td>
+</tr>
+<tr class="row-even"><td>layout:section</td>
+<td>Specifies the section the plug
+belongs in</td>
+<td>TabName.SectionName</td>
+</tr>
+<tr class="row-odd"><td>layout:accessory</td>
+<td>Places widget on same line as
+previous widget</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="nodegraph-layout">
+<span id="nodegraph-layout"></span><h2>NodeGraph Layout<a class="headerlink" href="#nodegraph-layout" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="37%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Purpose</th>
+<th class="head">Example Values</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>nodule:color</td>
+<td>The colour of the plug</td>
+<td>IECore.Color3f( 0, 1, 0 )</td>
+</tr>
+<tr class="row-odd"><td>connectionGadget:color</td>
+<td>The colour of input connections</td>
+<td>IECore.Color3f( 1, 0, 0 )</td>
+</tr>
+<tr class="row-even"><td>nodeGadget:color</td>
+<td>The colour of a node</td>
+<td>IECore.Color3f( 0, 0, 1 )</td>
+</tr>
+<tr class="row-odd"><td>noduleLayout:section</td>
+<td>The edge the plug appears on</td>
+<td>&#8220;left&#8221;, &#8220;right&#8221;, &#8220;top&#8221;, &#8220;bottom&#8221;</td>
+</tr>
+<tr class="row-even"><td>noduleLayout:visible</td>
+<td>Shows/hides the plug</td>
+<td>True (visible), False (hidden)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="viewer-layout">
+<span id="viewer-layout"></span><h2>Viewer Layout<a class="headerlink" href="#viewer-layout" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="37%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Purpose</th>
+<th class="head">Example Values</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>layout:divider</td>
+<td>Places a divider after the plug</td>
+<td>True</td>
+</tr>
+<tr class="row-odd"><td>layout:index</td>
+<td>Integer index in the layout
+order</td>
+<td>0 (first), -1 (last)</td>
+</tr>
+<tr class="row-even"><td>toolbarLayout:section</td>
+<td>The edge of the viewer the plug
+appears on</td>
+<td>&#8220;Left&#8221;, &#8220;Right&#8221;, &#8220;Top&#8221;, &#8220;Bottom&#8221;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="plugvaluewidgets">
+<span id="plugvaluewidgets"></span><h2>PlugValueWidgets<a class="headerlink" href="#plugvaluewidgets" title="Permalink to this headline">¶</a></h2>
+<p>Custom widget types may be registered for use in the NodeEditor by adding <code class="docutils literal"><span class="pre">&quot;plugValueWidget:type&quot;</span></code> metadata to a plug. Note that not all widget types are compatible with all plug types - the table below lists the relevant widget types by plug type.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="30%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Plug Type</th>
+<th class="head">Purpose</th>
+<th class="head">PlugValueWidgetType</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Plug (and subclasses)</td>
+<td>Hide the plug permanently</td>
+<td>&#8220;&#8221;</td>
+</tr>
+<tr class="row-odd"><td>Plug (and subclasses)</td>
+<td>Display the input connection</td>
+<td>&#8220;GafferUI.ConnectionPlugValueWidget&#8221;</td>
+</tr>
+<tr class="row-even"><td>ValuePlug (and subclasses)</td>
+<td>Show a menu of presets</td>
+<td>&#8220;GafferUI.PresetsPlugValueWidget&#8221;</td>
+</tr>
+<tr class="row-odd"><td>IntPlug</td>
+<td>Display a checkbox</td>
+<td>&#8220;GafferUI.BoolPlugValueWidget&#8221;</td>
+</tr>
+<tr class="row-even"><td>StringPlug</td>
+<td>Allow multi-line text entry</td>
+<td>&#8220;GafferUI.MultiLineStringPlugValueWidget&#8221;</td>
+</tr>
+<tr class="row-odd"><td>StringPlug</td>
+<td>Show a file chooser</td>
+<td>&#8220;GafferUI.FileSystemPathPlugValueWidget&#8221;</td>
+</tr>
+<tr class="row-even"><td>StringVectorDataPlug</td>
+<td>Show a file chooser</td>
+<td>&#8220;GafferUI.FileSystemPathVectorDataPlugValueWidget&#8221;</td>
+</tr>
+</tbody>
+</table>
+<p>These widget types may be further customised using additional metadata as follows</p>
+<div class="section" id="boolplugvaluewidget">
+<span id="boolplugvaluewidget"></span><h3>BoolPlugValueWidget<a class="headerlink" href="#boolplugvaluewidget" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="42%" />
+<col width="33%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Purpose</th>
+<th class="head">Example values</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>boolPlugValueWidget:displayMode</td>
+<td>Change display style</td>
+<td>&#8220;checkBox&#8221;, &#8220;switch&#8221;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="filesystempathplugvaluewidget">
+<span id="filesystempathplugvaluewidget"></span><h3>FileSystemPathPlugValueWidget<a class="headerlink" href="#filesystempathplugvaluewidget" title="Permalink to this headline">¶</a></h3>
+<p>These options also apply to the FileSystemPathVectorDataPlugValueWidget.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="36%" />
+<col width="24%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Purpose</th>
+<th class="head">Example values</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>path:bookmarks</td>
+<td>Specify which bookmarks to use</td>
+<td>&#8220;image&#8221;</td>
+</tr>
+<tr class="row-odd"><td>path:leaf</td>
+<td>Don&#8217;t accept directories</td>
+<td>True, False</td>
+</tr>
+<tr class="row-even"><td>path:valid</td>
+<td>Only accept files that exist</td>
+<td>True, False</td>
+</tr>
+<tr class="row-odd"><td>fileSystemPath:extensions</td>
+<td>Specify valid file types</td>
+<td>&#8220;jpg jpeg png&#8221;</td>
+</tr>
+<tr class="row-even"><td>fileSystemPath:extensionsLabel</td>
+<td>Describe valid file types</td>
+<td>&#8220;Web images&#8221;</td>
+</tr>
+<tr class="row-odd"><td>fileSystemPath:includeSequences</td>
+<td>Display file sequences</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../CommandLineReference/index.html" class="btn btn-neutral float-right" title="Command Line Reference" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../SetExpressions/index.html" class="btn btn-neutral" title="Set Expressions" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016 John Haddon, 2011-2016 Image Engine Design Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.40.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
