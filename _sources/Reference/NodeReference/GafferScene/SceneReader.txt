@@ -35,7 +35,7 @@ fileName
 The name of the file to be loaded. The file can be
 in any of the formats supported by Cortex's SceneInterfaces.
 
-**Supported file extensions** : l, s, c, c,  , s, c, c
+**Supported file extensions** : a, b, c,  , l, s, c, c,  , s, c, c
 
 refreshCount
 ------------

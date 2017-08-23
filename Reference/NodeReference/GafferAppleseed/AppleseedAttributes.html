@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>AppleseedAttributes &mdash; Gaffer 0.33.0.0 documentation</title>
+  <title>AppleseedAttributes &mdash; Gaffer 0.40.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.33.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.40.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferAppleseed" href="index.html"/>
         <link rel="next" title="AppleseedLight" href="AppleseedLight.html"/>
         <link rel="prev" title="GafferAppleseed" href="index.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.33.0.0
+                0.40.0.0
               </div>
             
           
@@ -235,6 +235,13 @@ soft specular reflections and refractions.</p>
 <span id="attributes-shadingsamples"></span><h2>attributes.shadingSamples<a class="headerlink" href="#attributes-shadingsamples" title="Permalink to this headline">¶</a></h2>
 <p>Number of samples to use when computing shading for the object.</p>
 </div>
+<div class="section" id="attributes-doublesided">
+<span id="attributes-doublesided"></span><h2>attributes.doubleSided<a class="headerlink" href="#attributes-doublesided" title="Permalink to this headline">¶</a></h2>
+<p>Assign materials to the back side of objects.
+It is important to disable double sided assignments if the material
+has emision closures and emision is not wanted on the inside of objects,
+for example for closed objects, to reduce the amount of noise in the render.</p>
+</div>
 <div class="section" id="attributes-mediumpriority">
 <span id="attributes-mediumpriority"></span><h2>attributes.mediumPriority<a class="headerlink" href="#attributes-mediumpriority" title="Permalink to this headline">¶</a></h2>
 <p>Specify the object medium priority.
@@ -303,7 +310,7 @@ instead of the individual locations defined by the filter.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.33.0.0',
+            VERSION:'0.40.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

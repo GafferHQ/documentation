@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>AppleseedOptions &mdash; Gaffer 0.33.0.0 documentation</title>
+  <title>AppleseedOptions &mdash; Gaffer 0.40.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.33.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.40.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferAppleseed" href="index.html"/>
         <link rel="next" title="AppleseedRender" href="AppleseedRender.html"/>
         <link rel="prev" title="AppleseedLight" href="AppleseedLight.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.33.0.0
+                0.40.0.0
               </div>
             
           
@@ -246,7 +246,19 @@ Useful for debugging scenes.</p>
 </div>
 <div class="section" id="options-ptmaxbounces">
 <span id="options-ptmaxbounces"></span><h2>options.ptMaxBounces<a class="headerlink" href="#options-ptmaxbounces" title="Permalink to this headline">¶</a></h2>
-<p>Maximum number of path bounces.If set to zero, use an unlimited number of bounces</p>
+<p>Maximum number of bounces.If set to a negative number, use an unlimited number of bounces</p>
+</div>
+<div class="section" id="options-ptmaxdiffusebounces">
+<span id="options-ptmaxdiffusebounces"></span><h2>options.ptMaxDiffuseBounces<a class="headerlink" href="#options-ptmaxdiffusebounces" title="Permalink to this headline">¶</a></h2>
+<p>Maximum number of diffuse bounces.If set to a negative number, use an unlimited number of bounces</p>
+</div>
+<div class="section" id="options-ptmaxglossybounces">
+<span id="options-ptmaxglossybounces"></span><h2>options.ptMaxGlossyBounces<a class="headerlink" href="#options-ptmaxglossybounces" title="Permalink to this headline">¶</a></h2>
+<p>Maximum number of glossy bounces.If set to a negative number, use an unlimited number of bounces</p>
+</div>
+<div class="section" id="options-ptmaxspecularbounces">
+<span id="options-ptmaxspecularbounces"></span><h2>options.ptMaxSpecularBounces<a class="headerlink" href="#options-ptmaxspecularbounces" title="Permalink to this headline">¶</a></h2>
+<p>Maximum number of specular bounces.If set to a negative number, use an unlimited number of bounces</p>
 </div>
 <div class="section" id="options-ptlightingsamples">
 <span id="options-ptlightingsamples"></span><h2>options.ptLightingSamples<a class="headerlink" href="#options-ptlightingsamples" title="Permalink to this headline">¶</a></h2>
@@ -278,11 +290,11 @@ Useful for debugging scenes.</p>
 </div>
 <div class="section" id="options-sppmphotonmaxbounces">
 <span id="options-sppmphotonmaxbounces"></span><h2>options.sppmPhotonMaxBounces<a class="headerlink" href="#options-sppmphotonmaxbounces" title="Permalink to this headline">¶</a></h2>
-<p>Maximum number of photon bounces.If set to zero, use an unlimited number of bounces</p>
+<p>Maximum number of photon bounces.If set to a negative number, use an unlimited number of bounces</p>
 </div>
 <div class="section" id="options-sppmpathmaxbounces">
 <span id="options-sppmpathmaxbounces"></span><h2>options.sppmPathMaxBounces<a class="headerlink" href="#options-sppmpathmaxbounces" title="Permalink to this headline">¶</a></h2>
-<p>Maximum number of path bounces.If set to zero, use an unlimited number of bounces</p>
+<p>Maximum number of path bounces.If set to a negative number, use an unlimited number of bounces</p>
 </div>
 <div class="section" id="options-sppmlightphotons">
 <span id="options-sppmlightphotons"></span><h2>options.sppmLightPhotons<a class="headerlink" href="#options-sppmlightphotons" title="Permalink to this headline">¶</a></h2>
@@ -383,7 +395,7 @@ interactive rendering.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.33.0.0',
+            VERSION:'0.40.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

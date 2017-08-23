@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ImageWriter &mdash; Gaffer 0.33.0.0 documentation</title>
+  <title>ImageWriter &mdash; Gaffer 0.40.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.33.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.40.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferImage" href="index.html"/>
         <link rel="next" title="LUT" href="LUT.html"/>
         <link rel="prev" title="ImageTransform" href="ImageTransform.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.33.0.0
+                0.40.0.0
               </div>
             
           
@@ -98,16 +98,21 @@
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferImage</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="Blur.html">Blur</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CDL.html">CDL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Catalogue.html">Catalogue</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Clamp.html">Clamp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CollectImages.html">CollectImages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ColorSpace.html">ColorSpace</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Constant.html">Constant</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CopyChannels.html">CopyChannels</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CopyImageMetadata.html">CopyImageMetadata</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Crop.html">Crop</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeleteChannels.html">DeleteChannels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeleteImageContextVariables.html">DeleteImageContextVariables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeleteImageMetadata.html">DeleteImageMetadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Dilate.html">Dilate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Display.html">Display</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DisplayTransform.html">DisplayTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Erode.html">Erode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Grade.html">Grade</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ImageContextVariables.html">ImageContextVariables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ImageLoop.html">ImageLoop</a></li>
@@ -266,6 +271,13 @@ as a placeholder for the frame numbers.</p>
 Names should be separated by spaces and may contain any
 of Gaffer&#8217;s standard wildcards.</p>
 </div>
+<div class="section" id="colorspace">
+<span id="colorspace"></span><h2>colorSpace<a class="headerlink" href="#colorspace" title="Permalink to this headline">¶</a></h2>
+<p>The colour space of the output image, used to convert the input image
+from the scene linear colorspace defined by the OpenColorIO config.
+The default behaviour is to automatically determine the colorspace by
+calling the function registered with <code class="docutils literal"><span class="pre">ImageWriter::setDefaultColorSpaceFunction()</span></code>.</p>
+</div>
 <div class="section" id="out">
 <span id="out"></span><h2>out<a class="headerlink" href="#out" title="Permalink to this headline">¶</a></h2>
 <p>A pass-through of the input image.</p>
@@ -347,6 +359,11 @@ of Gaffer&#8217;s standard wildcards.</p>
 <p>The compression quality for the Jpeg file to be written.
 A value between 0 (low quality, high compression) and
 100 (high quality, low compression).</p>
+</div>
+<div class="section" id="jpeg-chromasubsampling">
+<span id="jpeg-chromasubsampling"></span><h2>jpeg.chromaSubSampling<a class="headerlink" href="#jpeg-chromasubsampling" title="Permalink to this headline">¶</a></h2>
+<p>The chroma sub sampling used to write the jpeg file.
+Note that the file will be stored as YCbCr instead of RGB.</p>
 </div>
 <div class="section" id="jpeg2000">
 <span id="jpeg2000"></span><h2>jpeg2000<a class="headerlink" href="#jpeg2000" title="Permalink to this headline">¶</a></h2>
@@ -446,7 +463,7 @@ A value between 0 (low quality, high compression) and
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.33.0.0',
+            VERSION:'0.40.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -97,7 +97,22 @@ Enable caustics
 options.ptMaxBounces
 --------------------
 
-Maximum number of path bounces.If set to zero, use an unlimited number of bounces
+Maximum number of bounces.If set to a negative number, use an unlimited number of bounces
+
+options.ptMaxDiffuseBounces
+---------------------------
+
+Maximum number of diffuse bounces.If set to a negative number, use an unlimited number of bounces
+
+options.ptMaxGlossyBounces
+--------------------------
+
+Maximum number of glossy bounces.If set to a negative number, use an unlimited number of bounces
+
+options.ptMaxSpecularBounces
+----------------------------
+
+Maximum number of specular bounces.If set to a negative number, use an unlimited number of bounces
 
 options.ptLightingSamples
 -------------------------
@@ -137,12 +152,12 @@ Enable caustics
 options.sppmPhotonMaxBounces
 ----------------------------
 
-Maximum number of photon bounces.If set to zero, use an unlimited number of bounces
+Maximum number of photon bounces.If set to a negative number, use an unlimited number of bounces
 
 options.sppmPathMaxBounces
 --------------------------
 
-Maximum number of path bounces.If set to zero, use an unlimited number of bounces
+Maximum number of path bounces.If set to a negative number, use an unlimited number of bounces
 
 options.sppmLightPhotons
 ------------------------

@@ -48,6 +48,13 @@ density
 The number of points per unit area of the mesh,
 measured in object space.
 
+densityPrimitiveVariable
+------------------------
+
+A float primitive variable used to specify a varying
+point density across the surface of the mesh. Multiplied
+with the density setting above.
+
 pointType
 ---------
 

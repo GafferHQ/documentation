@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ClippingPlane &mdash; Gaffer 0.33.0.0 documentation</title>
+  <title>ClippingPlane &mdash; Gaffer 0.40.0.0 documentation</title>
   
 
   
@@ -32,9 +32,9 @@
   
 
   
-    <link rel="top" title="Gaffer 0.33.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.40.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferScene" href="index.html"/>
-        <link rel="next" title="CoordinateSystem" href="CoordinateSystem.html"/>
+        <link rel="next" title="CollectScenes" href="CollectScenes.html"/>
         <link rel="prev" title="Camera" href="Camera.html"/> 
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.33.0.0
+                0.40.0.0
               </div>
             
           
@@ -105,16 +105,21 @@
 <li class="toctree-l4"><a class="reference internal" href="Attributes.html">Attributes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Camera.html">Camera</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">ClippingPlane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CollectScenes.html">CollectScenes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CoordinateSystem.html">CoordinateSystem</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CopyOptions.html">CopyOptions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Cube.html">Cube</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CustomAttributes.html">CustomAttributes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CustomOptions.html">CustomOptions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeleteAttributes.html">DeleteAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeleteCurves.html">DeleteCurves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeleteFaces.html">DeleteFaces</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeleteGlobals.html">DeleteGlobals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeleteOptions.html">DeleteOptions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeleteOutputs.html">DeleteOutputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeletePoints.html">DeletePoints</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeletePrimitiveVariables.html">DeletePrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeleteSceneContextVariables.html">DeleteSceneContextVariables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeleteSets.html">DeleteSets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Duplicate.html">Duplicate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="EvaluateLightLinks.html">EvaluateLightLinks</a></li>
@@ -152,6 +157,7 @@
 <li class="toctree-l4"><a class="reference internal" href="PointsType.html">PointsType</a></li>
 <li class="toctree-l4"><a class="reference internal" href="PrimitiveVariables.html">PrimitiveVariables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Prune.html">Prune</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ResamplePrimitiveVariables.html">ResamplePrimitiveVariables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="SceneContextVariables.html">SceneContextVariables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="SceneElementProcessor.html">SceneElementProcessor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="SceneLoop.html">SceneLoop</a></li>
@@ -278,7 +284,7 @@ names should be separated by spaces.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="CoordinateSystem.html" class="btn btn-neutral float-right" title="CoordinateSystem" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="CollectScenes.html" class="btn btn-neutral float-right" title="CollectScenes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Camera.html" class="btn btn-neutral" title="Camera" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -312,7 +318,7 @@ names should be separated by spaces.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.33.0.0',
+            VERSION:'0.40.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

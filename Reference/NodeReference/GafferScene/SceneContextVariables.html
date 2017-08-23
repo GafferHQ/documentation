@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SceneContextVariables &mdash; Gaffer 0.33.0.0 documentation</title>
+  <title>SceneContextVariables &mdash; Gaffer 0.40.0.0 documentation</title>
   
 
   
@@ -32,10 +32,10 @@
   
 
   
-    <link rel="top" title="Gaffer 0.33.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.40.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferScene" href="index.html"/>
         <link rel="next" title="SceneElementProcessor" href="SceneElementProcessor.html"/>
-        <link rel="prev" title="Prune" href="Prune.html"/> 
+        <link rel="prev" title="ResamplePrimitiveVariables" href="ResamplePrimitiveVariables.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.33.0.0
+                0.40.0.0
               </div>
             
           
@@ -105,16 +105,21 @@
 <li class="toctree-l4"><a class="reference internal" href="Attributes.html">Attributes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Camera.html">Camera</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ClippingPlane.html">ClippingPlane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CollectScenes.html">CollectScenes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CoordinateSystem.html">CoordinateSystem</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CopyOptions.html">CopyOptions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Cube.html">Cube</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CustomAttributes.html">CustomAttributes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="CustomOptions.html">CustomOptions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeleteAttributes.html">DeleteAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeleteCurves.html">DeleteCurves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeleteFaces.html">DeleteFaces</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeleteGlobals.html">DeleteGlobals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeleteOptions.html">DeleteOptions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeleteOutputs.html">DeleteOutputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeletePoints.html">DeletePoints</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeletePrimitiveVariables.html">DeletePrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeleteSceneContextVariables.html">DeleteSceneContextVariables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeleteSets.html">DeleteSets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Duplicate.html">Duplicate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="EvaluateLightLinks.html">EvaluateLightLinks</a></li>
@@ -152,6 +157,7 @@
 <li class="toctree-l4"><a class="reference internal" href="PointsType.html">PointsType</a></li>
 <li class="toctree-l4"><a class="reference internal" href="PrimitiveVariables.html">PrimitiveVariables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Prune.html">Prune</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ResamplePrimitiveVariables.html">ResamplePrimitiveVariables</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">SceneContextVariables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="SceneElementProcessor.html">SceneElementProcessor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="SceneLoop.html">SceneLoop</a></li>
@@ -237,7 +243,8 @@
             
   <div class="section" id="scenecontextvariables">
 <span id="scenecontextvariables"></span><h1>SceneContextVariables<a class="headerlink" href="#scenecontextvariables" title="Permalink to this headline">¶</a></h1>
-<p>Adds variables which can be referenced by upstream expressions.</p>
+<p>Adds variables which can be referenced by upstream expressions
+and string substitutions.</p>
 <div class="section" id="user">
 <span id="user"></span><h2>user<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
 <p>Container for user-defined plugs. Nodes
@@ -258,8 +265,20 @@ so users are free to do as they wish.</p>
 </div>
 <div class="section" id="variables">
 <span id="variables"></span><h2>variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
-<p>The variables to be added - arbitrary numbers of variables
-can be added here.</p>
+<p>The variables to be added. Each variable is represented
+as a child plug, created either through the UI or using the
+CompoundDataPlug API.</p>
+</div>
+<div class="section" id="extravariables">
+<span id="extravariables"></span><h2>extraVariables<a class="headerlink" href="#extravariables" title="Permalink to this headline">¶</a></h2>
+<p>An additional set of variables to be added. Arbitrary numbers
+of variables may be specified within a single IECore::CompoundData
+object, where each key/value pair in the object defines a variable.
+This is convenient when using an expression to define the variables
+and the variable count might be dynamic.</p>
+<p>If the same variable is defined by both the variables and the
+extraVariables plugs, then the value from the extraVariables
+is taken.</p>
 </div>
 </div>
 
@@ -273,7 +292,7 @@ can be added here.</p>
         <a href="SceneElementProcessor.html" class="btn btn-neutral float-right" title="SceneElementProcessor" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Prune.html" class="btn btn-neutral" title="Prune" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ResamplePrimitiveVariables.html" class="btn btn-neutral" title="ResamplePrimitiveVariables" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -304,7 +323,7 @@ can be added here.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.33.0.0',
+            VERSION:'0.40.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

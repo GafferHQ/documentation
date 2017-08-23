@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>OSLObject &mdash; Gaffer 0.33.0.0 documentation</title>
+  <title>OSLObject &mdash; Gaffer 0.40.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.33.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.40.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferOSL" href="index.html"/>
         <link rel="next" title="OSLShader" href="OSLShader.html"/>
         <link rel="prev" title="OSLImage" href="OSLImage.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.33.0.0
+                0.40.0.0
               </div>
             
           
@@ -199,6 +199,12 @@ A minimal shader network to process P would look like this&nbsp;:</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="interpolation">
+<span id="interpolation"></span><h2>interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">¶</a></h2>
+<p>The interpolation type of the primitive variables created by this node.
+For instance, Uniform interpolation means that the shader is run once per face on a mesh, allowing it to output primitive variables with a value per face.
+All non-constant input primitive variables are resampled to match the selected interpolation so that they can be accessed from the shader.</p>
+</div>
 </div>
 
 
@@ -242,7 +248,7 @@ A minimal shader network to process P would look like this&nbsp;:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.33.0.0',
+            VERSION:'0.40.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

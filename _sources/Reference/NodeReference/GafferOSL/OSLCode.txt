@@ -21,6 +21,11 @@ type
 
 Generated automatically - do not edit.
 
+attributeSuffix
+---------------
+
+Suffix for the attribute used for shader assignment.
+
 parameters
 ----------
 

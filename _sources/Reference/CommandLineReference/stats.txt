@@ -1,13 +1,13 @@
 stats
 =====
 
-Prints statistics about a Gaffer script, including the version of
+Outputs statistics about a Gaffer script, including the version of
 Gaffer that created it, the values of all setting and variables and
 the types of node in use. May also be used to perform performance
 analysis of image and scene processing nodes within the script, using
 a performance monitor to generate advanced statistics.
 
-To print basic information about a script :
+To output basic information about a script :
 
 ```
 gaffer stats fileName.gfr
@@ -45,10 +45,20 @@ If this is specified, then the application is run using the cProfile profiling m
 
 The script to examine.
 
+-outputFile
+-----------
+
+Output the results to this file on disk rather than stdout
+
 -frame
 ------
 
 The frame to evaluate statistics at.
+
+-nodeSummary
+------------
+
+Turns on a summary of nodes in the script.
 
 -scene
 ------
@@ -60,10 +70,20 @@ The name of a SceneNode or ScenePlug to examine.
 
 The name of an ImageNode or ImagePlug to examine.
 
+-preCache
+---------
+
+Prepopulates the cache by evaluating the scene or image once prior to measuring the second evaluation.
+
+-task
+-----
+
+The name of a TaskNode or TaskPlug to dispatch.
+
 -performanceMonitor
 -------------------
 
-Turns on a performance monitor to provide additionalstatistics about the operation of the node graph.
+Turns on a performance monitor to provide additional statistics about the operation of the node graph.
 
 -maxLinesPerMetric
 ------------------

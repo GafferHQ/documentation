@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>stats &mdash; Gaffer 0.33.0.0 documentation</title>
+  <title>stats &mdash; Gaffer 0.40.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.33.0.0 documentation" href="../../index.html"/>
+    <link rel="top" title="Gaffer 0.40.0.0 documentation" href="../../index.html"/>
         <link rel="up" title="Command Line Reference" href="index.html"/>
         <link rel="next" title="test" href="test.html"/>
         <link rel="prev" title="screengrab" href="screengrab.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.33.0.0
+                0.40.0.0
               </div>
             
           
@@ -105,9 +105,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#threads">-threads</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#profilefilename">-profileFileName</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#script">-script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputfile">-outputFile</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#frame">-frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nodesummary">-nodeSummary</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#scene">-scene</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#image">-image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#precache">-preCache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task">-task</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#performancemonitor">-performanceMonitor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#maxlinespermetric">-maxLinesPerMetric</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#contextmonitor">-contextMonitor</a></li>
@@ -172,12 +176,12 @@
             
   <div class="section" id="stats">
 <span id="stats"></span><h1>stats<a class="headerlink" href="#stats" title="Permalink to this headline">¶</a></h1>
-<p>Prints statistics about a Gaffer script, including the version of
+<p>Outputs statistics about a Gaffer script, including the version of
 Gaffer that created it, the values of all setting and variables and
 the types of node in use. May also be used to perform performance
 analysis of image and scene processing nodes within the script, using
 a performance monitor to generate advanced statistics.</p>
-<p>To print basic information about a script&nbsp;:</p>
+<p>To output basic information about a script&nbsp;:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gaffer</span> <span class="n">stats</span> <span class="n">fileName</span><span class="o">.</span><span class="n">gfr</span>
 </pre></div>
 </div>
@@ -205,9 +209,17 @@ a performance monitor to generate advanced statistics.</p>
 <span id="script"></span><h2>-script<a class="headerlink" href="#script" title="Permalink to this headline">¶</a></h2>
 <p>The script to examine.</p>
 </div>
+<div class="section" id="outputfile">
+<span id="outputfile"></span><h2>-outputFile<a class="headerlink" href="#outputfile" title="Permalink to this headline">¶</a></h2>
+<p>Output the results to this file on disk rather than stdout</p>
+</div>
 <div class="section" id="frame">
 <span id="frame"></span><h2>-frame<a class="headerlink" href="#frame" title="Permalink to this headline">¶</a></h2>
 <p>The frame to evaluate statistics at.</p>
+</div>
+<div class="section" id="nodesummary">
+<span id="nodesummary"></span><h2>-nodeSummary<a class="headerlink" href="#nodesummary" title="Permalink to this headline">¶</a></h2>
+<p>Turns on a summary of nodes in the script.</p>
 </div>
 <div class="section" id="scene">
 <span id="scene"></span><h2>-scene<a class="headerlink" href="#scene" title="Permalink to this headline">¶</a></h2>
@@ -217,9 +229,17 @@ a performance monitor to generate advanced statistics.</p>
 <span id="image"></span><h2>-image<a class="headerlink" href="#image" title="Permalink to this headline">¶</a></h2>
 <p>The name of an ImageNode or ImagePlug to examine.</p>
 </div>
+<div class="section" id="precache">
+<span id="precache"></span><h2>-preCache<a class="headerlink" href="#precache" title="Permalink to this headline">¶</a></h2>
+<p>Prepopulates the cache by evaluating the scene or image once prior to measuring the second evaluation.</p>
+</div>
+<div class="section" id="task">
+<span id="task"></span><h2>-task<a class="headerlink" href="#task" title="Permalink to this headline">¶</a></h2>
+<p>The name of a TaskNode or TaskPlug to dispatch.</p>
+</div>
 <div class="section" id="performancemonitor">
 <span id="performancemonitor"></span><h2>-performanceMonitor<a class="headerlink" href="#performancemonitor" title="Permalink to this headline">¶</a></h2>
-<p>Turns on a performance monitor to provide additionalstatistics about the operation of the node graph.</p>
+<p>Turns on a performance monitor to provide additional statistics about the operation of the node graph.</p>
 </div>
 <div class="section" id="maxlinespermetric">
 <span id="maxlinespermetric"></span><h2>-maxLinesPerMetric<a class="headerlink" href="#maxlinespermetric" title="Permalink to this headline">¶</a></h2>
@@ -276,7 +296,7 @@ a performance monitor to generate advanced statistics.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.33.0.0',
+            VERSION:'0.40.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -90,4 +90,7 @@ The end frame of the masked range.
 colorSpace
 ----------
 
-The colour space of the input image, used to convert the input image to the scene linear colorspace defined by the OpenColorIO config.
+The colour space of the input image, used to convert the input image to
+the scene linear colorspace defined by the OpenColorIO config. The default
+behaviour is to automatically determine the colorspace by calling the function
+registered with `ImageReader::setDefaultColorSpaceFunction()`.

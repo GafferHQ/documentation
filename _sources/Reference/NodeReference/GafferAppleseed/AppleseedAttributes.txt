@@ -82,6 +82,14 @@ attributes.shadingSamples
 
 Number of samples to use when computing shading for the object.
 
+attributes.doubleSided
+----------------------
+
+Assign materials to the back side of objects.
+It is important to disable double sided assignments if the material
+has emision closures and emision is not wanted on the inside of objects,
+for example for closed objects, to reduce the amount of noise in the render.
+
 attributes.mediumPriority
 -------------------------
 

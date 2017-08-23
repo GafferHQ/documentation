@@ -8,6 +8,7 @@ Gaffer
 - [BoxOut](BoxOut.md)
 - [ComputeNode](ComputeNode.md)
 - [ContextVariablesComputeNode](ContextVariablesComputeNode.md)
+- [DeleteContextVariablesComputeNode](DeleteContextVariablesComputeNode.md)
 - [DependencyNode](DependencyNode.md)
 - [Dot](Dot.md)
 - [Expression](Expression.md)

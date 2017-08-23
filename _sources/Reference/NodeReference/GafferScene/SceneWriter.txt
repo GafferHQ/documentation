@@ -67,7 +67,7 @@ image sequences, many scene formats write animation into
 a single file, so using # characters to specify a frame
 number is generally not necessary.
 
-**Supported file extensions** : l, s, c, c,  , s, c, c
+**Supported file extensions** : a, b, c,  , l, s, c, c,  , s, c, c
 
 out
 ---

@@ -50,6 +50,15 @@ options.bucketScanning
 Controls the order in which buckets are
 processed. A spiral pattern is the default.
 
+options.parallelNodeInit
+------------------------
+
+Enables Arnold's parallel node initialization.
+Note that some Arnold features may not be
+thread-safe, in which case enabling this option
+can cause crashes. One such example is Cryptomatte
+and its use in the AlSurface shader.
+
 options.threads
 ---------------
 

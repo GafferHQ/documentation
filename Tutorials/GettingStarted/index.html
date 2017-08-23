@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started &mdash; Gaffer 0.33.0.0 documentation</title>
+  <title>Getting Started &mdash; Gaffer 0.40.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.33.0.0 documentation" href="../../index.html"/>
+    <link rel="top" title="Gaffer 0.40.0.0 documentation" href="../../index.html"/>
         <link rel="up" title="Tutorials" href="../index.html"/>
         <link rel="next" title="Scripting" href="../Scripting/index.html"/>
         <link rel="prev" title="Tutorials" href="../index.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.33.0.0
+                0.40.0.0
               </div>
             
           
@@ -341,7 +341,7 @@ the output of the StandardOptions node and selected.</li>
 <li>Create an Outputs node (<em>Scene/Globals/Outputs</em>). This too will be automatically added to the end of
 the chain.</li>
 <li>Create an InteractiveAppleseedRender node (<em>/Appleseed/InteractiveRender/</em>) to complete the chain.</li>
-<li>Create a Display node (<em>/Image/Source/Display</em>) node. This doesn&#8217;t need any input connections - just
+<li>Create a Catalogue node (<em>/Image/Utility/Catalogue</em>). This doesn&#8217;t need any input connections - just
 place it to one side of the InteractiveAppleseedRender node.</li>
 </ul>
 <p><img alt="Render settings" src="../../_images/renderSettings.png" /></p>
@@ -367,7 +367,7 @@ place it to one side of the InteractiveAppleseedRender node.</li>
 </ul>
 <p>And finally we can view the result&nbsp;:</p>
 <ul class="simple">
-<li>Select the Display node.</li>
+<li>Select the Catalogue node.</li>
 <li>Move the mouse into the Viewer and press &#8216;f&#8217; to frame the image.</li>
 </ul>
 <p><img alt="First render" src="../../_images/firstRender.png" /></p>
@@ -391,12 +391,12 @@ SceneHierarchy panel.</li>
 to notify us of the pinning <img alt="Pinning" src="../../_images/targetNodesLocked.png" />.</li>
 </ul>
 <p>Now we&#8217;re free to select any node we want to edit it in the NodeEditor, but will always be viewing the results
-downstream, in our final scene. It&#8217;s a pity that we&#8217;re no longer viewing our Display node containing the rendered
+downstream, in our final scene. It&#8217;s a pity that we&#8217;re no longer viewing our Catalogue node containing the rendered
 image though, so let&#8217;s rectify that.</p>
 <ul class="simple">
 <li>Locate the layout button <img alt="Layout" src="../../_images/layoutButton.png" /> in the top right of the Viewer panel, and <em>Left-Click</em> to show the layout menu.</li>
 <li>Choose the <em>Viewer</em> menu item to add a new Viewer.</li>
-<li><em>Middle-Drag</em> the Display node into the new Viewer to pin it there.</li>
+<li><em>Middle-Drag</em> the Catalogue node into the new Viewer to pin it there.</li>
 </ul>
 <p>This allows us to switch between the 3d scene and the rendered image using the tabs at the top of the viewer panel. Now we&#8217;ve
 got everything arranged to our liking, we&#8217;re finally ready to go ahead and start shading some pixels.</p>
@@ -584,7 +584,7 @@ existing contents. The cursor will change from <img alt="Replace Objects" src=".
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.33.0.0',
+            VERSION:'0.40.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

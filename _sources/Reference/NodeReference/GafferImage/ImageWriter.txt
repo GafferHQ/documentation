@@ -75,6 +75,14 @@ The names of the channels to be written to the file.
 Names should be separated by spaces and may contain any
 of Gaffer's standard wildcards.
 
+colorSpace
+----------
+
+The colour space of the output image, used to convert the input image
+from the scene linear colorspace defined by the OpenColorIO config.
+The default behaviour is to automatically determine the colorspace by
+calling the function registered with `ImageWriter::setDefaultColorSpaceFunction()`.
+
 out
 ---
 
@@ -176,6 +184,12 @@ jpeg.compressionQuality
 The compression quality for the Jpeg file to be written.
 A value between 0 (low quality, high compression) and
 100 (high quality, low compression).
+
+jpeg.chromaSubSampling
+----------------------
+
+The chroma sub sampling used to write the jpeg file.
+Note that the file will be stored as YCbCr instead of RGB.
 
 jpeg2000
 --------

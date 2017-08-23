@@ -26,11 +26,3 @@ enabled
 -------
 
 Turns the node on and off.
-
-port
-----
-
-The port number on which to run the display server.
-Outputs which specify this port number will appear
-in this node - use multiple nodes with different
-port numbers to receive multiple images at once.

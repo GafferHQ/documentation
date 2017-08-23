@@ -49,5 +49,5 @@ masterChannel
 
 If specified, this channel will be used to compute the pixel index to select for all
 channels.  You would probably want to use this with a channel that represents the overall
-luminance of the image.  It will produce a median filter which is lower quality, but preserves
+luminance of the image.  It will produce a rank filter which is lower quality, but preserves
 additivity between channels, and is a bit faster.

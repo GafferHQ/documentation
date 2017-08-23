@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ArnoldOptions &mdash; Gaffer 0.33.0.0 documentation</title>
+  <title>ArnoldOptions &mdash; Gaffer 0.40.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.33.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.40.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferArnold" href="index.html"/>
         <link rel="next" title="ArnoldRender" href="ArnoldRender.html"/>
         <link rel="prev" title="ArnoldMeshLight" href="ArnoldMeshLight.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.33.0.0
+                0.40.0.0
               </div>
             
           
@@ -211,6 +211,14 @@ and filtering.</p>
 <span id="options-bucketscanning"></span><h2>options.bucketScanning<a class="headerlink" href="#options-bucketscanning" title="Permalink to this headline">¶</a></h2>
 <p>Controls the order in which buckets are
 processed. A spiral pattern is the default.</p>
+</div>
+<div class="section" id="options-parallelnodeinit">
+<span id="options-parallelnodeinit"></span><h2>options.parallelNodeInit<a class="headerlink" href="#options-parallelnodeinit" title="Permalink to this headline">¶</a></h2>
+<p>Enables Arnold&#8217;s parallel node initialization.
+Note that some Arnold features may not be
+thread-safe, in which case enabling this option
+can cause crashes. One such example is Cryptomatte
+and its use in the AlSurface shader.</p>
 </div>
 <div class="section" id="options-threads">
 <span id="options-threads"></span><h2>options.threads<a class="headerlink" href="#options-threads" title="Permalink to this headline">¶</a></h2>
@@ -590,7 +598,7 @@ with a watermark.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.33.0.0',
+            VERSION:'0.40.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
