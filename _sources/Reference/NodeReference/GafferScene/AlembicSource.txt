@@ -35,7 +35,7 @@ fileName
 The path to the .abc file to load. Both
 older HDF5 and newer Ogawa caches are supported.
 
-**Supported file extensions** : a, b, c
+**Supported file extensions** : abc
 
 refreshCount
 ------------

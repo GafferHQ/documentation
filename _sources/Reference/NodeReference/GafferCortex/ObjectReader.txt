@@ -18,7 +18,7 @@ fileName
 
 The file to load.
 
-**Supported file extensions** : b, w,  , c, i, n,  , c, o, b,  , d, e, x, r,  , d, p, x,  , e, x, r,  , i, d, x,  , j, p, e, g,  , j, p, g,  , m, c,  , o, b, j,  , p, d, c,  , p, n, g,  , r, g, b,  , r, g, b, a,  , s, g, i,  , s, w, a,  , t, d, l,  , t, g, a,  , t, i, f,  , t, i, f, f,  , t, x
+**Supported file extensions** : bmp, bw, cin, cob, dds, dpx, env, exr, fits, hdr, ico, idx, iff, int, inta, jfi, jfif, jif, jpe, jpeg, jpg, mc, mxr, obj, pbm, pdc, pdd, pfm, pgm, pic, png, pnm, ppm, psb, psd, rgb, rgba, rgbe, rla, sgi, sm, socket, swa, sxr, tga, tif, tiff, tpic, tx, vsm, z, zfile
 
 out
 ---

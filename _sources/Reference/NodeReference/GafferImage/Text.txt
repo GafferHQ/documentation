@@ -63,7 +63,7 @@ The font to render the text with. This should be a .ttf font file which
 is located on the paths specified by the IECORE_FONT_PATHS
 environment variable.
 
-**Supported file extensions** : t, t, f
+**Supported file extensions** : ttf
 
 size
 ----

@@ -70,7 +70,7 @@ fileName
 
 The name of the appleseed project file to be generated.
 
-**Supported file extensions** : a, p, p, l, e, s, e, e, d
+**Supported file extensions** : appleseed
 
 out
 ---

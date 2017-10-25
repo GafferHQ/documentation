@@ -100,3 +100,8 @@ Turns on a context monitor to provide additional statistics about the operation 
 
 The name of a node or plug to provide a root for the context monitor. Statistics will only be captured for this root downwards.
 
+-vtune
+------
+
+enable vtune instrumentation. When enabled the VTune profile 'Tasks & Frames' view will be broken down by node type.
+

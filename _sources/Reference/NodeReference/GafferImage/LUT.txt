@@ -39,7 +39,7 @@ fileName
 The name of the LUT file to be read. Only OpenColorIO
 supported files will function as expected.
 
-**Supported file extensions** : 3, d, l,  , 3, d, l,  , c, c, c,  , c, c,  , c, s, p,  , l, u, t,  , i, t, x,  , c, u, b, e,  , l, o, o, k,  , m, g, a,  , m, 3, d,  , s, p, i, 1, d,  , s, p, i, 3, d,  , s, p, i, m, t, x,  , c, u, b,  , v, f
+**Supported file extensions** : 3dl, 3dl, ccc, cc, csp, lut, itx, cube, look, mga, m3d, spi1d, spi3d, spimtx, cub, vf
 
 interpolation
 -------------

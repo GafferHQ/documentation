@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CollectScenes &mdash; Gaffer 0.40.0.0 documentation</title>
+  <title>CollectScenes &mdash; Gaffer 0.41.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.40.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.41.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferScene" href="index.html"/>
         <link rel="next" title="CoordinateSystem" href="CoordinateSystem.html"/>
         <link rel="prev" title="ClippingPlane" href="ClippingPlane.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.40.0.0
+                0.41.0.0
               </div>
             
           
@@ -122,6 +122,7 @@
 <li class="toctree-l4"><a class="reference internal" href="DeleteSceneContextVariables.html">DeleteSceneContextVariables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeleteSets.html">DeleteSets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Duplicate.html">Duplicate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Encapsulate.html">Encapsulate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="EvaluateLightLinks.html">EvaluateLightLinks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ExecutableRender.html">ExecutableRender</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ExternalProcedural.html">ExternalProcedural</a></li>
@@ -287,6 +288,20 @@ root name when evaluating the input scene. This can be used
 in upstream expressions and string substitutions to generate
 a different hierarchy under each root location.</p>
 </div>
+<div class="section" id="sourceroot">
+<span id="sourceroot"></span><h2>sourceRoot<a class="headerlink" href="#sourceroot" title="Permalink to this headline">¶</a></h2>
+<p>Specifies the root of the subtree to be copied from the input
+scene. The default value causes the whole scene to be collected.</p>
+<p>The rootName variable may be used in expressions and string
+substitutions for this plug, allowing different subtrees to be
+collected for each root name in the output.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">
+By specifying a leaf location as the root, it is possible to
+collect single objects from the input scene.</p>
+</div>
+</div>
 </div>
 
 
@@ -330,7 +345,7 @@ a different hierarchy under each root location.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.40.0.0',
+            VERSION:'0.41.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

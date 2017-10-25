@@ -24,6 +24,7 @@ GafferScene
 - [DeleteSceneContextVariables](DeleteSceneContextVariables.md)
 - [DeleteSets](DeleteSets.md)
 - [Duplicate](Duplicate.md)
+- [Encapsulate](Encapsulate.md)
 - [EvaluateLightLinks](EvaluateLightLinks.md)
 - [ExecutableRender](ExecutableRender.md)
 - [ExternalProcedural](ExternalProcedural.md)

@@ -85,7 +85,7 @@ ribFileName
 
 The name of the RIB file to be generated.
 
-**Supported file extensions** : r, i, b
+**Supported file extensions** : rib
 
 command
 -------

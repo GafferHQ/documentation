@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>MapProjection &mdash; Gaffer 0.40.0.0 documentation</title>
+  <title>MapProjection &mdash; Gaffer 0.41.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.40.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.41.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferScene" href="index.html"/>
         <link rel="next" title="MeshTangents" href="MeshTangents.html"/>
         <link rel="prev" title="MapOffset" href="MapOffset.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.40.0.0
+                0.41.0.0
               </div>
             
           
@@ -122,6 +122,7 @@
 <li class="toctree-l4"><a class="reference internal" href="DeleteSceneContextVariables.html">DeleteSceneContextVariables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeleteSets.html">DeleteSets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Duplicate.html">Duplicate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Encapsulate.html">Encapsulate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="EvaluateLightLinks.html">EvaluateLightLinks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ExecutableRender.html">ExecutableRender</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ExternalProcedural.html">ExternalProcedural</a></li>
@@ -245,7 +246,7 @@
 <span id="mapprojection"></span><h1>MapProjection<a class="headerlink" href="#mapprojection" title="Permalink to this headline">¶</a></h1>
 <p>Applies texture coordinates to meshes via a camera projection.
 In Gaffer, texture coordinates (commonly referred to as UVs)
-are represented as primitive variables named &#8220;s&#8221; and &#8220;t&#8221;.</p>
+are represented as primitive variables.</p>
 <div class="section" id="user">
 <span id="user"></span><h2>user<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
 <p>Container for user-defined plugs. Nodes
@@ -273,19 +274,11 @@ processed. A Filter node should be connected here.</p>
 <span id="camera"></span><h2>camera<a class="headerlink" href="#camera" title="Permalink to this headline">¶</a></h2>
 <p>The location of the camera to use for the projection.</p>
 </div>
-<div class="section" id="sname">
-<span id="sname"></span><h2>sName<a class="headerlink" href="#sname" title="Permalink to this headline">¶</a></h2>
-<p>The name of the primitive variable to store the s
-coordinate of the projected texture coordinates.
-This may be changed in order to store multiple
-sets of texture coordinates on a single mesh.</p>
-</div>
-<div class="section" id="tname">
-<span id="tname"></span><h2>tName<a class="headerlink" href="#tname" title="Permalink to this headline">¶</a></h2>
-<p>The name of the primitive variable to store the t
-coordinate of the projected texture coordinates.
-This may be changed in order to store multiple
-sets of texture coordinates on a single mesh.</p>
+<div class="section" id="uvset">
+<span id="uvset"></span><h2>uvSet<a class="headerlink" href="#uvset" title="Permalink to this headline">¶</a></h2>
+<p>The name of the primitive variable used to store the
+projected UV coordinates. This may be changed to store
+multiple sets of UVs on a single mesh.</p>
 </div>
 </div>
 
@@ -330,7 +323,7 @@ sets of texture coordinates on a single mesh.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.40.0.0',
+            VERSION:'0.41.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

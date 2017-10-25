@@ -66,7 +66,7 @@ The name of the file to be written. File sequences with
 arbitrary padding may be specified using the '#' character
 as a placeholder for the frame numbers.
 
-**Supported file extensions** : b, m, p,  , c, i, n,  , d, d, s,  , d, p, x,  , f, i, t, s,  , h, d, r,  , r, g, b, e,  , i, c, o,  , i, f, f,  , z,  , j, p, g,  , j, p, e,  , j, p, e, g,  , j, i, f,  , j, f, i, f,  , j, f, i,  , e, x, r,  , s, x, r,  , m, x, r,  , p, n, g,  , p, p, m,  , p, g, m,  , p, b, m,  , p, n, m,  , p, f, m,  , p, s, d,  , p, d, d,  , p, s, b,  , r, l, a,  , s, g, i,  , r, g, b,  , r, g, b, a,  , b, w,  , i, n, t,  , i, n, t, a,  , s, o, c, k, e, t,  , p, i, c,  , t, i, f, f,  , t, i, f,  , t, x,  , e, n, v,  , s, m,  , v, s, m,  , t, g, a,  , t, p, i, c,  , z, f, i, l, e
+**Supported file extensions** : bmp, cin, dds, dpx, fits, hdr, rgbe, ico, iff, z, jpg, jpe, jpeg, jif, jfif, jfi, exr, sxr, mxr, png, ppm, pgm, pbm, pnm, pfm, psd, pdd, psb, rla, sgi, rgb, rgba, bw, int, inta, socket, pic, tiff, tif, tx, env, sm, vsm, tga, tpic, zfile
 
 channels
 --------

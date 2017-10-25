@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>MapOffset &mdash; Gaffer 0.40.0.0 documentation</title>
+  <title>MapOffset &mdash; Gaffer 0.41.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.40.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.41.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferScene" href="index.html"/>
         <link rel="next" title="MapProjection" href="MapProjection.html"/>
         <link rel="prev" title="LightTweaks" href="LightTweaks.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.40.0.0
+                0.41.0.0
               </div>
             
           
@@ -122,6 +122,7 @@
 <li class="toctree-l4"><a class="reference internal" href="DeleteSceneContextVariables.html">DeleteSceneContextVariables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="DeleteSets.html">DeleteSets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Duplicate.html">Duplicate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Encapsulate.html">Encapsulate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="EvaluateLightLinks.html">EvaluateLightLinks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ExecutableRender.html">ExecutableRender</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ExternalProcedural.html">ExternalProcedural</a></li>
@@ -279,13 +280,9 @@ in the negative direction.</p>
 <p>A specific UDIM to offset the texture coordinates to. The UDIM is
 converted to an offset which is added to the offset above.</p>
 </div>
-<div class="section" id="sname">
-<span id="sname"></span><h2>sName<a class="headerlink" href="#sname" title="Permalink to this headline">¶</a></h2>
-<p>The name of the primitive variable holding the s coordinate.</p>
-</div>
-<div class="section" id="tname">
-<span id="tname"></span><h2>tName<a class="headerlink" href="#tname" title="Permalink to this headline">¶</a></h2>
-<p>The name of the primitive variable holding the t coordinate.</p>
+<div class="section" id="uvset">
+<span id="uvset"></span><h2>uvSet<a class="headerlink" href="#uvset" title="Permalink to this headline">¶</a></h2>
+<p>The name of the primitive variable holding the UV coordinates.</p>
 </div>
 </div>
 
@@ -330,7 +327,7 @@ converted to an offset which is added to the offset above.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.40.0.0',
+            VERSION:'0.41.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -73,7 +73,7 @@ scene description mode. If a ".ass.gz" extension
 is used, then the ass file will be compressed
 automatically.
 
-**Supported file extensions** : a, s, s,  , a, s, s, ., g, z
+**Supported file extensions** : ass, ass.gz
 
 out
 ---

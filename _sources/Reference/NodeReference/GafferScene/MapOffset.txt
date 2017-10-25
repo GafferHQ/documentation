@@ -45,12 +45,7 @@ udim
 A specific UDIM to offset the texture coordinates to. The UDIM is
 converted to an offset which is added to the offset above.
 
-sName
+uvSet
 -----
 
-The name of the primitive variable holding the s coordinate.
-
-tName
------
-
-The name of the primitive variable holding the t coordinate.
+The name of the primitive variable holding the UV coordinates.
