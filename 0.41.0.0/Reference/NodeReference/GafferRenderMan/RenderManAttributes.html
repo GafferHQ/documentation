@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RenderManAttributes &mdash; Gaffer 0.41.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Gaffer 0.41.0.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="GafferRenderMan" href="index.html"/>
+        <link rel="next" title="RenderManLight" href="RenderManLight.html"/>
+        <link rel="prev" title="InteractiveRenderManRender" href="InteractiveRenderManRender.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Gaffer
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.41.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../Installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../UIReference/index.html">UI Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Node Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Gaffer/index.html">Gaffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferAppleseed/index.html">GafferAppleseed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferArnold/index.html">GafferArnold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferCortex/index.html">GafferCortex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferDispatch/index.html">GafferDispatch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferImage/index.html">GafferImage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferOSL/index.html">GafferOSL</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferRenderMan</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="InteractiveRenderManRender.html">InteractiveRenderManRender</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">RenderManAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RenderManLight.html">RenderManLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RenderManOptions.html">RenderManOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RenderManRender.html">RenderManRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RenderManShader.html">RenderManShader</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferScene/index.html">GafferScene</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ScriptingReference/index.html">Scripting Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../CommandLineReference/index.html">Command Line Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ReleaseNotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Appendices/index.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Gaffer</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Reference</a> &raquo;</li>
+      
+          <li><a href="../index.html">Node Reference</a> &raquo;</li>
+      
+          <li><a href="index.html">GafferRenderMan</a> &raquo;</li>
+      
+    <li>RenderManAttributes</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/Reference/NodeReference/GafferRenderMan/RenderManAttributes.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rendermanattributes">
+<span id="rendermanattributes"></span><h1>RenderManAttributes<a class="headerlink" href="#rendermanattributes" title="Permalink to this headline">¶</a></h1>
+<p>Applies RenderMan specific attributes to the scene.</p>
+<div class="section" id="user">
+<span id="user"></span><h2>user<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
+<p>Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.</p>
+</div>
+<div class="section" id="out">
+<span id="out"></span><h2>out<a class="headerlink" href="#out" title="Permalink to this headline">¶</a></h2>
+<p>The processed output scene.</p>
+</div>
+<div class="section" id="enabled">
+<span id="enabled"></span><h2>enabled<a class="headerlink" href="#enabled" title="Permalink to this headline">¶</a></h2>
+<p>The on/off state of the node. When it is off, the node outputs the input scene unchanged.</p>
+</div>
+<div class="section" id="in">
+<span id="in"></span><h2>in<a class="headerlink" href="#in" title="Permalink to this headline">¶</a></h2>
+<p>The input scene</p>
+</div>
+<div class="section" id="filter">
+<span id="filter"></span><h2>filter<a class="headerlink" href="#filter" title="Permalink to this headline">¶</a></h2>
+<p>The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.</p>
+</div>
+<div class="section" id="attributes">
+<span id="attributes"></span><h2>attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<p>The attributes to be applied - arbitrary numbers of user defined
+attributes may be added as children of this plug via the user
+interface, or using the CompoundDataPlug API via python.</p>
+</div>
+<div class="section" id="attributes-cameravisibility">
+<span id="attributes-cameravisibility"></span><h2>attributes.cameraVisibility<a class="headerlink" href="#attributes-cameravisibility" title="Permalink to this headline">¶</a></h2>
+<p>Whether or not objects are visible to the camera.
+An object can be invisible to the camera but still
+appear in reflections and shadows etc. To make an
+object totally invisible, prefer the visibility
+setting provided by the StandardAttributes node.</p>
+</div>
+<div class="section" id="attributes-camerahitmode">
+<span id="attributes-camerahitmode"></span><h2>attributes.cameraHitMode<a class="headerlink" href="#attributes-camerahitmode" title="Permalink to this headline">¶</a></h2>
+<p>Specifies if shading is performed when the object
+is hit by a camera ray, or if the primitive colour
+is used as an approximation instead.</p>
+</div>
+<div class="section" id="attributes-transmissionvisibility">
+<span id="attributes-transmissionvisibility"></span><h2>attributes.transmissionVisibility<a class="headerlink" href="#attributes-transmissionvisibility" title="Permalink to this headline">¶</a></h2>
+<p>Whether or not objects are visible to
+transmission rays. Objects that are
+visible to transmission rays will cast
+shadows, and those that aren&#8217;t won&#8217;t.</p>
+</div>
+<div class="section" id="attributes-transmissionhitmode">
+<span id="attributes-transmissionhitmode"></span><h2>attributes.transmissionHitMode<a class="headerlink" href="#attributes-transmissionhitmode" title="Permalink to this headline">¶</a></h2>
+<p>Specifies if shading is performed when the object
+is hit by a tranmission ray, or if the primitive opacity
+is used as an approximation instead.</p>
+</div>
+<div class="section" id="attributes-diffusevisibility">
+<span id="attributes-diffusevisibility"></span><h2>attributes.diffuseVisibility<a class="headerlink" href="#attributes-diffusevisibility" title="Permalink to this headline">¶</a></h2>
+<p>Whether or not objects are visible to
+diffuse rays - typically this means whether
+or not they cast occlusion and bounce light.</p>
+</div>
+<div class="section" id="attributes-diffusehitmode">
+<span id="attributes-diffusehitmode"></span><h2>attributes.diffuseHitMode<a class="headerlink" href="#attributes-diffusehitmode" title="Permalink to this headline">¶</a></h2>
+<p>Specifies if shading is performed when the object
+is hit by a diffuse ray, or if the primitive colour
+is used as an approximation instead.</p>
+</div>
+<div class="section" id="attributes-specularvisibility">
+<span id="attributes-specularvisibility"></span><h2>attributes.specularVisibility<a class="headerlink" href="#attributes-specularvisibility" title="Permalink to this headline">¶</a></h2>
+<p>Whether or not objects are visible to
+specular rays - typically this means whether
+or not they are visible in reflections and
+refractions.</p>
+</div>
+<div class="section" id="attributes-specularhitmode">
+<span id="attributes-specularhitmode"></span><h2>attributes.specularHitMode<a class="headerlink" href="#attributes-specularhitmode" title="Permalink to this headline">¶</a></h2>
+<p>Specifies if shading is performed when the object
+is hit by a specular ray, or if the primitive colour
+is used as an approximation instead.</p>
+</div>
+<div class="section" id="attributes-photonvisibility">
+<span id="attributes-photonvisibility"></span><h2>attributes.photonVisibility<a class="headerlink" href="#attributes-photonvisibility" title="Permalink to this headline">¶</a></h2>
+<p>Whether or not objects are visible to
+photons.</p>
+</div>
+<div class="section" id="attributes-photonhitmode">
+<span id="attributes-photonhitmode"></span><h2>attributes.photonHitMode<a class="headerlink" href="#attributes-photonhitmode" title="Permalink to this headline">¶</a></h2>
+<p>Specifies if shading is performed when the object
+is hit by a photon, or if the primitive colour
+is used as an approximation instead.</p>
+</div>
+<div class="section" id="attributes-shadingrate">
+<span id="attributes-shadingrate"></span><h2>attributes.shadingRate<a class="headerlink" href="#attributes-shadingrate" title="Permalink to this headline">¶</a></h2>
+<p>Specifies how finely objects are diced before they
+are shaded. Smaller values give higher quality but
+slower rendering.</p>
+</div>
+<div class="section" id="attributes-relativeshadingrate">
+<span id="attributes-relativeshadingrate"></span><h2>attributes.relativeShadingRate<a class="headerlink" href="#attributes-relativeshadingrate" title="Permalink to this headline">¶</a></h2>
+<p>Specifies a multiplier on the shading rate. Note that
+if shading rate is specified at multiple locations above
+an object in the hierarchy, they are multiplied together
+to arrive at the final shading rate.</p>
+</div>
+<div class="section" id="attributes-matte">
+<span id="attributes-matte"></span><h2>attributes.matte<a class="headerlink" href="#attributes-matte" title="Permalink to this headline">¶</a></h2>
+<p>Matte objects don&#8217;t appear in the render, but cut holes
+in the alpha of all objects behind them.</p>
+</div>
+<div class="section" id="attributes-displacementbound">
+<span id="attributes-displacementbound"></span><h2>attributes.displacementBound<a class="headerlink" href="#attributes-displacementbound" title="Permalink to this headline">¶</a></h2>
+<p>Specifies the maximum amount the displacement shader will
+displace by.</p>
+</div>
+<div class="section" id="attributes-maxdiffusedepth">
+<span id="attributes-maxdiffusedepth"></span><h2>attributes.maxDiffuseDepth<a class="headerlink" href="#attributes-maxdiffusedepth" title="Permalink to this headline">¶</a></h2>
+<p>The maximum depth for diffuse ray bounces.</p>
+</div>
+<div class="section" id="attributes-maxspeculardepth">
+<span id="attributes-maxspeculardepth"></span><h2>attributes.maxSpecularDepth<a class="headerlink" href="#attributes-maxspeculardepth" title="Permalink to this headline">¶</a></h2>
+<p>The maximum depth for specular (reflection) ray bounces.</p>
+</div>
+<div class="section" id="attributes-tracedisplacements">
+<span id="attributes-tracedisplacements"></span><h2>attributes.traceDisplacements<a class="headerlink" href="#attributes-tracedisplacements" title="Permalink to this headline">¶</a></h2>
+<p>Whether or not displacements are taken into account
+when raytracing. This can be fairly expensive.</p>
+</div>
+<div class="section" id="attributes-tracebias">
+<span id="attributes-tracebias"></span><h2>attributes.traceBias<a class="headerlink" href="#attributes-tracebias" title="Permalink to this headline">¶</a></h2>
+<p>This bias value affects rays. It is an offset applied to the ray origin, moving it slightly away from the surface launch point in the ray direction. This offset can prevent blotchy artifacts resulting from the ray immediately finding an intersection with the surface it just left. Usually, 0.01 is the default scene value.</p>
+</div>
+<div class="section" id="global">
+<span id="global"></span><h2>global<a class="headerlink" href="#global" title="Permalink to this headline">¶</a></h2>
+<p>Causes the attributes to be applied to the scene globals
+instead of the individual locations defined by the filter.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="RenderManLight.html" class="btn btn-neutral float-right" title="RenderManLight" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="InteractiveRenderManRender.html" class="btn btn-neutral" title="InteractiveRenderManRender" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016 John Haddon, 2011-2016 Image Engine Design Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.41.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
