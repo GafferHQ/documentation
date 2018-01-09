@@ -1,6 +1,7 @@
 GafferArnold
 ============
 
+- [ArnoldAOVShader](ArnoldAOVShader.md)
 - [ArnoldAttributes](ArnoldAttributes.md)
 - [ArnoldDisplacement](ArnoldDisplacement.md)
 - [ArnoldLight](ArnoldLight.md)

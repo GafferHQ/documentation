@@ -10,4 +10,3 @@ GafferCortex
 - [ParameterisedHolderExecutableNode](ParameterisedHolderExecutableNode.md)
 - [ParameterisedHolderNode](ParameterisedHolderNode.md)
 - [ParameterisedHolderTaskNode](ParameterisedHolderTaskNode.md)
-- [ProceduralHolder](ProceduralHolder.md)

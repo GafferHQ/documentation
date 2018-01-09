@@ -1,15 +1,10 @@
-RenderManRender
-===============
+Render
+======
 
-Performs offline batch rendering using a
-RenderMan renderer. This is done in two
-phases - first a RIB file is generated and
-then the renderer is invoked to render it in
-a separate process. Note though that the RIB
-file is lightweight, and contains a single
-procedural which will invoke Gaffer to generate
-the scene on demand at runtime. The RIB therefore
-requires very little disk space.
+Performs offline batch rendering using any of the
+available renderer backends, or optionally writes
+scene descriptions to disk for later rendering via
+a SystemCommand node.
 
 user
 ----
@@ -65,32 +60,22 @@ in
 
 The scene to be rendered.
 
-out
----
+renderer
+--------
 
-A pass-through of the input scene.
+The renderer to use.
 
 mode
 ----
 
-When in "Render" mode, a RIB file is generated
-and then renderered by running the renderer on
-it. In "Generate RIB only" mode, only the RIB
-is generated, and a subsequent node could be used
-to post-process or launch the render in another
-way - a SystemCommand node may be useful for this.
+The type of render to perform.
 
-ribFileName
------------
+fileName
+--------
 
-The name of the RIB file to be generated.
+The name of the file to be generated when in scene description mode.
 
-**Supported file extensions** : rib
+out
+---
 
-command
--------
-
-The system command used to invoke the renderer - this
-can be edited to add any custom flags that are necessary,
-or to use a different renderer. The rib filename is
-automatically appended to the command before it is invoked.
+A direct pass-through of the input scene.

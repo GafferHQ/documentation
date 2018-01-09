@@ -30,7 +30,7 @@ fileName
 The name of the file to be loaded. The file can be
 in any of the formats supported by Cortex's SceneInterfaces.
 
-**Supported file extensions** : abc, lscc, scc
+**Supported file extensions** : abc, lscc, scc, usd, usda, usdc, vdb
 
 refreshCount
 ------------

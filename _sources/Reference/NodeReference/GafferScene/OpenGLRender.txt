@@ -59,7 +59,17 @@ in
 
 The scene to be rendered.
 
+mode
+----
+
+The type of render to perform.
+
+fileName
+--------
+
+The name of the file to be generated when in scene description mode.
+
 out
 ---
 
-A pass-through of the input scene.
+A direct pass-through of the input scene.

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>RenderManLight &mdash; Gaffer 0.41.0.0 documentation</title>
+  <title>MeshToLevelSet &mdash; Gaffer 0.42.0.0 documentation</title>
   
 
   
@@ -32,10 +32,10 @@
   
 
   
-    <link rel="top" title="Gaffer 0.41.0.0 documentation" href="../../../index.html"/>
-        <link rel="up" title="GafferRenderMan" href="index.html"/>
-        <link rel="next" title="RenderManOptions" href="RenderManOptions.html"/>
-        <link rel="prev" title="RenderManAttributes" href="RenderManAttributes.html"/> 
+    <link rel="top" title="Gaffer 0.42.0.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="GafferVDB" href="index.html"/>
+        <link rel="next" title="Scripting Reference" href="../../ScriptingReference/index.html"/>
+        <link rel="prev" title="LevelSetToMesh" href="LevelSetToMesh.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.41.0.0
+                0.42.0.0
               </div>
             
           
@@ -97,16 +97,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../GafferDispatch/index.html">GafferDispatch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferImage/index.html">GafferImage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferOSL/index.html">GafferOSL</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferRenderMan</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="InteractiveRenderManRender.html">InteractiveRenderManRender</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManAttributes.html">RenderManAttributes</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">RenderManLight</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManOptions.html">RenderManOptions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManRender.html">RenderManRender</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManShader.html">RenderManShader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferScene/index.html">GafferScene</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferVDB</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="LevelSetOffset.html">LevelSetOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LevelSetToMesh.html">LevelSetToMesh</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">MeshToLevelSet</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../GafferScene/index.html">GafferScene</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../ScriptingReference/index.html">Scripting Reference</a></li>
@@ -149,13 +146,13 @@
       
           <li><a href="../index.html">Node Reference</a> &raquo;</li>
       
-          <li><a href="index.html">GafferRenderMan</a> &raquo;</li>
+          <li><a href="index.html">GafferVDB</a> &raquo;</li>
       
-    <li>RenderManLight</li>
+    <li>MeshToLevelSet</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../../_sources/Reference/NodeReference/GafferRenderMan/RenderManLight.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Reference/NodeReference/GafferVDB/MeshToLevelSet.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -165,10 +162,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="rendermanlight">
-<span id="rendermanlight"></span><h1>RenderManLight<a class="headerlink" href="#rendermanlight" title="Permalink to this headline">¶</a></h1>
-<p>Loads a RenderMan light shader and uses
-it to output a scene with a single light.</p>
+  <div class="section" id="meshtolevelset">
+<span id="meshtolevelset"></span><h1>MeshToLevelSet<a class="headerlink" href="#meshtolevelset" title="Permalink to this headline">¶</a></h1>
+<p>Converts a mesh primitive to a level set VDB object.</p>
 <div class="section" id="user">
 <span id="user"></span><h2>user<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
 <p>Container for user-defined plugs. Nodes
@@ -177,29 +173,36 @@ so users are free to do as they wish.</p>
 </div>
 <div class="section" id="out">
 <span id="out"></span><h2>out<a class="headerlink" href="#out" title="Permalink to this headline">¶</a></h2>
-<p>The output scene.</p>
+<p>The processed output scene.</p>
 </div>
 <div class="section" id="enabled">
 <span id="enabled"></span><h2>enabled<a class="headerlink" href="#enabled" title="Permalink to this headline">¶</a></h2>
-<p>The on/off state of the node. When it is off, the node outputs
-an empty scene.</p>
+<p>The on/off state of the node. When it is off, the node outputs the input scene unchanged.</p>
 </div>
-<div class="section" id="name">
-<span id="name"></span><h2>name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p>The name of the object in the output scene.</p>
+<div class="section" id="in">
+<span id="in"></span><h2>in<a class="headerlink" href="#in" title="Permalink to this headline">¶</a></h2>
+<p>The input scene</p>
 </div>
-<div class="section" id="sets">
-<span id="sets"></span><h2>sets<a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h2>
-<p>A list of sets to include the object in. The
-names should be separated by spaces.</p>
+<div class="section" id="filter">
+<span id="filter"></span><h2>filter<a class="headerlink" href="#filter" title="Permalink to this headline">¶</a></h2>
+<p>The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.</p>
 </div>
-<div class="section" id="transform">
-<span id="transform"></span><h2>transform<a class="headerlink" href="#transform" title="Permalink to this headline">¶</a></h2>
-<p>The transform applied to the object.</p>
+<div class="section" id="grid">
+<span id="grid"></span><h2>grid<a class="headerlink" href="#grid" title="Permalink to this headline">¶</a></h2>
+<p>Name of the level set grid to create in the VDB object.</p>
 </div>
-<div class="section" id="parameters">
-<span id="parameters"></span><h2>parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<p>The parameters of the light shader - these will vary based on the light type.</p>
+<div class="section" id="voxelsize">
+<span id="voxelsize"></span><h2>voxelSize<a class="headerlink" href="#voxelsize" title="Permalink to this headline">¶</a></h2>
+<p>Size of the voxel in the level set grid. Smaller voxel sizes will increase resolution, take more memory &amp; longer to process.</p>
+</div>
+<div class="section" id="exteriorbandwidth">
+<span id="exteriorbandwidth"></span><h2>exteriorBandwidth<a class="headerlink" href="#exteriorbandwidth" title="Permalink to this headline">¶</a></h2>
+<p>Defines the exterior width of the level set in voxel units.</p>
+</div>
+<div class="section" id="interiorbandwidth">
+<span id="interiorbandwidth"></span><h2>interiorBandwidth<a class="headerlink" href="#interiorbandwidth" title="Permalink to this headline">¶</a></h2>
+<p>Defines the interior width of the level set in voxel units.</p>
 </div>
 </div>
 
@@ -210,10 +213,10 @@ names should be separated by spaces.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="RenderManOptions.html" class="btn btn-neutral float-right" title="RenderManOptions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../../ScriptingReference/index.html" class="btn btn-neutral float-right" title="Scripting Reference" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="RenderManAttributes.html" class="btn btn-neutral" title="RenderManAttributes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="LevelSetToMesh.html" class="btn btn-neutral" title="LevelSetToMesh" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -244,7 +247,7 @@ names should be separated by spaces.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.41.0.0',
+            VERSION:'0.42.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

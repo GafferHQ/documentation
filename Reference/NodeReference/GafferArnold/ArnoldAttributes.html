@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ArnoldAttributes &mdash; Gaffer 0.41.0.0 documentation</title>
+  <title>ArnoldAttributes &mdash; Gaffer 0.42.0.0 documentation</title>
   
 
   
@@ -32,10 +32,10 @@
   
 
   
-    <link rel="top" title="Gaffer 0.41.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.42.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferArnold" href="index.html"/>
         <link rel="next" title="ArnoldDisplacement" href="ArnoldDisplacement.html"/>
-        <link rel="prev" title="GafferArnold" href="index.html"/> 
+        <link rel="prev" title="ArnoldAOVShader" href="ArnoldAOVShader.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.41.0.0
+                0.42.0.0
               </div>
             
           
@@ -93,6 +93,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Gaffer/index.html">Gaffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferAppleseed/index.html">GafferAppleseed</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferArnold</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="ArnoldAOVShader.html">ArnoldAOVShader</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">ArnoldAttributes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ArnoldDisplacement.html">ArnoldDisplacement</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ArnoldLight.html">ArnoldLight</a></li>
@@ -109,8 +110,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../GafferDispatch/index.html">GafferDispatch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferImage/index.html">GafferImage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferOSL/index.html">GafferOSL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../GafferRenderMan/index.html">GafferRenderMan</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferScene/index.html">GafferScene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferVDB/index.html">GafferVDB</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../ScriptingReference/index.html">Scripting Reference</a></li>
@@ -213,25 +214,43 @@ node instead.</p>
 <p>Whether or not the object is visible to shadow
 rays (whether or not it casts shadows).</p>
 </div>
-<div class="section" id="attributes-reflectedvisibility">
-<span id="attributes-reflectedvisibility"></span><h2>attributes.reflectedVisibility<a class="headerlink" href="#attributes-reflectedvisibility" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="attributes-diffusereflectionvisibility">
+<span id="attributes-diffusereflectionvisibility"></span><h2>attributes.diffuseReflectionVisibility<a class="headerlink" href="#attributes-diffusereflectionvisibility" title="Permalink to this headline">¶</a></h2>
 <p>Whether or not the object is visible in
-tight mirror reflections.</p>
+reflected diffuse ( ie. if it casts bounce light )</p>
 </div>
-<div class="section" id="attributes-refractedvisibility">
-<span id="attributes-refractedvisibility"></span><h2>attributes.refractedVisibility<a class="headerlink" href="#attributes-refractedvisibility" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="attributes-specularreflectionvisibility">
+<span id="attributes-specularreflectionvisibility"></span><h2>attributes.specularReflectionVisibility<a class="headerlink" href="#attributes-specularreflectionvisibility" title="Permalink to this headline">¶</a></h2>
 <p>Whether or not the object is visible in
-refractions.</p>
+reflected specular ( ie. if it is visible in mirrors ).</p>
 </div>
-<div class="section" id="attributes-diffusevisibility">
-<span id="attributes-diffusevisibility"></span><h2>attributes.diffuseVisibility<a class="headerlink" href="#attributes-diffusevisibility" title="Permalink to this headline">¶</a></h2>
-<p>Whether or not the object is visible to diffuse
-rays - whether it casts bounce light or not.</p>
-</div>
-<div class="section" id="attributes-glossyvisibility">
-<span id="attributes-glossyvisibility"></span><h2>attributes.glossyVisibility<a class="headerlink" href="#attributes-glossyvisibility" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="attributes-diffusetransmissionvisibility">
+<span id="attributes-diffusetransmissionvisibility"></span><h2>attributes.diffuseTransmissionVisibility<a class="headerlink" href="#attributes-diffusetransmissionvisibility" title="Permalink to this headline">¶</a></h2>
 <p>Whether or not the object is visible in
-soft specular reflections.</p>
+transmitted diffuse ( ie. if it casts light through leaves ).</p>
+</div>
+<div class="section" id="attributes-speculartransmissionvisibility">
+<span id="attributes-speculartransmissionvisibility"></span><h2>attributes.specularTransmissionVisibility<a class="headerlink" href="#attributes-speculartransmissionvisibility" title="Permalink to this headline">¶</a></h2>
+<p>Whether or not the object is visible in
+refracted specular ( ie. if it can be seen through glass ).</p>
+</div>
+<div class="section" id="attributes-volumevisibility">
+<span id="attributes-volumevisibility"></span><h2>attributes.volumeVisibility<a class="headerlink" href="#attributes-volumevisibility" title="Permalink to this headline">¶</a></h2>
+<p>Whether or not the object is visible in
+volume scattering.</p>
+</div>
+<div class="section" id="attributes-subsurfacevisibility">
+<span id="attributes-subsurfacevisibility"></span><h2>attributes.subsurfaceVisibility<a class="headerlink" href="#attributes-subsurfacevisibility" title="Permalink to this headline">¶</a></h2>
+<p>Whether or not the object is visible to subsurface
+rays.</p>
+</div>
+<div class="section" id="attributes-transformtype">
+<span id="attributes-transformtype"></span><h2>attributes.transformType<a class="headerlink" href="#attributes-transformtype" title="Permalink to this headline">¶</a></h2>
+<p>Choose how transform motion is interpolated.  Linear
+produces classic linear vertex motion, RotateAboutOrigin
+produces curved arcs centred on the object&#8217;s origin, and
+RotateAboutCenter, the default, produces curved arcs
+centred on the object&#8217;s bounding box middle.</p>
 </div>
 <div class="section" id="attributes-matte">
 <span id="attributes-matte"></span><h2>attributes.matte<a class="headerlink" href="#attributes-matte" title="Permalink to this headline">¶</a></h2>
@@ -252,6 +271,10 @@ when using partially transparent shaders.</p>
 <span id="attributes-selfshadows"></span><h2>attributes.selfShadows<a class="headerlink" href="#attributes-selfshadows" title="Permalink to this headline">¶</a></h2>
 <p>Whether or not the object casts shadows
 onto itself.</p>
+</div>
+<div class="section" id="attributes-ssssetname">
+<span id="attributes-ssssetname"></span><h2>attributes.sssSetName<a class="headerlink" href="#attributes-ssssetname" title="Permalink to this headline">¶</a></h2>
+<p>If given, subsurface will be blended across any other objects which share the same sss set name.</p>
 </div>
 <div class="section" id="attributes-subdividepolygons">
 <span id="attributes-subdividepolygons"></span><h2>attributes.subdividePolygons<a class="headerlink" href="#attributes-subdividepolygons" title="Permalink to this headline">¶</a></h2>
@@ -357,6 +380,11 @@ A non-zero value causes an object to be treated
 as a volume container, and a value of 0 causes
 an object to be treated as regular geometry.</p>
 </div>
+<div class="section" id="attributes-volumepadding">
+<span id="attributes-volumepadding"></span><h2>attributes.volumePadding<a class="headerlink" href="#attributes-volumepadding" title="Permalink to this headline">¶</a></h2>
+<p>Allows a volume to be displaced outside its bounds.  When
+rendering a mesh as a volume, this enables displacement.</p>
+</div>
 <div class="section" id="global">
 <span id="global"></span><h2>global<a class="headerlink" href="#global" title="Permalink to this headline">¶</a></h2>
 <p>Causes the attributes to be applied to the scene globals
@@ -374,7 +402,7 @@ instead of the individual locations defined by the filter.</p>
         <a href="ArnoldDisplacement.html" class="btn btn-neutral float-right" title="ArnoldDisplacement" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="GafferArnold" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ArnoldAOVShader.html" class="btn btn-neutral" title="ArnoldAOVShader" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -405,7 +433,7 @@ instead of the individual locations defined by the filter.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.41.0.0',
+            VERSION:'0.42.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

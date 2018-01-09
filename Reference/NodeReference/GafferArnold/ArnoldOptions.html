@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ArnoldOptions &mdash; Gaffer 0.41.0.0 documentation</title>
+  <title>ArnoldOptions &mdash; Gaffer 0.42.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.41.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.42.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferArnold" href="index.html"/>
         <link rel="next" title="ArnoldRender" href="ArnoldRender.html"/>
         <link rel="prev" title="ArnoldMeshLight" href="ArnoldMeshLight.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.41.0.0
+                0.42.0.0
               </div>
             
           
@@ -93,6 +93,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Gaffer/index.html">Gaffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferAppleseed/index.html">GafferAppleseed</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferArnold</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="ArnoldAOVShader.html">ArnoldAOVShader</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ArnoldAttributes.html">ArnoldAttributes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ArnoldDisplacement.html">ArnoldDisplacement</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ArnoldLight.html">ArnoldLight</a></li>
@@ -109,8 +110,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../GafferDispatch/index.html">GafferDispatch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferImage/index.html">GafferImage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferOSL/index.html">GafferOSL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../GafferRenderMan/index.html">GafferRenderMan</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferScene/index.html">GafferScene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferVDB/index.html">GafferVDB</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../ScriptingReference/index.html">Scripting Reference</a></li>
@@ -244,18 +245,18 @@ computing indirect illumination (&#8220;bounce light&#8221;).
 The number of actual diffuse rays traced is the
 square of this number.</p>
 </div>
-<div class="section" id="options-giglossysamples">
-<span id="options-giglossysamples"></span><h2>options.giGlossySamples<a class="headerlink" href="#options-giglossysamples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="options-gispecularsamples">
+<span id="options-gispecularsamples"></span><h2>options.giSpecularSamples<a class="headerlink" href="#options-gispecularsamples" title="Permalink to this headline">¶</a></h2>
 <p>Controls the number of rays traced when
-computing glossy specular reflections.
+computing specular reflections.
 The number of actual specular rays traced
 is the square of this number.</p>
 </div>
-<div class="section" id="options-girefractionsamples">
-<span id="options-girefractionsamples"></span><h2>options.giRefractionSamples<a class="headerlink" href="#options-girefractionsamples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="options-gitransmissionsamples">
+<span id="options-gitransmissionsamples"></span><h2>options.giTransmissionSamples<a class="headerlink" href="#options-gitransmissionsamples" title="Permalink to this headline">¶</a></h2>
 <p>Controls the number of rays traced when
-computing refractions. The number of actual
-specular rays traced is the square of this number.</p>
+computing specular refractions. The number of actual
+transmitted specular rays traced is the square of this number.</p>
 </div>
 <div class="section" id="options-gissssamples">
 <span id="options-gissssamples"></span><h2>options.giSSSSamples<a class="headerlink" href="#options-gissssamples" title="Permalink to this headline">¶</a></h2>
@@ -291,30 +292,30 @@ can help reduce fireflies.</p>
 <p>Applies the sample clamping settings to all RGB and RGBA
 AOVs, in addition to the beauty image.</p>
 </div>
+<div class="section" id="options-indirectsampleclamp">
+<span id="options-indirectsampleclamp"></span><h2>options.indirectSampleClamp<a class="headerlink" href="#options-indirectsampleclamp" title="Permalink to this headline">¶</a></h2>
+<p>Clamp fireflies resulting from indirect calculations.
+May cause problems with dulling highlights in reflections.</p>
+</div>
 <div class="section" id="options-gitotaldepth">
 <span id="options-gitotaldepth"></span><h2>options.giTotalDepth<a class="headerlink" href="#options-gitotaldepth" title="Permalink to this headline">¶</a></h2>
-<p>The maximum depth of any ray (Diffuse + Glossy +
-Reflection + Refraction + Volume).</p>
+<p>The maximum depth of any ray (Diffuse + Specular +
+Transmission + Volume).</p>
 </div>
 <div class="section" id="options-gidiffusedepth">
 <span id="options-gidiffusedepth"></span><h2>options.giDiffuseDepth<a class="headerlink" href="#options-gidiffusedepth" title="Permalink to this headline">¶</a></h2>
 <p>Controls the number of ray bounces when
 computing indirect illumination (&#8220;bounce light&#8221;).</p>
 </div>
-<div class="section" id="options-giglossydepth">
-<span id="options-giglossydepth"></span><h2>options.giGlossyDepth<a class="headerlink" href="#options-giglossydepth" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="options-gispeculardepth">
+<span id="options-gispeculardepth"></span><h2>options.giSpecularDepth<a class="headerlink" href="#options-gispeculardepth" title="Permalink to this headline">¶</a></h2>
 <p>Controls the number of ray bounces when
-computing glossy specular reflections.</p>
+computing specular reflections.</p>
 </div>
-<div class="section" id="options-gireflectiondepth">
-<span id="options-gireflectiondepth"></span><h2>options.giReflectionDepth<a class="headerlink" href="#options-gireflectiondepth" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="options-gitransmissiondepth">
+<span id="options-gitransmissiondepth"></span><h2>options.giTransmissionDepth<a class="headerlink" href="#options-gitransmissiondepth" title="Permalink to this headline">¶</a></h2>
 <p>Controls the number of ray bounces when
-computing reflections.</p>
-</div>
-<div class="section" id="options-girefractiondepth">
-<span id="options-girefractiondepth"></span><h2>options.giRefractionDepth<a class="headerlink" href="#options-girefractiondepth" title="Permalink to this headline">¶</a></h2>
-<p>Controls the number of ray bounces when
-computing refractions.</p>
+computing specular refractions.</p>
 </div>
 <div class="section" id="options-givolumedepth">
 <span id="options-givolumedepth"></span><h2>options.giVolumeDepth<a class="headerlink" href="#options-givolumedepth" title="Permalink to this headline">¶</a></h2>
@@ -325,11 +326,6 @@ computing indirect lighting on volumes.</p>
 <span id="options-autotransparencydepth"></span><h2>options.autoTransparencyDepth<a class="headerlink" href="#options-autotransparencydepth" title="Permalink to this headline">¶</a></h2>
 <p>The number of allowable transparent layers - after
 this the last object will be treated as opaque.</p>
-</div>
-<div class="section" id="options-autotransparencythreshold">
-<span id="options-autotransparencythreshold"></span><h2>options.autoTransparencyThreshold<a class="headerlink" href="#options-autotransparencythreshold" title="Permalink to this headline">¶</a></h2>
-<p>A threshold for accumulated opacity, after which the
-last object will be treated as opaque.</p>
 </div>
 <div class="section" id="options-maxsubdivisions">
 <span id="options-maxsubdivisions"></span><h2>options.maxSubdivisions<a class="headerlink" href="#options-maxsubdivisions" title="Permalink to this headline">¶</a></h2>
@@ -417,9 +413,9 @@ files.</p>
 <p>The locations used to search for procedural
 DSOs.</p>
 </div>
-<div class="section" id="options-shadersearchpath">
-<span id="options-shadersearchpath"></span><h2>options.shaderSearchPath<a class="headerlink" href="#options-shadersearchpath" title="Permalink to this headline">¶</a></h2>
-<p>The locations used to search for shader plugins.</p>
+<div class="section" id="options-pluginsearchpath">
+<span id="options-pluginsearchpath"></span><h2>options.pluginSearchPath<a class="headerlink" href="#options-pluginsearchpath" title="Permalink to this headline">¶</a></h2>
+<p>The locations used to search for shaders and other plugins.</p>
 </div>
 <div class="section" id="options-abortonerror">
 <span id="options-abortonerror"></span><h2>options.abortOnError<a class="headerlink" href="#options-abortonerror" title="Permalink to this headline">¶</a></h2>
@@ -606,7 +602,7 @@ with a watermark.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.41.0.0',
+            VERSION:'0.42.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

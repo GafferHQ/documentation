@@ -39,7 +39,7 @@ OSL types are :
 - V3fPlug (`vector`)
 - M44fPlug (`matrix`)
 - StringPlug (`string`)
-- Plug (`closure color`)
+- ClosurePlug (`closure color`)
 - SplinefColor3f ( triplet of `float [], color [], string` )
 
 enabled

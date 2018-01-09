@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GafferRenderMan &mdash; Gaffer 0.41.0.0 documentation</title>
+  <title>ArnoldAOVShader &mdash; Gaffer 0.42.0.0 documentation</title>
   
 
   
@@ -32,10 +32,10 @@
   
 
   
-    <link rel="top" title="Gaffer 0.41.0.0 documentation" href="../../../index.html"/>
-        <link rel="up" title="Node Reference" href="../index.html"/>
-        <link rel="next" title="InteractiveRenderManRender" href="InteractiveRenderManRender.html"/>
-        <link rel="prev" title="OSLShader" href="../GafferOSL/OSLShader.html"/> 
+    <link rel="top" title="Gaffer 0.42.0.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="GafferArnold" href="index.html"/>
+        <link rel="next" title="ArnoldAttributes" href="ArnoldAttributes.html"/>
+        <link rel="prev" title="GafferArnold" href="index.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.41.0.0
+                0.42.0.0
               </div>
             
           
@@ -92,21 +92,26 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Node Reference</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../Gaffer/index.html">Gaffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferAppleseed/index.html">GafferAppleseed</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../GafferArnold/index.html">GafferArnold</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferArnold</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ArnoldAOVShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ArnoldAttributes.html">ArnoldAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ArnoldDisplacement.html">ArnoldDisplacement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ArnoldLight.html">ArnoldLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ArnoldMeshLight.html">ArnoldMeshLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ArnoldOptions.html">ArnoldOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ArnoldRender.html">ArnoldRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ArnoldShader.html">ArnoldShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ArnoldShaderBall.html">ArnoldShaderBall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ArnoldVDB.html">ArnoldVDB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="InteractiveArnoldRender.html">InteractiveArnoldRender</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferCortex/index.html">GafferCortex</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferDispatch/index.html">GafferDispatch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferImage/index.html">GafferImage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferOSL/index.html">GafferOSL</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">GafferRenderMan</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="InteractiveRenderManRender.html">InteractiveRenderManRender</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManAttributes.html">RenderManAttributes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManLight.html">RenderManLight</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManOptions.html">RenderManOptions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManRender.html">RenderManRender</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManShader.html">RenderManShader</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferScene/index.html">GafferScene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferVDB/index.html">GafferVDB</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../ScriptingReference/index.html">Scripting Reference</a></li>
@@ -149,11 +154,13 @@
       
           <li><a href="../index.html">Node Reference</a> &raquo;</li>
       
-    <li>GafferRenderMan</li>
+          <li><a href="index.html">GafferArnold</a> &raquo;</li>
+      
+    <li>ArnoldAOVShader</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../../_sources/Reference/NodeReference/GafferRenderMan/index.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Reference/NodeReference/GafferArnold/ArnoldAOVShader.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -163,17 +170,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="gafferrenderman">
-<span id="gafferrenderman"></span><h1>GafferRenderMan<a class="headerlink" href="#gafferrenderman" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="InteractiveRenderManRender.html">InteractiveRenderManRender</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RenderManAttributes.html">RenderManAttributes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RenderManLight.html">RenderManLight</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RenderManOptions.html">RenderManOptions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RenderManRender.html">RenderManRender</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RenderManShader.html">RenderManShader</a></li>
-</ul>
+  <div class="section" id="arnoldaovshader">
+<span id="arnoldaovshader"></span><h1>ArnoldAOVShader<a class="headerlink" href="#arnoldaovshader" title="Permalink to this headline">¶</a></h1>
+<p>Sets up global shaders in the Arnold options which can be used to populate global AOVs.</p>
+<div class="section" id="user">
+<span id="user"></span><h2>user<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
+<p>Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.</p>
+</div>
+<div class="section" id="out">
+<span id="out"></span><h2>out<a class="headerlink" href="#out" title="Permalink to this headline">¶</a></h2>
+<p>The processed output scene.</p>
+</div>
+<div class="section" id="enabled">
+<span id="enabled"></span><h2>enabled<a class="headerlink" href="#enabled" title="Permalink to this headline">¶</a></h2>
+<p>The on/off state of the node. When it is off, the node outputs the input scene unchanged.</p>
+</div>
+<div class="section" id="in">
+<span id="in"></span><h2>in<a class="headerlink" href="#in" title="Permalink to this headline">¶</a></h2>
+<p>The input scene</p>
+</div>
+<div class="section" id="optionsuffix">
+<span id="optionsuffix"></span><h2>optionSuffix<a class="headerlink" href="#optionsuffix" title="Permalink to this headline">¶</a></h2>
+<p>This suffix defines where the aov shader is stored in the render options. If you use
+an existing suffix, you will overwrite instead of creating a new AOV shader.</p>
+</div>
+<div class="section" id="shader">
+<span id="shader"></span><h2>shader<a class="headerlink" href="#shader" title="Permalink to this headline">¶</a></h2>
+<p>The shader to be assigned.</p>
 </div>
 </div>
 
@@ -184,10 +209,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="InteractiveRenderManRender.html" class="btn btn-neutral float-right" title="InteractiveRenderManRender" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ArnoldAttributes.html" class="btn btn-neutral float-right" title="ArnoldAttributes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../GafferOSL/OSLShader.html" class="btn btn-neutral" title="OSLShader" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="GafferArnold" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -218,7 +243,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.41.0.0',
+            VERSION:'0.42.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

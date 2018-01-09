@@ -86,20 +86,20 @@ computing indirect illumination ("bounce light").
 The number of actual diffuse rays traced is the
 square of this number.
 
-options.giGlossySamples
------------------------
+options.giSpecularSamples
+-------------------------
 
 Controls the number of rays traced when
-computing glossy specular reflections.
+computing specular reflections.
 The number of actual specular rays traced
 is the square of this number.
 
-options.giRefractionSamples
----------------------------
+options.giTransmissionSamples
+-----------------------------
 
 Controls the number of rays traced when
-computing refractions. The number of actual
-specular rays traced is the square of this number.
+computing specular refractions. The number of actual
+transmitted specular rays traced is the square of this number.
 
 options.giSSSSamples
 --------------------
@@ -140,11 +140,17 @@ options.aaSampleClampAffectsAOVs
 Applies the sample clamping settings to all RGB and RGBA
 AOVs, in addition to the beauty image.
 
+options.indirectSampleClamp
+---------------------------
+
+Clamp fireflies resulting from indirect calculations.
+May cause problems with dulling highlights in reflections.
+
 options.giTotalDepth
 --------------------
 
-The maximum depth of any ray (Diffuse + Glossy +
-Reflection + Refraction + Volume).
+The maximum depth of any ray (Diffuse + Specular +
+Transmission + Volume).
 
 options.giDiffuseDepth
 ----------------------
@@ -152,23 +158,17 @@ options.giDiffuseDepth
 Controls the number of ray bounces when
 computing indirect illumination ("bounce light").
 
-options.giGlossyDepth
----------------------
+options.giSpecularDepth
+-----------------------
 
 Controls the number of ray bounces when
-computing glossy specular reflections.
+computing specular reflections.
 
-options.giReflectionDepth
--------------------------
-
-Controls the number of ray bounces when
-computing reflections.
-
-options.giRefractionDepth
--------------------------
+options.giTransmissionDepth
+---------------------------
 
 Controls the number of ray bounces when
-computing refractions.
+computing specular refractions.
 
 options.giVolumeDepth
 ---------------------
@@ -181,12 +181,6 @@ options.autoTransparencyDepth
 
 The number of allowable transparent layers - after
 this the last object will be treated as opaque.
-
-options.autoTransparencyThreshold
----------------------------------
-
-A threshold for accumulated opacity, after which the
-last object will be treated as opaque.
 
 options.maxSubdivisions
 -----------------------
@@ -291,10 +285,10 @@ options.proceduralSearchPath
 The locations used to search for procedural
 DSOs.
 
-options.shaderSearchPath
+options.pluginSearchPath
 ------------------------
 
-The locations used to search for shader plugins.
+The locations used to search for shaders and other plugins.
 
 options.abortOnError
 --------------------

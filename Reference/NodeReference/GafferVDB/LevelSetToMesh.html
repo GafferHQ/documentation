@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>RenderManRender &mdash; Gaffer 0.41.0.0 documentation</title>
+  <title>LevelSetToMesh &mdash; Gaffer 0.42.0.0 documentation</title>
   
 
   
@@ -32,10 +32,10 @@
   
 
   
-    <link rel="top" title="Gaffer 0.41.0.0 documentation" href="../../../index.html"/>
-        <link rel="up" title="GafferRenderMan" href="index.html"/>
-        <link rel="next" title="RenderManShader" href="RenderManShader.html"/>
-        <link rel="prev" title="RenderManOptions" href="RenderManOptions.html"/> 
+    <link rel="top" title="Gaffer 0.42.0.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="GafferVDB" href="index.html"/>
+        <link rel="next" title="MeshToLevelSet" href="MeshToLevelSet.html"/>
+        <link rel="prev" title="LevelSetOffset" href="LevelSetOffset.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.41.0.0
+                0.42.0.0
               </div>
             
           
@@ -97,16 +97,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../GafferDispatch/index.html">GafferDispatch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferImage/index.html">GafferImage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferOSL/index.html">GafferOSL</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferRenderMan</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="InteractiveRenderManRender.html">InteractiveRenderManRender</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManAttributes.html">RenderManAttributes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManLight.html">RenderManLight</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManOptions.html">RenderManOptions</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">RenderManRender</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManShader.html">RenderManShader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferScene/index.html">GafferScene</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferVDB</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="LevelSetOffset.html">LevelSetOffset</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">LevelSetToMesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="MeshToLevelSet.html">MeshToLevelSet</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../GafferScene/index.html">GafferScene</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../ScriptingReference/index.html">Scripting Reference</a></li>
@@ -149,13 +146,13 @@
       
           <li><a href="../index.html">Node Reference</a> &raquo;</li>
       
-          <li><a href="index.html">GafferRenderMan</a> &raquo;</li>
+          <li><a href="index.html">GafferVDB</a> &raquo;</li>
       
-    <li>RenderManRender</li>
+    <li>LevelSetToMesh</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../../_sources/Reference/NodeReference/GafferRenderMan/RenderManRender.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Reference/NodeReference/GafferVDB/LevelSetToMesh.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -165,86 +162,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="rendermanrender">
-<span id="rendermanrender"></span><h1>RenderManRender<a class="headerlink" href="#rendermanrender" title="Permalink to this headline">¶</a></h1>
-<p>Performs offline batch rendering using a
-RenderMan renderer. This is done in two
-phases - first a RIB file is generated and
-then the renderer is invoked to render it in
-a separate process. Note though that the RIB
-file is lightweight, and contains a single
-procedural which will invoke Gaffer to generate
-the scene on demand at runtime. The RIB therefore
-requires very little disk space.</p>
+  <div class="section" id="levelsettomesh">
+<span id="levelsettomesh"></span><h1>LevelSetToMesh<a class="headerlink" href="#levelsettomesh" title="Permalink to this headline">¶</a></h1>
+<p>Converts a level set VDB object to a mesh primitive .</p>
 <div class="section" id="user">
 <span id="user"></span><h2>user<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
 <p>Container for user-defined plugs. Nodes
 should never make their own plugs here,
 so users are free to do as they wish.</p>
 </div>
-<div class="section" id="pretasks">
-<span id="pretasks"></span><h2>preTasks<a class="headerlink" href="#pretasks" title="Permalink to this headline">¶</a></h2>
-<p>Input connections to upstream nodes which must be
-executed before this node.</p>
+<div class="section" id="out">
+<span id="out"></span><h2>out<a class="headerlink" href="#out" title="Permalink to this headline">¶</a></h2>
+<p>The processed output scene.</p>
 </div>
-<div class="section" id="posttasks">
-<span id="posttasks"></span><h2>postTasks<a class="headerlink" href="#posttasks" title="Permalink to this headline">¶</a></h2>
-<p>Input connections to nodes which must be
-executed after this node, but which don&#8217;t
-need to be executed before downstream nodes.</p>
-</div>
-<div class="section" id="task">
-<span id="task"></span><h2>task<a class="headerlink" href="#task" title="Permalink to this headline">¶</a></h2>
-<p>Output connections to downstream nodes which must
-not be executed until after this node.</p>
-</div>
-<div class="section" id="dispatcher">
-<span id="dispatcher"></span><h2>dispatcher<a class="headerlink" href="#dispatcher" title="Permalink to this headline">¶</a></h2>
-<p>Container for custom plugs which dispatchers use to
-control their behaviour.</p>
-</div>
-<div class="section" id="dispatcher-batchsize">
-<span id="dispatcher-batchsize"></span><h2>dispatcher.batchSize<a class="headerlink" href="#dispatcher-batchsize" title="Permalink to this headline">¶</a></h2>
-<p>Maximum number of frames to batch together when dispatching tasks.</p>
-</div>
-<div class="section" id="dispatcher-immediate">
-<span id="dispatcher-immediate"></span><h2>dispatcher.immediate<a class="headerlink" href="#dispatcher-immediate" title="Permalink to this headline">¶</a></h2>
-<p>Causes this node to be executed immediately upon dispatch,
-rather than have its execution be scheduled normally by
-the dispatcher. For instance, when using the LocalDispatcher,
-the node will be executed immediately in the dispatching process
-and not in a background process as usual.</p>
-<p>When a node is made immediate, all upstream nodes are automatically
-considered to be immediate too, regardless of their settings.</p>
+<div class="section" id="enabled">
+<span id="enabled"></span><h2>enabled<a class="headerlink" href="#enabled" title="Permalink to this headline">¶</a></h2>
+<p>The on/off state of the node. When it is off, the node outputs the input scene unchanged.</p>
 </div>
 <div class="section" id="in">
 <span id="in"></span><h2>in<a class="headerlink" href="#in" title="Permalink to this headline">¶</a></h2>
-<p>The scene to be rendered.</p>
+<p>The input scene</p>
 </div>
-<div class="section" id="out">
-<span id="out"></span><h2>out<a class="headerlink" href="#out" title="Permalink to this headline">¶</a></h2>
-<p>A pass-through of the input scene.</p>
+<div class="section" id="filter">
+<span id="filter"></span><h2>filter<a class="headerlink" href="#filter" title="Permalink to this headline">¶</a></h2>
+<p>The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.</p>
 </div>
-<div class="section" id="mode">
-<span id="mode"></span><h2>mode<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h2>
-<p>When in &#8220;Render&#8221; mode, a RIB file is generated
-and then renderered by running the renderer on
-it. In &#8220;Generate RIB only&#8221; mode, only the RIB
-is generated, and a subsequent node could be used
-to post-process or launch the render in another
-way - a SystemCommand node may be useful for this.</p>
+<div class="section" id="grid">
+<span id="grid"></span><h2>grid<a class="headerlink" href="#grid" title="Permalink to this headline">¶</a></h2>
+<p>Name of the level set grid to create a mesh primitive from.</p>
 </div>
-<div class="section" id="ribfilename">
-<span id="ribfilename"></span><h2>ribFileName<a class="headerlink" href="#ribfilename" title="Permalink to this headline">¶</a></h2>
-<p>The name of the RIB file to be generated.</p>
-<p><strong>Supported file extensions</strong> : rib</p>
+<div class="section" id="isovalue">
+<span id="isovalue"></span><h2>isoValue<a class="headerlink" href="#isovalue" title="Permalink to this headline">¶</a></h2>
+<p>Value which defines the isosurface to convert to a mesh primitive.
+Usually this is set to zero but setting a small positive number will generate a dilated mesh and negative will create an eroded mesh.</p>
 </div>
-<div class="section" id="command">
-<span id="command"></span><h2>command<a class="headerlink" href="#command" title="Permalink to this headline">¶</a></h2>
-<p>The system command used to invoke the renderer - this
-can be edited to add any custom flags that are necessary,
-or to use a different renderer. The rib filename is
-automatically appended to the command before it is invoked.</p>
+<div class="section" id="adaptivity">
+<span id="adaptivity"></span><h2>adaptivity<a class="headerlink" href="#adaptivity" title="Permalink to this headline">¶</a></h2>
+<p>Adaptively generate fewer polygons from level set. 0 - uniform meshing, 1 - maximum level of adaptivity.</p>
 </div>
 </div>
 
@@ -255,10 +210,10 @@ automatically appended to the command before it is invoked.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="RenderManShader.html" class="btn btn-neutral float-right" title="RenderManShader" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="MeshToLevelSet.html" class="btn btn-neutral float-right" title="MeshToLevelSet" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="RenderManOptions.html" class="btn btn-neutral" title="RenderManOptions" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="LevelSetOffset.html" class="btn btn-neutral" title="LevelSetOffset" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -289,7 +244,7 @@ automatically appended to the command before it is invoked.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.41.0.0',
+            VERSION:'0.42.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

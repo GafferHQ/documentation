@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ArnoldVDB &mdash; Gaffer 0.41.0.0 documentation</title>
+  <title>ArnoldVDB &mdash; Gaffer 0.42.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.41.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.42.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferArnold" href="index.html"/>
         <link rel="next" title="InteractiveArnoldRender" href="InteractiveArnoldRender.html"/>
         <link rel="prev" title="ArnoldShaderBall" href="ArnoldShaderBall.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.41.0.0
+                0.42.0.0
               </div>
             
           
@@ -93,6 +93,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Gaffer/index.html">Gaffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferAppleseed/index.html">GafferAppleseed</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferArnold</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="ArnoldAOVShader.html">ArnoldAOVShader</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ArnoldAttributes.html">ArnoldAttributes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ArnoldDisplacement.html">ArnoldDisplacement</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ArnoldLight.html">ArnoldLight</a></li>
@@ -109,8 +110,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../GafferDispatch/index.html">GafferDispatch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferImage/index.html">GafferImage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferOSL/index.html">GafferOSL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../GafferRenderMan/index.html">GafferRenderMan</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferScene/index.html">GafferScene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferVDB/index.html">GafferVDB</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../ScriptingReference/index.html">Scripting Reference</a></li>
@@ -239,15 +240,6 @@ increased above 1 to give improved render times when it is known that
 the VDB file doesn&#8217;t have a lot of fine detail at the voxel level -
 a value of 4 might be a good starting point for such a file.</p>
 </div>
-<div class="section" id="dso">
-<span id="dso"></span><h2>dso<a class="headerlink" href="#dso" title="Permalink to this headline">¶</a></h2>
-<p>The file name of the volume plugin that will be used to load
-the VDB file at render time. Currently this plugin is not supplied
-with Arnold itself, but is provided with MtoA as
-<code class="docutils literal"><span class="pre">procedurals/volume_vdb.so</span></code>, and with HtoA as
-<code class="docutils literal"><span class="pre">arnold/procedurals/htoa_volume_openvdb.so</span></code>.</p>
-<p><strong>Supported file extensions</strong> : so, dylib</p>
-</div>
 </div>
 
 
@@ -291,7 +283,7 @@ with Arnold itself, but is provided with MtoA as
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.41.0.0',
+            VERSION:'0.42.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

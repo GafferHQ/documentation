@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>InteractiveRenderManRender &mdash; Gaffer 0.41.0.0 documentation</title>
+  <title>GafferVDB &mdash; Gaffer 0.42.0.0 documentation</title>
   
 
   
@@ -32,10 +32,10 @@
   
 
   
-    <link rel="top" title="Gaffer 0.41.0.0 documentation" href="../../../index.html"/>
-        <link rel="up" title="GafferRenderMan" href="index.html"/>
-        <link rel="next" title="RenderManAttributes" href="RenderManAttributes.html"/>
-        <link rel="prev" title="GafferRenderMan" href="index.html"/> 
+    <link rel="top" title="Gaffer 0.42.0.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Node Reference" href="../index.html"/>
+        <link rel="next" title="LevelSetOffset" href="LevelSetOffset.html"/>
+        <link rel="prev" title="UnionFilter" href="../GafferScene/UnionFilter.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.41.0.0
+                0.42.0.0
               </div>
             
           
@@ -97,16 +97,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../GafferDispatch/index.html">GafferDispatch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferImage/index.html">GafferImage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferOSL/index.html">GafferOSL</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferRenderMan</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">InteractiveRenderManRender</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManAttributes.html">RenderManAttributes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManLight.html">RenderManLight</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManOptions.html">RenderManOptions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManRender.html">RenderManRender</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RenderManShader.html">RenderManShader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferScene/index.html">GafferScene</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">GafferVDB</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="LevelSetOffset.html">LevelSetOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LevelSetToMesh.html">LevelSetToMesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="MeshToLevelSet.html">MeshToLevelSet</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../GafferScene/index.html">GafferScene</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../ScriptingReference/index.html">Scripting Reference</a></li>
@@ -149,13 +146,11 @@
       
           <li><a href="../index.html">Node Reference</a> &raquo;</li>
       
-          <li><a href="index.html">GafferRenderMan</a> &raquo;</li>
-      
-    <li>InteractiveRenderManRender</li>
+    <li>GafferVDB</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../../_sources/Reference/NodeReference/GafferRenderMan/InteractiveRenderManRender.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Reference/NodeReference/GafferVDB/index.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -165,59 +160,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="interactiverendermanrender">
-<span id="interactiverendermanrender"></span><h1>InteractiveRenderManRender<a class="headerlink" href="#interactiverendermanrender" title="Permalink to this headline">¶</a></h1>
-<p>Performs interactive renders using a RenderMan renderer
-which supports interactive edits. In 3delight the following
-edits are currently supported&nbsp;:</p>
-<ul class="simple">
-<li>Adding/removing lights</li>
-<li>Adjusting light parameters</li>
-<li>Moving the camera</li>
-<li>Moving coordinate systems</li>
-<li>Changing shader assignments</li>
-<li>Editing shader networks</li>
-<li>Editing shader parameters</li>
+  <div class="section" id="gaffervdb">
+<span id="gaffervdb"></span><h1>GafferVDB<a class="headerlink" href="#gaffervdb" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="LevelSetOffset.html">LevelSetOffset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LevelSetToMesh.html">LevelSetToMesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MeshToLevelSet.html">MeshToLevelSet</a></li>
 </ul>
-<div class="section" id="user">
-<span id="user"></span><h2>user<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
-<p>Container for user-defined plugs. Nodes
-should never make their own plugs here,
-so users are free to do as they wish.</p>
-</div>
-<div class="section" id="in">
-<span id="in"></span><h2>in<a class="headerlink" href="#in" title="Permalink to this headline">¶</a></h2>
-<p>The scene to be rendered.</p>
-</div>
-<div class="section" id="out">
-<span id="out"></span><h2>out<a class="headerlink" href="#out" title="Permalink to this headline">¶</a></h2>
-<p>A direct pass-through of the input scene.</p>
-</div>
-<div class="section" id="state">
-<span id="state"></span><h2>state<a class="headerlink" href="#state" title="Permalink to this headline">¶</a></h2>
-<p>The interactive state.</p>
-</div>
-<div class="section" id="updatelights">
-<span id="updatelights"></span><h2>updateLights<a class="headerlink" href="#updatelights" title="Permalink to this headline">¶</a></h2>
-<p>When on, changes to lights are reflected in the
-interactive render.</p>
-</div>
-<div class="section" id="updateattributes">
-<span id="updateattributes"></span><h2>updateAttributes<a class="headerlink" href="#updateattributes" title="Permalink to this headline">¶</a></h2>
-<p>When on, changes to attribute (and shaders) are reflected in the
-interactive render. When working with complex scenes, it may be
-worth turning this off to gain increased performance when only
-editing lights.</p>
-</div>
-<div class="section" id="updatecameras">
-<span id="updatecameras"></span><h2>updateCameras<a class="headerlink" href="#updatecameras" title="Permalink to this headline">¶</a></h2>
-<p>When on, changes to the camera are reflected in the
-interactive render.</p>
-</div>
-<div class="section" id="updatecoordinatesystems">
-<span id="updatecoordinatesystems"></span><h2>updateCoordinateSystems<a class="headerlink" href="#updatecoordinatesystems" title="Permalink to this headline">¶</a></h2>
-<p>When on, changes to coordinate systems are reflected in the
-interactive render.</p>
 </div>
 </div>
 
@@ -228,10 +178,10 @@ interactive render.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="RenderManAttributes.html" class="btn btn-neutral float-right" title="RenderManAttributes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="LevelSetOffset.html" class="btn btn-neutral float-right" title="LevelSetOffset" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="GafferRenderMan" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../GafferScene/UnionFilter.html" class="btn btn-neutral" title="UnionFilter" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -262,7 +212,7 @@ interactive render.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.41.0.0',
+            VERSION:'0.42.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

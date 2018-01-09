@@ -44,7 +44,7 @@ progressive refinement passes used.
 options.sampler
 ---------------
 
-Sampler to use when generating samples
+Sampling algorithm used in Monte Carlo integration
 
 options.aaSamples
 -----------------
@@ -54,7 +54,7 @@ Number of anti-aliasing samples
 options.lightingEngine
 ----------------------
 
-Lighting engine used when rendering
+Light transport engine
 
 options.meshFileFormat
 ----------------------
@@ -162,7 +162,7 @@ Maximum number of path bounces.If set to a negative number, use an unlimited num
 options.sppmLightPhotons
 ------------------------
 
-Number of photons per render pass
+Number of light photons per render pass
 
 options.sppmEnvPhotons
 ----------------------

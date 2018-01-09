@@ -52,29 +52,50 @@ attributes.shadowVisibility
 Whether or not the object is visible to shadow
 rays (whether or not it casts shadows).
 
-attributes.reflectedVisibility
-------------------------------
+attributes.diffuseReflectionVisibility
+--------------------------------------
 
 Whether or not the object is visible in
-tight mirror reflections.
+reflected diffuse ( ie. if it casts bounce light )
 
-attributes.refractedVisibility
-------------------------------
+attributes.specularReflectionVisibility
+---------------------------------------
 
 Whether or not the object is visible in
-refractions.
+reflected specular ( ie. if it is visible in mirrors ).
 
-attributes.diffuseVisibility
-----------------------------
+attributes.diffuseTransmissionVisibility
+----------------------------------------
 
-Whether or not the object is visible to diffuse
-rays - whether it casts bounce light or not.
+Whether or not the object is visible in
+transmitted diffuse ( ie. if it casts light through leaves ).
 
-attributes.glossyVisibility
+attributes.specularTransmissionVisibility
+-----------------------------------------
+
+Whether or not the object is visible in
+refracted specular ( ie. if it can be seen through glass ).
+
+attributes.volumeVisibility
 ---------------------------
 
 Whether or not the object is visible in
-soft specular reflections.
+volume scattering.
+
+attributes.subsurfaceVisibility
+-------------------------------
+
+Whether or not the object is visible to subsurface
+rays.
+
+attributes.transformType
+------------------------
+
+Choose how transform motion is interpolated.  Linear
+produces classic linear vertex motion, RotateAboutOrigin
+produces curved arcs centred on the object's origin, and
+RotateAboutCenter, the default, produces curved arcs
+centred on the object's bounding box middle.
 
 attributes.matte
 ----------------
@@ -99,6 +120,11 @@ attributes.selfShadows
 
 Whether or not the object casts shadows
 onto itself.
+
+attributes.sssSetName
+---------------------
+
+If given, subsurface will be blended across any other objects which share the same sss set name.
 
 attributes.subdividePolygons
 ----------------------------
@@ -209,6 +235,12 @@ The step size to take when raymarching volumes.
 A non-zero value causes an object to be treated
 as a volume container, and a value of 0 causes
 an object to be treated as regular geometry.
+
+attributes.volumePadding
+------------------------
+
+Allows a volume to be displaced outside its bounds.  When
+rendering a mesh as a volume, this enables displacement.
 
 global
 ------

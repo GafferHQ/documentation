@@ -8,5 +8,5 @@ Node Reference
 - [GafferDispatch](GafferDispatch/index.md)
 - [GafferImage](GafferImage/index.md)
 - [GafferOSL](GafferOSL/index.md)
-- [GafferRenderMan](GafferRenderMan/index.md)
 - [GafferScene](GafferScene/index.md)
+- [GafferVDB](GafferVDB/index.md)

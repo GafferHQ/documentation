@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>AppleseedOptions &mdash; Gaffer 0.41.0.0 documentation</title>
+  <title>AppleseedOptions &mdash; Gaffer 0.42.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.41.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.42.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferAppleseed" href="index.html"/>
         <link rel="next" title="AppleseedRender" href="AppleseedRender.html"/>
         <link rel="prev" title="AppleseedLight" href="AppleseedLight.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.41.0.0
+                0.42.0.0
               </div>
             
           
@@ -106,8 +106,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../GafferDispatch/index.html">GafferDispatch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferImage/index.html">GafferImage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferOSL/index.html">GafferOSL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../GafferRenderMan/index.html">GafferRenderMan</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferScene/index.html">GafferScene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferVDB/index.html">GafferVDB</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../ScriptingReference/index.html">Scripting Reference</a></li>
@@ -203,7 +203,7 @@ progressive refinement passes used.</p>
 </div>
 <div class="section" id="options-sampler">
 <span id="options-sampler"></span><h2>options.sampler<a class="headerlink" href="#options-sampler" title="Permalink to this headline">¶</a></h2>
-<p>Sampler to use when generating samples</p>
+<p>Sampling algorithm used in Monte Carlo integration</p>
 </div>
 <div class="section" id="options-aasamples">
 <span id="options-aasamples"></span><h2>options.aaSamples<a class="headerlink" href="#options-aasamples" title="Permalink to this headline">¶</a></h2>
@@ -211,7 +211,7 @@ progressive refinement passes used.</p>
 </div>
 <div class="section" id="options-lightingengine">
 <span id="options-lightingengine"></span><h2>options.lightingEngine<a class="headerlink" href="#options-lightingengine" title="Permalink to this headline">¶</a></h2>
-<p>Lighting engine used when rendering</p>
+<p>Light transport engine</p>
 </div>
 <div class="section" id="options-meshfileformat">
 <span id="options-meshfileformat"></span><h2>options.meshFileFormat<a class="headerlink" href="#options-meshfileformat" title="Permalink to this headline">¶</a></h2>
@@ -298,7 +298,7 @@ Useful for debugging scenes.</p>
 </div>
 <div class="section" id="options-sppmlightphotons">
 <span id="options-sppmlightphotons"></span><h2>options.sppmLightPhotons<a class="headerlink" href="#options-sppmlightphotons" title="Permalink to this headline">¶</a></h2>
-<p>Number of photons per render pass</p>
+<p>Number of light photons per render pass</p>
 </div>
 <div class="section" id="options-sppmenvphotons">
 <span id="options-sppmenvphotons"></span><h2>options.sppmEnvPhotons<a class="headerlink" href="#options-sppmenvphotons" title="Permalink to this headline">¶</a></h2>
@@ -395,7 +395,7 @@ interactive rendering.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.41.0.0',
+            VERSION:'0.42.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

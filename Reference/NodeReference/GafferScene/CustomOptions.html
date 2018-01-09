@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CustomOptions &mdash; Gaffer 0.41.0.0 documentation</title>
+  <title>CustomOptions &mdash; Gaffer 0.42.0.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.41.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.42.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferScene" href="index.html"/>
         <link rel="next" title="DeleteAttributes" href="DeleteAttributes.html"/>
         <link rel="prev" title="CustomAttributes" href="CustomAttributes.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.41.0.0
+                0.42.0.0
               </div>
             
           
@@ -97,7 +97,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../GafferDispatch/index.html">GafferDispatch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferImage/index.html">GafferImage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferOSL/index.html">GafferOSL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../GafferRenderMan/index.html">GafferRenderMan</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferScene</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="AimConstraint.html">AimConstraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="AlembicSource.html">AlembicSource</a></li>
@@ -124,7 +123,6 @@
 <li class="toctree-l4"><a class="reference internal" href="Duplicate.html">Duplicate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Encapsulate.html">Encapsulate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="EvaluateLightLinks.html">EvaluateLightLinks</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ExecutableRender.html">ExecutableRender</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ExternalProcedural.html">ExternalProcedural</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Filter.html">Filter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="FilterProcessor.html">FilterProcessor</a></li>
@@ -135,6 +133,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Grid.html">Grid</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Group.html">Group</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Instancer.html">Instancer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="InteractiveRender.html">InteractiveRender</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Isolate.html">Isolate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="LightToCamera.html">LightToCamera</a></li>
 <li class="toctree-l4"><a class="reference internal" href="LightTweaks.html">LightTweaks</a></li>
@@ -158,6 +157,7 @@
 <li class="toctree-l4"><a class="reference internal" href="PointsType.html">PointsType</a></li>
 <li class="toctree-l4"><a class="reference internal" href="PrimitiveVariables.html">PrimitiveVariables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Prune.html">Prune</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Render.html">Render</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ResamplePrimitiveVariables.html">ResamplePrimitiveVariables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="SceneContextVariables.html">SceneContextVariables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="SceneElementProcessor.html">SceneElementProcessor</a></li>
@@ -184,6 +184,7 @@
 <li class="toctree-l4"><a class="reference internal" href="UnionFilter.html">UnionFilter</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferVDB/index.html">GafferVDB</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../ScriptingReference/index.html">Scripting Reference</a></li>
@@ -245,10 +246,10 @@
   <div class="section" id="customoptions">
 <span id="customoptions"></span><h1>CustomOptions<a class="headerlink" href="#customoptions" title="Permalink to this headline">¶</a></h1>
 <p>Applies arbitrary user-defined options to the root of the scene. Note
-that for most common cases the StandardOptions, OpenGLOptions, RenderManOptions,
-ArnoldOptions and AppleseedOptions nodes should be used in preference - they provide predefined
-sets of options with customised user interfaces. The CustomOptions node is of most use when
-needing to set a custom option not supported by the specialised nodes.</p>
+that for most common cases the StandardOptions or renderer-specific options
+nodes should be preferred, as they provide predefined sets of options with customised
+user interfaces. The CustomOptions node is of most use when needing to set am
+option not supported by the specialised nodes.</p>
 <div class="section" id="user">
 <span id="user"></span><h2>user<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
 <p>Container for user-defined plugs. Nodes
@@ -322,7 +323,7 @@ of &#8220;myCategory:&#8221; and a name of &#8220;test&#8221; will create an opt
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.41.0.0',
+            VERSION:'0.42.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

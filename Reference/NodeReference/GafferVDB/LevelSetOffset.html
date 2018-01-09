@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ProceduralHolder &mdash; Gaffer 0.41.0.0 documentation</title>
+  <title>LevelSetOffset &mdash; Gaffer 0.42.0.0 documentation</title>
   
 
   
@@ -32,10 +32,10 @@
   
 
   
-    <link rel="top" title="Gaffer 0.41.0.0 documentation" href="../../../index.html"/>
-        <link rel="up" title="GafferCortex" href="index.html"/>
-        <link rel="next" title="GafferDispatch" href="../GafferDispatch/index.html"/>
-        <link rel="prev" title="ParameterisedHolderTaskNode" href="ParameterisedHolderTaskNode.html"/> 
+    <link rel="top" title="Gaffer 0.42.0.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="GafferVDB" href="index.html"/>
+        <link rel="next" title="LevelSetToMesh" href="LevelSetToMesh.html"/>
+        <link rel="prev" title="GafferVDB" href="index.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.41.0.0
+                0.42.0.0
               </div>
             
           
@@ -93,24 +93,17 @@
 <li class="toctree-l3"><a class="reference internal" href="../Gaffer/index.html">Gaffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferAppleseed/index.html">GafferAppleseed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferArnold/index.html">GafferArnold</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferCortex</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="ExecutableOpHolder.html">ExecutableOpHolder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ObjectReader.html">ObjectReader</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ObjectWriter.html">ObjectWriter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="OpHolder.html">OpHolder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ParameterisedHolderComputeNode.html">ParameterisedHolderComputeNode</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ParameterisedHolderDependencyNode.html">ParameterisedHolderDependencyNode</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ParameterisedHolderExecutableNode.html">ParameterisedHolderExecutableNode</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ParameterisedHolderNode.html">ParameterisedHolderNode</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ParameterisedHolderTaskNode.html">ParameterisedHolderTaskNode</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">ProceduralHolder</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferCortex/index.html">GafferCortex</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferDispatch/index.html">GafferDispatch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferImage/index.html">GafferImage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferOSL/index.html">GafferOSL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../GafferRenderMan/index.html">GafferRenderMan</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../GafferScene/index.html">GafferScene</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferVDB</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">LevelSetOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LevelSetToMesh.html">LevelSetToMesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="MeshToLevelSet.html">MeshToLevelSet</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../ScriptingReference/index.html">Scripting Reference</a></li>
@@ -153,13 +146,13 @@
       
           <li><a href="../index.html">Node Reference</a> &raquo;</li>
       
-          <li><a href="index.html">GafferCortex</a> &raquo;</li>
+          <li><a href="index.html">GafferVDB</a> &raquo;</li>
       
-    <li>ProceduralHolder</li>
+    <li>LevelSetOffset</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../../_sources/Reference/NodeReference/GafferCortex/ProceduralHolder.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/Reference/NodeReference/GafferVDB/LevelSetOffset.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -169,20 +162,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="proceduralholder">
-<span id="proceduralholder"></span><h1>ProceduralHolder<a class="headerlink" href="#proceduralholder" title="Permalink to this headline">¶</a></h1>
-<p>Hosts Cortex Procedurals, allowing them to be used in
-scenes generated by Gaffer.</p>
+  <div class="section" id="levelsetoffset">
+<span id="levelsetoffset"></span><h1>LevelSetOffset<a class="headerlink" href="#levelsetoffset" title="Permalink to this headline">¶</a></h1>
+<p>Erodes or dilates a level set VDB.</p>
 <div class="section" id="user">
 <span id="user"></span><h2>user<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
 <p>Container for user-defined plugs. Nodes
 should never make their own plugs here,
 so users are free to do as they wish.</p>
 </div>
-<div class="section" id="output">
-<span id="output"></span><h2>output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h2>
-<p>The procedural itself. Connect this into an ObjectToScene
-node to allow it to be used by the GafferScene module.</p>
+<div class="section" id="out">
+<span id="out"></span><h2>out<a class="headerlink" href="#out" title="Permalink to this headline">¶</a></h2>
+<p>The processed output scene.</p>
+</div>
+<div class="section" id="enabled">
+<span id="enabled"></span><h2>enabled<a class="headerlink" href="#enabled" title="Permalink to this headline">¶</a></h2>
+<p>The on/off state of the node. When it is off, the node outputs the input scene unchanged.</p>
+</div>
+<div class="section" id="in">
+<span id="in"></span><h2>in<a class="headerlink" href="#in" title="Permalink to this headline">¶</a></h2>
+<p>The input scene</p>
+</div>
+<div class="section" id="filter">
+<span id="filter"></span><h2>filter<a class="headerlink" href="#filter" title="Permalink to this headline">¶</a></h2>
+<p>The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.</p>
+</div>
+<div class="section" id="grid">
+<span id="grid"></span><h2>grid<a class="headerlink" href="#grid" title="Permalink to this headline">¶</a></h2>
+<p>Name of the level set grid to offset in the VDB object.</p>
+</div>
+<div class="section" id="offset">
+<span id="offset"></span><h2>offset<a class="headerlink" href="#offset" title="Permalink to this headline">¶</a></h2>
+<p>Amount to offset the level set by in voxel units. A positive number will erode the surface and negative will dilate.</p>
 </div>
 </div>
 
@@ -193,10 +205,10 @@ node to allow it to be used by the GafferScene module.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../GafferDispatch/index.html" class="btn btn-neutral float-right" title="GafferDispatch" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="LevelSetToMesh.html" class="btn btn-neutral float-right" title="LevelSetToMesh" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ParameterisedHolderTaskNode.html" class="btn btn-neutral" title="ParameterisedHolderTaskNode" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="GafferVDB" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -227,7 +239,7 @@ node to allow it to be used by the GafferScene module.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.41.0.0',
+            VERSION:'0.42.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

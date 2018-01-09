@@ -45,12 +45,6 @@ parameters
 The parameters of the Arnold mesh_light shader that
 is applied to the meshes.
 
-parameters.decay_type
----------------------
-
-Refer to Arnold's documentation for the mesh_light
-shader.
-
 parameters.color
 ----------------
 
@@ -105,24 +99,6 @@ parameters.normalize
 Refer to Arnold's documentation for the mesh_light
 shader.
 
-parameters.affect_diffuse
--------------------------
-
-Refer to Arnold's documentation for the mesh_light
-shader.
-
-parameters.affect_specular
---------------------------
-
-Refer to Arnold's documentation for the mesh_light
-shader.
-
-parameters.affect_volumetrics
------------------------------
-
-Refer to Arnold's documentation for the mesh_light
-shader.
-
 parameters.diffuse
 ------------------
 
@@ -149,6 +125,18 @@ shader.
 
 parameters.max_bounces
 ----------------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.motion_start
+-----------------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.motion_end
+---------------------
 
 Refer to Arnold's documentation for the mesh_light
 shader.

@@ -4,6 +4,7 @@ GafferImage
 - [Blur](Blur.md)
 - [CDL](CDL.md)
 - [Catalogue](Catalogue.md)
+- [CatalogueSelect](CatalogueSelect.md)
 - [Clamp](Clamp.md)
 - [CollectImages](CollectImages.md)
 - [ColorSpace](ColorSpace.md)
