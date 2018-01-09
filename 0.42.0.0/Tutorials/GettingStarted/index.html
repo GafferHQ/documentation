@@ -1,0 +1,614 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting Started &mdash; Gaffer 0.42.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Gaffer 0.42.0.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Tutorials" href="../index.html"/>
+        <link rel="next" title="Scripting" href="../Scripting/index.html"/>
+        <link rel="prev" title="Tutorials" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Gaffer
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.42.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#launching-gaffer">Launching Gaffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loading-some-geometry">Loading some geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigating-the-scene">Navigating the scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigating-using-the-viewer">Navigating using the Viewer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#making-a-camera">Making a camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#grouping-the-camera-with-the-model">Grouping the camera with the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#positioning-the-camera">Positioning the camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rendering-a-first-image">Rendering a first image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#organising-the-user-interface">Organising the user interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assigning-a-shader">Assigning a shader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-light">Creating a light</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-some-textures">Adding some textures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-a-shader-assignment">Filtering a shader assignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editing-the-filter">Editing the filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recap">Recap</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Scripting/index.html">Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ManagingComplexity/index.html">Managing Complexity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Reference/index.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ReleaseNotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Appendices/index.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">Gaffer</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+      
+    <li>Getting Started</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/Tutorials/GettingStarted/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getting-started">
+<span id="getting-started"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial is intended to give new users a first taste of lighting and rendering in
+Gaffer. As such it will cover a lot of ground quickly and will necessarily gloss over
+some details. Our goal is to learn to make images as quickly as possible, and provide
+a minimal basis for further exploration using the rest of this guide. Hold on tight!</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"> This tutorial uses the open source Appleseed renderer, as it is included with
+Gaffer and is ready to run out of the box. The Appleseed specific nodes that are used
+here can be substituted with direct equivalents for Arnold or 3delight, but we do
+recommend that you complete the tutorial using Appleseed before flying solo with your
+renderer of choice.</p>
+</div>
+<div class="section" id="launching-gaffer">
+<span id="launching-gaffer"></span><h2>Launching Gaffer<a class="headerlink" href="#launching-gaffer" title="Permalink to this headline">¶</a></h2>
+<p>After completing the <a class="reference internal" href="../../Installation/index.html"><span class="doc">installation chapter</span></a>, launch Gaffer from a shell with the following
+command&nbsp;:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">gaffer</span>
+</pre></div>
+</div>
+<p>You should be presented with the default UI layout.</p>
+<p><img alt="Default layout" src="../../_images/defaultLayout.png" /></p>
+</div>
+<div class="section" id="loading-some-geometry">
+<span id="loading-some-geometry"></span><h2>Loading some geometry<a class="headerlink" href="#loading-some-geometry" title="Permalink to this headline">¶</a></h2>
+<p>As Gaffer is primarily a lighting package, it is expected that modelling and animation will be performed in an external package and then imported into Gaffer in the form of an animation cache. Gaffer supports both the Alembic (.abc) file format and its own native SceneCache (.scc) format.</p>
+<p>Let&#8217;s start by creating a <a class="reference internal" href="../../Reference/NodeReference/GafferScene/SceneReader.html"><span class="doc">SceneReader</span></a> node to load some geometry&nbsp;:</p>
+<ul class="simple">
+<li>Locate the <a class="reference internal" href="../../Reference/UIReference/NodeGraph.html"><span class="doc">NodeGraph</span></a> editor in the lower left pane.</li>
+<li><em>Right-Click</em> inside the NodeGraph to pop up a menu for creating nodes.</li>
+<li>Create a SceneReader using the <em>/Scene/File/Reader</em> menu item.</li>
+</ul>
+<p><img alt="Empty SceneReader" src="../../_images/emptySceneReader.png" /></p>
+<p>The newly created node has been selected automatically, and each of the editor panes has been updated to show the selection. We haven&#8217;t yet specified a cache to load though, so there&#8217;s not much to see. Let&#8217;s remedy that.</p>
+<ul class="simple">
+<li>Locate the NodeEditor in the top right pane.</li>
+<li>Enter <code class="docutils literal"><span class="pre">${GAFFER_ROOT}/resources/gafferBot/caches/gafferBot.scc</span></code> into the <strong>File Name</strong> field.</li>
+<li>Move the mouse into the <a class="reference internal" href="../../Reference/UIReference/Viewer.html"><span class="doc">Viewer</span></a> in the top left pane and press &#8216;f&#8217; to frame the full scene.</li>
+</ul>
+<p><img alt="SceneReader Bounding Box" src="../../_images/sceneReaderBound.png" /></p>
+<p>Something seems to be happening, but frankly not much. The SceneHierarchy in the bottom right pane has updated to show we have a &#8220;GAFFERBOT&#8221; located at the root of our scene, and the Viewer in the top left is showing a mysterious new bounding box. It seems that our SceneReader is loading <em>something</em>, but how do we find out what exactly?</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last"> As mentioned above, by default the UI updates to view the currently selected node.
+This can be confusing if you accidentally deselect a node, because the editors will go blank.
+Later on we&#8217;ll see various ways of managing which node is viewed, but for now it is enough
+to know that you can reselect a node by <em>Left-Clicking</em> on it in the NodeGraph.</p>
+</div>
+</div>
+<div class="section" id="navigating-the-scene">
+<span id="navigating-the-scene"></span><h2>Navigating the scene<a class="headerlink" href="#navigating-the-scene" title="Permalink to this headline">¶</a></h2>
+<p>One of the key features that allows Gaffer to deal with highly complex scenes is that it loads geometry lazily on demand, processing only the portions of the scene that have been requested by the user. Any geometry that has not yet been requested is displayed as a simple bounding box, like the one we&#8217;re looking at. Let&#8217;s find out what&#8217;s in the box.</p>
+<ul class="simple">
+<li>Locate the SceneHierarchy editor in the bottom right pane.</li>
+<li><em>Left-Click</em> the triangle to the left of &#8220;GAFFERBOT&#8221;. The &#8220;GAFFERBOT&#8221; location should expand to show a child named &#8220;C_torso_GRP&#8221;.</li>
+<li><em>Left-Click</em> the triangle to the left of &#8220;C_torso_GRP&#8221; to expand to show its children.</li>
+</ul>
+<p>We can now see the basic structure of the model coming into view.</p>
+<p><img alt="SceneHierarchy Expanded Two Levels" src="../../_images/sceneHierarchyExpandedTwoLevels.png" /></p>
+<p>It would be tedious to expand the whole scene location by location like this, so let&#8217;s speed things along a little&nbsp;:</p>
+<ul class="simple">
+<li><em>Shift+Left-Click</em> the triangle to the left of &#8220;C_head_GRP&#8221;.</li>
+<li><em>Shift+Left-Click</em> the triangle to the left of &#8220;L_legUpper_GRP&#8221;.</li>
+</ul>
+<p>Shift clicking loads the entire scene below the location which was clicked, so we can now see all the geometry which is part of the head and left leg of our new mechanical friend.</p>
+<p><img alt="Head and Leg Expanded" src="../../_images/headAndLegExpanded.png" /></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"> You may have noticed that the cache file used in this tutorial contains objects named using a
+specific convention, with suffixes like &#8220;GRP&#8221;, &#8220;CPT&#8221; and &#8220;REN&#8221;. It should be noted that Gaffer places no
+significance whatsoever in these names, and you are free to name your own creations however you see fit.</p>
+</div>
+</div>
+<div class="section" id="navigating-using-the-viewer">
+<span id="navigating-using-the-viewer"></span><h2>Navigating using the Viewer<a class="headerlink" href="#navigating-using-the-viewer" title="Permalink to this headline">¶</a></h2>
+<p>As we navigated the scene using the SceneHierarchy editor, the <a class="reference internal" href="../../Reference/UIReference/Viewer.html"><span class="doc">Viewer</span></a> was loading the geometry we discovered and displaying it. We can also control this expansion process directly within the Viewer itself&nbsp;:</p>
+<ul class="simple">
+<li><em>Left-Drag</em> over the bounding box of the other leg to select it. It should highlight to show that you have been successful.</li>
+<li>Press <em>Down-Arrow</em> on the keyboard to expand it one level.</li>
+<li>Press <em>Shift+Down-Arrow</em> on the keyboard to expand it fully.</li>
+</ul>
+<p><img alt="Head and legs expanded" src="../../_images/headAndLegsExpanded.png" /></p>
+<p>As you might have guessed, we can also collapse the selection to return to a bounding box view&nbsp;:</p>
+<ul class="simple">
+<li>Keeping the currently selected leg geometry, press <em>Up-Arrow</em> to collapse it.</li>
+<li>Press <em>Up-Arrow</em> repeatedly until all the geometry is collapsed back into the root bounding box.</li>
+</ul>
+<p>Navigating individual parts of a scene like this can be invaluable when dealing with very complex scenes, but we&#8217;ve already established that our mechanical friend is fairly lightweight and loads quickly, so it would be convenient to automatically keep the entire scene loaded at all times. This will also help in the rest of this tutorial as we switch between scenes and rearrange the hierarchy.</p>
+<ul class="simple">
+<li>Locate the main toolbar at the top of the Viewer.</li>
+<li>Locate the <img alt="scene expansion menu" src="../../_images/expansion.png" /> button and <em>Left-Click</em> it to show the scene expansion popup menu.</li>
+<li>Choose &#8220;Expand All&#8221;.</li>
+</ul>
+<p><img alt="Fully Expanded" src="../../_images/fullyExpanded.png" /></p>
+<p>Finally, we can see our guy in all his vintage glory. Now would be a good time to get to grips with interactive camera movement within the viewer, so we can move around and get a better look at our guy. All movement is controlled by the mouse, but is accessed by holding down the <em>Alt</em> key to the left of the space bar.</p>
+<ul class="simple">
+<li>Hold down <em>Alt</em> and <em>Left-Drag</em> to tumble around, and view the model from all angles.</li>
+<li>Hold down <em>Alt</em> and <em>Right-Drag</em> to dolly in and out.</li>
+<li>Hold down <em>Alt</em> and <em>Middle-Drag</em> to track from side to side.</li>
+</ul>
+<p>Now we&#8217;re familiar with the model we&#8217;re going to be rendering, we can move on to the next steps.</p>
+</div>
+<div class="section" id="making-a-camera">
+<span id="making-a-camera"></span><h2>Making a camera<a class="headerlink" href="#making-a-camera" title="Permalink to this headline">¶</a></h2>
+<p>Before we can render anything, we&#8217;ll need a camera to render from. Just as we created a SceneReader node to load in the model, we&#8217;ll create another node to generate a camera. You&#8217;ll remember from the previous section that we can create nodes by making a <em>Right-Click</em> inside the NodeGraph and finding the node we want in the menu that appears. This time though, we&#8217;ll take a shortcut&nbsp;:</p>
+<ul class="simple">
+<li>Make sure the mouse is inside the NodeGraph.</li>
+<li>Press <em>Tab</em> to show the node menu, and note that it has a search field at the top, which already has the keyboard focus.</li>
+<li>Type &#8220;Camera&#8221; into the search field. Note that a new submenu has appeared showing the search results.</li>
+<li>Press <em>Return</em> to activate the highlighted search result and create a Camera node.</li>
+</ul>
+<p>As before, our newly created node has been selected automatically, and the UI has updated to show the selection.</p>
+<p><img alt="Camera" src="../../_images/camera.png" /></p>
+<p>We appear to have a problem though - although we can see our new camera, our model has disappeared!</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"> Many users find that the <em>Tab</em> node search shortcut makes them more productive, but
+it can also be useful to browse the full menu to explore all the nodes that are available.
+For the rest of this tutorial, we&#8217;ll just say &#8220;Create a SceneReader node <em>(/Scene/File/Reader)</em>&#8221; and expect
+you to make your own choice as to which method you use.</p>
+</div>
+</div>
+<div class="section" id="grouping-the-camera-with-the-model">
+<span id="grouping-the-camera-with-the-model"></span><h2>Grouping the camera with the model<a class="headerlink" href="#grouping-the-camera-with-the-model" title="Permalink to this headline">¶</a></h2>
+<p>Each node in Gaffer outputs an entire self contained scene. Our SceneReader node is outputting a robot scene, and our Camera node is outputting a scene containing a camera, but each of these are separate. By <em>Left-Clicking</em> on each node in the NodeGraph we can select which scene we want to view and edit, but before we can render we need to combine them into a scene with both a robot <em>and</em> a camera.</p>
+<p>Gaffer allows scenes to be modified by making connections between nodes so that input scenes flow into a node, are modified, and then flow out again. The inputs and outputs of nodes are called <strong>plugs</strong>, and are represented in the NodeGraph as circles on the edges of the nodes. Let&#8217;s make a new node and connect it up so that it combines the robot and camera into a single scene.</p>
+<ul class="simple">
+<li>Deselect all nodes by <em>Left-Clicking</em> in empty space in the NodeGraph.</li>
+<li>Create a Group node <em>(/Scene/Hierarchy/Group)</em>.</li>
+<li>Arrange the nodes by <em>Left-Dragging</em> them into position.<ul>
+<li>Place the SceneReader at the top left.</li>
+<li>Place the Camera at the top right.</li>
+<li>Place the Group below them.</li>
+</ul>
+</li>
+<li><em>Left-Drag</em> from the <em>output</em> of the SceneReader onto the <em>input</em> of the Group.
+Note that a second input appears on the Group.</li>
+<li><em>Left-Drag</em> from the <em>output</em> of the Camera onto the second <em>input</em> of the Group.</li>
+<li>Select the Group node by <em>Left-Clicking</em> on it.</li>
+</ul>
+<p><img alt="Group" src="../../_images/group.png" /></p>
+<p>The Group node is generating a new scene which combines the input scenes by placing them both under a new parent called &#8220;group&#8221;, as can be seen in the SceneHierarchy in the bottom right panel. Note that this is an entirely non-destructive process, and the upstream scenes from the SceneReader and Camera nodes are still available at any time simply by selecting the relevant node.</p>
+</div>
+<div class="section" id="positioning-the-camera">
+<span id="positioning-the-camera"></span><h2>Positioning the camera<a class="headerlink" href="#positioning-the-camera" title="Permalink to this headline">¶</a></h2>
+<p>Next we need to position the camera so that it frames our subject&nbsp;:</p>
+<ul class="simple">
+<li>Select the Camera node by <em>Left-Clicking</em> on it in the NodeGraph.</li>
+<li>In the NodeEditor (top right panel), <em>Left-Click</em> on the <strong>Transform</strong> tab to expose the transform settings.</li>
+<li>Use the numeric widgets to set the camera position.<ul>
+<li>Set <strong>Translate</strong> to <code class="docutils literal"><span class="pre">19,</span> <span class="pre">13,</span> <span class="pre">31</span></code></li>
+<li>Set <strong>Rotate</strong> to <code class="docutils literal"><span class="pre">0,</span> <span class="pre">30,</span> <span class="pre">0</span></code></li>
+</ul>
+</li>
+<li>Reselect the Group node in the NodeGraph to see the position of the camera
+relative to the robot.</li>
+</ul>
+<p><img alt="Group" src="../../_images/cameraTransform.png" /></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"> In the previous section we referred to the inputs and outputs of the nodes as <strong>plugs</strong>,
+and connected them by dragging and dropping within the NodeGraph. But in fact, the <strong>Translate</strong>
+and <strong>Rotate</strong> values we have just edited on the Camera node are <em>also</em> <strong>plugs</strong> : they also
+provide input to the node, and can also be connected together if needed. The NodeGraph and NodeEditor
+each display only a subset of the available plugs for ease of use, and informally we may tend to
+refer to them as &#8220;connections&#8221; or &#8220;settings&#8221; respectively, but more formally they are all <strong>plugs</strong>.
+This fact will become more relevant in advanced tutorials involving expressions and scripting.</p>
+</div>
+</div>
+<div class="section" id="rendering-a-first-image">
+<span id="rendering-a-first-image"></span><h2>Rendering a first image<a class="headerlink" href="#rendering-a-first-image" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have the layout of our scene defined, we want to do a quick test render to check everything is
+working as expected. To do that we need to lay down some more nodes to define our render settings.</p>
+<ul class="simple">
+<li>Select the Group node in the NodeGraph.</li>
+<li>Create a StandardOptions node (<em>/Scene/Globals/StandardOptions</em>). Note that it has been automatically
+connected to the output of the Group, and selected.</li>
+<li>Create an AppleseedOptions node (<em>/Appleseed/Options</em>). Note that it has been automatically connected to
+the output of the StandardOptions node and selected.</li>
+<li>Create an Outputs node (<em>Scene/Globals/Outputs</em>). This too will be automatically added to the end of
+the chain.</li>
+<li>Create an InteractiveAppleseedRender node (<em>/Appleseed/InteractiveRender/</em>) to complete the chain.</li>
+<li>Create a Catalogue node (<em>/Image/Utility/Catalogue</em>). This doesn&#8217;t need any input connections - just
+place it to one side of the InteractiveAppleseedRender node.</li>
+</ul>
+<p><img alt="Render settings" src="../../_images/renderSettings.png" /></p>
+<p>Even though we need only have one camera, we still need to tell Gaffer that we wish to render with it, rather than with a default camera&nbsp;:</p>
+<ul class="simple">
+<li>Select the StandardOptions node.</li>
+<li>Use the NodeEditor to specify the camera.<ul>
+<li>Open the Camera section by <em>Left-Clicking</em> on it.</li>
+<li><em>Left-Click</em> the switch to enable the camera setting.</li>
+<li>Type <code class="docutils literal"><span class="pre">/group/camera</span></code> into the camera text field.</li>
+</ul>
+</li>
+</ul>
+<p>Next we need to define what images we want to output&nbsp;:</p>
+<ul class="simple">
+<li>Select the Outputs node.</li>
+<li>Use the NodeEditor to add an output, by <em>Left-Clicking</em> on the <img alt="Plus icon" src="../../_images/plus.png" /> and choosing the <em>/Interactive/Beauty</em> item from the popup menu.</li>
+</ul>
+<p>Now we can start the renderer&nbsp;:</p>
+<ul class="simple">
+<li>Select the InteractiveAppleseedRender node.</li>
+<li>Use the NodeEditor to set the renderer state to running.</li>
+</ul>
+<p>And finally we can view the result&nbsp;:</p>
+<ul class="simple">
+<li>Select the Catalogue node.</li>
+<li>Move the mouse into the Viewer and press &#8216;f&#8217; to frame the image.</li>
+</ul>
+<p><img alt="First render" src="../../_images/firstRender.png" /></p>
+<p>It&#8217;s hardly worthy of an Oscar, but we&#8217;ve successfully made our first image, and are in a good place to start adding some lighting and shading.</p>
+</div>
+<div class="section" id="organising-the-user-interface">
+<span id="organising-the-user-interface"></span><h2>Organising the user interface<a class="headerlink" href="#organising-the-user-interface" title="Permalink to this headline">¶</a></h2>
+<p>Before we dive into lighting and shading though, let&#8217;s take a brief detour to reorganise the user interface a little better for our workflow. As we&#8217;ve already learned, editors such as the Viewer, NodeEditor and SceneHierarchy always show the currently selected node by default. This isn&#8217;t always convenient, because often we want to edit one node while viewing the effects in another. This can be achieved by &#8220;pinning&#8221; specific nodes into an editor, so that they stay there regardless of the selection&nbsp;:</p>
+<ul class="simple">
+<li>Select the InteractiveAppleseedRender node by <em>Left-Clicking</em> on it in the NodeGraph.</li>
+<li>Locate the  pinning icon <img alt="Pinning" src="../../_images/targetNodesUnlocked.png" /> at the top right
+of the Viewer panel, and <em>Left-Click</em> to activate it.</li>
+<li>Deselect the InteractiveAppleseedRender node by <em>Left-Clicking</em> in empty space in the NodeGraph.</li>
+<li>Note that the Viewer is still showing the pinned node.</li>
+</ul>
+<p>It&#8217;d be useful to pin the same node into the SceneHierarchy, so let&#8217;s use a shortcut to do that&nbsp;:</p>
+<ul class="simple">
+<li><em>Middle-Drag</em> the InteractiveAppleseedRender node from the NodeGraph panel into the
+SceneHierarchy panel.</li>
+<li>Note that the SceneHierarchy is now showing our node, and the pinning icon has highlighted
+to notify us of the pinning <img alt="Pinning" src="../../_images/targetNodesLocked.png" />.</li>
+</ul>
+<p>Now we&#8217;re free to select any node we want to edit it in the NodeEditor, but will always be viewing the results
+downstream, in our final scene. It&#8217;s a pity that we&#8217;re no longer viewing our Catalogue node containing the rendered
+image though, so let&#8217;s rectify that.</p>
+<ul class="simple">
+<li>Locate the layout button <img alt="Layout" src="../../_images/layoutButton.png" /> in the top right of the Viewer panel, and <em>Left-Click</em> to show the layout menu.</li>
+<li>Choose the <em>Viewer</em> menu item to add a new Viewer.</li>
+<li><em>Middle-Drag</em> the Catalogue node into the new Viewer to pin it there.</li>
+</ul>
+<p>This allows us to switch between the 3d scene and the rendered image using the tabs at the top of the viewer panel. Now we&#8217;ve
+got everything arranged to our liking, we&#8217;re finally ready to go ahead and start shading some pixels.</p>
+</div>
+<div class="section" id="assigning-a-shader">
+<span id="assigning-a-shader"></span><h2>Assigning a shader<a class="headerlink" href="#assigning-a-shader" title="Permalink to this headline">¶</a></h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p> As we&#8217;re about to add to our collection of nodes in the NodeGraph, we might need to move around
+around and zoom in and out to navigate between them. This is achieved in the same way as navigating
+in the Viewer, by holding down <em>Alt</em> and <em>dragging</em> :</p>
+<ul class="last simple">
+<li>Hold down <em>Alt</em> and <em>Left-Drag</em> to move around.</li>
+<li>Hold down <em>Alt</em> and <em>Right-Drag</em> to zoom in and out.</li>
+<li>Alternatively, use the <em>scroll wheel</em> to zoom in and out.</li>
+</ul>
+</div>
+<p>It makes sense to think of our node graph as being composed of three distinct phases - generating the geometry, applying the lighting and shading, and finally rendering. Let&#8217;s create some empty space in the centre of the graph so that we have somewhere to insert the nodes for our lighting and shading phase.</p>
+<ul class="simple">
+<li>In the NodeGraph, <em>Left-Drag</em> over the lower five nodes to select them.</li>
+<li><em>Left-Drag</em> on one of the nodes to move them all down to leave some space in the middle.</li>
+<li>Use the <em>scroll wheel</em> or hold down <em>Alt</em> and <em>Right-Drag</em> to zoom out and frame the whole node graph.</li>
+</ul>
+<p><img alt="Making space" src="../../_images/renderSettingsWithGap.png" /></p>
+<p>Now we have some space we can drop our shading nodes into.</p>
+<ul class="simple">
+<li>Make a Disney material (<em>/Appleseed/Shader/Material/As_Disney_Material</em>)</li>
+<li>Edit it using the NodeEditor<ul>
+<li>Set the <strong>Specular</strong> to <code class="docutils literal"><span class="pre">0.6</span></code></li>
+<li>Set the <strong>Roughness</strong> to <code class="docutils literal"><span class="pre">0.35</span></code></li>
+</ul>
+</li>
+<li>Keeping the Disney material selected, create a ShaderAssignment (<em>/Scene/Attributes/ShaderAssignment</em>). Note that it has been automatically connected to the material.</li>
+<li><em>Left-Drag</em> the ShaderAssignment onto the connection between the Group and StandardOptions nodes
+to insert it into the stream.</li>
+</ul>
+<p><img alt="First shader assignment" src="../../_images/firstShaderAssignment.png" /></p>
+<p>Note that the inputs and outputs on the material node flow from left to right. In Gaffer, by convention, scene data flows from top to bottom and shading networks flow from left to right. The ShaderAssignment node takes the material flowing in from the left and assigns it to the geometry flowing in from the top. This hasn&#8217;t done much to improve our render though - now that we have a proper material assigned, we need to to create a light so we can see it.</p>
+</div>
+<div class="section" id="creating-a-light">
+<span id="creating-a-light"></span><h2>Creating a light<a class="headerlink" href="#creating-a-light" title="Permalink to this headline">¶</a></h2>
+<p>We&#8217;ll use an environment light so that we can get up and running quickly without needing to spend a lot of time tuning multiple lights.</p>
+<ul class="simple">
+<li>Create a PhysicalSky node (<em>/Appleseed/Environment/PhysicalSky</em>)</li>
+<li>Edit it using the NodeEditor<ul>
+<li>Set the <strong>Sun Phi Angle</strong> to <code class="docutils literal"><span class="pre">100</span></code></li>
+<li>Set the <strong>Luminance</strong> to <code class="docutils literal"><span class="pre">2.5</span></code></li>
+</ul>
+</li>
+</ul>
+<p>This node outputs a new scene containing a single light. As we did before with the camera, we now need to add the light to the main scene so that it flows down to the render node. The quickest way of doing this would be to connect it in to the next available input on the Group node, but this time we&#8217;ll take a different approach. Often when collaborating with others, you&#8217;ll receive scenes which already contain the geometry and cameras, and it&#8217;ll be inconvenient to use a Group node because it introduces a new level into the scene hierarchy. In these cases, we can use a Parent node to insert a new child anywhere in the input scene.</p>
+<ul class="simple">
+<li>Deselect the PhysicalSky node</li>
+<li>Create a Parent node (<em>/Scene/Hierarchy/Parent</em>)</li>
+<li><em>Left-Drag</em> it between the Group and ShaderAssignment nodes to insert it.</li>
+<li>Enter <code class="docutils literal"><span class="pre">/</span></code> in the Parent field in the NodeEditor, so that we&#8217;ll be parenting the light directly under the scene root.</li>
+<li>Connect the output of the light node into the second (child) input of the Parent node.</li>
+</ul>
+<p><img alt="Parenting Node Graph" src="../../_images/parentingNodeGraph.png" /></p>
+<p>We should have successfully inserted the light into the scene hierarchy, without affecting the structure of the rest of the scene.</p>
+<p><img alt="Parenting Scene Hierarchy" src="../../_images/parentingSceneHierarchy.png" /></p>
+<p>Now we need to enable environment lighting in Appleseed for our light to take effect.</p>
+<ul class="simple">
+<li>Edit the AppleseedOptions node in the NodeEditor</li>
+<li>Open the Environment section</li>
+<li>Turn on the <strong>Environment Light</strong> switch</li>
+<li>Enter <code class="docutils literal"><span class="pre">/light</span></code> into the text field</li>
+</ul>
+<p>Our render should now be in the process of updating with some basic lighting.</p>
+<p><img alt="First Lighting" src="../../_images/firstLighting.png" /></p>
+</div>
+<div class="section" id="adding-some-textures">
+<span id="adding-some-textures"></span><h2>Adding some textures<a class="headerlink" href="#adding-some-textures" title="Permalink to this headline">¶</a></h2>
+<p>Our little chap is looking a bit monochrome, so let&#8217;s assign some textures to cheer him up&nbsp;:</p>
+<ul class="simple">
+<li>Create an Appleseed texture node (<em>/Appleseed/Shaders/Texture2d/As_color_texture</em>)</li>
+<li>Edit it using the NodeEditor<ul>
+<li>Enter <code class="docutils literal"><span class="pre">${GAFFER_ROOT}/resources/gafferBot/textures/base_COL/base_COL_</span></code> into the <strong>Filename</strong> field.</li>
+<li>Set the <strong>UDIM</strong> field to <code class="docutils literal"><span class="pre">mari</span></code>.</li>
+</ul>
+</li>
+<li>Using the NodeGraph, Connect the <strong>ColorOut</strong> output into the <strong>BaseColor</strong> input of the disney material.</li>
+</ul>
+<p><img alt="Textured" src="../../_images/textures.png" /></p>
+<p>The render should now be in the process of updating to show the results of our edit.</p>
+</div>
+<div class="section" id="filtering-a-shader-assignment">
+<span id="filtering-a-shader-assignment"></span><h2>Filtering a shader assignment<a class="headerlink" href="#filtering-a-shader-assignment" title="Permalink to this headline">¶</a></h2>
+<p>Everything is looking rather uniform right now, because so far we&#8217;ve used one material for everything. Let&#8217;s assign a metallic material to a few objects to add some interest.</p>
+<ul class="simple">
+<li>Make a Disney material as before (<em>/Appleseed/Shader/Material/As_Disney_Material</em>)</li>
+<li>Edit it using the NodeEditor<ul>
+<li>Set <strong>Metallic</strong> to <code class="docutils literal"><span class="pre">0.8</span></code></li>
+<li>Set <strong>Roughness</strong> to <code class="docutils literal"><span class="pre">0.4</span></code></li>
+</ul>
+</li>
+<li>Create a Shader assignment as before (<em>/Scene/Attributes/ShaderAssignment</em>), and make sure the
+new material is connected into it.</li>
+<li>Insert the new ShaderAssignment into the connection below the previous one.</li>
+</ul>
+<p><img alt="Second shader assignment" src="../../_images/secondShaderAssignment.png" /></p>
+<p>The viewer should update to show the new assignment.</p>
+<p><img alt="Second shader assignment render" src="../../_images/secondShaderAssignmentRender.png" /></p>
+<p>Oops. Because the new ShaderAssignment is downstream from the first one, it has overridden the first assignment, and now <em>everything</em> is chrome. We need a way of limiting the objects that the second ShaderAssignment is applied to - in Gaffer this is referred to as <em>filtering</em> the ShaderAssignment, and it is done using special Filter nodes&nbsp;:</p>
+<ul class="simple">
+<li>Create a PathFilter node (<em>/Scene/Filters/PathFilter</em>). This chooses which objects to affect based on their names.</li>
+<li>Use the NodeEditor to add <code class="docutils literal"><span class="pre">/group/GAFFERBOT/C_torso_GRP/C_head_GRP/C_head_CPT/L_ear001_REN</span></code> to the <strong>Paths</strong>. This is the
+full name of the left ear of the robot, as you see it listed in the SceneHierarchy.</li>
+<li>Connect the output of the PathFilter into the filter input on the right hand side of the ShaderAssignment1 node.</li>
+</ul>
+<p><img alt="Filter connection" src="../../_images/filterConnection.png" /></p>
+<p>The render should now update, with the chrome shader applied only to the ear.</p>
+</div>
+<div class="section" id="editing-the-filter">
+<span id="editing-the-filter"></span><h2>Editing the filter<a class="headerlink" href="#editing-the-filter" title="Permalink to this headline">¶</a></h2>
+<p>We might like to apply the chrome shader to more objects, but it&#8217;ll be a bit tedious to continue entering object names manually as
+we just did. First, let&#8217;s use Gaffer&#8217;s pattern matching to pick both ears&nbsp;:</p>
+<ul class="simple">
+<li>Select the PathFilter node to edit it in the NodeEditor</li>
+<li>Delete <code class="docutils literal"><span class="pre">L_ear001_REN</span></code> at the end of the path we entered previously, and replace it with <code class="docutils literal"><span class="pre">*_ear*</span></code></li>
+</ul>
+<p>The <code class="docutils literal"><span class="pre">*</span></code> automatically matches any sequence of characters, so the filter will now match the left <em>and</em> the right ears. We&#8217;re still some way from chromifying everything we want to though, so let&#8217;s take a look at using a more visual approach.</p>
+<ul class="simple">
+<li>In the Viewer panel, switch to the tab containing the 3d view.</li>
+<li>Hold down <em>Alt</em> and use the camera navigation controls to frame the face.</li>
+<li>Select the eyebrows by <em>Left-Clicking</em> on them.</li>
+<li>Add the mouth to the selection by <em>Shift + Left-Clicking</em> on it.</li>
+</ul>
+<p><img alt="Face selection" src="../../_images/faceSelection.png" /></p>
+<ul class="simple">
+<li>Start a <em>Left-Drag</em> from the selected objects. The cursor should change to <img alt="Objects Image" src="../../_images/objects.png" /> to indicate you are dragging them.</li>
+<li>Continue the drag into the NodeGraph and hover over the PathFilter node.</li>
+<li>Hold <em>Shift</em> to indicate that you wish to add to the PathFilter rather than replace the
+existing contents. The cursor will change from <img alt="Replace Objects" src="../../_images/replaceObjects.png" /> to <img alt="Add Objects" src="../../_images/addObjects.png" /> to indicate this.</li>
+<li>Finally, drop the objects to add them to the PathFilter.</li>
+</ul>
+<p>Just as objects can be added by holding <em>Shift</em>, they can be removed by holding <em>Control</em>. With this in mind, we can add and remove objects from the shader assignment to taste, switching tabs to view the rendered image as it updates. After adding the grabbers and bolts to the filter, we should arrive at an image something like the following.</p>
+<p><img alt="Final render" src="../../_images/finalRender.png" /></p>
+</div>
+<div class="section" id="recap">
+<span id="recap"></span><h2>Recap<a class="headerlink" href="#recap" title="Permalink to this headline">¶</a></h2>
+<p>There is no doubt still a lot that could be done to improve our render, but alas, at this point your faithful author finds himself at the limits of his meagre artistic ability. We&#8217;ve seen how Gaffer allows caches to be loaded and navigated lazily on demand. We&#8217;ve seen how to create lights and cameras and combine them into a scene for rendering. We&#8217;ve demonstrated how to rearrange the UI for improved interaction, and we&#8217;ve seen how shading networks can be constructed and assigned.</p>
+<p>Hopefully this provides a solid basis for your own further exploration, which will no doubt be less creatively challenged. You might like to start by exploring the addition of more lights, found in the <em>/Appleseed/Lights</em> node menu, or by creating more expansive shading networks using the shaders found in the <em>/Appleseed/Shaders</em> node menu.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Scripting/index.html" class="btn btn-neutral float-right" title="Scripting" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="Tutorials" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016 John Haddon, 2011-2016 Image Engine Design Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.42.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

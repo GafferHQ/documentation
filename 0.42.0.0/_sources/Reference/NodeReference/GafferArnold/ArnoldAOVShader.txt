@@ -1,0 +1,37 @@
+ArnoldAOVShader
+===============
+
+Sets up global shaders in the Arnold options which can be used to populate global AOVs.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+optionSuffix
+------------
+
+This suffix defines where the aov shader is stored in the render options. If you use
+an existing suffix, you will overwrite instead of creating a new AOV shader.
+
+shader
+------
+
+The shader to be assigned.

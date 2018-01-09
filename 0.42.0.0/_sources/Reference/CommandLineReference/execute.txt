@@ -1,0 +1,54 @@
+execute
+=======
+
+Executes task nodes such as ImageWriters, SystemCommands and Render nodes
+from within a .gfr file. This is used by Gaffer's dispatchers when executing
+nodes in a background process or on a render farm, but can also be used to
+perform a manual execution from the command line.
+
+Example usage :
+
+```
+gaffer execute -script comp.gfr -nodes ImageWriter -frames 1-10
+```
+
+-help
+-----
+
+Prints names and descriptions of each parameter rather than running the application.
+
+-threads
+--------
+
+The maximum number of threads used for computation. The default value of zero causes the number of threads to  be chosen automatically based on the available hardware.
+
+-profileFileName
+----------------
+
+If this is specified, then the application is run using the cProfile profiling module, and the results saved to the file for later examination.
+
+-script
+-------
+
+The script to execute.
+
+-ignoreScriptLoadErrors
+-----------------------
+
+Causes errors which occur while loading the script to be ignored. Not recommended.
+
+-nodes
+------
+
+The names of the nodes to execute. If not specified then all executable nodes will be found automatically.
+
+-frames
+-------
+
+The frames to execute.
+
+-context
+--------
+
+The context used during execution. Note that the frames parameter will be used to vary the context frame entry.
+
