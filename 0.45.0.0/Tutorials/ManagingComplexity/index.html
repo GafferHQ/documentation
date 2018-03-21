@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Managing Complexity &mdash; Gaffer 0.45.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Gaffer 0.45.0.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Tutorials" href="../index.html"/>
+        <link rel="next" title="Reference" href="../../Reference/index.html"/>
+        <link rel="prev" title="Using The OSLCode Node" href="../Scripting/UsingTheOSLCodeNode/index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Gaffer
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.45.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/index.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Scripting/index.html">Scripting</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Managing Complexity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#complexity-and-node-graph-structure">Complexity and Node Graph Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pathfilter-wildcards">PathFilter Wildcards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#expressions">Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instancing">Instancing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#performance-monitor">Performance Monitor</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Reference/index.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ReleaseNotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Appendices/index.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Gaffer</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+        
+      <li>Managing Complexity</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Tutorials/ManagingComplexity/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="managing-complexity">
+<span id="managing-complexity"></span><h1>Managing Complexity<a class="headerlink" href="#managing-complexity" title="Permalink to this headline">¶</a></h1>
+<p>Gaffer is designed to support huge scenes gracefully, by deferring the generation of each location  until requested by the user or renderer. It is also designed to be flexible, affording the user a great deal of control in how scenes are generated. These two goals are somewhat at odds; this document discusses the performance implications of various choices a user might make, and provides some guidelines for keeping Gaffer running smoothly.</p>
+<div class="section" id="complexity-and-node-graph-structure">
+<span id="complexity-and-node-graph-structure"></span><h2>Complexity and Node Graph Structure<a class="headerlink" href="#complexity-and-node-graph-structure" title="Permalink to this headline">¶</a></h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last"> Apply look development to models before grouping them into a single scene.</p>
+</div>
+<p>A very rough estimate for the complexity of a Gaffer scene can be made by considering the number of locations in the scene, and the number of nodes through which each location passes. For instance, we might say that 10 locations passing through 10 nodes (<code class="docutils literal"><span class="pre">10</span> <span class="pre">*</span> <span class="pre">10</span> <span class="pre">=</span> <span class="pre">100</span></code>) is roughly equivalent to 20 locations passing through 5 nodes (<code class="docutils literal"><span class="pre">20</span> <span class="pre">*</span> <span class="pre">5</span> <span class="pre">=</span> <span class="pre">100</span></code>). When we consider that most scenes will be comprised of a number of assets each with an associated look (shaders and other render attributes), we can use this knowledge to structure our node graphs for best performance.</p>
+<p>Let&#8217;s consider a scene containing 4 assets, with the model for each imported into Gaffer via separate SceneReader nodes. Each asset will also have a look development setup to be assigned. This will be brought into Gaffer via a Reference node per asset, and placed downstream of the SceneReaders. This presents us with the two options for structuring the node graph illustrated below.</p>
+<p>We can either group the models into a single scene graph and then apply the look development in series...</p>
+<p><img alt="Grouping Then Applying Look Development" src="../../_images/groupFirst.png" /></p>
+<p>...or we can first apply the look development and then group.</p>
+<p><img alt="Applying Look Development Then Grouping" src="../../_images/groupSecond.png" /></p>
+<p>For the sake of simplicity, let&#8217;s assume that each model contains 1000 locations, and each look development setup contains 100 nodes. Now we can estimate the load placed on Gaffer by each of the graphs above.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">groupingFirst</span> <span class="o">=</span> <span class="n">locations</span> <span class="o">*</span> <span class="n">nodes</span>
+              <span class="o">=</span> <span class="p">(</span><span class="n">locationsPerModel</span> <span class="o">*</span> <span class="n">numberOfAssets</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">nodesPerLook</span> <span class="o">*</span> <span class="n">numberOfAssets</span><span class="p">)</span>
+              <span class="o">=</span> <span class="p">(</span><span class="mi">1000</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+              <span class="o">=</span> <span class="mi">4000</span> <span class="o">*</span> <span class="mi">400</span>
+              <span class="o">=</span> <span class="mi">1600000</span>
+
+<span class="n">groupingSecond</span>  <span class="o">=</span> <span class="n">locations</span> <span class="o">*</span> <span class="n">nodes</span>
+                <span class="o">=</span> <span class="n">locationsPerModel</span> <span class="o">*</span> <span class="n">numberOfAssets</span> <span class="o">*</span> <span class="n">nodesPerLook</span>
+                <span class="o">=</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">1000</span>
+                <span class="o">=</span> <span class="mi">400000</span>
+</pre></div>
+</div>
+<p>That&#8217;s a whopping factor of <strong>4</strong> difference in load, just from some simple restructuring of the graph. What&#8217;s more, it&#8217;s no coincidence that <strong>4</strong> is the number of assets we have - if we had <strong>100</strong> assets we would be looking at a factor of <strong>100</strong> difference in load between our two options. To state things more formally, grouping second has linear complexity with respect to the number of assets, and grouping first has quadratic complexity. Informally, that means that grouping second is a dramatically better approach, and should be the first consideration when structuring large graphs.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"> Of course, much of the flexibility and power Gaffer provides comes from the ability to perform
+edits on the entire scene after grouping has been performed - this is invaluable when making edits on a per-shot or per-sequence basis. The guideline above isn&#8217;t intended to discourage this at all, and is
+intended to apply to the use of published models and lookdev only.</p>
+</div>
+</div>
+<div class="section" id="pathfilter-wildcards">
+<span id="pathfilter-wildcards"></span><h2>PathFilter Wildcards<a class="headerlink" href="#pathfilter-wildcards" title="Permalink to this headline">¶</a></h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last"> Limit the use of <code class="docutils literal"><span class="pre">'...'</span></code>.</p>
+</div>
+<p>The <code class="docutils literal"><span class="pre">'...'</span></code> wildcard in PathFilter expressions means &#8220;match any number of names&#8221;. So, <code class="docutils literal"><span class="pre">'/world/.../house'</span></code> matches <code class="docutils literal"><span class="pre">'/world/village/house'</span></code> as well as <code class="docutils literal"><span class="pre">'/world/country/state/metropolis/neighbourhood/street/house'</span></code>. This can be very useful, but it comes at a price. Certain operations in Gaffer require the scene hierarchy to be searched for all matches below a particular location. As you might guess, the presence of <code class="docutils literal"><span class="pre">'...'</span></code> forces this search to go ever deeper, just in case a child (or a child of a child of a child) might match. For large scenes, this can become very expensive.</p>
+<p>The most painful expression possible is <code class="docutils literal"><span class="pre">'/.../something'</span></code>, because it literally says &#8220;search the entire scene&#8221;. Although this can be necessary at times, experience has shown that such expressions are often used where a more precise form could do the same job with better performance. For instance, if it is known that all the matches are within a single asset, an expression such as <code class="docutils literal"><span class="pre">/AssetA/.../something</span></code> will limit the search to that asset only. Alternatively, if it known that all the matches are at a specific depth, a pattern such as <code class="docutils literal"><span class="pre">/*/something</span></code> or <code class="docutils literal"><span class="pre">/*/*/something</span></code> will yield the same results without needing to visit deeper locations. Small changes such as this can have a significant impact on scene performance, so it is always worth taking the time to make expressions as precise as possible.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"> It&#8217;s actually a slight simplification to say that <code class="docutils literal"><span class="pre">'...'</span></code> is always costly. In fact, for
+simple nodes such as ShaderAssignment and Attributes, the performance implications are negligible.
+This is because such nodes can operate on a single location in isolation, and never need to consider
+the big picture of the scene as a whole. Generally, it&#8217;s only hierarchy-altering nodes such as Prune
+and Isolate where <code class="docutils literal"><span class="pre">'...'</span></code> is particularly performance sensitive. Despite this, it&#8217;s best to cultivate a general wariness surrounding <code class="docutils literal"><span class="pre">'...'</span></code>, and it&#8217;s always best to make PathFilter expressions as precise as possible in any case,
+to document your intentions to anyone who might inherit the setup.</p>
+</div>
+</div>
+<div class="section" id="expressions">
+<span id="expressions"></span><h2>Expressions<a class="headerlink" href="#expressions" title="Permalink to this headline">¶</a></h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last"> Prefer OSL to Python in expressions.</p>
+</div>
+<p>Although Python is a great language, it is not the quickest, and it has shockingly bad support for multithreading. In contrast, OSL is pretty quick and multithreads well. In situations where an expression will be evaluated frequently (maybe once per scene location), the equivalent OSL expression can give significantly improved performance over Python. For instance, tests using a per-instance expression for 100,000 instances yielded a 2x speedup in total scene generation time when using a single thread, and a 16x speedup when using 12 threads.</p>
+<p>That&#8217;s not to say that Python should be avoided entirely of course. Python provides access to databases, the filesystem and all of the Gaffer and Cortex modules, providing far more flexibility than OSL. Typically, if a Python expression doesn&#8217;t access <code class="docutils literal"><span class="pre">context[&quot;scene:path&quot;]</span></code> or another frequently changing variable, Gaffer&#8217;s caching mechanisms will ensure that the expression will be run only once, keeping everything running as smoothly as possible. But, if in doubt, use OSL.</p>
+</div>
+<div class="section" id="instancing">
+<span id="instancing"></span><h2>Instancing<a class="headerlink" href="#instancing" title="Permalink to this headline">¶</a></h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last"> Treat the Instancer with care!</p>
+</div>
+<p>The Instancer is capable of generating a huge number of locations, and this can obviously have a performance impact. Because it also supports per-instance variation through the use of expressions on the upstream instance graph, it must actually evaluate the instance graph individually for every given instance. In fact, Instancer is a particularly misleading name in this case.</p>
+<p>Bearing in mind the rough complexity metric of <code class="docutils literal"><span class="pre">numberOfLocations</span> <span class="pre">*</span> <span class="pre">numberOfNodes</span></code> from above, we can arrive at these guidelines&nbsp;:</p>
+<ul class="simple">
+<li>Use a minimum of nodes to generate the input to the <code class="docutils literal"><span class="pre">instance</span></code> plug. Consider baking the instance graph to a cache and loading with a SceneReader if necessary.</li>
+<li>Use a minimum of nodes below the instancer to modify the scene containing all the instances.</li>
+<li>Group or Parent the instances into the main scene as late in the node graph as possible.</li>
+<li>Prefer to assign shaders and set attributes on a location above all the instances, rather than on a per-instance basis.</li>
+</ul>
+</div>
+<div class="section" id="performance-monitor">
+<span id="performance-monitor"></span><h2>Performance Monitor<a class="headerlink" href="#performance-monitor" title="Permalink to this headline">¶</a></h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last"> Use the Performance Monitor.</p>
+</div>
+<p>Gaffer includes a built in performance monitor which can be useful when optimising node graphs for performance or tracking down a bug. It can be turned on for batch rendering in the statistics section of a StandardOptions node. This will cause performance statistics to be output into the render logs for later analysis.</p>
+<p><img alt="Turning on the performance monitor" src="../../_images/performanceMonitor.png" /></p>
+<p>Alternatively, the <a class="reference internal" href="../../Reference/CommandLineReference/stats.html"><span class="doc">stats app</span></a> allows the same monitoring to be performed from the command line, without the need to perform a render.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../Reference/index.html" class="btn btn-neutral float-right" title="Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../Scripting/UsingTheOSLCodeNode/index.html" class="btn btn-neutral" title="Using The OSLCode Node" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016 John Haddon, 2011-2016 Image Engine Design Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.45.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

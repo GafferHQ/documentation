@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SceneElementProcessor &mdash; Gaffer 0.45.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Gaffer 0.45.0.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="GafferScene" href="index.html"/>
+        <link rel="next" title="SceneLoop" href="SceneLoop.html"/>
+        <link rel="prev" title="SceneContextVariables" href="SceneContextVariables.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Gaffer
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.45.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../Installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../UIReference/index.html">UI Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Node Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Gaffer/index.html">Gaffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferAppleseed/index.html">GafferAppleseed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferArnold/index.html">GafferArnold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferCortex/index.html">GafferCortex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferDispatch/index.html">GafferDispatch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferImage/index.html">GafferImage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferOSL/index.html">GafferOSL</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferScene</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="AimConstraint.html">AimConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="AttributeVisualiser.html">AttributeVisualiser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Attributes.html">Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Camera.html">Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ClippingPlane.html">ClippingPlane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CollectScenes.html">CollectScenes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CoordinateSystem.html">CoordinateSystem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CopyOptions.html">CopyOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Cube.html">Cube</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CustomAttributes.html">CustomAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CustomOptions.html">CustomOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeleteAttributes.html">DeleteAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeleteCurves.html">DeleteCurves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeleteFaces.html">DeleteFaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeleteGlobals.html">DeleteGlobals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeleteOptions.html">DeleteOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeleteOutputs.html">DeleteOutputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeletePoints.html">DeletePoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeletePrimitiveVariables.html">DeletePrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeleteSceneContextVariables.html">DeleteSceneContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DeleteSets.html">DeleteSets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Duplicate.html">Duplicate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Encapsulate.html">Encapsulate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="EvaluateLightLinks.html">EvaluateLightLinks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ExternalProcedural.html">ExternalProcedural</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Filter.html">Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="FilterProcessor.html">FilterProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="FilterResults.html">FilterResults</a></li>
+<li class="toctree-l4"><a class="reference internal" href="FilterSwitch.html">FilterSwitch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="FilteredSceneProcessor.html">FilteredSceneProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="FreezeTransform.html">FreezeTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Grid.html">Grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Group.html">Group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Instancer.html">Instancer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="InteractiveRender.html">InteractiveRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Isolate.html">Isolate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LightToCamera.html">LightToCamera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="LightTweaks.html">LightTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="MapOffset.html">MapOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="MapProjection.html">MapProjection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="MeshTangents.html">MeshTangents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="MeshToPoints.html">MeshToPoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="MeshType.html">MeshType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ObjectToScene.html">ObjectToScene</a></li>
+<li class="toctree-l4"><a class="reference internal" href="OpenGLAttributes.html">OpenGLAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="OpenGLRender.html">OpenGLRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="OpenGLShader.html">OpenGLShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Options.html">Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Outputs.html">Outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Parameters.html">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Parent.html">Parent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ParentConstraint.html">ParentConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="PathFilter.html">PathFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Plane.html">Plane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="PointConstraint.html">PointConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="PointsType.html">PointsType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="PrimitiveVariables.html">PrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Prune.html">Prune</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Render.html">Render</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ResamplePrimitiveVariables.html">ResamplePrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SceneContextVariables.html">SceneContextVariables</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">SceneElementProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SceneLoop.html">SceneLoop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SceneNode.html">SceneNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SceneProcessor.html">SceneProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SceneReader.html">SceneReader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SceneSwitch.html">SceneSwitch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SceneTimeWarp.html">SceneTimeWarp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SceneWriter.html">SceneWriter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Seeds.html">Seeds</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Set.html">Set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SetFilter.html">SetFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Shader.html">Shader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ShaderAssignment.html">ShaderAssignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ShaderBall.html">ShaderBall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ShaderSwitch.html">ShaderSwitch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Sphere.html">Sphere</a></li>
+<li class="toctree-l4"><a class="reference internal" href="StandardAttributes.html">StandardAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="StandardOptions.html">StandardOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SubTree.html">SubTree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Text.html">Text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Transform.html">Transform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="UnionFilter.html">UnionFilter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferVDB/index.html">GafferVDB</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ScriptingReference/index.html">Scripting Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../CommandLineReference/index.html">Command Line Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ReleaseNotes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Appendices/index.html">Appendices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Gaffer</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Reference</a> &raquo;</li>
+        
+          <li><a href="../index.html">Node Reference</a> &raquo;</li>
+        
+          <li><a href="index.html">GafferScene</a> &raquo;</li>
+        
+      <li>SceneElementProcessor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/Reference/NodeReference/GafferScene/SceneElementProcessor.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sceneelementprocessor">
+<span id="sceneelementprocessor"></span><h1>SceneElementProcessor<a class="headerlink" href="#sceneelementprocessor" title="Permalink to this headline">¶</a></h1>
+<p>Base class for nodes which modify individual scene
+locations, but do not alter the hierarchy in any
+way.</p>
+<div class="section" id="user">
+<span id="user"></span><h2>user<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
+<p>Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.</p>
+</div>
+<div class="section" id="out">
+<span id="out"></span><h2>out<a class="headerlink" href="#out" title="Permalink to this headline">¶</a></h2>
+<p>The processed output scene.</p>
+</div>
+<div class="section" id="enabled">
+<span id="enabled"></span><h2>enabled<a class="headerlink" href="#enabled" title="Permalink to this headline">¶</a></h2>
+<p>The on/off state of the node. When it is off, the node outputs the input scene unchanged.</p>
+</div>
+<div class="section" id="in">
+<span id="in"></span><h2>in<a class="headerlink" href="#in" title="Permalink to this headline">¶</a></h2>
+<p>The input scene</p>
+</div>
+<div class="section" id="filter">
+<span id="filter"></span><h2>filter<a class="headerlink" href="#filter" title="Permalink to this headline">¶</a></h2>
+<p>The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="SceneLoop.html" class="btn btn-neutral float-right" title="SceneLoop" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="SceneContextVariables.html" class="btn btn-neutral" title="SceneContextVariables" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016 John Haddon, 2011-2016 Image Engine Design Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.45.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
