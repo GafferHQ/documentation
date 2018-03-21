@@ -8,12 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started &mdash; Gaffer 0.42.0.0 documentation</title>
+  <title>Getting Started &mdash; Gaffer 0.45.0.0 documentation</title>
   
 
   
   
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
   
 
   
@@ -32,7 +34,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.42.0.0 documentation" href="../../index.html"/>
+    <link rel="top" title="Gaffer 0.45.0.0 documentation" href="../../index.html"/>
         <link rel="up" title="Tutorials" href="../index.html"/>
         <link rel="next" title="Scripting" href="../Scripting/index.html"/>
         <link rel="prev" title="Tutorials" href="../index.html"/> 
@@ -44,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -63,7 +66,7 @@
             
             
               <div class="version">
-                0.42.0.0
+                0.45.0.0
               </div>
             
           
@@ -84,7 +87,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../Installation/index.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Getting Started</a><ul>
@@ -124,8 +130,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../index.html">Gaffer</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Gaffer</a>
+        
       </nav>
 
 
@@ -134,25 +142,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../index.html">Tutorials</a> &raquo;</li>
-      
-    <li>Getting Started</li>
+        
+      <li>Getting Started</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../_sources/Tutorials/GettingStarted/index.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -184,7 +209,7 @@ command&nbsp;:</p>
 </div>
 <div class="section" id="loading-some-geometry">
 <span id="loading-some-geometry"></span><h2>Loading some geometry<a class="headerlink" href="#loading-some-geometry" title="Permalink to this headline">¶</a></h2>
-<p>As Gaffer is primarily a lighting package, it is expected that modelling and animation will be performed in an external package and then imported into Gaffer in the form of an animation cache. Gaffer supports both the Alembic (.abc) file format and its own native SceneCache (.scc) format.</p>
+<p>As Gaffer is primarily a lighting package, it is expected that modelling and animation will be performed in an external package and then imported into Gaffer in the form of an animation cache. Gaffer supports the popular Alembic and USD file formats, and also its own native SceneCache (.scc) format.</p>
 <p>Let&#8217;s start by creating a <a class="reference internal" href="../../Reference/NodeReference/GafferScene/SceneReader.html"><span class="doc">SceneReader</span></a> node to load some geometry&nbsp;:</p>
 <ul class="simple">
 <li>Locate the <a class="reference internal" href="../../Reference/UIReference/NodeGraph.html"><span class="doc">NodeGraph</span></a> editor in the lower left pane.</li>
@@ -545,15 +570,18 @@ existing contents. The cursor will change from <img alt="Replace Objects" src=".
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Scripting/index.html" class="btn btn-neutral float-right" title="Scripting" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../Scripting/index.html" class="btn btn-neutral float-right" title="Scripting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../index.html" class="btn btn-neutral" title="Tutorials" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../index.html" class="btn btn-neutral" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -584,10 +612,11 @@ existing contents. The cursor will change from <img alt="Replace Objects" src=".
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.42.0.0',
+            VERSION:'0.45.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>

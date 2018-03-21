@@ -45,7 +45,7 @@ The names of the nodes to execute. If not specified then all executable nodes wi
 -frames
 -------
 
-The frames to execute.
+The frames to execute. The default value executes the current frame as stored in the script.
 
 -context
 --------

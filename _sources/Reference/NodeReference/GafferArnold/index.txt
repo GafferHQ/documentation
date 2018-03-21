@@ -2,7 +2,9 @@ GafferArnold
 ============
 
 - [ArnoldAOVShader](ArnoldAOVShader.md)
+- [ArnoldAtmosphere](ArnoldAtmosphere.md)
 - [ArnoldAttributes](ArnoldAttributes.md)
+- [ArnoldBackground](ArnoldBackground.md)
 - [ArnoldDisplacement](ArnoldDisplacement.md)
 - [ArnoldLight](ArnoldLight.md)
 - [ArnoldMeshLight](ArnoldMeshLight.md)

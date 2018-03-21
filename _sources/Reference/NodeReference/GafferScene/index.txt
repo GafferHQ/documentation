@@ -2,7 +2,6 @@ GafferScene
 ===========
 
 - [AimConstraint](AimConstraint.md)
-- [AlembicSource](AlembicSource.md)
 - [AttributeVisualiser](AttributeVisualiser.md)
 - [Attributes](Attributes.md)
 - [Camera](Camera.md)

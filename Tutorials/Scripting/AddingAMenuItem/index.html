@@ -8,12 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Adding a Menu Item &mdash; Gaffer 0.42.0.0 documentation</title>
+  <title>Adding a Menu Item &mdash; Gaffer 0.45.0.0 documentation</title>
   
 
   
   
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
   
 
   
@@ -32,7 +34,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.42.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.45.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="Scripting" href="../index.html"/>
         <link rel="next" title="Querying A Scene" href="../QueryingAScene/index.html"/>
         <link rel="prev" title="Creating Configuration Files" href="../CreatingConfigurationFiles/index.html"/> 
@@ -44,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -63,7 +66,7 @@
             
             
               <div class="version">
-                0.42.0.0
+                0.45.0.0
               </div>
             
           
@@ -84,7 +87,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../Installation/index.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../GettingStarted/index.html">Getting Started</a></li>
@@ -121,8 +127,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Gaffer</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Gaffer</a>
+        
       </nav>
 
 
@@ -131,27 +139,44 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../index.html">Tutorials</a> &raquo;</li>
-      
+        
           <li><a href="../index.html">Scripting</a> &raquo;</li>
-      
-    <li>Adding a Menu Item</li>
+        
+      <li>Adding a Menu Item</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/Tutorials/Scripting/AddingAMenuItem/index.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -184,7 +209,7 @@ define that in the next section.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last"> Here we&#8217;re concentrating on the main menu, but you&#8217;ll find examples for adding menu items to the NodeGraph,
-NodeEditor and more in <a class="reference external" href="https://github.com/GafferHQ/gaffer/tree/0.42.0.0/startup/gui">Gaffer&#8217;s own configuration files</a></p>
+NodeEditor and more in <a class="reference external" href="https://github.com/GafferHQ/gaffer/tree/0.45.0.0/startup/gui">Gaffer&#8217;s own configuration files</a></p>
 </div>
 </div>
 <div class="section" id="creating-some-nodes">
@@ -270,15 +295,18 @@ cheese and finally meat.</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../QueryingAScene/index.html" class="btn btn-neutral float-right" title="Querying A Scene" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../QueryingAScene/index.html" class="btn btn-neutral float-right" title="Querying A Scene" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../CreatingConfigurationFiles/index.html" class="btn btn-neutral" title="Creating Configuration Files" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../CreatingConfigurationFiles/index.html" class="btn btn-neutral" title="Creating Configuration Files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -309,10 +337,11 @@ cheese and finally meat.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.42.0.0',
+            VERSION:'0.45.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

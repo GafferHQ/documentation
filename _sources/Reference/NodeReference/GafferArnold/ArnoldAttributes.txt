@@ -242,6 +242,24 @@ attributes.volumePadding
 Allows a volume to be displaced outside its bounds.  When
 rendering a mesh as a volume, this enables displacement.
 
+attributes.velocityScale
+------------------------
+
+Scales the vector used in VDB motion blur computation.
+
+attributes.velocityFPS
+----------------------
+
+Sets the frame rate used in VDB motion blur computation.
+
+attributes.velocityOutlierThreshold
+-----------------------------------
+
+Sets the outlier threshold used in VDB motion blur computation.
+
+When rendering physics simulations resulting velocities are
+potentially noisy and require some filtering for faster rendering.
+
 global
 ------
 

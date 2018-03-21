@@ -25,13 +25,14 @@ in
 
 The input scene
 
+shader
+------
+
+The shader to be assigned. This will be stored as an
+option within the scene globals.
+
 optionSuffix
 ------------
 
 This suffix defines where the aov shader is stored in the render options. If you use
 an existing suffix, you will overwrite instead of creating a new AOV shader.
-
-shader
-------
-
-The shader to be assigned.

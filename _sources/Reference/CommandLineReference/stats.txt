@@ -50,10 +50,10 @@ The script to examine.
 
 Output the results to this file on disk rather than stdout
 
--frame
-------
+-frames
+-------
 
-The frame to evaluate statistics at.
+The frames to evaluate statistics for. The default value uses the current frame as stored in the script.
 
 -nodeSummary
 ------------

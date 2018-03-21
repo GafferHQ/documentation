@@ -47,6 +47,25 @@ but is typically used by dispatchers to control
 default frame ranges, and by the UI to define
 the range of the time slider.
 
+frame
+-----
+
+The current frame.
+
+> Note : To perform a computation at a particular time,
+> you should create your own context rather than change
+> the value of this plug.
+>
+> ```
+> with Gaffer.Context( script.context() ) as c :
+>       c.setFrame( f )
+>   ...
+> ```
+>
+> Likewise, you should never refer to this plug from
+> an expression. Always retrieve the frame with
+> `context.getFrame()` instead.
+
 framesPerSecond
 ---------------
 

@@ -8,12 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ArnoldMeshLight &mdash; Gaffer 0.42.0.0 documentation</title>
+  <title>ArnoldMeshLight &mdash; Gaffer 0.45.0.0 documentation</title>
   
 
   
   
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
   
 
   
@@ -32,7 +34,7 @@
   
 
   
-    <link rel="top" title="Gaffer 0.42.0.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="Gaffer 0.45.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="GafferArnold" href="index.html"/>
         <link rel="next" title="ArnoldOptions" href="ArnoldOptions.html"/>
         <link rel="prev" title="ArnoldLight" href="ArnoldLight.html"/> 
@@ -44,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -63,7 +66,7 @@
             
             
               <div class="version">
-                0.42.0.0
+                0.45.0.0
               </div>
             
           
@@ -84,7 +87,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../Installation/index.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Reference</a><ul class="current">
@@ -94,7 +100,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../GafferAppleseed/index.html">GafferAppleseed</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferArnold</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="ArnoldAOVShader.html">ArnoldAOVShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ArnoldAtmosphere.html">ArnoldAtmosphere</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ArnoldAttributes.html">ArnoldAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ArnoldBackground.html">ArnoldBackground</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ArnoldDisplacement.html">ArnoldDisplacement</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ArnoldLight.html">ArnoldLight</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">ArnoldMeshLight</a></li>
@@ -132,8 +140,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Gaffer</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Gaffer</a>
+        
       </nav>
 
 
@@ -142,29 +152,46 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../index.html">Reference</a> &raquo;</li>
-      
+        
           <li><a href="../index.html">Node Reference</a> &raquo;</li>
-      
+        
           <li><a href="index.html">GafferArnold</a> &raquo;</li>
-      
-    <li>ArnoldMeshLight</li>
+        
+      <li>ArnoldMeshLight</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/Reference/NodeReference/GafferArnold/ArnoldMeshLight.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -307,15 +334,18 @@ shader.</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ArnoldOptions.html" class="btn btn-neutral float-right" title="ArnoldOptions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ArnoldOptions.html" class="btn btn-neutral float-right" title="ArnoldOptions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ArnoldLight.html" class="btn btn-neutral" title="ArnoldLight" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ArnoldLight.html" class="btn btn-neutral" title="ArnoldLight" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -346,10 +376,11 @@ shader.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.42.0.0',
+            VERSION:'0.45.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
