@@ -1,0 +1,37 @@
+CopyOptions
+===========
+
+A node which copies options from a source scene.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+source
+------
+
+The source of the options to be copied.
+
+names
+-----
+
+The names of options to be copied. Names should be
+separated by spaces and can use Gaffer's standard wildcards.
