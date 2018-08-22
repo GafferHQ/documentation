@@ -1,7 +1,0 @@
-0.62.1
-======
-
-* Fixed gl sharing widget bug when launching gaffer in maya
-
-* ExecutableRenderer now always launches the render asynchronously to avoid locking the maya UI
-

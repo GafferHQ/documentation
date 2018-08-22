@@ -1,5 +1,0 @@
-0.35.2
-======
-
-* Added a minimum size of the OpDialogue
-
