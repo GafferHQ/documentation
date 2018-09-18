@@ -1,0 +1,52 @@
+CopyAttributes
+==============
+
+Copies attributes from a second scene, adding them to the attributes
+of the main input scene.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scenes
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+attributes
+----------
+
+The names of the attributes to be copied. These should be
+separated by spaces and can use Gaffer's standard wildcards
+to match multiple attributes.
+
+copyFrom
+--------
+
+The location that attributes are copied from. By default, attributes
+are copied from the location equivalent to the one they are being copied to.
+
+deleteExisting
+--------------
+
+Deletes all attributes from the input scene before adding the copied
+attributes.

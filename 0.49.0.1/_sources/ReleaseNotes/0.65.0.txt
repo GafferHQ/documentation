@@ -1,0 +1,17 @@
+0.65.0
+======
+
+* Added divisions plug to Plane node.
+* Added Cube and Sphere scene sources ([#97](https://github.com/GafferHQ/gaffer/issues/97)).
+* Added a Text node to GafferScene.
+* Added labelling support to TabbedContainer auto-parenting mechanism.
+* Added ImageViewer pixel inspection by dragging pixels to the script editor ([#245](https://github.com/GafferHQ/gaffer/issues/245)).
+* Added python bindings for Views ([#323](https://github.com/GafferHQ/gaffer/issues/323)).
+* Added screengrab app.
+* Implemented Gaffer->About menu item ([#6](https://github.com/GafferHQ/gaffer/issues/6)).
+* Improved ImageView to allow subclassing ([#323](https://github.com/GafferHQ/gaffer/issues/323)).
+* Set the name attribute for lights properly in the Render node ([#326](https://github.com/GafferHQ/gaffer/issues/326)).
+* Fixed GLWidget for use inside Maya 2013.
+* Fixed Recent Files menu bug ([#333](https://github.com/GafferHQ/gaffer/issues/333)).
+* Fixed a bug in ViewportGadget drag event propogation.
+

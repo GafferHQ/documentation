@@ -1,0 +1,37 @@
+0.12.0
+======
+
+* Added a VectorDataWidget and a VectorDataPlugValueWidget, handling plugs of type StringVectorPlug, IntVectorPlug, FloatVectorPlug and V3fVectorPlug. Still needs file selector support.
+
+* Added a V3fVectorDataPlug and a V3fVectorDataParameter handler.
+
+* All gaffer applications now include a call to IECore.registerRunTimeTyped.
+
+* Fixed bug which would cause the base class doRender() method to be called in addition to the overridden one when subclassing from Gadget in python.
+
+* Plug::setInput() now calls acceptsInput() even when the new input is null. This allows plugs to reject the removal of existing connections. The connection gadget has been updated to respect the new rejection possibility, preventing the dragging of the destination end of a connection to a plug whose acceptsInput( 0 ) returns false, and not attempting to set the input if the source end of source a connection is dragged off into space. Currently no Gaffer plug type returns false from acceptsInput( 0 ), but custom plugs are free to do so and Gaffer plugs may return false in the future based on the content of a ReadOnly or Locked flag on the plug.
+
+* Window constructor now accepts an additional "child" keyword argument which is passed to a call to setChild().
+
+* Fixed problem whereby the hover colour for the SplitContainer handles wouldn't work on all platforms.
+
+* The GraphEditor now provides access to its internal GraphGadget with the graphGadget() method.
+
+* Refactored the Set class into an abstract base class and a StandardSet class containing the previous functionality. The members() and sequencedMembers() methods have been removed as they didn't generalise well to other potential Set subclasses (such as a NameFilteredSet). Instead a new member( i ) method provides ordered access and the contains( member ) method provides membership queries.
+
+* Added a ChildSet class whose membership tracks the children of a given GraphComponent.
+
+* Added python bindings for Nodule::plug and Connection::srcNodule() and Connection::dstNodule().
+
+* Added CompoundEditor.editors() method, which returns all the child editors, optionally filtered by type.
+
+* GraphGadget can now show arbitrary Sets of nodes, specified using the GraphGadget::setGraphSet() method.
+
+* GafferBindings::SignalBinder now supports signals of arity 0.
+
+* GafferBindings::SignalBinder now returns the class that was bound, so that additional method bindings may be added by calling code.
+
+* A generic set of python signals are now bound as Signal0, Signal1, Signal2 and Signal3, where the number denotes the number of arguments the Signal takes. Python callables may be used to provide custom result combiners - see GafferTest.SignalsTest for examples.
+
+* The GraphEditor now allows custom right click menus to be displayed for nodes in the graph. See GraphEditor.nodeContextMenuSignal() for brief documentation.
+

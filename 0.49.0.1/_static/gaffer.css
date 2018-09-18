@@ -1,0 +1,159 @@
+/* ===================================
+CSS overrides for Gaffer documentation
+==================================== */
+
+/* Match regular nav background to Gaffer brand colors */
+.wy-side-nav-search {
+    background-color: #343131;
+}
+
+/* Match mobile nav background to Gaffer brand colors */
+.wy-nav-top {
+    background-color: #b92227;
+}
+
+/* Increase nav version color visibility */
+.wy-side-nav-search > div.version {
+    color: inherit;
+}
+
+/* Add "Gaffer" in front of nav version (this sidesteps changing the Sphinx template) */
+.wy-side-nav-search > div.version::before {
+    content: "Gaffer ";
+}
+
+/* Make nav search simpler and a little duller when not focused */
+.wy-side-nav-search input[type="text"] {
+    border-width: 2px;
+    border-color: transparent;
+    background-color: lightgrey;
+    background-clip:  padding-box;
+    transition: all 0.3s linear;
+}
+
+/* Transition search bar to white bg with Gaffer red border on focus */
+.wy-side-nav-search input[type="text"]:focus {
+    border-color: #b92227;
+    background-color: white;
+}
+
+/* Make nav button color red on click */
+.wy-menu-vertical a:active {
+    background-color:#b92227;
+}
+
+/* Increase font size for mobile header title */
+.wy-nav-top a {
+    font-size: 120%;
+}
+
+/* Adjust the mobile menu button (and center-align mobile header title) */
+.wy-nav-top i {
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+}
+
+/* Add icon after external links */
+a[href^="http"]:after {
+    content: " " url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=);
+    color: #2980B9;
+}
+
+/* Fix fallback image text vertically alignment when inline */
+img {
+    vertical-align: initial;
+}
+
+/* Make nested and serial headers more distinguishable */
+h2 {
+    margin-top: 2em;
+    padding-bottom: 0.25em;
+    border-bottom: 1px solid #e1e4e5;
+}
+
+h3 {
+    font-size: 100%;
+}
+
+/* Enable word-wrapping and multiple lines for table cells */
+table.docutils td {    
+    white-space: initial !important;
+    vertical-align: initial !important;
+}
+
+/* Fix font size and spacing with multi-line table cells */
+table.docutils td p {
+    font-size: inherit;
+    margin-bottom: 12px;
+}
+
+/* Fix erroneous black middle borders in table headers */
+table.docutils th.head {
+    border-color: #e1e4e5;
+}
+
+/* Add custom keystroke class */
+kbd, code.kbd {
+    font-size: 0.9em;
+    border: 1px solid #888888;
+    border-radius: 3px;
+    background: #f5f5f5;
+    padding: 0 3px 1px 3px;
+    font-family: inherit;
+    color: #404040 !important;
+}
+
+/* Change icon of "Note" admonition to paperclip */
+.admonition.note p.first.admonition-title::before {
+    content: "\f0c6";
+}
+
+/* Change color of "Note" admonition to muted blue */
+.admonition.note {
+    background-color: #f3f6f6;
+}
+
+.admonition.note p.first.admonition-title {
+    background-color: #7796ab;
+}
+
+/* Change icon of "Tip" admonition to pointing hand */
+.admonition.tip p.first.admonition-title::before {
+    content: "\f0a4";
+}
+
+/* Change icon of "Important" admonition to star */
+.admonition.important p.first.admonition-title::before {
+    content: "\f005";
+    color: #ffffcc;
+}
+
+/* Change color of "Important" admonition to standard blue */
+.admonition.important {
+    background-color: #e7f2fa;
+}
+
+.admonition.important p.first.admonition-title {
+    background-color:#6ab0de
+}
+
+/* Change icon of "Caution" admonition to triangular exclamation */
+.admonition.caution p.first.admonition-title::before {
+    content: "\f071";
+}
+
+/* Change icon of "Warning" admonition to "no" sign */
+.admonition.warning p.first.admonition-title::before {
+    content: "\f05e";
+}
+
+/* Change color of "Warning" admonition to Gaffer red */
+.admonition.warning {
+    background-color: #fff0f0;
+}
+
+.admonition.warning p.first.admonition-title {
+    background-color: #b92227;
+}
