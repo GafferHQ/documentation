@@ -1,0 +1,33 @@
+AppleseedShaderBall
+===================
+
+Generates scenes suitable for rendering shader balls.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs
+an empty scene.
+
+shader
+------
+
+The shader to be rendered.
+
+resolution
+----------
+
+The resolution of the shader ball image, which
+is always a square.
