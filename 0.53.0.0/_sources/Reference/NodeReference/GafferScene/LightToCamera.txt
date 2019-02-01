@@ -1,0 +1,63 @@
+LightToCamera
+=============
+
+Converts lights into cameras. Spotlights are converted to a perspective
+camera with the field of view matching the cone angle, and distant lights are
+converted to an orthographic camera.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+Specifies which lights to convert.
+
+filmFit
+-------
+
+Determines how the size of the rendered image relates to the camera aperture. If the aspect
+ratios of the aperture and the output resolution are the same, then this has no effect,
+otherwise it dictates what method is used to preserve the pixel aspect ratio of the rendered
+image.
+
+Horizontal
+:   The frustum is adjusted so that the rendered image fills the full
+        width of the aperture and aspect ratio is preserved.
+
+Vertical
+:   The frustum is adjusted so that the rendered image fills the full
+        height of the aperture and aspect ratio is preserved.
+
+Fit
+:   Automatically picks Horizontal or Vertical such that all of the aperture is contained
+        within the output image. This may result in seeing outside the aperture at the top and
+        bottom or left and right.
+
+Fill
+:   Automatically picks Horizontal or Vertical such that the output image is fully covered by
+        the aperture. Part of the aperture may be cropped off at the top and bottom or left and
+        right.
+
+Distort
+:   Distorts the frustum so that the aperture is fitted exactly to the output display window,
+        resulting in non-square pixels
