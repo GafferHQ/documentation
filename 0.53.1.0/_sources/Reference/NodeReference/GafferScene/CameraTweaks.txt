@@ -1,0 +1,40 @@
+CameraTweaks
+============
+
+Makes modifications to camera parameter values.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+tweaks
+------
+
+The tweaks to be made to the parameters of the camera.
+Arbitrary numbers of user defined tweaks may be
+added as children of this plug via the user
+interface, or using the CameraTweaks API via python.
