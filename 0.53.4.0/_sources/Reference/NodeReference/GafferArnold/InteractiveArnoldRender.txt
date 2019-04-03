@@ -1,0 +1,28 @@
+InteractiveArnoldRender
+=======================
+
+Performs interactive renders using Arnold, updating the render on the fly
+whenever the input scene changes. Arnold supports edits to all aspects of
+the scene without needing to restart the render.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+in
+--
+
+The scene to be rendered.
+
+state
+-----
+
+Turns the rendering on and off, or pauses it.
+
+out
+---
+
+A direct pass-through of the input scene.
