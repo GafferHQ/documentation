@@ -1,0 +1,58 @@
+MeshTangents
+============
+
+Adds surface tangent primitive variables to the mesh using the specified positions and UVSet. 
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+uvSet
+-----
+
+Name of the UV set primitive variable used to calculate uTangent & vTangent.
+
+position
+--------
+
+Name of the primitive variable which contains the position data used calculate tangents & binormals. 
+For example 'Pref' would compute tangents using the reference positions (if defined)
+
+uTangent
+--------
+
+Name of the primitive variable which will contain the uTangent data. 
+
+vTangent
+--------
+
+Name of the primitive variable which will contain the vTangent data. 
+
+orthogonal
+----------
+
+Adjusts vTangent to be orthogonal to the uTangent. 
