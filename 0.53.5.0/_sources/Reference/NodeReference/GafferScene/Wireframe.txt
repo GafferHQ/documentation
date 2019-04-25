@@ -1,0 +1,48 @@
+Wireframe
+=========
+
+Creates a wireframe representation of a mesh. The wireframe
+is created as a CurvesPrimitive.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+position
+--------
+
+The primitive variable containing the positions to use
+for the wireframe. This must have either Vertex or FaceVarying
+interpolation and contain either V3fVectorData or V2fVectorData.
+
+> Tip : Use "uv" to create a wireframe representation of the
+> UVs for a mesh.
+
+width
+-----
+
+The width of the curves used to represent the wireframe.

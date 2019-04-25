@@ -1,0 +1,93 @@
+0.34.0.0
+========
+
+Breaking Changes
+----------------
+
+- ImageReader/ImageWriter : Replaced hardcoded colourspace management with configurable
+  system. The default colourspace for several file formats has changed. ([#2121](https://github.com/GafferHQ/gaffer/issues/2121))
+- ImagePlug : Changed type of `metadataPlug()` ([#2087](https://github.com/GafferHQ/gaffer/issues/2087))
+- ImageWriter : Changed default exr compression to "zips" ([#2092](https://github.com/GafferHQ/gaffer/issues/2092))
+- Shader : Added `loadShader()` and `reloadShader()` virtual methods ([#2098](https://github.com/GafferHQ/gaffer/issues/2098), [#2088](https://github.com/GafferHQ/gaffer/issues/2088))
+- ScriptNode : Added argument to `ScriptNode::paste()`. Default behaviour is unchanged. ([#2117](https://github.com/GafferHQ/gaffer/issues/2117))
+- ConnectionGadget : Added virtual method ([#2102](https://github.com/GafferHQ/gaffer/issues/2102))
+
+Features
+--------
+
+- Added configurable colourspace management to ImageReader and ImageWriter nodes ([#2121](https://github.com/GafferHQ/gaffer/issues/2121))
+- Added ResamplePrimitiveVariables node ([#2105](https://github.com/GafferHQ/gaffer/issues/2105))
+- Added DeleteFaces node ([#2118](https://github.com/GafferHQ/gaffer/issues/2118))
+- Added DeletePoints node ([#2120](https://github.com/GafferHQ/gaffer/issues/2120)
+- Added DeleteCurves node ([#2120](https://github.com/GafferHQ/gaffer/issues/2120))
+- Added CollectImages node ([#2116](https://github.com/GafferHQ/gaffer/issues/2116))
+- Added CollectScenes node ([#2127](https://github.com/GafferHQ/gaffer/issues/2127))
+- Added DeleteSceneContextVariables node ([#2111](https://github.com/GafferHQ/gaffer/issues/2111))
+- Added DeleteImageContextVariables node ([#2111](https://github.com/GafferHQ/gaffer/issues/2111))
+- Added Erode and Dilate filters ([#2134](https://github.com/GafferHQ/gaffer/issues/2134))
+- Added support for Qt5 ([#2132](https://github.com/GafferHQ/gaffer/issues/2132))
+
+Improvements
+------------
+
+- Image : Improved performance for complex graphs ([#2111](https://github.com/GafferHQ/gaffer/issues/2111))
+- OSLShader : Improved shader reloading ([#2088](https://github.com/GafferHQ/gaffer/issues/2088))
+- OSLObject : Added interpolation plug. This allows shading to be
+  performed per-face or per-face-vertex in addition to the previous
+  vertex shading. ([#2113](https://github.com/GafferHQ/gaffer/issues/2113))
+- DirtyPropagationScope : Added python bindings ([#2104](https://github.com/GafferHQ/gaffer/issues/2104))
+- NodeGraph :
+  - Improved drawing of connections ([#2102](https://github.com/GafferHQ/gaffer/issues/2102))
+  - Added Control+Click to insert Dots into connections ([#2072](https://github.com/GafferHQ/gaffer/issues/2072))
+- ImageReader : Added fileFormat and dataType items to metadata ([#2121](https://github.com/GafferHQ/gaffer/issues/2121))
+- Catalogue : ([#2106](https://github.com/GafferHQ/gaffer/issues/2106))
+  - Improved performance
+  - Moved saving/snapshotting to the background, so the UI remains responsive while
+    they occur
+- ContextVariables : Added extraVariables plug to facilitate use
+  with expressions ([#2131](https://github.com/GafferHQ/gaffer/issues/2131)).
+
+Fixes
+-----
+
+- Catalogue : Fixed bug where shader view images leaked into the catalogue ([#2106](https://github.com/GafferHQ/gaffer/issues/2106))
+- EditMenu : Fixed error handling for paste action ([#2117](https://github.com/GafferHQ/gaffer/issues/2117))
+- Wrapper :
+  - Fixed SIP-related problems with Arnold setup on OSX ([#2107](https://github.com/GafferHQ/gaffer/issues/2107))
+  - Defaulted to using lldb for debugging on OSX ([#2110](https://github.com/GafferHQ/gaffer/issues/2110))
+- MessageWidget : Fixed widget parenting bug ([#2117](https://github.com/GafferHQ/gaffer/issues/2117))
+- BoxIO : Disabled removal of promoted plugs when a BoxIO is deleted from a parent
+ with childNodesAreReadOnly metadata ([#2122](https://github.com/GafferHQ/gaffer/issues/2122))
+- ImagePlug : Fixed GIL management bugs in `imageHash()` and `channelDataHash()` bindings ([#2106](https://github.com/GafferHQ/gaffer/issues/2106))
+- Shape/Text : Fixed bug where disabling the node still modified the image ([#2106](https://github.com/GafferHQ/gaffer/issues/2106))
+- ImageProcessor : Fixed bug which prevented some nodes from using expressions based on
+  channel name. The bug was introduced in version 0.30.0.0 ([#2124](https://github.com/GafferHQ/gaffer/issues/2124)).
+- Box : Fixed bug which could prevent the boxing of nodes containing internal
+  connections ([#2126](https://github.com/GafferHQ/gaffer/issues/2126)).
+- TransformTool : Fixed interaction with Transform node ([#2136](https://github.com/GafferHQ/gaffer/issues/2136)).
+
+API
+---
+
+- Added AtomicCompoundDataPlug ([#2087](https://github.com/GafferHQ/gaffer/issues/2087))
+- ImagePlug/ImageNode : Changed metadataPlug() to AtomicCompoundDataPlug ([#2087](https://github.com/GafferHQ/gaffer/issues/2087))
+- ScriptNode : Added `continueOnError` argument to `paste()` method. ([#2117](https://github.com/GafferHQ/gaffer/issues/2117))
+- ShadingEngine : Added `needsAttribute()` method ([#2114](https://github.com/GafferHQ/gaffer/issues/2114))
+- Shader : Added `reloadShader()` method ([#2088](https://github.com/GafferHQ/gaffer/issues/2088))
+- ConnectionGadget : Added `closestPoint() method ([#2102](https://github.com/GafferHQ/gaffer/issues/2102))
+- Display : Added `copy` argument to `setDriver()` method ([#2106](https://github.com/GafferHQ/gaffer/issues/2106))
+- Catalogue : Added `Image::copyFrom()` method ([#2106](https://github.com/GafferHQ/gaffer/issues/2106))
+- Context : Added `removeMatching()` method ([#2111](https://github.com/GafferHQ/gaffer/issues/2111))
+- DependencyNodeClass : Added constructor taking no_init, for when a
+  DependencyNode has no public constructor ([#2134](https://github.com/GafferHQ/gaffer/issues/2134))
+
+Build
+-----
+
+- Fixed compilation with GCC 4.1.2 ([#2103](https://github.com/GafferHQ/gaffer/issues/2103))
+- Updated dependencies : ([#2109](https://github.com/GafferHQ/gaffer/issues/2109))
+  - OIIO 1.7.15
+  - OSL 1.8.9
+  - Cortex 9.21.1
+  - Qt 5
+
