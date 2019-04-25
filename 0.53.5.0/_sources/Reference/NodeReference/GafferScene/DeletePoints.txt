@@ -1,0 +1,42 @@
+DeletePoints
+============
+
+Deletes points from a points primitive using a primitive variable to choose the points.  
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+points
+------
+
+Vertex interpolated int, float or bool primitive variable to choose which points to delete. Note a non-zero value indicates the point will be deleted.  
+
+invert
+------
+
+Invert the condition used to delete points. If the primvar is zero then the point will be deleted. 
