@@ -1,0 +1,356 @@
+Camera
+======
+
+Produces scenes containing a camera. To choose which camera is
+used for rendering, use a StandardOptions node.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs
+an empty scene.
+
+name
+----
+
+The name of the object in the output scene.
+
+sets
+----
+
+A list of sets to include the object in. The
+names should be separated by spaces.
+
+transform
+---------
+
+The transform applied to the object.
+
+projection
+----------
+
+The base camera type.
+
+Supports two standard projections: orthographic and
+perspective. For less standard projections that require
+renderer-specific implementations, such as spherical, you
+will need to use a downstream CameraTweaks node to adjust
+this camera's parameters.
+
+perspectiveMode
+---------------
+
+The input values to use in defining the perspective
+projection. They can be either a horizontal field of view
+(`fieldOfView`), or a film back/sensor (`aperture`) and
+focal length (`focalLength`). The latter two can take the
+exact measurements from a real camera and lens setup. With
+either perspective mode, perspective is stored as
+`aperture` and `focalLength` parameters on the camera.
+
+fieldOfView
+-----------
+
+The horizontal field of view, in degrees.
+
+In the camera's parameters, projection is always stored as
+`aperture` and `focalLength`. When using the _Field of
+View_ perspective mode, the aperture has the fixed
+dimensions of `1, 1`, and this plug drives the
+`focalLength` parameter.
+
+apertureAspectRatio
+-------------------
+
+The vertical field of view, according to the ratio
+`(horizontal FOV) / (vertical FOV)`. A value of 1 would
+result in a square aperture, while a value of 1.778 would
+result in a 16:9 aperture.
+
+"Aperture" in this sense is equivalent to film back/sensor.
+
+The final projection of a render using this camera will
+depend on these settings in combination with the
+`resolution` and `filmFit` render settings.
+
+aperture
+--------
+
+The width and height of the aperture when using the
+_Aperture and Focal Length_ perspective mode. Use this in
+conjunction with a focal length to define the camera's
+equivalent field of view.
+
+"Aperture" here is equivalent to the film back/sensor on a
+real camera. A handful of default camera presets are
+provided, including Full Frame 35mm and several popular
+Alexa and RED bodies. Once the aperture is set, the focal
+length can then be adjusted on its own to control the field
+of view, just like on a real camera.
+
+When setting the aperture manually, the `x` and `y`
+dimensions can be measured in any unit of length, so long
+as they use the same unit as the focal length. You can
+safely follow convention and use millimeters for both.
+
+The final field of view of a render will depend on these
+settings in combination with the `resolution` and `filmFit`
+render options.
+
+focalLength
+-----------
+
+The focal length portion of the _Aperture and Focal Length_
+perspective mode. This is equivalent to the lens's focal
+length in a real camera setup. Use this in conjunction with
+the aperture to set the camera's equivalent field of view.
+Like on a real camera, the aperture is typically constant,
+and the focal length is then adjusted to control the field
+of view.
+
+This can be a distance in any unit of length, as long as
+you use the same unit for the aperture. You can safely
+follow convention and use millimeters for both.
+
+The final field of view of a render using this camera will
+depend on these settings in combination with the
+`resolution` and `filmFit` render options.
+
+orthographicAperture
+--------------------
+
+The width and height of the orthographic camera's aperture,
+in world space units.
+
+apertureOffset
+--------------
+
+Offsets the aperture parallel to the image plane, to
+achieve a skewed viewing frustum. The scale of the offset
+depends on the projection and perspective mode:
+
+- Perspective projection:
+        - _Field Of View_ mode: 1 offset = 1 horizontal field
+        of view.
+        - _Aperture and Focal Length_ mode: 1 offset = 1
+        aperture unit of measure (for example, 1mm).
+- Orthographic projection: 1 offset = 1 world space unit.
+
+For use in special cases, such as simulating a tilt-shift
+lens, rendering tiles for a large panorama, or matching a
+plate that has been asymmetrically cropped.
+
+fStop
+-----
+
+The setting equivalent to the f-number on a camera, which ultimately determines the strength of the depth of field blur. A lower value produces more blur. As in a real camera, `fStop` is defined as `focalLength / lens aperture`.
+
+To enable depth of field blur (if your renderer supports it), give this plug a value greater than 0, and, on a downstream StandardOptions node, enable the _Depth Of Field_ plug and turn it on.
+
+focalLengthWorldScale
+---------------------
+
+The scale to convert from focal length units to world space
+units. Combined with f-stop to calculate the lens aperture.
+Set this to scale the lens units into scene units, to
+ensure the depth of field blur correctly scales to the
+scene. Once this plug is set, the `fStop` plug can be
+adjusted to match a real-world lens setting.
+
+For example, given a lens with a focal length in mm, and a
+scene that uses decimeters for its world space units, the
+_Millimeters to Decimeters_ preset would provide the proper
+conversion.
+
+The default value of 0.1 scales millimeter (default focal
+length unit) to centimeter (default world space unit of
+Alembic and USD scene formats). Other default presets for
+scaling to decimeter or meter are also available.
+
+If using _Field Of View_ projection mode, you won't have a
+focal length plug to work with, and the aperture size will
+be (1,1). To compensate, select _Custom_ and then input a
+value that scales the scene unit of measure to a realistic
+aperture size. For example, `3.5` would convert 1
+centimeter (Alembic/USD default) to 35mm, which would
+simulate a 35mm lens.
+
+focusDistance
+-------------
+
+The distance from the camera at which objects are in
+perfect focus, in world space units.
+
+clippingPlanes
+--------------
+
+The near and far clipping planes, defining a region of
+forward depth within which objects are visible to this
+camera.
+
+renderSettingOverrides
+----------------------
+
+Render settings specified here will override their
+corresponding global render options.
+
+renderSettingOverrides.filmFit
+------------------------------
+
+Overrides the `filmFit` render option:
+
+
+How the aperture gate (the frame defined by the aperture) will
+fit into the resolution gate (the framed defined by the data
+window). Fitting is applied only if the respective aspect
+ratios of the aperture and the resolution are different. The
+following fitting modes are available:
+
+- _Horizontal:_ The aperture gate will fit horizontally between
+the left/right edges of the resolution gate, while preserving
+its aspect ratio. If the aperture's aspect ratio is larger than
+the resolution's, the top/bottom edges of the aperture will be
+cropped. If it's smaller, then the top/bottom edges will
+capture extra vertical scene content. 
+- _Vertical:_ The aperture gate will fit vertically between the
+top/bottom edges of the resolution gate, while preserving its
+aspect ratio. If the aperture's aspect ratio is larger than the
+resolution's, the left/right edges of the aperture will be
+cropped. If it's smaller, then the left/right edges will
+capture more horizontal scene content.
+- _Fit_: The aperture gate will fit horizontally (like
+_Horizontal_ mode) or vertically (like _Vertical_ mode) inside
+the resolution gate to avoid cropping the aperture, while
+preserving its aspect ratio. If the two gates' aspect ratios
+differ, the aperture will capture extra horizontal or vertical
+scene content.
+- _Fill:_ The aperture gate will fill the resolution gate such
+that none of the aperture captures extra scene content, while
+preserving its aspect ratio. In other words, it will make the
+opposite choice of the _Fit_ mode. If the two gates' aspect
+ratios differ, the aperture will be horizontally or vertically
+cropped. 
+- _Distort:_ The aperture gate will match the size of the
+resolution gate. If their aspect ratios differ, the resulting
+image will appear vertically or horizontally stretched or
+squeezed.
+
+renderSettingOverrides.shutter
+------------------------------
+
+Overrides the `shutter` render option:
+
+
+The interval over which the camera shutter is open. Measured
+in frames, and specified relative to the frame being rendered.
+
+renderSettingOverrides.resolution
+---------------------------------
+
+Overrides the `renderResolution` render option:
+
+
+The resolution of the image to be rendered.
+
+renderSettingOverrides.pixelAspectRatio
+---------------------------------------
+
+Overrides the `pixelAspectRatio` render option:
+
+
+The `width / height` aspect ratio of the individual pixels in
+the rendered image.
+
+renderSettingOverrides.resolutionMultiplier
+-------------------------------------------
+
+Overrides the `resolutionMultiplier` render option:
+
+
+Multiplies the resolution of the render by this amount.
+
+renderSettingOverrides.overscan
+-------------------------------
+
+Overrides the `overscan` render option:
+
+
+Whether to enable overscan, which adds extra pixels to the
+sides of the rendered image.
+
+Overscan can be useful when camera shake or blur will be added
+as a post-process. This plug just enables overscan as a whole –
+use the _Overscan Top_, _Overscan Bottom_, _Overscan Left_ and
+_Overscan Right_ plugs to specify the amount of overscan on
+each side of the image.
+
+renderSettingOverrides.overscanLeft
+-----------------------------------
+
+Overrides the `overscanLeft` render option:
+
+
+The amount of overscan at the left of the image. Specified as a
+0-1 proportion of the original image width.
+
+renderSettingOverrides.overscanRight
+------------------------------------
+
+Overrides the `overscanRight` render option:
+
+
+The amount of overscan at the right of the image. Specified as
+a 0-1 proportion of the original image width.
+
+renderSettingOverrides.overscanTop
+----------------------------------
+
+Overrides the `overscanTop` render option:
+
+
+The amount of overscan at the top of the image. Specified as a
+0-1 proportion of the original image height.
+
+renderSettingOverrides.overscanBottom
+-------------------------------------
+
+Overrides the `overscanBottom` render option:
+
+
+The amount of overscan at the bottom of the image. Specified as
+a 0-1 proportion of the original image height.
+
+renderSettingOverrides.cropWindow
+---------------------------------
+
+Overrides the `renderCropWindow` render option:
+
+
+Limits the render to a region of the image. The rendered image
+will have the same resolution as usual, but areas outside the
+crop will be rendered black. Coordinates range from (0,0) at
+the top-left of the image to (1,1) at the bottom-right. The
+crop window tool in the viewer may be used to set this
+interactively.
+
+renderSettingOverrides.depthOfField
+-----------------------------------
+
+Overrides the `depthOfField` render option:
+
+
+Whether to render with depth of field. To ensure the effect is
+visible, you must also set an f-stop value greater than 0 on
+this camera.

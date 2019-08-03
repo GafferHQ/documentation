@@ -1,0 +1,44 @@
+Parent
+======
+
+Parents one scene hierarchy into another.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+parent
+------
+
+The location which the child is parented under. This is
+ignored when a filter is connected, in which case the child
+is parented under all the locations matched by the filter.
+
+child
+-----
+
+The child hierarchy to be parented.

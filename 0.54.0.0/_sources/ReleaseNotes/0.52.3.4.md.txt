@@ -1,0 +1,13 @@
+0.52.3.4
+========
+
+Fixes
+-----
+
+- Primitive Inspector : Fixed EditorWidget error ([#2958](https://github.com/GafferHQ/gaffer/issues/2958)).
+- Graph Editor : Fixed scaling so it is centred on cursor position ([#2965](https://github.com/GafferHQ/gaffer/issues/2965)).
+- Animation : Fixed possible deadlock when setting a key ([#2970](https://github.com/GafferHQ/gaffer/issues/2970)).
+- ImageGadget : Fixed conflict with GLSL 'active' keyword ([#2971](https://github.com/GafferHQ/gaffer/issues/2971)).
+- Light : Fixed light linking during IPR update ([#2969](https://github.com/GafferHQ/gaffer/issues/2969)).
+- gui app : Fixed keypress handling of Ctrl+B ([#2975](https://github.com/GafferHQ/gaffer/issues/2975)).
+
