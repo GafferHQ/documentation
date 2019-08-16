@@ -1,0 +1,315 @@
+ArnoldAttributes
+================
+
+Applies Arnold attributes to objects in the scene.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+attributes
+----------
+
+The attributes to be applied - arbitrary numbers of user defined
+attributes may be added as children of this plug via the user
+interface, or using the CompoundDataPlug API via python.
+
+attributes.cameraVisibility
+---------------------------
+
+Whether or not the object is visible to camera
+rays. To hide an object completely, use the
+visibility settings on the StandardAttributes
+node instead.
+
+attributes.shadowVisibility
+---------------------------
+
+Whether or not the object is visible to shadow
+rays (whether or not it casts shadows).
+
+attributes.shadowGroup
+----------------------
+
+The lights that cause this object to cast shadows.
+Accepts a set expression or a space separated list of
+lights. Use "defaultLights" to refer to all lights that
+contribute to illumination by default.
+
+attributes.diffuseReflectionVisibility
+--------------------------------------
+
+Whether or not the object is visible in
+reflected diffuse ( ie. if it casts bounce light )
+
+attributes.specularReflectionVisibility
+---------------------------------------
+
+Whether or not the object is visible in
+reflected specular ( ie. if it is visible in mirrors ).
+
+attributes.diffuseTransmissionVisibility
+----------------------------------------
+
+Whether or not the object is visible in
+transmitted diffuse ( ie. if it casts light through leaves ).
+
+attributes.specularTransmissionVisibility
+-----------------------------------------
+
+Whether or not the object is visible in
+refracted specular ( ie. if it can be seen through glass ).
+
+attributes.volumeVisibility
+---------------------------
+
+Whether or not the object is visible in
+volume scattering.
+
+attributes.subsurfaceVisibility
+-------------------------------
+
+Whether or not the object is visible to subsurface
+rays.
+
+attributes.transformType
+------------------------
+
+Choose how transform motion is interpolated.  Linear
+produces classic linear vertex motion, RotateAboutOrigin
+produces curved arcs centred on the object's origin, and
+RotateAboutCenter, the default, produces curved arcs
+centred on the object's bounding box middle.
+
+attributes.matte
+----------------
+
+Turns the object into a holdout matte.
+This only affects primary (camera) rays.
+
+attributes.opaque
+-----------------
+
+Flags the object as being opaque, allowing
+Arnold to render faster. Should be turned off
+when using partially transparent shaders.
+
+attributes.receiveShadows
+-------------------------
+
+Whether or not the object receives shadows.
+
+attributes.selfShadows
+----------------------
+
+Whether or not the object casts shadows
+onto itself.
+
+attributes.sssSetName
+---------------------
+
+If given, subsurface will be blended across any other objects which share the same sss set name.
+
+attributes.subdivIterations
+---------------------------
+
+The maximum number of subdivision
+steps to apply when rendering subdivision
+surface. To set an exact number of
+subdivisions, set the adaptive error to
+0 so that the maximum becomes the
+controlling factor.
+
+Use the MeshType node to ensure that a
+mesh is treated as a subdivision surface
+in the first place.
+
+attributes.subdivAdaptiveError
+------------------------------
+
+The maximum allowable deviation from the true
+surface and the subdivided approximation. How
+the error is measured is determined by the
+metric below. Note also that the iterations
+value above provides a hard limit on the maximum
+number of subdivision steps, so if changing the
+error setting appears to have no effect,
+you may need to raise the maximum.
+
+> Note : Objects with a non-zero value will not take part in
+> Gaffer's automatic instancing unless subdivAdaptiveSpace is
+> set to "object".
+
+attributes.subdivAdaptiveMetric
+-------------------------------
+
+The metric used when performing adaptive
+subdivision as specified by the adaptive error.
+The flatness metric ensures that the subdivided
+surface doesn't deviate from the true surface
+by more than the error, and will tend to
+increase detail in areas of high curvature. The
+edge length metric ensures that the edge length
+of a polygon is never longer than the error,
+so will tend to subdivide evenly regardless of
+curvature - this can be useful when applying a
+displacement shader. The auto metric automatically
+uses the flatness metric when no displacement
+shader is applied, and the edge length metric when
+a displacement shader is applied.
+
+attributes.subdivAdaptiveSpace
+------------------------------
+
+The space in which the error is measured when
+performing adaptive subdivision. Raster space means
+that the subdivision adapts to size on screen,
+with subdivAdaptiveError being specified in pixels.
+Object space means that the error is measured in
+object space units and will not be sensitive to
+size on screen.
+
+attributes.subdivUVSmoothing
+----------------------------
+
+Determines how UVs are subdivided.
+
+attributes.subdivSmoothDerivs
+-----------------------------
+
+Computes smooth UV derivatives (dPdu and dPdv) per
+vertex. This can be needed to remove faceting
+from anisotropic specular and other shading effects
+that use the derivatives.
+
+attributes.subdividePolygons
+----------------------------
+
+Causes polygon meshes to be rendered with Arnold's
+subdiv_type parameter set to "linear" rather than
+"none". This can be used to increase detail when
+using polygons with displacement shaders and/or mesh
+lights.
+
+> Caution : This is not equivalent to converting a polygon
+> mesh into a subdivision surface. To render with Arnold's
+> subdiv_type set to "catclark", you must use the MeshType
+> node to convert polygon meshes into subdivision surfaces.
+
+attributes.curvesMode
+---------------------
+
+How the curves are rendered. Ribbon mode treats
+the curves as flat ribbons facing the camera, and is
+most suited for rendering of thin curves with a
+dedicated hair shader. Thick mode treats the curves
+as tubes, and is suited for use with a regular
+surface shader.
+
+> Note : To render using Arnold's "oriented" mode, set
+> mode to "ribbon" and add per-vertex normals to the
+> curves as a primitive variable named "N".
+
+attributes.curvesMinPixelWidth
+------------------------------
+
+The minimum thickness of the curves, measured
+in pixels on the screen. When rendering very thin curves, a
+large number of AA samples are required
+to avoid aliasing. In these cases a minimum pixel
+width may be specified to artificially thicken the curves,
+meaning that fewer AA samples may be used. The additional width is
+compensated for automatically by lowering the opacity
+of the curves.
+
+attributes.volumeStepSize
+-------------------------
+
+Override the step size taken when raymarching volumes. 
+If this value is disabled or zero then value is calculated from the voxel size.  
+
+attributes.volumeStepScale
+--------------------------
+
+Raymarching step size is calculated using this value 
+multiplied by the volume voxel size or volumeStepSize if set.
+
+attributes.shapeStepSize
+------------------------
+
+A non-zero value causes an object to be treated
+as a volume container, and a value of 0 causes
+an object to be treated as regular geometry.  
+
+attributes.shapeStepScale
+-------------------------
+
+Raymarching step size is calculated using this value 
+multiplied by the shapeStepSize.
+
+attributes.volumePadding
+------------------------
+
+Allows a volume to be displaced outside its bounds.  When
+rendering a mesh as a volume, this enables displacement.
+
+attributes.velocityScale
+------------------------
+
+Scales the vector used in VDB motion blur computation.
+
+attributes.velocityFPS
+----------------------
+
+Sets the frame rate used in VDB motion blur computation.
+
+attributes.velocityOutlierThreshold
+-----------------------------------
+
+Sets the outlier threshold used in VDB motion blur computation.
+
+When rendering physics simulations resulting velocities are
+potentially noisy and require some filtering for faster rendering.
+
+global
+------
+
+Causes the attributes to be applied to the scene globals
+instead of the individual locations defined by the filter.
+
+extraAttributes
+---------------
+
+An additional set of attributes to be added. Arbitrary numbers
+of attributes may be specified within a single IECore::CompoundData
+object, where each key/value pair in the object defines an attribute.
+This is convenient when using an expression to define the attributes
+and the attribute count might be dynamic.
+
+If the same attribute is defined by both the attributes and the
+extraAttributes plugs, then the value from the extraAttributes
+is taken.

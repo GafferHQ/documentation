@@ -1,0 +1,70 @@
+OSLObject
+=========
+
+Executes OSL shaders to perform object processing. Use the shaders from
+the OSL/ObjectProcessing menu to read primitive variables from the input
+object and then write primitive variables back to it.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+interpolation
+-------------
+
+The interpolation type of the primitive variables created by this node.
+For instance, Uniform interpolation means that the shader is run once per face on a mesh, allowing it to output primitive variables with a value per face.
+All non-constant input primitive variables are resampled to match the selected interpolation so that they can be accessed from the shader.
+
+useTransform
+------------
+
+Makes the object's transform available to OSL, so that you can use OSL functions that convert
+from object to world space.
+
+useAttributes
+-------------
+
+Makes the Gaffer attributes at the object's location available to OSL through the getattribute
+function.  Once this is on, you can use OSL nodes such as InFloat or InString to retrieve the
+attribute values.
+
+primitiveVariables
+------------------
+
+Define primitive varibles to output by adding child plugs and connecting
+corresponding OSL shaders.  Supported plug types are :
+
+- FloatPlug
+- IntPlug
+- ColorPlug
+- V3fPlug ( outputting vector, normal or point )
+- M44fPlug
+- StringPlug
+
+If you want to add multiple outputs at once, you can also add a closure plug,
+which can accept a connection from an OSLCode with a combined output closure.
