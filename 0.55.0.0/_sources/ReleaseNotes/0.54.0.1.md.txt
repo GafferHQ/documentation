@@ -1,0 +1,17 @@
+0.54.0.1
+========
+
+Fixes
+-----
+
+- NameValuePlug : Fixed serialisation bug which could prevent promoted NameValuePlugs
+  from being saved correctly ([#3318](https://github.com/GafferHQ/gaffer/issues/3318)).
+- OSL : Fixed bug which prevented the GafferOSL module from loading on headless
+  renderfarm machines ([#3316](https://github.com/GafferHQ/gaffer/issues/3316)).
+
+Documentation
+-------------
+
+- Fixed missing documentation on MacOS builds ([#3315](https://github.com/GafferHQ/gaffer/issues/3315)).
+- Made miscellaneous fixes to examples ([#3309](https://github.com/GafferHQ/gaffer/issues/3309), [#3313](https://github.com/GafferHQ/gaffer/issues/3313)).
+

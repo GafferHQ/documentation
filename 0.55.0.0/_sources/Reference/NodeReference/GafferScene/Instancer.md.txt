@@ -1,0 +1,123 @@
+Instancer
+=========
+
+Copies from an input scene onto the vertices of a target
+object, making one copy per vertex. Additional primitive
+variables on the target object can be used to choose between
+multiple instances, and to specify their orientation and
+scale. Note the target object will be removed from the scene.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+parent
+------
+
+The object on which to make the instances. The
+position, orientation and scale of the instances
+are taken from per-vertex primitive variables on
+this object. This is ignored when a filter is
+connected, in which case the filter specifies
+multiple objects to make the instances from.
+
+name
+----
+
+The name of the location the instances will be
+generated below. This will be parented directly
+under the parent location.
+
+instances
+---------
+
+The scene containing the instances to be applied to
+each vertex. Specify multiple instances by parenting
+them at the root of the scene :
+
+- /instance0
+- /instance1
+- /instance2
+
+Note that the instances are not limited to being a
+single object : they can each have arbitrary child
+hierarchies.
+
+index
+-----
+
+The name of a per-vertex integer primitive variable
+used to determine which instance is applied to the
+vertex. An index of 0 applies the first location from
+the instances scene, an index of 1 applies the second
+and so on.
+
+id
+--
+
+The name of a per-vertex integer primitive variable
+used to give each instance a unique identity. This
+is useful when points are added and removed over time,
+as is often the case in a particle simulation. The
+id is used to name the instance in the output scene.
+
+position
+--------
+
+The name of the per-vertex primitive variable used
+to specify the position of each instance.
+
+orientation
+-----------
+
+The name of the per-vertex primitive variable used
+to specify the orientation of each instance. This
+must be provided as a quaternion : use an upstream
+Orientation node to convert from other representations
+before instancing.
+
+scale
+-----
+
+The name of the per-vertex primitive variable used
+to specify the scale of each instance. Scale can be
+provided as a float for uniform scaling, or as a vector
+to define different scaling in each axis.
+
+attributes
+----------
+
+The names of per-vertex primitive variables to be
+turned into per-instance attributes. Names should
+be separated by spaces and can use Gaffer's
+standard wildcards.
+
+attributePrefix
+---------------
+
+A prefix added to all per-instance attributes specified
+via the "attributes" plug. 

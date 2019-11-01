@@ -1,0 +1,16 @@
+0.54.2.1
+========
+
+Fixes
+-----
+
+- UIEditor : Fixed bugs which prevented node colour from being edited ([#3383](https://github.com/GafferHQ/gaffer/issues/3383), [#3384](https://github.com/GafferHQ/gaffer/issues/3384), [#3385](https://github.com/GafferHQ/gaffer/issues/3385)).
+- Encapsulate : Fixed concurrent access to signals that could cause crashes at render time
+  ([#3381](https://github.com/GafferHQ/gaffer/issues/3381)).
+- Layouts : Fixed bug in `editor()` method ([#3395](https://github.com/GafferHQ/gaffer/issues/3395)).
+- TBB : Fixed an obscure context management bug involving older TBB versions in custom Gaffer builds ([#3409](https://github.com/GafferHQ/gaffer/issues/3409)).
+- NodeSetEditor : Fixed circular references for linked editors ([#3421](https://github.com/GafferHQ/gaffer/issues/3421)).
+- Added support for loading files saved in Gaffer 0.55 ([#3415](https://github.com/GafferHQ/gaffer/issues/3415)). Note that because version 0.54
+  does not support multiple child inputs on the Parent node, only the first child input will
+  be loaded.
+

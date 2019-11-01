@@ -1,0 +1,35 @@
+NameSwitch
+==========
+
+Switches between multiple input connections, passing through the
+chosen input to the output. Each input has a "name" as well
+as a value, and switching is performed by comparing the names against
+the value of `selector` as follows :
+
+- Matching starts with the second input and considers all subsequent
+  inputs one by one until a match is found. The first matching input
+  is the one that is chosen.
+- Matching is performed using Gaffer's standard wildcard matching.
+  Each "name" may contain several individual patterns each separated
+  by spaces.
+- The first input is used as a default, and is chosen only if no other
+  input matches.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+enabled
+-------
+
+Turns the node on and off.
+
+selector
+--------
+
+The value that the input names will be matched against.
+Typically this will refer to a context variable using
+the `${variableName}` syntax.
