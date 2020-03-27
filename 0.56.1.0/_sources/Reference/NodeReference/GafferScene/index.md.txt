@@ -1,0 +1,100 @@
+<!-- !NO_SCROLLSPY -->
+
+GafferScene
+===========
+
+```eval_rst
+.. toctree::
+    :titlesonly:
+    :maxdepth: 1
+
+    AimConstraint.md
+    AttributeVisualiser.md
+    Attributes.md
+    Camera.md
+    CameraTweaks.md
+    ClippingPlane.md
+    CollectPrimitiveVariables.md
+    CollectScenes.md
+    CollectTransforms.md
+    CoordinateSystem.md
+    CopyAttributes.md
+    CopyOptions.md
+    CopyPrimitiveVariables.md
+    Cube.md
+    CustomAttributes.md
+    CustomOptions.md
+    DeleteAttributes.md
+    DeleteCurves.md
+    DeleteFaces.md
+    DeleteGlobals.md
+    DeleteObject.md
+    DeleteOptions.md
+    DeleteOutputs.md
+    DeletePoints.md
+    DeletePrimitiveVariables.md
+    DeleteSets.md
+    Duplicate.md
+    Encapsulate.md
+    ExternalProcedural.md
+    Filter.md
+    FilterProcessor.md
+    FilterResults.md
+    FilteredSceneProcessor.md
+    FreezeTransform.md
+    Grid.md
+    Group.md
+    Instancer.md
+    InteractiveRender.md
+    Isolate.md
+    LightToCamera.md
+    MapOffset.md
+    MapProjection.md
+    MergeScenes.md
+    MeshDistortion.md
+    MeshTangents.md
+    MeshToPoints.md
+    MeshType.md
+    ObjectToScene.md
+    OpenGLAttributes.md
+    OpenGLRender.md
+    OpenGLShader.md
+    Options.md
+    Orientation.md
+    Outputs.md
+    Parameters.md
+    Parent.md
+    ParentConstraint.md
+    PathFilter.md
+    Plane.md
+    PointConstraint.md
+    PointsType.md
+    PrimitiveVariableExists.md
+    PrimitiveVariables.md
+    Prune.md
+    Render.md
+    ResamplePrimitiveVariables.md
+    ReverseWinding.md
+    SceneElementProcessor.md
+    SceneNode.md
+    SceneProcessor.md
+    SceneReader.md
+    SceneWriter.md
+    Seeds.md
+    Set.md
+    SetFilter.md
+    SetVisualiser.md
+    Shader.md
+    ShaderAssignment.md
+    ShaderBall.md
+    ShaderTweaks.md
+    Sphere.md
+    StandardAttributes.md
+    StandardOptions.md
+    SubTree.md
+    Text.md
+    Transform.md
+    UDIMQuery.md
+    UnionFilter.md
+    Wireframe.md
+```
