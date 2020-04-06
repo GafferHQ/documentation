@@ -1,0 +1,51 @@
+DeleteFaces
+===========
+
+Deletes faces from a mesh using a primitive variable to choose the faces.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+adjustBounds
+------------
+
+Adjusts bounding boxes to account for the changes made to the object.
+
+> Caution : Adjusting boundings boxes has a performance penalty.
+> If you do not need accurate bounds or you know that the bounds
+> will only change slightly, you may prefer to turn this off.
+
+faces
+-----
+
+Uniformly interpolated int, float or bool primitive variable to choose which faces to delete. Note a non-zero value indicates the face will be deleted.
+
+invert
+------
+
+Invert the condition used to delete faces. If the primvar is zero then the face will be deleted.
