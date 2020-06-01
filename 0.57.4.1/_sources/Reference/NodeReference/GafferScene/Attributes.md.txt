@@ -1,0 +1,58 @@
+Attributes
+==========
+
+The base type for nodes that apply attributes to the scene.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+attributes
+----------
+
+The attributes to be applied - arbitrary numbers of user defined
+attributes may be added as children of this plug via the user
+interface, or using the CompoundDataPlug API via python.
+
+global
+------
+
+Causes the attributes to be applied to the scene globals
+instead of the individual locations defined by the filter.
+
+extraAttributes
+---------------
+
+An additional set of attributes to be added. Arbitrary numbers
+of attributes may be specified within a single IECore::CompoundData
+object, where each key/value pair in the object defines an attribute.
+This is convenient when using an expression to define the attributes
+and the attribute count might be dynamic.
+
+If the same attribute is defined by both the attributes and the
+extraAttributes plugs, then the value from the extraAttributes
+is taken.
