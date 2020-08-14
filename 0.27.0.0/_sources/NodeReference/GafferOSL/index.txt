@@ -1,6 +1,0 @@
-GafferOSL
-=========
-
-- [OSLImage](OSLImage.md)
-- [OSLObject](OSLObject.md)
-- [OSLShader](OSLShader.md)
