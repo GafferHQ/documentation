@@ -1,0 +1,29 @@
+AppleseedShaderAdaptor
+======================
+
+Adapts assigned OSL shaders so they can be rendered in Appleseed,
+even if the assigned shader is not a surface shader. This makes it
+possible to render directly with shaders which output colours, floats,
+ints, vectors or closures.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
