@@ -1,0 +1,42 @@
+name: Update from Releases
+
+on:
+  push:
+  schedule:
+     # At the end of every day
+     - cron: 0 0 * * *
+
+jobs:
+
+  Update:
+
+    runs-on: ubuntu-16.04
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install Python Modules
+      run: |
+        python --version
+        pip install PyGitHub==1.45
+
+    - name: Update
+      id: update
+      run: |
+        ./update.py --set-outputs 1
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        commit-message: "${{steps.update.outputs.title}}\n\n${{steps.update.outputs.body}}"
+        title: ${{steps.update.outputs.title}}
+        body: ${{steps.update.outputs.body}}
+        delete-branch: true
+        reviewers: |
+          johnhaddon
+          themissingcow
