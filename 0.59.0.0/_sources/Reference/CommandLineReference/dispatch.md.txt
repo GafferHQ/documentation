@@ -1,0 +1,78 @@
+dispatch
+========
+
+Dispatches task nodes such as ImageWriters, SystemCommands and Render nodes,
+either from within an existing .gfr file or by creating a script on the fly.
+This differs from the execute app in that it performs a full dispatch via a
+dispatcher, rather than executing a single task node.
+
+Example usage :
+
+```
+gaffer dispatch -script comp.gfr -tasks ImageWriter1 -dispatcher Local -settings -dispatcher.frameRange '"1001-1020"'
+
+gaffer dispatch -script comp.gfr -tasks ImageWriter1 -gui -show ImageWriter1 -dispatcher Local -settings -dispatcher.frameRange '"1001-1020"'
+
+gaffer dispatch -gui -tasks GafferDispatch.SystemCommand -dispatcher Local -settings -SystemCommand.command '"ls -l"'
+```
+
+-help
+-----
+
+Prints names and descriptions of each parameter rather than running the application.
+
+-threads
+--------
+
+The maximum number of threads used for computation. The default value of zero causes the number of threads to  be chosen automatically based on the available hardware.
+
+-profileFileName
+----------------
+
+If this is specified, then the application is run using the cProfile profiling module, and the results saved to the file for later examination.
+
+-gui
+----
+
+Determines whether a gui is presented prior to dispatching or the tasks are dispatched directly.
+
+-script
+-------
+
+An optional script containing the task network to be dispatched.
+
+-ignoreScriptLoadErrors
+-----------------------
+
+Causes errors which occur while loading the script to be ignored. Not recommended.
+
+-applyUserDefaults
+------------------
+
+Applies userDefault values to all nodes and plugs created by the app. Note if a script is supplied, the nodes will be unaffected.
+
+-tasks
+------
+
+The names of the task nodes to dispatch. Note if a script is supplied, the tasks must exist within the script. If no script is supplied, the task nodes will be constructed on the fly and added to a default script.
+
+-show
+-----
+
+A list of nodes to display when running the gui. This parameter has no effect unless the gui is loaded.
+
+-dispatcher
+-----------
+
+The type of dispatcher to use for the dispatch. A new dispatcher of this type will be created, with userDefaults applied.
+
+-alternateDispatchers
+---------------------
+
+A list of alternate dispatcher types to make available when running the gui. This parameter has no effect unless the gui is loaded.
+
+-settings
+---------
+
+The values to be set on the nodes, dispatcher, or Context. Values should be in the format -nodeA.plugA value -nodeA.plugB value -nodeB.plugC value -dispatcher.plugD value -LocalDispatcher.plugE value -context.entry value
+
