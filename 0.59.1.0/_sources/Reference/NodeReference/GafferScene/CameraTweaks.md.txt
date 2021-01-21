@@ -1,0 +1,56 @@
+CameraTweaks
+============
+
+Applies modifications, also known as "tweaks," to camera
+parameters or render options in the scene. Supports any number
+of tweaks, and custom camera parameters. Tweaks to camera
+parameters apply to every camera specified by the filter.
+
+Tweaks apply to every camera specified by the filter.
+
+Can add new camera parameters or render options.
+
+Any existing parameters/options can be replaced or removed.
+Numeric parameters/options can also be added to, subtracted
+from, or multiplied.
+
+Tweaks are applied in order, so if there is more than one tweak
+to the same parameter/option, the first tweak will be applied
+first, then the second, etc.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+tweaks
+------
+
+Add a camera tweak.
+
+Arbitrary numbers of user defined tweaks may be
+added as children of this plug via the user
+interface, or via the CameraTweaks API in Python.

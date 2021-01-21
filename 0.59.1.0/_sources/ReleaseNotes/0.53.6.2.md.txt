@@ -1,0 +1,17 @@
+0.53.6.2
+========
+
+Improvements
+------------
+
+- CustomAttributes : Added extraAttributes plug that can be set from CompoundData ([#3191](https://github.com/GafferHQ/gaffer/issues/3191))
+- StandardLightVisualiser : Setting locatorScale to 0 now avoids costly computations ([#3178](https://github.com/GafferHQ/gaffer/issues/3178))
+- GafferUI : Added compatibility patch to allow >0.54 layouts to load ([#3206](https://github.com/GafferHQ/gaffer/issues/3206))
+
+Fixes
+-----
+
+- MultiLineTextWidget : Fixed unicode handling in `selectedText()` ([#3183](https://github.com/GafferHQ/gaffer/issues/3183))
+- SplineWidget : Fixed display transform management bug ([#3187](https://github.com/GafferHQ/gaffer/issues/3187))
+- ArnoldLight : Nodules no longer disappear when copy/pasting Arnold quad_light and skydome_light nodes ([#3188](https://github.com/GafferHQ/gaffer/issues/3188))
+
