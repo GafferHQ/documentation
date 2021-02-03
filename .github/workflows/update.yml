@@ -39,4 +39,4 @@ jobs:
         delete-branch: true
         reviewers: |
           johnhaddon
-          themissingcow
+          danieldresser-ie
