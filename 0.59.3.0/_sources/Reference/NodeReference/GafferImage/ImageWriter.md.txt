@@ -1,0 +1,272 @@
+ImageWriter
+===========
+
+Writes image files to disk using OpenImageIO. All file
+types supported by OpenImageIO are supported by the
+ImageWriter.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+preTasks
+--------
+
+Input connections to upstream nodes which must be
+executed before this node.
+
+postTasks
+---------
+
+Input connections to nodes which must be
+executed after this node, but which don't
+need to be executed before downstream nodes.
+
+task
+----
+
+Output connections to downstream nodes which must
+not be executed until after this node.
+
+dispatcher
+----------
+
+Container for custom plugs which dispatchers use to
+control their behaviour.
+
+dispatcher.batchSize
+--------------------
+
+Maximum number of frames to batch together when dispatching tasks.
+
+dispatcher.immediate
+--------------------
+
+Causes this node to be executed immediately upon dispatch,
+rather than have its execution be scheduled normally by
+the dispatcher. For instance, when using the LocalDispatcher,
+the node will be executed immediately in the dispatching process
+and not in a background process as usual.
+
+When a node is made immediate, all upstream nodes are automatically
+considered to be immediate too, regardless of their settings.
+
+in
+--
+
+The image to be written to disk.
+
+fileName
+--------
+
+The name of the file to be written. File sequences with
+arbitrary padding may be specified using the '#' character
+as a placeholder for the frame numbers.
+
+**Supported file extensions** : bmp, cin, dds, dpx, fits, hdr, rgbe, ico, iff, z, jpg, jpe, jpeg, jif, jfif, jfi, exr, sxr, mxr, png, ppm, pgm, pbm, pnm, pfm, psd, pdd, psb, bay, bmq, cr2, crw, cs1, dc2, dcr, dng, erf, fff, k25, kdc, mdc, mos, mrw, nef, orf, pef, pxn, raf, raw, rdc, sr2, srf, x3f, arw, 3fr, cine, ia, kc2, mef, nrw, qtk, rw2, sti, rwl, srw, drf, dsc, ptx, cap, iiq, rwz, rla, sgi, rgb, rgba, bw, int, inta, socket, pic, tiff, tif, tx, env, sm, vsm, tga, tpic, zfile
+
+channels
+--------
+
+The names of the channels to be written to the file.
+Names should be separated by spaces and may contain any
+of Gaffer's standard wildcards.
+
+colorSpace
+----------
+
+The colour space of the output image, used to convert the input image
+from the scene linear colorspace defined by the OpenColorIO config.
+The default behaviour is to automatically determine the colorspace by
+calling the function registered with `ImageWriter::setDefaultColorSpaceFunction()`.
+
+out
+---
+
+A pass-through of the input image.
+
+openexr
+-------
+
+Format options specific to OpenEXR files.
+
+openexr.mode
+------------
+
+The write mode for the OpenEXR file - scanline or tiled data.
+
+openexr.compression
+-------------------
+
+The compression method to use when writing the OpenEXR file.
+
+openexr.dwaCompressionLevel
+---------------------------
+
+The compression level used when writing files with DWAA or DWAB compression.
+Higher values decrease file size at the expense of image quality.
+
+openexr.dataType
+----------------
+
+The data type to be written to the OpenEXR file.
+
+openexr.depthDataType
+---------------------
+
+Overriding the data type for depth channels is useful because many of the things depth is used
+for require greater precision.
+
+dpx
+---
+
+Format options specific to DPX files.
+
+dpx.dataType
+------------
+
+The data type to be written to the DPX file.
+
+tiff
+----
+
+Format options specific to TIFF files.
+
+tiff.mode
+---------
+
+The write mode for the TIFF file - scanline or tiled data.
+
+tiff.compression
+----------------
+
+The compression method to use when writing the TIFF file.
+
+tiff.dataType
+-------------
+
+The data type to be written to the TIFF file.
+
+field3d
+-------
+
+Format options specific to Field3D files.
+
+field3d.mode
+------------
+
+The write mode for the Field3D file - scanline or tiled data.
+
+field3d.dataType
+----------------
+
+The data type to be written to the Field3D file.
+
+fits
+----
+
+Format options specific to FITS files.
+
+fits.dataType
+-------------
+
+The data type to be written to the FITS file.
+
+iff
+---
+
+Format options specific to IFF files.
+
+iff.mode
+--------
+
+The write mode for the IFF file - scanline or tiled data.
+
+jpeg
+----
+
+Format options specific to Jpeg files.
+
+jpeg.compressionQuality
+-----------------------
+
+The compression quality for the Jpeg file to be written.
+A value between 0 (low quality, high compression) and
+100 (high quality, low compression).
+
+jpeg.chromaSubSampling
+----------------------
+
+The chroma sub sampling used to write the jpeg file.
+Note that the file will be stored as YCbCr instead of RGB.
+
+jpeg2000
+--------
+
+Format options specific to Jpeg2000 files.
+
+jpeg2000.dataType
+-----------------
+
+The data type to be written to the Jpeg2000 file.
+
+png
+---
+
+Format options specific to PNG files.
+
+png.compression
+---------------
+
+The compression method to use when writing the PNG file.
+
+png.compressionLevel
+--------------------
+
+The compression level of the PNG file. This is a value between
+0 (no compression) and 9 (most compression).
+
+rla
+---
+
+Format options specific to RLA files.
+
+rla.dataType
+------------
+
+The data type to be written to the RLA file.
+
+sgi
+---
+
+Format options specific to SGI files.
+
+sgi.dataType
+------------
+
+The data type to be written to the SGI file.
+
+targa
+-----
+
+Format options specific to Targa files.
+
+targa.compression
+-----------------
+
+The compression method to use when writing the Targa file.
+
+webp
+----
+
+Format options specific to WebP files.
+
+webp.compressionQuality
+-----------------------
+
+The compression quality for the WebP file to be written.
+A value between 0 (low quality, high compression) and
+100 (high quality, low compression).
