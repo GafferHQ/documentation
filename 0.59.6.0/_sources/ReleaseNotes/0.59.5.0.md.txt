@@ -1,0 +1,51 @@
+0.59.5.0
+========
+
+Improvements
+------------
+
+- Viewer : Added "Light Links" submenu with "Select Linked Lights" and "Select Linked Objects"
+  operations.
+- FileMenu : File loading and saving no longer locks the UI, and can be cancelled.
+- MapProjection : Added `position` plug to allow a custom position to be used for the projection.
+- Spreadsheet :
+  - Added `resolvedRows` output plug, containing the resolved cell values
+    for all active rows. This allows expressions to work with all the data in the spreadsheet,
+    independently of the `selector` mechanism.
+  - Added <kbd>+</kbd> button for adding new columns directly. Existing plugs may be dragged on
+    to it and new plugs can be created from a popup menu.
+- CustomOptions : Added `extraOptions` plug to facilitate the creation of dynamic numbers of options
+  from a single expression.
+- Outputs : Added `motionvector` preset for Arnold.
+
+Fixes
+-----
+
+- Instancer : Fixed crash evaluating `variations` when there are no prototypes.
+- ArnoldRender : Fixed rendering with `StandardOptions.sampleMotion` off. This now controls Arnold's `options.ignore_motion_blur` parameter, where previously it set the shutter duration to `0`.
+- EventLoop : Fixed rare failures in `executeOnUIThread()`. Symptoms included a failure to display
+  updates from interactive renders.
+- Prune : Fixed bounds computation in the case that the filter claims to match descendants that don't
+  exist. A common cause was the usage of `...` or a non-existent path in a PathFilter.
+- ImageGadget : Fixed bug which prevented `stateChangedSignal()` from being emitted when
+  `setPaused( false )` was called.
+- InteractiveRender : Fixed error handling during render startup. Errors are now shown in the render
+  log and the terminal output.
+- ShaderView : Pausing the viewer now stops the renderer.
+- Expression : Fixed OSL expression parsing bug triggered by plug names which were
+  prefixes of other plug names. This caused a very confusing `Syntax error: syntax error`
+  error.
+- ExtensionAlgo :
+  - Fixed copy/paste of nodes exported by ExtensionAlgo ([#3886](https://github.com/GafferHQ/gaffer/issues/3886)).
+  - Fixed bug which prevented the use of internal Expression nodes.
+
+API
+---
+
+- BackgroundTaskDialogue : Added a new modal dialogue to assist in running tasks in the background.
+- EventLoop : Added `BlockedUIThreadExecution` context manager.
+- ScriptNode : Added support for cancellation of execution and serialisation.
+- ValuePlug : Improved warning emitted if cached value has unexpected type.
+- SceneAlgo : Added `linkedLights()` and `linkedObjects()` functions.
+- ImageView : Added `imageGadget()` accessor.
+
