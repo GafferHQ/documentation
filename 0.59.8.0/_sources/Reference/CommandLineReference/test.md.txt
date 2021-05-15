@@ -1,0 +1,73 @@
+test
+====
+
+Runs the unit tests for all of Gaffer's python
+modules and libraries. These are run automatically
+as part of Gaffer's build and review process, but it
+is useful to run them manually when developing for
+Gaffer or troubleshooting an installation.
+
+Run all the tests :
+
+```
+gaffer test
+```
+
+Run all the tests for the scene module :
+
+```
+gaffer test GafferScene
+```
+
+Repeat a specific test 10 times :
+
+```
+gaffer test -repeat 10 GafferImageTest.ImageNodeTest.testCacheThreadSafety
+
+```
+
+-help
+-----
+
+Prints names and descriptions of each parameter rather than running the application.
+
+-threads
+--------
+
+The maximum number of threads used for computation. The default value of zero causes the number of threads to  be chosen automatically based on the available hardware.
+
+-profileFileName
+----------------
+
+If this is specified, then the application is run using the cProfile profiling module, and the results saved to the file for later examination.
+
+-testCases
+----------
+
+A list of names of specific test cases to run. If unspecified then all test cases are run.
+
+-repeat
+-------
+
+The number of times to repeat the tests.
+
+-performanceOnly
+----------------
+
+Skips tests that don't compute performance metrics.
+
+-outputFile
+-----------
+
+The name of a JSON file that the results are written to.
+
+-previousOutputFile
+-------------------
+
+The name of a JSON file containing the results of a previous test run. This will be used to detect and report performance regressions.
+
+-stopOnFailure
+--------------
+
+Stops on the first failure, instead of running the remaining tests.
+
