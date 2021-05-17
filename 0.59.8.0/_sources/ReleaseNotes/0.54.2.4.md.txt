@@ -1,0 +1,5 @@
+0.54.2.4
+========
+
+- NumericWidget : Fixed bug that caused an exception to be raised if the up/down keys were pressed in a NumericWidget when the widget's value was empty.
+
