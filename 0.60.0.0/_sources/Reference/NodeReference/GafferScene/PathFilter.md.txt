@@ -1,0 +1,56 @@
+PathFilter
+==========
+
+Chooses locations by matching them against a list of
+paths.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+enabled
+-------
+
+The on/off state of the filter. When it is off, the
+filter does not match any locations.
+
+out
+---
+
+The result of the filter. This should be connected into
+the "filter" plug of a FilteredSceneProcessor.
+
+paths
+-----
+
+The list of paths to the locations to be matched by the filter.
+A path is formed by a sequence of names separated by '/', and
+specifies the hierarchical position of a location within the scene.
+Paths may use Gaffer's standard wildcard characters to match
+multiple locations.
+
+The '*' wildcard matches any sequence of characters within
+an individual name, but never matches across names separated
+by a '/'.
+
+ - /robot/*Arm matches /robot/leftArm, /robot/rightArm and
+   /robot/Arm. But does not match /robot/limbs/leftArm or
+   /robot/arm.
+
+The "..." wildcard matches any sequence of names, and can be
+used to match locations no matter where they are parented in
+the hierarchy.
+
+ - /.../house matches /house, /street/house and /city/street/house.
+
+roots
+-----
+
+An optional filter input used to provide multiple root locations
+which the `paths` are relative to. This can be useful when working
+on a single asset in isolation, and then placing it into multiple
+locations within a layout. When no filter is connected, all `paths`
+are treated as being relative to `/`, the true scene root.
