@@ -1,0 +1,85 @@
+screengrab
+==========
+
+A tool to generate documentation screengrabs.
+
+-help
+-----
+
+Prints names and descriptions of each parameter rather than running the application.
+
+-threads
+--------
+
+The maximum number of threads used for computation. The default value of zero causes the number of threads to  be chosen automatically based on the available hardware.
+
+-profileFileName
+----------------
+
+If this is specified, then the application is run using the cProfile profiling module, and the results saved to the file for later examination.
+
+-script
+-------
+
+The gfr script to load
+
+-image
+------
+
+Where to save the resulting image
+
+-selection
+----------
+
+A list of nodes to select.
+
+-editor
+-------
+
+The name of an editor to screengrab. If not specified, the whole window will be grabbed.
+
+-panel
+------
+
+Whether to the panel surrounding an editor, or just the editor contents itself.
+
+-nodeEditor
+-----------
+
+Parameters that configure NodeEditors.
+
+-pythonEditor
+-------------
+
+Parameters that configure PythonEditors.
+
+-viewer
+-------
+
+Parameters that configure Viewers.
+
+-graphEditor
+------------
+
+Parameters that configure GraphEditors.
+
+-scene
+------
+
+Parameters that configure the scene.
+
+-command
+--------
+
+Command to execute after session is launched. A 'script' variable provides access to the root ScriptNode.
+
+-commandFile
+------------
+
+File containing sequence of commands to execute after session is launched.
+
+-delay
+------
+
+A delay between setting up the script and grabbing the image.
+
