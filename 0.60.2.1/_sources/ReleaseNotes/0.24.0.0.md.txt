@@ -1,0 +1,89 @@
+0.24.0.0
+========
+
+UI
+-----------------------------------------------------------------------
+
+- Added node reference documentation menu item to NodeEditor tool menus.
+- GafferUI.Collapsible supports Widget.reveal().
+- ScriptWindow no longer stops the EventLoop if it's already stopped.
+- Fixed PathWidget WeakMethod error at shutdown.
+
+Scene
+-----------------------------------------------------------------------
+
+- Improved error messages emitted by Group node.
+
+Image
+-----------------------------------------------------------------------
+
+- Fixed UVWarp crash triggered by negative data window origins ([#1707](https://github.com/GafferHQ/gaffer/issues/1707)).
+
+OSL
+-----------------------------------------------------------------------
+
+- Fixed crash when deleting connections to an OSL expression ([#1695](https://github.com/GafferHQ/gaffer/issues/1695)).
+- Added support for BoolPlugs in OSL expressions ([#1697](https://github.com/GafferHQ/gaffer/issues/1697)).
+
+Dispatch
+-----------------------------------------------------------------------
+
+- Stopped SystemCommand swallowing the stdout of launched processes
+  ([#1712](https://github.com/GafferHQ/gaffer/issues/1712)).
+- Disabled automatic substitutions for command ([#1692](https://github.com/GafferHQ/gaffer/issues/1692)). This was broken
+  by [#1671](https://github.com/GafferHQ/gaffer/issues/1671).
+- Added LocalDispatcher environmentCommand plug.
+
+Arnold
+-----------------------------------------------------------------------
+
+- Added ArnoldVDB node ([#1711](https://github.com/GafferHQ/gaffer/issues/1711)).
+- Added volume step size to ArnoldAttributes node ([#1694](https://github.com/GafferHQ/gaffer/issues/1694)).
+- Fixed metadata for ArnoldLight UIs ([#1696](https://github.com/GafferHQ/gaffer/issues/1696)).
+- Added "ai:threads" option
+  - Exposed via ArnoldOptions under the Performance section.
+  - ArnoldRender uses ai:threads option to drive kick -t command line arg.
+
+Apps
+-----------------------------------------------------------------------
+
+- Removed procedural app
+- Screengrab app
+  - Added `-editor` argument
+  - Added `-selection` argument
+  - Added `-nodeEditor.reveal` argument
+  - Fix crashes at shutdown
+
+Documentation
+-----------------------------------------------------------------------
+
+- Introduced HTML documentation which is shipped with every Gaffer
+  release ([#1702](https://github.com/GafferHQ/gaffer/issues/1702), [#1708](https://github.com/GafferHQ/gaffer/issues/1708), [#1710](https://github.com/GafferHQ/gaffer/issues/1710)).
+- Mentioned PerformanceMonitor.
+
+Build
+-----------------------------------------------------------------------
+
+- Simplified packaging. Use the gafferDependencies project if the
+  dependencies are needed for your build.
+- Convert BUILD_DIR to an absolute path.
+
+API
+-----------------------------------------------------------------------
+
+- View ([#1713](https://github.com/GafferHQ/gaffer/issues/1713))
+  - Removed View3D and ObjectView derived classes.
+  - Removed update() and updateRequestSignal() methods.
+- Added DocumentationAlgo namespace with functions to assist in
+  auto-generating documentation.
+- Removed CompoundPlug usage from Shader nodes ([#1701](https://github.com/GafferHQ/gaffer/issues/1701)).
+- Added **kw arguments to all Widget constructors.
+- Removed deprecated Widget keyword arguments([#655](https://github.com/GafferHQ/gaffer/issues/655), [#1704](https://github.com/GafferHQ/gaffer/issues/1704)).
+- Removed all use of deprecated IECorePython::Wrapper ([#1116](https://github.com/GafferHQ/gaffer/issues/1116), [#1703](https://github.com/GafferHQ/gaffer/issues/1703)).
+- Removed deprecated `ValuePlug::inCompute()` method. Use `Process::current()`
+  instead.
+- Removed deprecated `Filter::matchPlug()` method. Use `Filter::outPlug()`
+  instead.
+- Removed deprecated SignalBinder class. Use SignalClass instead.
+- Removed deprecated iterator methods. Use `Iterator::done()` instead.
+

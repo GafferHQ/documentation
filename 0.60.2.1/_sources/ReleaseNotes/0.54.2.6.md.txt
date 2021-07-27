@@ -1,0 +1,5 @@
+0.54.2.6
+========
+
+- ImageTransform : Fixed bug in channel data hashing.
+
