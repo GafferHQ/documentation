@@ -1,0 +1,71 @@
+LightToCamera
+=============
+
+Converts lights into cameras. Spotlights are converted to a perspective
+camera with the field of view matching the cone angle, and distant lights are
+converted to an orthographic camera.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+Specifies which lights to convert.
+
+filmFit
+-------
+
+How the aperture gate (the frame defined by the aperture) will
+fit into the resolution gate (the framed defined by the data
+window). Fitting is applied only if the respective aspect
+ratios of the aperture and the resolution are different. The
+following fitting modes are available:
+
+- _Horizontal:_ The aperture gate will fit horizontally between
+the left/right edges of the resolution gate, while preserving
+its aspect ratio. If the aperture's aspect ratio is larger than
+the resolution's, the top/bottom edges of the aperture will be
+cropped. If it's smaller, then the top/bottom edges will
+capture extra vertical scene content.
+- _Vertical:_ The aperture gate will fit vertically between the
+top/bottom edges of the resolution gate, while preserving its
+aspect ratio. If the aperture's aspect ratio is larger than the
+resolution's, the left/right edges of the aperture will be
+cropped. If it's smaller, then the left/right edges will
+capture more horizontal scene content.
+- _Fit_: The aperture gate will fit horizontally (like
+_Horizontal_ mode) or vertically (like _Vertical_ mode) inside
+the resolution gate to avoid cropping the aperture, while
+preserving its aspect ratio. If the two gates' aspect ratios
+differ, the aperture will capture extra horizontal or vertical
+scene content.
+- _Fill:_ The aperture gate will fill the resolution gate such
+that none of the aperture captures extra scene content, while
+preserving its aspect ratio. In other words, it will make the
+opposite choice of the _Fit_ mode. If the two gates' aspect
+ratios differ, the aperture will be horizontally or vertically
+cropped.
+- _Distort:_ The aperture gate will match the size of the
+resolution gate. If their aspect ratios differ, the resulting
+image will appear vertically or horizontally stretched or
+squeezed.
