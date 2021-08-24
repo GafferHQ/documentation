@@ -1,0 +1,37 @@
+0.58.6.0
+========
+
+Improvements
+------------
+
+- Spreadsheet :
+  - Enabled cell selection, editing is now achieved with a double-click.
+  - Added menu items to cells & defaults sections to copy/paste the enabled state and value(s) of selected cells.
+  - Added menu items to the row names section to disable, copy/paste or delete the selected rows.
+  - Added menu items to edit the values for all selected cells of the same type simultaneously.
+  - Added menu items to the section chooser to quickly select a specific section.
+- Stats app : Added `-serialise` argument to measure the time taken to serialise the script.
+- Viewer : Improved highlighting of EditScope selector when an EditScope is active.
+
+Fixes
+-----
+
+- Viewer :
+  - Render controls should now work when viewing a render after it has passed through a compositing network, providing `gaffer:sourceScene` and `gaffer:isRendering` metadata is preserved ([#3888](https://github.com/GafferHQ/gaffer/issues/3888)).
+  - Fixed corruption of the GL stack and potential crash caused by exceptions thrown during draw.
+- SplinePlug :
+  - Fixed bugs affecting default values. All child plugs are now at their default values following construction and following a call to either `setToDefault()` or `resetDefault()`.
+  - Fixed bug that prevented a spline from being promoted to a Box if it had a non-default number of points. This also affected the use of a spline as the input to an Expression.
+- LRUCache : Fixed bug which could cause hangs during scene generation ([#4016](https://github.com/GafferHQ/gaffer/issues/4016)).
+- ArnoldShader : Moved the toon shader's `rim_light_tint` and `aov_prefix` parameters to appropriate sections in the UI.
+- Attributes : Added support for loading `extraAttributes` values and connections from Gaffer 0.59 and above.
+- Spreadsheet :
+  - Fixed bug that caused sections to overflow the available space.
+  - Fixed bug that prevented Set Expression helper menu items from appearing when accessed from a Spreadsheet cell.
+
+API
+---
+
+- Catalogue : Added `gaffer:isRendering` metadata, set to `True` if the viewed image is still receiving data from a display driver.
+- LRUCache : Added `getIfCached()` method.
+
