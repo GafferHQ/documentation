@@ -1,0 +1,99 @@
+0.51.0.0
+========
+
+This release provides support for the latest versions of Arnold and 3Delight (5.2 and 1.1.7
+respectively), along with the usual mix of improvements and bug fixes.
+
+> Caution : The specialised switch nodes such as SceneSwitch and ImageSwitch have been replaced
+> with a single all-purpose Switch node. Compatibility for old files is provided by converting
+> nodes during loading, but files saved from Gaffer 0.51 will not be useable in prior versions.
+> This can be worked around with a config file in the previous version which does
+> `Gaffer.Switch = Gaffer.SwitchComputeNode`.
+
+Features
+--------
+
+- Arnold : Added support for Arnold 5.2. Please note that Arnold 5.2 is not compatible with
+  earlier Arnold versions, so if you wish to use Gaffer 0.51 with an earlier version, you
+  will need to compile Gaffer yourself.
+- 3Delight : Updated to support version 1.1.7. Please note that earlier versions are no
+  longer supported.
+
+Improvements
+------------
+
+- Viewer :
+  - Improved interactivity when using transform tools or scrubbing animation
+    ([#2818](https://github.com/GafferHQ/gaffer/issues/2818)).
+  - Added "Escape" hotkey to pause processing ([#2838](https://github.com/GafferHQ/gaffer/issues/2838), [#2843](https://github.com/GafferHQ/gaffer/issues/2843)).
+- SceneInspector :
+  - Added inspection of light and shader parameters ([#2797](https://github.com/GafferHQ/gaffer/issues/2797)).
+  - Added annotation for indexed primitive variables ([#2824](https://github.com/GafferHQ/gaffer/issues/2824)).
+- ScriptNode : Added "frameRange:start" and "frameRange:end" context variables ([#2811](https://github.com/GafferHQ/gaffer/issues/2811)).
+- Documentation : Added "Anatomy of an Image" article ([#2832](https://github.com/GafferHQ/gaffer/issues/2832)).
+- Switch ([#2123](https://github.com/GafferHQ/gaffer/issues/2123), [#2812](https://github.com/GafferHQ/gaffer/issues/2812)) : Replaced specialised nodes with a single all-purpose Switch node.
+
+Fixes
+-----
+
+- SceneInspector :
+  - The order in which diffs are displayed now matches the order
+    in which objects are selected in the Viewer ([#2814](https://github.com/GafferHQ/gaffer/issues/2814)).
+  - Fixed formatting of Color4f values ([#2797](https://github.com/GafferHQ/gaffer/issues/2797)).
+- GraphEditor : Fixed problems with `nodeDoubleClickSignal()` ([#2821](https://github.com/GafferHQ/gaffer/issues/2821))
+    - The signal didn't respect slot return values, so a slot couldn't return True
+      to signify that it had handled the event, and block other slots.
+    - The default slot wasn't returning True.
+- Catalogue : Fixed delay when adding image with downsteam network ([#2827](https://github.com/GafferHQ/gaffer/issues/2827)).
+- AnimationEditor : Fixed numerical imprecision when snapping keys to whole frames
+  ([#2820](https://github.com/GafferHQ/gaffer/issues/2820)).
+- RenderController :
+  - Fixed bug where objects failed to render after being removed from
+    the lights set ([#2825](https://github.com/GafferHQ/gaffer/issues/2825)).
+  - Fixed GIL management bugs ([#2830](https://github.com/GafferHQ/gaffer/issues/2830)).
+- SceneView : Fixed bugs that could lead to a hang in the viewer
+  when expanding or collapsing the current selection ([#2830](https://github.com/GafferHQ/gaffer/issues/2830)).
+- SceneGadget : Fixed GIL management bugs ([#2830](https://github.com/GafferHQ/gaffer/issues/2830)).
+- Houdini : Fixed compilation with default build flags for Houdini 17 ([#2829](https://github.com/GafferHQ/gaffer/issues/2829)).
+- TransformTools : Fixed bug which prevented the editing of promoted transform
+  plugs ([#2831](https://github.com/GafferHQ/gaffer/issues/2831)).
+- ImageGadget : Fixed bug which prevented non-default dataWindow maximum coordinates
+  from being annotated in the Viewer ([#2840](https://github.com/GafferHQ/gaffer/issues/2840)).
+- TaskNode : Fixed bugs preventing implementation via internal network ([#2846](https://github.com/GafferHQ/gaffer/issues/2846)).
+- OpenGLRender ([#2799](https://github.com/GafferHQ/gaffer/issues/2799)) :
+  - Fixed crash when trying to use `gaffer execute` with OpenGLRender nodes.
+  - Fixed bug whereby the visualisation of the main render camera was visible.
+- Arnold : Fixed tests for API changes in Arnold 5.2 ([#2841](https://github.com/GafferHQ/gaffer/issues/2841)).
+
+API
+---
+
+- BackgroundTask : Added `waitFor()` method ([#2818](https://github.com/GafferHQ/gaffer/issues/2818)).
+- Added MAKE_GAFFER_COMPATIBILITY_VERSION macro ([#2819](https://github.com/GafferHQ/gaffer/issues/2819)).
+- ContextAlgo : Added GlobalScope utility class ([#2812](https://github.com/GafferHQ/gaffer/issues/2812)).
+- Switch :
+  - Added `inPlugs()` and `outPlug()` methods ([#2812](https://github.com/GafferHQ/gaffer/issues/2812)).
+- FilterPlug : Add `sceneAffectsMatch()` method ([#2812](https://github.com/GafferHQ/gaffer/issues/2812)).
+- TransformTool : Add `selectionChangedSignal()` ([#2848](https://github.com/GafferHQ/gaffer/issues/2848)).
+
+Breaking Changes
+----------------
+
+- Removed compatibility for loading files from Gaffer 0.15.0.0 and earlier.
+  Resave the file in a more recent version before loading in the current
+  version. Note that this can also expose bugs in custom scripts : if a script
+  incorrectly attempts to connect to an ArrayPlug instead of a child element,
+  this will now fail instead of being silently corrected ([#2805](https://github.com/GafferHQ/gaffer/issues/2805), [#2812](https://github.com/GafferHQ/gaffer/issues/2812)).
+- Switch ([#2812](https://github.com/GafferHQ/gaffer/issues/2812)) :
+  - Removed SwitchDependencyNode, SwitchComputeNode, SceneSwitch, ShaderSwitch, FilterSwitch,
+    and ImageSwitch nodes. Use Switch node instead. Backwards compatibility for old files is
+    provided by converting to Switches during loading.
+- 3Delight : Removed compatibility for older versions. At the time of writing
+  3Delight 1.1.7 is the latest tested version ([#2836](https://github.com/GafferHQ/gaffer/issues/2836)).
+- SceneGadget : Removed private member variable. Source compatibility is retained
+  ([#2818](https://github.com/GafferHQ/gaffer/issues/2818)).
+- Filter : Made `sceneAffectsMatch()` protected. Use the new `FilterPlug::sceneAffectsMatch()`
+  method instead ([#2812](https://github.com/GafferHQ/gaffer/issues/2812)).
+- UnionFilter : Removed compatibility for nodes created prior to version 0.28.0.0 ([#2812](https://github.com/GafferHQ/gaffer/issues/2812)).
+- TransformTool : Added private member data ([#2848](https://github.com/GafferHQ/gaffer/issues/2848)).
+
