@@ -1,0 +1,59 @@
+0.27.0
+======
+
+* Keeping the same font dpi no matter where gaffer is running.
+
+* Fixed bug which caused NameError to be thrown when loading a script containing an OpHolder.
+
+* NodeUI widgets can now be customised on a per-plug basis using the NodeUI.registerPlugValueWidget call.
+
+* Fixed bug which could cause crashes if a plug managed by VectorTypedParameterHandler had a null value.
+
+* Fixed bug which caused additional parameters1, parameters2 etc plugs to be created on the ReadNode. Added an additional test to check that the ReadNode works following serialisation.
+
+* Implemented keys(), values(), items() and __getitem__( long ) for GraphComponent bindings.
+
+* Added a simple Write node.
+
+* Added an execute application which can be used to execute Write nodes, or any other node with an execute() method.
+
+* The Gaffer headers are now installed in the include directory in the Gaffer distribution.
+
+* The Cortex procedural stubs are now installed as part of the Gaffer distribution.
+
+* GafferUI.TabbedContainer now has an index() method for retrieving the index of a given child, and a currentChangedSignal() method for signalling when the current tab has been changed.
+
+* GafferUI.NodeSetEditor now has a nodeSetChangedSignal() method, to notify listeners when the node set the editor is using has changed.
+
+* GafferUI.CompoundEditor now houses a couple of useful buttons alongside the tabs in the layout. One brings up the menu to edit the layout, and the other locks the currently viewed nodes for the current editor.
+
+* Added Serialisable flag to Gaffer.Plug, to control whether or not plugs and their values are serialised.
+
+* The gui app now has a fullScreen command line flag.
+
+* NodeEditor now displays the node type.
+
+* The Plug base class may now be serialised.
+
+* Fixed bug which meant that plug flags were not correctly serialised.
+
+* Fixed bug in the automatic Widget parenting mechanism, which meant Widgets could be parented inappropriately when being created from the constructor of another Widget.
+
+* The Path.addFilter() and Path.removeFilter() methods have been deprecated and replaced with Path.setFilter() and Path.getFilter() methods. Use the new CompoundFilter class if you wish to use more than one filter.
+
+* The Path and FileSystemPath constructors now accept an optional filter argument.
+
+* The PathFilter class now has setEnabled() and getEnabled() methods to turn the filter on and off. Derived classes should now implement the _filter() method rather than the filter() method.
+
+* The PathFilter class now has a changedSignal(), which issues notifications when the filter is changed in some way. The Path class uses this to correctly trigger its own pathChangedSignal()
+
+* The PathFilter classes now accept a dictionary userData argument to the constructor, which can be used for storing arbitrary data with the filter.
+
+* The CheckBox class now has setText() and getText() accessors.
+
+* Added PathFilterWidget class to allow uis to be built for the filters on paths. Added filter ui to PathChooserWidget, along with a button to refresh the listing.
+
+* The Path class now adds "name" and "fullName" entries to the info() dictionary.
+
+* The Menu class now accepts booleans as well as callables for the checkBox MenuItemDefinition entry.
+
