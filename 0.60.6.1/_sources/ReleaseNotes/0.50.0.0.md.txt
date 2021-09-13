@@ -1,0 +1,27 @@
+0.50.0.0
+========
+
+Improvements
+------------
+
+- TransformTools : Added support for multiple selection ([#2665](https://github.com/GafferHQ/gaffer/issues/2665), [#2803](https://github.com/GafferHQ/gaffer/issues/2803)).
+
+Fixes
+-----
+
+- CameraTool/TransformTool ([#2807](https://github.com/GafferHQ/gaffer/issues/2807), [#2808](https://github.com/GafferHQ/gaffer/issues/2808)) : Mitigated against crashes during Catalogue
+  image saving.
+
+API
+---
+
+- GafferSceneUI::ContextAlgo : Added `set/getLastSelectedPath()` functions, used for
+  specifying the last location to have been selected ([#2803](https://github.com/GafferHQ/gaffer/issues/2803)).
+
+Breaking Changes
+----------------
+
+- TransformTool ([#2803](https://github.com/GafferHQ/gaffer/issues/2803)) :
+  - Moved `orientedTransform()` method to `Selection` class.
+  - Changed `selection()` return type.
+
