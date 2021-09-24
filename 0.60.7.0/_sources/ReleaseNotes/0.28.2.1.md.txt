@@ -1,0 +1,10 @@
+0.28.2.1
+========
+
+API
+---
+
+- ArnoldShader
+  - Fix `outPlug()` loading bug introduced in 0.28.2.0.
+
+
