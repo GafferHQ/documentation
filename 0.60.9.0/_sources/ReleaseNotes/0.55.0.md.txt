@@ -1,0 +1,13 @@
+0.55.0
+======
+
+* Fixed graphical glitches caused by icons overlapping the edge of the editors on the Gnome desktop.
+
+* SceneProcedural now renders general VisibleRenderables too.
+
+* Fixed SceneReader to read animation at the correct speed (issue [#68](https://github.com/GafferHQ/gaffer/issues/68)).
+
+* File->Quit and the window close icon now prompt the user to confirm before closing if there are unsaved changes (issue [#19](https://github.com/GafferHQ/gaffer/issues/19)).
+
+* Added support for shader parameters of type "shader" in the RenderManShader node - these are mapped to plugs which accept connections to other RenderManShaders, allowing the creation of networks of coshaders.
+
