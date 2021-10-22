@@ -1,0 +1,156 @@
+ArnoldMeshLight
+===============
+
+Turns mesh primitives into Arnold mesh lights by assigning
+a mesh_light shader, turning off all visibility except for camera rays,
+and adding the meshes to the default lights set.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+cameraVisibility
+----------------
+
+Whether or not the mesh light is visible to camera
+rays.
+
+parameters
+----------
+
+The parameters of the Arnold mesh_light shader that
+is applied to the meshes.
+
+parameters.color
+----------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.intensity
+--------------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.exposure
+-------------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.cast_shadows
+-----------------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.cast_volumetric_shadows
+----------------------------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.shadow_density
+-------------------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.shadow_color
+-----------------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.samples
+------------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.normalize
+--------------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.diffuse
+------------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.specular
+-------------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.sss
+--------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.indirect
+-------------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.max_bounces
+----------------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.volume_samples
+-------------------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.volume
+-----------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+parameters.aov
+--------------
+
+Refer to Arnold's documentation for the mesh_light
+shader.
+
+defaultLight
+------------
+
+Whether this light illuminates all geometry by default. When
+toggled, the light will be added to the "defaultLights" set, which
+can be referenced in set expressions and manipulated by downstream
+nodes.
