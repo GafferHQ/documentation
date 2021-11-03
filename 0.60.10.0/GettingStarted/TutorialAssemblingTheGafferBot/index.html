@@ -1,0 +1,1346 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial: Assembling the Gaffer Bot &mdash; Gaffer 0.60.10.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/scrollspy.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gaffer.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Setting Up the “gaffer” Command" href="../SettingUpGafferCommand/index.html" />
+    <link rel="prev" title="Launching Gaffer for the First Time" href="../LaunchingGafferFirstTime/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/GafferLogoMini.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.60.10.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../InstallingGaffer/index.html">Installing Gaffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LaunchingGafferFirstTime/index.html">Launching Gaffer for the First Time</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tutorial: Assembling the Gaffer Bot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SettingUpGafferCommand/index.html">Setting Up the “gaffer” Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ConfiguringGafferForThirdPartyTools/index.html">Configuring Gaffer for Third-Party Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../WorkingWithTheNodeGraph/index.html">Working with the Node Graph</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithTheNodeGraph/BoxNode/index.html">Box Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithTheNodeGraph/SpreadsheetNode/index.html">Spreadsheet Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithTheNodeGraph/Contexts/index.html">Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithTheNodeGraph/PerformanceBestPractices/index.html">Performance Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithTheNodeGraph/UsingThePerformanceMonitor/index.html">Using the Performance Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithTheNodeGraph/TutorialUsingTheOSLCodeNode/index.html">Tutorial: Using The OSLCode Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithTheNodeGraph/TutorialSettingUpASpreadsheet/index.html">Tutorial: Setting Up a Spreadsheet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../WorkingWithScenes/index.html">Working with Scenes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithScenes/AnatomyOfAScene/index.html">Anatomy of a Scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithScenes/AnatomyOfACamera/index.html">Anatomy of a Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithScenes/Camera/index.html">Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithScenes/LightLinking/index.html">Light Linking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../WorkingWithImages/index.html">Working with Images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithImages/AnatomyOfAnImage/index.html">Anatomy of an Image</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../WorkingWithThePythonScriptingAPI/index.html">Working with the Python Scripting API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithThePythonScriptingAPI/ThePythonEditor/index.html">The Python Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithThePythonScriptingAPI/TutorialNodeGraphEditingInPython/index.html">Tutorial: Node Graph Editing in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithThePythonScriptingAPI/TutorialQueryingAScene/index.html">Tutorial: Querying a Scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithThePythonScriptingAPI/TutorialStartupConfig1/index.html">Tutorial: Startup Config 1; Custom Global Context Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithThePythonScriptingAPI/TutorialStartupConfig2/index.html">Tutorial: Startup Config 2; Custom Bookmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithThePythonScriptingAPI/TutorialStartupConfig3/index.html">Tutorial: Startup Config 3; Custom Node Menu Entries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Interface/index.html">Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Interface/ControlsAndShortcuts/index.html">Controls and Shortcuts</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Supplemental Material</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Reference/index.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Reference/NodeReference/index.html">Node Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/index.html">Gaffer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Animation.html">Animation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Backdrop.html">Backdrop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Box.html">Box</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/BoxIn.html">BoxIn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/BoxOut.html">BoxOut</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/ComputeNode.html">ComputeNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/ContextVariables.html">ContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/ContextVariablesComputeNode.html">ContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/DeleteContextVariables.html">DeleteContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/DeleteContextVariablesComputeNode.html">DeleteContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/DependencyNode.html">DependencyNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Dot.html">Dot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/EditScope.html">EditScope</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Expression.html">Expression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Loop.html">Loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/LoopComputeNode.html">Loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/NameSwitch.html">NameSwitch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Node.html">Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Preferences.html">Preferences</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Random.html">Random</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Reference.html">Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/ScriptNode.html">ScriptNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Spreadsheet.html">Spreadsheet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/SubGraph.html">SubGraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Switch.html">Switch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/SwitchComputeNode.html">Switch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/TimeWarp.html">TimeWarp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/TimeWarpComputeNode.html">TimeWarp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/GafferAppleseed/index.html">GafferAppleseed</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferAppleseed/AppleseedAttributes.html">AppleseedAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferAppleseed/AppleseedLight.html">AppleseedLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferAppleseed/AppleseedOptions.html">AppleseedOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferAppleseed/AppleseedRender.html">AppleseedRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferAppleseed/AppleseedShaderAdaptor.html">AppleseedShaderAdaptor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferAppleseed/AppleseedShaderBall.html">AppleseedShaderBall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferAppleseed/InteractiveAppleseedRender.html">InteractiveAppleseedRender</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/index.html">GafferArnold</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldAOVShader.html">ArnoldAOVShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldAtmosphere.html">ArnoldAtmosphere</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldAttributes.html">ArnoldAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldBackground.html">ArnoldBackground</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldCameraShaders.html">ArnoldCameraShaders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldColorManager.html">ArnoldColorManager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldDisplacement.html">ArnoldDisplacement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldLight.html">ArnoldLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldLightFilter.html">ArnoldLightFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldMeshLight.html">ArnoldMeshLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldOptions.html">ArnoldOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldRender.html">ArnoldRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldShader.html">ArnoldShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldShaderBall.html">ArnoldShaderBall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldTextureBake.html">ArnoldTextureBake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldVDB.html">ArnoldVDB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/InteractiveArnoldRender.html">InteractiveArnoldRender</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/index.html">GafferDispatch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/Dispatcher.html">Dispatcher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/FrameMask.html">FrameMask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/LocalDispatcher.html">LocalDispatcher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/PythonCommand.html">PythonCommand</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/SystemCommand.html">SystemCommand</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/TaskContextProcessor.html">TaskContextProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/TaskContextVariables.html">TaskContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/TaskList.html">TaskList</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/TaskNode.html">TaskNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/TaskSwitch.html">TaskSwitch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/Wedge.html">Wedge</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/index.html">GafferImage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/BleedFill.html">BleedFill</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Blur.html">Blur</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/CDL.html">CDL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Catalogue.html">Catalogue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/CatalogueSelect.html">CatalogueSelect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Checkerboard.html">Checkerboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Clamp.html">Clamp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/CollectImages.html">CollectImages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ColorSpace.html">ColorSpace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Constant.html">Constant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/CopyChannels.html">CopyChannels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/CopyImageMetadata.html">CopyImageMetadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Crop.html">Crop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeepHoldout.html">DeepHoldout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeepMerge.html">DeepMerge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeepRecolor.html">DeepRecolor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeepSampleCounts.html">DeepSampleCounts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeepSampler.html">DeepSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeepState.html">DeepState</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeepTidy.html">DeepTidy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeepToFlat.html">DeepToFlat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeleteChannels.html">DeleteChannels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeleteImageMetadata.html">DeleteImageMetadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Dilate.html">Dilate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Display.html">Display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DisplayTransform.html">DisplayTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Empty.html">Empty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Erode.html">Erode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/FlatImageProcessor.html">FlatImageProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/FlatImageSource.html">FlatImageSource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/FlatToDeep.html">FlatToDeep</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Grade.html">Grade</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageMetadata.html">ImageMetadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageNode.html">ImageNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageProcessor.html">ImageProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageReader.html">ImageReader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageSampler.html">ImageSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageStats.html">ImageStats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageTransform.html">ImageTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageWriter.html">ImageWriter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/LUT.html">LUT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Median.html">Median</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Merge.html">Merge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Mirror.html">Mirror</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Mix.html">Mix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Offset.html">Offset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/OpenImageIOReader.html">OpenImageIOReader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Premultiply.html">Premultiply</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Ramp.html">Ramp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Rectangle.html">Rectangle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Resample.html">Resample</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Resize.html">Resize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Saturation.html">Saturation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Shuffle.html">Shuffle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Text.html">Text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/UVWarp.html">VectorWarp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Unpremultiply.html">Unpremultiply</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/VectorWarp.html">VectorWarp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/GafferOSL/index.html">GafferOSL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferOSL/OSLCode.html">OSLCode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferOSL/OSLImage.html">OSLImage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferOSL/OSLLight.html">OSLLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferOSL/OSLObject.html">OSLObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferOSL/OSLShader.html">OSLShader</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/index.html">GafferScene</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/AimConstraint.html">AimConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/AttributeQuery.html">AttributeQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/AttributeVisualiser.html">AttributeVisualiser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Attributes.html">Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/BoundQuery.html">BoundQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Camera.html">Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CameraTweaks.html">CameraTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ClippingPlane.html">ClippingPlane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ClosestPointSampler.html">ClosestPointSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CollectPrimitiveVariables.html">CollectPrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CollectScenes.html">CollectScenes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CollectTransforms.html">CollectTransforms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CoordinateSystem.html">CoordinateSystem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CopyAttributes.html">CopyAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CopyOptions.html">CopyOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CopyPrimitiveVariables.html">CopyPrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Cube.html">Cube</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CurveSampler.html">CurveSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CustomAttributes.html">CustomAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CustomOptions.html">CustomOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteAttributes.html">DeleteAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteCurves.html">DeleteCurves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteFaces.html">DeleteFaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteGlobals.html">DeleteGlobals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteObject.html">DeleteObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteOptions.html">DeleteOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteOutputs.html">DeleteOutputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeletePoints.html">DeletePoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeletePrimitiveVariables.html">DeletePrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteSets.html">DeleteSets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Duplicate.html">Duplicate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Encapsulate.html">Encapsulate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ExistenceQuery.html">ExistenceQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ExternalProcedural.html">ExternalProcedural</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Filter.html">Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/FilterProcessor.html">FilterProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/FilterQuery.html">FilterQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/FilterResults.html">FilterResults</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/FilteredSceneProcessor.html">FilteredSceneProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/FreezeTransform.html">FreezeTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Grid.html">Grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Group.html">Group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Instancer.html">Instancer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/InteractiveRender.html">InteractiveRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Isolate.html">Isolate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/LightToCamera.html">LightToCamera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/LocaliseAttributes.html">LocaliseAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MapOffset.html">MapOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MapProjection.html">MapProjection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MergeScenes.html">MergeScenes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MeshDistortion.html">MeshDistortion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MeshTangents.html">MeshTangents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MeshToPoints.html">MeshToPoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MeshType.html">MeshType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MotionPath.html">MotionPath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ObjectToScene.html">ObjectToScene</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/OpenGLAttributes.html">OpenGLAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/OpenGLRender.html">OpenGLRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/OpenGLShader.html">OpenGLShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Options.html">Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Orientation.html">Orientation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Outputs.html">Outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Parameters.html">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Parent.html">Parent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ParentConstraint.html">ParentConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/PathFilter.html">PathFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Plane.html">Plane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/PointConstraint.html">PointConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/PointsType.html">PointsType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/PrimitiveVariableExists.html">PrimitiveVariableExists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/PrimitiveVariables.html">PrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Prune.html">Prune</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Render.html">Render</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ResamplePrimitiveVariables.html">ResamplePrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ReverseWinding.html">ReverseWinding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SceneElementProcessor.html">SceneElementProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SceneNode.html">SceneNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SceneProcessor.html">SceneProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SceneReader.html">SceneReader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SceneWriter.html">SceneWriter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Seeds.html">Seeds</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Set.html">Set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SetFilter.html">SetFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SetVisualiser.html">SetVisualiser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Shader.html">Shader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ShaderAssignment.html">ShaderAssignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ShaderBall.html">ShaderBall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ShaderTweaks.html">ShaderTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ShuffleAttributes.html">ShuffleAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ShufflePrimitiveVariables.html">ShufflePrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Sphere.html">Sphere</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/StandardAttributes.html">StandardAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/StandardOptions.html">StandardOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SubTree.html">SubTree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Text.html">Text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Transform.html">Transform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/TransformQuery.html">TransformQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/UDIMQuery.html">UDIMQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/UVSampler.html">UVSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Unencapsulate.html">Unencapsulate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/UnionFilter.html">UnionFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Wireframe.html">Wireframe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/GafferVDB/index.html">GafferVDB</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferVDB/LevelSetOffset.html">LevelSetOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferVDB/LevelSetToMesh.html">LevelSetToMesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferVDB/MeshToLevelSet.html">MeshToLevelSet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferVDB/PointsGridToPoints.html">PointsGridToPoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferVDB/SphereLevelSet.html">SphereLevelSet</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Reference/ScriptingReference/index.html">Scripting Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/ScriptingReference/CommonOperations/index.html">Common Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/ScriptingReference/StringSubstitutionSyntax/index.html">String Substitution Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/ScriptingReference/Expressions/index.html">Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/ScriptingReference/SetExpressions/index.html">Set Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/ScriptingReference/Metadata/index.html">Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Reference/CommandLineReference/index.html">Command Line Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/browser.html">browser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/cli.html">cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/dispatch.html">dispatch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/env.html">env</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/execute.html">execute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/gui.html">gui</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/license.html">license</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/python.html">python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/screengrab.html">screengrab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/stats.html">stats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/test.html">test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/view.html">view</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Reference/ContextVariables/index.html">Context Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ReleaseNotes/index.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.60.10.0.html">0.60.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.60.9.0.html">0.60.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.60.8.0.html">0.60.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.60.7.1.html">0.60.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.60.7.0.html">0.60.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.60.6.1.html">0.60.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.60.6.0.html">0.60.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.60.5.0.html">0.60.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.60.4.0.html">0.60.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.60.3.0.html">0.60.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.60.2.1.html">0.60.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.60.2.0.html">0.60.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.60.1.0.html">0.60.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.60.0.0.html">0.60.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.59.9.5.html">0.59.9.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.59.9.4.html">0.59.9.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.59.9.3.html">0.59.9.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.59.9.2.html">0.59.9.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.59.9.1.html">0.59.9.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.59.9.0.html">0.59.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.59.8.0.html">0.59.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.59.7.0.html">0.59.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.59.6.0.html">0.59.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.59.5.0.html">0.59.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.59.4.0.html">0.59.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.59.3.0.html">0.59.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.59.2.0.html">0.59.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.59.1.0.html">0.59.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.59.0.0.html">0.59.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.6.7.html">0.58.6.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.6.6.html">0.58.6.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.6.5.html">0.58.6.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.6.4.html">0.58.6.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.6.3.html">0.58.6.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.6.2.html">0.58.6.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.6.1.html">0.58.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.6.0.html">0.58.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.5.2.html">0.58.5.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.5.1.html">0.58.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.5.0.html">0.58.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.4.0.html">0.58.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.3.2.html">0.58.3.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.3.1.html">0.58.3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.3.0.html">0.58.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.2.0.html">0.58.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.1.0.html">0.58.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.0.1.html">0.58.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.0.0.html">0.58.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.57.7.6.html">0.57.7.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.57.7.5.html">0.57.7.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.57.7.4.html">0.57.7.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.57.7.3.html">0.57.7.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.57.7.2.html">0.57.7.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.57.7.1.html">0.57.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.57.7.0.html">0.57.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.57.6.0.html">0.57.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.57.5.0.html">0.57.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.57.4.1.html">0.57.4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.57.4.0.html">0.57.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.57.3.0.html">0.57.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.57.2.0.html">0.57.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.57.1.0.html">0.57.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.57.0.0.html">0.57.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.56.2.6.html">0.56.2.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.56.2.5.html">0.56.2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.56.2.4.html">0.56.2.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.56.2.3.html">0.56.2.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.56.2.2.html">0.56.2.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.56.2.1.html">0.56.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.56.2.0.html">0.56.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.56.1.0.html">0.56.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.56.0.0.html">0.56.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.55.5.2.html">0.55.5.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.55.5.1.html">0.55.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.55.5.0.html">0.55.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.55.4.1.html">0.55.4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.55.4.0.html">0.55.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.55.3.0.html">0.55.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.55.2.1.html">0.55.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.55.2.0.html">0.55.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.55.1.0.html">0.55.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.55.0.0.html">0.55.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.54.2.7.html">0.54.2.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.54.2.6.html">0.54.2.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.54.2.5.html">0.54.2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.54.2.4.html">0.54.2.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.54.2.3.html">0.54.2.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.54.2.2.html">0.54.2.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.54.2.1.html">0.54.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.54.2.0.html">0.54.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.54.1.0.html">0.54.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.54.0.1.html">0.54.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.54.0.0.html">0.54.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.53.6.3.html">0.53.6.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.53.6.2.html">0.53.6.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.53.6.0.html">0.53.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.53.5.0.html">0.53.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.53.4.0.html">0.53.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.53.3.0.html">0.53.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.53.2.0.html">0.53.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.53.1.1.html">0.53.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.53.1.0.html">0.53.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.53.0.0.html">0.53.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.52.3.5.html">0.52.3.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.52.3.4.html">0.52.3.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.52.3.3.html">0.52.3.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.52.3.2.html">0.52.3.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.52.3.1.html">0.52.3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.52.3.0.html">0.52.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.52.2.0.html">0.52.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.52.1.0.html">0.52.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.52.0.0.html">0.52.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.51.0.0.html">0.51.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.50.0.0.html">0.50.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.49.1.0.html">0.49.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.49.0.1.html">0.49.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.49.0.0.html">0.49.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.48.1.0.html">0.48.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.48.0.0.html">0.48.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.47.0.0.html">0.47.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.46.1.0.html">0.46.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.46.0.0.html">0.46.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.45.3.0.html">0.45.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.45.2.0.html">0.45.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.45.1.0.html">0.45.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.45.0.0.html">0.45.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.44.0.0.html">0.44.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.43.0.0.html">0.43.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.42.0.0.html">0.42.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.41.0.0.html">0.41.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.40.0.0.html">0.40.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.34.0.0.html">0.34.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.33.3.0.html">0.33.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.33.2.0.html">0.33.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.33.1.0.html">0.33.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.33.0.0.html">0.33.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.32.0.0.html">0.32.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.31.0.0.html">0.31.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.30.2.0.html">0.30.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.30.1.0.html">0.30.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.30.0.0.html">0.30.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.29.0.0.html">0.29.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.28.3.0.html">0.28.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.28.2.1.html">0.28.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.28.2.0.html">0.28.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.28.1.0.html">0.28.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.28.0.1.html">0.28.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.28.0.0.html">0.28.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.27.1.0.html">0.27.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.27.0.1.html">0.27.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.27.0.0.html">0.27.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.26.0.0.html">0.26.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.25.1.0.html">0.25.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.25.0.0.html">0.25.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.24.1.0.html">0.24.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.24.0.0.html">0.24.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.23.2.0.html">0.23.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.23.1.0.html">0.23.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.23.0.1.html">0.23.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.23.0.0.html">0.23.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.22.0.0.html">0.22.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.21.0.0.html">0.21.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.20.0.0.html">0.20.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.19.0.0.html">0.19.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.18.0.0.html">0.18.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.17.0.0.html">0.17.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.16.0.4.html">0.16.0.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.16.0.3.html">0.16.0.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.16.0.2.html">0.16.0.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.16.0.1.html">0.16.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.16.0.0.html">0.16.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.15.0.0.html">0.15.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.14.0.0.html">0.14.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.13.1.0.html">0.13.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.13.0.0.html">0.13.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.12.1.0.html">0.12.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.12.0.0.html">0.12.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.11.0.0.html">0.11.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.10.1.0.html">0.10.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.10.0.0.html">0.10.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.9.0.0.html">0.9.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.8.2.0.html">0.8.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.8.1.0.html">0.8.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.8.0.0.html">0.8.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.7.0.0.html">0.7.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.6.0.0.html">0.6.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.5.0.1.html">0.5.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.5.0.0.html">0.5.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.4.0.0.html">0.4.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.3.0.0.html">0.3.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.2.1.0.html">0.2.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.2.0.0.html">0.2.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.1.1.0.html">0.1.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.1.0.0.html">0.1.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.101.0.html">0.101.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.100.0.html">0.100.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.99.0.html">0.99.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.98.0.html">0.98.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.97.0.html">0.97.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.96.0.html">0.96.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.95.0.html">0.95.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.94.0.html">0.94.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.93.0.html">0.93.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.92.1.html">0.92.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.92.0.html">0.92.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.91.0.html">0.91.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.90.0.html">0.90.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.89.0.html">0.89.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.88.1.html">0.88.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.88.0.html">0.88.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.87.1.html">0.87.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.87.0.html">0.87.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.86.0.html">0.86.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.85.1.html">0.85.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.85.0.html">0.85.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.84.0.html">0.84.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.83.0.html">0.83.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.82.0.html">0.82.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.81.0.html">0.81.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.80.0.html">0.80.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.79.0.html">0.79.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.78.0.html">0.78.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.77.0.html">0.77.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.76.0.html">0.76.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.75.0.html">0.75.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.74.0.html">0.74.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.73.0.html">0.73.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.72.2.html">0.72.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.72.1.html">0.72.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.72.0.html">0.72.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.71.0.html">0.71.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.70.0.html">0.70.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.69.1.html">0.69.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.69.0.html">0.69.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.68.0.html">0.68.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.67.0.html">0.67.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.66.0.html">0.66.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.65.0.html">0.65.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.64.0.html">0.64.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.63.1.html">0.63.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.63.0.html">0.63.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.62.1.html">0.62.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.62.0.html">0.62.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.61.0.html">0.61.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.60.0.html">0.60.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.59.0.html">0.59.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.58.0.html">0.58.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.57.0.html">0.57.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.56.0.html">0.56.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.55.0.html">0.55.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.54.0.html">0.54.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.53.0.html">0.53.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.52.0.html">0.52.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.51.0.html">0.51.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.36.0.html">0.36.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.35.7.html">0.35.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.35.6.html">0.35.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.35.5.html">0.35.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.35.4.html">0.35.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.35.3.html">0.35.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.35.2.html">0.35.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.35.1.html">0.35.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.35.0.html">0.35.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.34.0.html">0.34.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.33.2.html">0.33.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.33.1.html">0.33.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.33.0.html">0.33.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.32.1.html">0.32.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.32.0.html">0.32.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.31.0.html">0.31.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.30.0.html">0.30.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.29.0.html">0.29.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.28.1.html">0.28.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.28.0.html">0.28.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.27.0.html">0.27.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.26.0.html">0.26.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.25.0.html">0.25.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.24.0.html">0.24.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.23.0.html">0.23.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.22.1.html">0.22.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.22.0.html">0.22.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.21.0.html">0.21.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.20.0.html">0.20.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.19.0.html">0.19.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.18.0.html">0.18.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.17.0.html">0.17.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.16.0.html">0.16.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.15.1.html">0.15.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.15.0.html">0.15.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.14.0.html">0.14.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.13.0.html">0.13.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.12.0.html">0.12.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.11.0.html">0.11.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.10.0.html">0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.9.0.html">0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.8.0.html">0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.7.0.html">0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.6.0.html">0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.5.0.html">0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.4.0.html">0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/0.3.0.html">0.3.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Appendices/index.html">Appendices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Appendices/License/index.html">License</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Gaffer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Getting Started</a> &raquo;</li>
+        
+      <li>Tutorial: Assembling the Gaffer Bot</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial-assembling-the-gaffer-bot">
+<h1>Tutorial: Assembling the Gaffer Bot<a class="headerlink" href="#tutorial-assembling-the-gaffer-bot" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial, we will give you a first taste of Gaffer by covering its basic operations and concepts. The goal is for you to learn to make renders of a basic scene as quickly as possible, and provide a minimal basis to further explore the application and its documentation. It will cover a lot of ground quickly, and some details will be glossed over.</p>
+<p>By the end of this tutorial you will have built a basic scene with Gaffer’s robot mascot, Gaffy, and render an output image. You will learn the following lessons, not necessarily in this order:</p>
+<ul class="simple">
+<li>Gaffer UI fundamentals</li>
+<li>Creating and connecting nodes</li>
+<li>Importing geometry</li>
+<li>Constructing a basic scene hierarchy</li>
+<li>Importing textures</li>
+<li>Building a simple shader</li>
+<li>Applying a shader to geometry</li>
+<li>Adding a light</li>
+<li>Using an interactive renderer</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">
+This tutorial uses Appleseed, a free renderer included with Gaffer. While the Appleseed-specific nodes described here can be substituted with equivalents from Arnold or 3Delight, we recommend that you complete this tutorial using Appleseed before moving on to your preferred renderer.</p>
+</div>
+<div class="section" id="starting-a-new-node-graph">
+<h2>Starting a new node graph<a class="headerlink" href="#starting-a-new-node-graph" title="Permalink to this headline">¶</a></h2>
+<p>After <a class="reference internal" href="../InstallingGaffer/index.html"><span class="doc">installing Gaffer</span></a>, launch Gaffer <a class="reference internal" href="../LaunchingGafferFirstTime/index.html"><span class="doc">from its directory</span></a> or by using the <a class="reference internal" href="../SettingUpGafferCommand/index.html"><span class="doc">“gaffer” command</span></a>. Gaffer will start, and you will be presented with an empty node graph in the default UI layout.</p>
+<p><img alt="An empty node graph in the default layout" src="../../_images/mainDefaultLayout.png" /></p>
+</div>
+<div class="section" id="importing-a-geometry-scene-cache">
+<h2>Importing a geometry scene cache<a class="headerlink" href="#importing-a-geometry-scene-cache" title="Permalink to this headline">¶</a></h2>
+<p>As Gaffer is a tool primarily designed for lookdev, lighting, and VFX process automation, we expect that your sequence’s modelling and animation will be created in an external tool like Maya, and then imported into Gaffer as a geometry/animation cache. Gaffer supports Alembic (.abc) and USD (.usdc and .usda) file formats, as well as its own native SceneCache (.scc) file format. Most scenes begin by importing geometry or images via one of the two types of Reader nodes: <a class="reference internal" href="../../Reference/NodeReference/GafferScene/SceneReader.html"><span class="doc">SceneReader</span></a> or <a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageReader.html"><span class="doc">ImageReader</span></a>.</p>
+<p>First, load Gaffy’s geometry cache with a SceneReader node:</p>
+<ol>
+<li><p class="first">In the Graph Editor in the bottom-left panel, right-click. The node creation menu will appear.</p>
+</li>
+<li><p class="first">Select <em>Scene</em> &gt; <em>File</em> &gt; <em>Reader</em>. The SceneReader node will appear in the Graph Editor and be selected automatically.</p>
+<p><img alt="A new SceneReader node" src="../../_images/mainSceneReaderNode.png" /> <!-- TODO: add annotation? --></p>
+</li>
+<li><p class="first">The Node Editor in the top-right panel has now updated to display the SceneReader node’s values. In the <em>File Name</em> field, type <code class="docutils literal notranslate"><span class="pre">${GAFFER_ROOT}/resources/gafferBot/caches/gafferBot.scc</span></code>.</p>
+</li>
+<li><p class="first">Hover the cursor over the background of the Viewer (in the top-left panel), and hit <kbd>F</kbd>. The view will reframe to cover the whole scene.</p>
+<p><img alt="The bounding box of the selected SceneReader node" src="../../_images/viewerSceneReaderBounding.png" /> <!-- TODO: add annotation --></p>
+</li>
+</ol>
+<p>The SceneReader node has loaded, and the Viewer is showing a bounding box, but the geometry remains invisible. You can confirm that the scene has loaded by examining the Hierarchy View in the bottom-right panel. It too has updated, and shows that you have <code class="docutils literal notranslate"><span class="pre">GAFFERBOT</span></code> at the root of the scene. In order to view the geometry, you will need to expand the scene’s locations down to their leaves.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">
+By default, the Viewer, Node Editor, and Hierarchy View update to reflect the last selected node, and go blank when no node is selected.</p>
+</div>
+</div>
+<div class="section" id="the-scene-hierarchy">
+<h2>The scene hierarchy<a class="headerlink" href="#the-scene-hierarchy" title="Permalink to this headline">¶</a></h2>
+<p>When you load a geometry cache, Gaffer only reads its 3D data: at no point does it write to the file. This lets you manipulate the scene without risk to the file.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">
+3D data in Gaffer can be non-destructively hidden, added to, changed, and deleted.</p>
+</div>
+<p>Further, Gaffer uses locations in the scene hierarchy to selectively render the objects (geometry, cameras) you need: in the Viewer, the objects of expanded locations will show, while the objects of collapsed locations will only appear as a bounding box. This on-demand object loading allows Gaffer to handle highly complex scenes. In your current node graph, only Gaffy’s bounding box is visible in the Viewer.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">
+Only objects that have their parent locations expanded will appear in full in the Viewer. Objects with collapsed parent locations will appear as a bounding box.</p>
+</div>
+<div class="section" id="navigating-the-scene-using-the-hierarchy-view">
+<h3>Navigating the scene using the Hierarchy View<a class="headerlink" href="#navigating-the-scene-using-the-hierarchy-view" title="Permalink to this headline">¶</a></h3>
+<p>Until you expand Gaffy’s scene’s locations, all geometry will remain a bounding box.</p>
+<p>You can use the Hierarchy View to expand the scene’s locations:</p>
+<ol>
+<li><p class="first">If the SceneReader node is deselected, select it by clicking it in the Graph Editor.</p>
+</li>
+<li><p class="first">In the Hierarchy View, click <img alt="the triangle" src="../../_images/collapsibleArrowRight.png" /> next to <code class="docutils literal notranslate"><span class="pre">GAFFERBOT</span></code>. The <code class="docutils literal notranslate"><span class="pre">GAFFERBOT</span></code> location will expand to show a child location named <code class="docutils literal notranslate"><span class="pre">C_torso_GRP</span></code>.</p>
+</li>
+<li><p class="first">Click <img alt="the triangle" src="../../_images/collapsibleArrowRight.png" /> next to <code class="docutils literal notranslate"><span class="pre">C_torso_GRP</span></code> to show its child locations.</p>
+<p><img alt="The scene hierarchy, expanded down two levels" src="../../_images/hierarchyViewExpandedTwoLevels.png" /> <!-- TODO: add annotation --></p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">
+Gaffy’s geometry cache contains location names with affixes like “C”, “R”, “L”, “GRP”, “CPT” and “REN”. Gaffer places no significance whatsoever on these names, and you are free to use whichever naming conventions you see fit.</p>
+</div>
+<p>In the Viewer, you can now see the bounding boxes of the objects at several locations, revealing more of the scene’s structure. However, it would be tedious to expand the whole scene, location-by-location, in this manner. Instead, you can expand a location, its children, and all its sub-children at once with a shortcut:</p>
+<ol class="simple">
+<li>In the Hierarchy View, <kbd>Shift</kbd> + click the <img alt="triangle" src="../../_images/collapsibleArrowRight.png" /> next to <code class="docutils literal notranslate"><span class="pre">C_head_GRP</span></code>. All of the children of <code class="docutils literal notranslate"><span class="pre">C_head_GRP</span></code> will expand. Now the Viewer shows all of the geometry that comprises Gaffy’s head.</li>
+<li><kbd>Shift</kbd> + click the <img alt="triangle" src="../../_images/collapsibleArrowRight.png" /> next to <code class="docutils literal notranslate"><span class="pre">R_legUpper_GRP</span></code>. All the locations under <code class="docutils literal notranslate"><span class="pre">R_legUpper_GRP</span></code> will expand. Now the Viewer also shows all of the geometry that comprises Gaffy’s right leg.</li>
+</ol>
+<p><img alt="The geometry of the head and right leg, expanded" src="../../_images/mainHeadAndLeftLegExpanded.png" /></p>
+</div>
+<div class="section" id="navigating-the-scene-using-the-viewer">
+<h3>Navigating the scene using the Viewer<a class="headerlink" href="#navigating-the-scene-using-the-viewer" title="Permalink to this headline">¶</a></h3>
+<p>As you explored the scene using the Hierarchy View, the Viewer updated to show the geometry you expanded. The Viewer also permits scene navigation through direct interaction with the geometry and bounding boxes in its viewport. This provides a more intuitive method for scene traversal, which can be invaluable when handling very complex scenes.</p>
+<p>You can expand the scene hierarchy using the arrow keys and the Viewer:</p>
+<ol>
+<li><p class="first">In the Viewer, click-drag and release a marquee over the bounding box for Gaffy’s left leg.</p>
+</li>
+<li><p class="first">Hit <kbd>↓</kbd> to expand the selection down one level. The highlighted bounding box will be replaced by two smaller bounding boxes, indicating that you have expanded the location’s children.</p>
+</li>
+<li><p class="first">Hit <kbd>Shift</kbd> + <kbd>↓</kbd> to fully expand all the left leg’s child locations.</p>
+<p><img alt="The head and leg geometry, expanded" src="../../_images/viewerHeadAndLegsExpanded.png" /></p>
+</li>
+</ol>
+<p>You can also collapse locations in a similar manner through the Viewer:</p>
+<ol class="simple">
+<li>With the geometry of the left leg still selected, hover the mouse inside the Viewer.</li>
+<li>Hit <kbd>↑</kbd>. The geometry will collapse into its bounding boxes.</li>
+<li>Keep hitting <kbd>↑</kbd> until all of Gaffy’s geometry is collapsed back into the root bounding box.</li>
+</ol>
+<p>You may have noticed that when you expanded and collapsed parts of the scene using the Viewer, the locations and geometry were also highlighted and selected in the Hierarchy View.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">
+Selecting, expanding, and collapsing scene locations through the Hierarchy View and the Viewer are one and the same.</p>
+</div>
+</div>
+</div>
+<div class="section" id="adjusting-the-view-in-the-viewer">
+<h2>Adjusting the view in the Viewer<a class="headerlink" href="#adjusting-the-view-in-the-viewer" title="Permalink to this headline">¶</a></h2>
+<p>Like in other 3D tools, you can adjust the angle, field of view, and the position of the virtual camera in the Viewer.</p>
+<ul class="simple">
+<li>To rotate/tumble, <kbd>Alt</kbd> + click and drag.</li>
+<li>To zoom/dolly in and out, <kbd>Alt</kbd> + right click and drag, or scroll the middle mouse.</li>
+<li>To track from side to side, <kbd>Alt</kbd> + middle click and drag.</li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">
+If you lose sight of the scene and cannot find your place again, you can always refocus on the currently selected location by hovering the cursor over the Viewer and hitting <kbd>F</kbd>.</p>
+</div>
+</div>
+<div class="section" id="creating-a-camera">
+<h2>Creating a camera<a class="headerlink" href="#creating-a-camera" title="Permalink to this headline">¶</a></h2>
+<p>Before you can begin rendering the scene, you will need to create a camera. Just like how you created a SceneReader node to load in the geometry, you will create another node to add a camera.</p>
+<p>Earlier, you learned how to create a node by navigating the node creation menu in the Graph Editor. If you know the name of the node you wish to create, and do not feel like mousing through the menu, you can instead use the menu’s search feature:</p>
+<ol>
+<li><p class="first">Right-click the background of the Graph Editor. The node creation menu will open.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">
+With the cursor hovering over the Graph Editor, you can also hit <kbd>Tab</kbd> to open the node creation menu.</p>
+</div>
+</li>
+<li><p class="first">Type <code class="docutils literal notranslate"><span class="pre">camera</span></code>. A list of search results will appear. <em>Camera</em> should be highlighted.</p>
+</li>
+<li><p class="first">Hit <kbd>Enter</kbd>. A Camera node will appear in the Graph Editor.</p>
+<p><img alt="A new Camera node" src="../../_images/mainCameraNode.png" /></p>
+</li>
+</ol>
+<p>As before, the newly created node will be selected automatically, and the Viewer, Hierarchy View, and Node Editor will update to reflect this new selection.</p>
+</div>
+<div class="section" id="node-data-flow">
+<h2>Node data flow<a class="headerlink" href="#node-data-flow" title="Permalink to this headline">¶</a></h2>
+<p>So far, your graph is as such: the SceneReader node is outputting a scene with Gaffy’s geometry, and the Camera node is outputting a camera object. In fact, the Camera node is outputting a <strong>whole scene</strong> containing a camera object. As such, any node that sends or receives scene data is classified as a <strong>scene node</strong>. This paradigm may be a bit confusing compared to other DCCs, but it is one of Gaffer’s strengths.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">
+When a scene node is queried, such as when you select it, it will dynamically compute a scene based on the input values and data it is provided.</p>
+</div>
+<div class="section" id="scenes">
+<h3>Scenes<a class="headerlink" href="#scenes" title="Permalink to this headline">¶</a></h3>
+<p>In Gaffer, there is no single data set of locations and properties that comprise the sequence’s scene. In fact, a Gaffer graph is not limited to a single scene. Instead, when a node is queried, a scene is dynamically computed as that node’s output. You can test this by clicking the background of the Graph Editor. With no node selected, the Hierarchy View goes blank, because there is no longer a scene requiring computation. Thus, no scene exists. Since scenes are computed only when needed, Gaffer has the flexibility to support an arbitrary quantity of them.</p>
+<p>Since neither of your nodes is connected, each of their scenes remains separate. If you were to evaluate your graph right now, it would calculate two independent scenes. For them to interface, they must be joined somewhere later in the graph.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">
+In the Graph Editor, node data flows from top to bottom.</p>
+</div>
+<p>When a scene node computes a scene, scene data passes through it like so:</p>
+<ol class="simple">
+<li>Data flows into the node through its input(s).</li>
+<li>If applicable, the node modifies the data.</li>
+<li>The node computes the resulting scene data and sends it through its output.</li>
+</ol>
+</div>
+<div class="section" id="plugs">
+<h3>Plugs<a class="headerlink" href="#plugs" title="Permalink to this headline">¶</a></h3>
+<p>The inputs and outputs of a node are called <strong>plugs</strong>, and are represented in the Graph Editor as colored circles around the node’s edges.</p>
+<!-- TODO: add close-up of node plugs ![](images/nodePlug.png "A node's plug") --><p>For your two nodes to occupy the same scene (and later render together), you will need to combine them into a single scene. You can connect both of their out plugs to a Group node, and you can also rearrange the nodes to better visually represent the data flow in the graph.</p>
+</div>
+</div>
+<div class="section" id="connecting-plugs">
+<h2>Connecting plugs<a class="headerlink" href="#connecting-plugs" title="Permalink to this headline">¶</a></h2>
+<p>It’s time to connect the SceneReader and Camera nodes to combine their scenes:</p>
+<ol class="simple">
+<li>Click the background of the Graph Editor to deselect all nodes.</li>
+<li>Create a Group node (<em>Scene</em> &gt; <em>Hierarchy</em> &gt; <em>Group</em>).</li>
+<li>Click and drag the SceneReader node’s out plug (at the bottom; blue) onto the Group node’s in0 plug (at the top; also blue). As you drag, a node connector will appear. Once you connect them, a second input plug (in1) will appear on the Group node, next to the first.</li>
+<li>Click and drag the Camera node’s out plug onto the Group node’s in1 plug.</li>
+</ol>
+<p>The Group node is now computing a new scene combining the input scenes from the two nodes above it, under a new parent scene location called <code class="docutils literal notranslate"><span class="pre">group</span></code>. You can see this new hierarchy by selecting the Group node and examining the Hierarchy View.</p>
+<p><img alt="A new Group node" src="../../_images/mainGroupNode.png" /></p>
+<p>Only the combined scene computed by the Group node is modified. The upstream nodes’ scenes are unaffected. You can verify this by reselecting one of them and checking the Hierarchy View.</p>
+</div>
+<div class="section" id="navigating-the-graph-editor">
+<h2>Navigating the Graph Editor<a class="headerlink" href="#navigating-the-graph-editor" title="Permalink to this headline">¶</a></h2>
+<p>You may have noticed that you can intuitively click and drag the nodes around in the Graph Editor. You can also pan around and zoom:</p>
+<ul class="simple">
+<li>To pan, <kbd>Alt</kbd> + click and drag, or middle-click and drag.</li>
+<li>To zoom in and out, <kbd>Alt</kbd> + right-click and drag, or scroll the middle mouse.</li>
+<li>To focus on the currently selected node, hover the cursor over the Graph Editor and hit <kbd>F</kbd>.</li>
+</ul>
+</div>
+<div class="section" id="positioning-the-camera">
+<h2>Positioning the camera<a class="headerlink" href="#positioning-the-camera" title="Permalink to this headline">¶</a></h2>
+<p>Next, you should reposition the camera so that it frames Gaffy. You can accomplish this using the built-in 3D manipulation tools in the Viewer.</p>
+<p>First, set the camera’s position using the Translate Tool:</p>
+<ol>
+<li><p class="first">Select the Group node in the Graph Editor.</p>
+</li>
+<li><p class="first">Fully expand all scene locations by <kbd>Shift</kbd> + clicking <img alt="the triangle" src="../../_images/collapsibleArrowRight.png" /> next to <code class="docutils literal notranslate"><span class="pre">group</span></code> in the Hierarchy View.</p>
+</li>
+<li><p class="first">Click the camera object in the Viewer, or select the <code class="docutils literal notranslate"><span class="pre">camera</span></code> location in the Hierarchy View.</p>
+</li>
+<li><p class="first">In the Viewer, click <img alt="the Translate Tool button" src="../../_images/gafferSceneUITranslateTool.png" />. The translation manipulators will appear on the camera.</p>
+</li>
+<li><p class="first">Using the manipulators, adjust the camera back and up.</p>
+<p><img alt="The camera, repositioned, in the Viewer" src="../../_images/viewerCameraRepositioned.png" /></p>
+</li>
+</ol>
+<p>Next, rotate the camera using the Rotate Tool:</p>
+<ol class="simple">
+<li>In the Viewer, click <img alt="the Rotate Tool button" src="../../_images/gafferSceneUIRotateTool.png" />. The rotation manipulators will appear around the camera.</li>
+<li>Using the manipulators, rotate the camera so it points at Gaffy.</li>
+</ol>
+<p><img alt="The camera, rotated, in the Viewer" src="../../_images/viewerCameraRotated.png" /></p>
+<div class="section" id="more-precise-camera-adjustment">
+<h3>More precise camera adjustment<a class="headerlink" href="#more-precise-camera-adjustment" title="Permalink to this headline">¶</a></h3>
+<p>For more precise positioning and rotation, you can set the Translate and Rotate values in the <em>Transform</em> tab of the Node Editor:</p>
+<p><img alt="The camera's transform values" src="../../_images/nodeEditorWindowCameraTransform.png" /></p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">
+In the prior section <em>Connecting Plugs</em>, we referred to the main inputs and outputs of a node as plugs. In actuality, <strong>all</strong> the values you see in the Node Editor, including the camera’s transform, are plugs. For ease of use, only a subset of a node’s available plugs appear in the Graph Editor.</p>
+</div>
+</div>
+</div>
+<div class="section" id="rendering-your-first-image">
+<h2>Rendering your first image<a class="headerlink" href="#rendering-your-first-image" title="Permalink to this headline">¶</a></h2>
+<p>Now that you have defined the layout of your scene, you should perform a quick test-render to check that everything is working as expected. In order to do that, you need to place some render-related nodes to define your graph’s render settings.</p>
+<p>Create the render settings nodes:</p>
+<ol>
+<li><p class="first">First, select the Group node. Now, the next scene node you create will automatically connect to it.</p>
+</li>
+<li><p class="first">Then, create the following nodes in sequence:</p>
+<ul class="simple">
+<li>StandardOptions (<em>Scene</em> &gt; <em>Globals</em> &gt; <em>StandardOptions</em>): Determines the camera, resolution, and blur settings of the scene.</li>
+<li>AppleseedOptions (<em>Appleseed</em> &gt; <em>Options</em>): Determines the settings of the Appleseed renderer.</li>
+<li>Outputs (<em>Scene</em> &gt; <em>Globals</em> &gt; <em>Outputs</em>): Determines what kind of output image will be created by the renderer.</li>
+<li>InteractiveAppleseedRender (<em>Appleseed</em> &gt; <em>InteractiveRender</em>): An instance of Appleseed’s progressive renderer.</li>
+</ul>
+</li>
+<li><p class="first">Finally, create a Catalogue node (<em>Image</em> &gt; <em>Utility</em> &gt; <em>Catalogue</em>). This is an image node for listing and displaying a directory of images in the Viewer. By default, it points to the default output directory of your graph’s rendered images. Place it next to the InteractiveAppleseedRender node.</p>
+<p><img alt="The render-related nodes" src="../../_images/graphEditorRenderSettings.png" /></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">
+The Catalogue node is not a scene node, but an image node. It cannot be connected to a scene node.</p>
+</div>
+</li>
+</ol>
+<p>In keeping with what we said earlier about nodes passing scenes to other nodes: each of the render nodes only applies to the scene delivered to it through its input plugs. If you had another unconnected scene running in parallel, none of these render properties would apply to it.</p>
+<p>Although the scene contains a camera, you will need to tell the StandardOptions node to set it as a global property of the scene:</p>
+<ol class="simple">
+<li>Select the StandardOptions node.</li>
+<li>Specify the camera using the Node Editor:<ol>
+<li>Click the <em>Camera</em> section to expand it.</li>
+<li>Toggle the switch next to the Camera plug to enable it.</li>
+<li>Type <code class="docutils literal notranslate"><span class="pre">/group/camera</span></code> into the plug’s field.</li>
+</ol>
+</li>
+</ol>
+<p>Next, you need to add an image type to render:</p>
+<ol class="simple">
+<li>Select the Outputs node.</li>
+<li>In the Node Editor, click <img alt="the plus button" src="../../_images/plus.png" /> and select <em>Interactive</em> &gt; <em>Beauty</em> from the drop-down menu.</li>
+</ol>
+<p>With all the settings complete, start the interactive renderer:</p>
+<ol>
+<li><p class="first">Select the InteractiveAppleseedRender node in the Graph Editor.</p>
+</li>
+<li><p class="first">In the Node Editor, click <img alt="the play button" src="../../_images/timelinePlay.png" /> to start the renderer.</p>
+</li>
+<li><p class="first">Select the Catalogue node.</p>
+</li>
+<li><p class="first">Hover the cursor over the Viewer and hit <kbd>F</kbd> to frame the Catalogue node’s live image of the interactive render.</p>
+<p><img alt="The first render" src="../../_images/mainRenderGrey.png" /></p>
+</li>
+</ol>
+<p>Congratulations! You have successfully rendered your first image. Gaffy is currently lacking shading, lighting, and texturing. We will move on to those soon. First, you should adjust the UI to provide yourself a more optimal workflow.</p>
+</div>
+<div class="section" id="pinning-an-editor-to-a-node">
+<h2>Pinning an editor to a node<a class="headerlink" href="#pinning-an-editor-to-a-node" title="Permalink to this headline">¶</a></h2>
+<p>As mentioned earlier, the Viewer, Hierarchy View, and Node Editor (each an <strong>editor</strong>) show their respective outputs of the currently selected node. This is not always convenient, because often you will need to edit one node while viewing the output of another. You can solve this by <strong>pinning</strong> an editor while a node is selected, which keeps that editor focused on the node.</p>
+<p>To make switching between viewing Gaffy’s geometry and the render easier, you can modify the UI so you can work with two Viewers. First, start by pinning the last node in the graph that contains the scene:</p>
+<ol class="simple">
+<li>Select the InteractiveAppleseedRender node.</li>
+<li>From the editor focus menu <img alt="The editor focus menu" src="../../_images/editorFocusMenuNodeSelectionLinked.png" /> at the top-right of the top panel, choose <em>Pin InteractiveAppleseedRender</em>. The menu’s icon will change to the pinned icon (<img alt="highlighted pin" src="../../_images/nodeSetStandardSet.png" />) to show it is now locked to a specific node, and the Viewer’s title in the tab bar will now include <em>[InteractiveAppleseedRender]</em> to help you keep track of which node(s) are pinned in which editors.</li>
+</ol>
+<p><img alt="The Viewer's tab bar and editor focus menu when pinned to a specific node" src="../../_images/viewerPinnedMaster.png" /></p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">
+You can also pin an editor to the current node selection by pressing <kbd>P</kbd> whilst the cursor is over the editor.</p>
+</div>
+<p>The Viewer is now locked to the InteractiveAppleseedRender node’s scene (which contains all of the parts from its upstream scenes), and will only show that scene, even if you deselect it or select a different node.</p>
+<p>In the default layout, the Hierarchy View and other editors are set to follow the Viewer. You can tell which editors are linked in this way by the color of their editor focus mode menu. Slave editors will also show the slave icon (<img alt="The slave editor focus mode icon" src="../../_images/nodeSetDriverNodeSet.png" />) in their editor focus menu.</p>
+<p><img alt="The Hierarchy View's tab bar and editor focus menu when following another editor" src="../../_images/hierarchyViewSlave.png" /></p>
+<p>For the final adjustment to the UI, create another Viewer in the top-left panel, and pin the Catalogue node to it. This time we’ll use another pinning shortcut:</p>
+<ol class="simple">
+<li>At the top-right of the top panel, click <img alt="the layout menu button" src="../../_images/layoutButton.png" /> to open the layout menu.</li>
+<li>Select Viewer. A new Viewer will appear on the panel next to the first one.</li>
+<li>Middle-click and drag the Catalogue node onto the new Viewer. That Viewer is now pinned to that node.</li>
+</ol>
+<!-- TODO: Screenshot of the pinned Viewer --><p>Now you can switch between the scene’s geometry (first Viewer) and the rendered image (second Viewer).</p>
+<p>Now it is time to shade Gaffy.</p>
+</div>
+<div class="section" id="adding-shaders-and-lighting">
+<h2>Adding shaders and lighting<a class="headerlink" href="#adding-shaders-and-lighting" title="Permalink to this headline">¶</a></h2>
+<p>It’s time to add shaders and lighting. Lights are created at their own location, and can be added anywhere in the graph. For efficiency, shaders should be added to the geometry as early as possible.</p>
+<div class="section" id="making-some-space">
+<h3>Making some space<a class="headerlink" href="#making-some-space" title="Permalink to this headline">¶</a></h3>
+<p>It will be best if you keep the render option nodes at the end of the graph. Since you will be adding shader nodes after the scene nodes, first add some space in the middle of the graph:</p>
+<ol>
+<li><p class="first">Select the lower five nodes by clicking and dragging a marquee over them.</p>
+</li>
+<li><p class="first">Click and drag the nodes to move thme to a lower position in the graph.</p>
+<p><img alt="The graph with some added space" src="../../_images/mainRenderSettingsWithGap.png" /></p>
+</li>
+</ol>
+</div>
+<div class="section" id="adding-a-shader">
+<h3>Adding a shader<a class="headerlink" href="#adding-a-shader" title="Permalink to this headline">¶</a></h3>
+<p>Now that you have more space, it’s time to add some shading nodes:</p>
+<ol class="simple">
+<li>Below and to the left of the Group node, create an Appleseed closure-to-surface node (<em>Appleseed</em> &gt; <em>Shader</em> &gt; <em>Surface</em> &gt; <em>asClosure2Surface</em>).</li>
+<li>Create an Appleseed Disney material shader node (<em>Appleseed</em> &gt; <em>Shader</em> &gt; <em>Shader</em> &gt; <em>asDisneyMaterial</em>).</li>
+<li>In the Node Editor, give the shader reflective surface properties:<ul>
+<li>Set the Specular Weight plug to <code class="docutils literal notranslate"><span class="pre">0.6</span></code>.</li>
+<li>Set the Surface Roughness plug to <code class="docutils literal notranslate"><span class="pre">0.35</span></code>.</li>
+</ul>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">
+Numeric fields support basic mathematical operations to adjust their values. For example, appending <code class="docutils literal notranslate"><span class="pre">+1</span></code> to a plug with an existing value of <code class="docutils literal notranslate"><span class="pre">2</span></code>, will set it to <code class="docutils literal notranslate"><span class="pre">3</span></code>. You can use <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code> and <code class="docutils literal notranslate"><span class="pre">%</span></code> to modify the existing value.</p>
+</div>
+<ol>
+<li><p class="first">Connect the out_outColor plug of the as_disney_material node to the input plug of the as_closure2surface node.</p>
+</li>
+<li><p class="first">Select the as_closure2surface node and create a ShaderAssignment node (<em>Scene</em> &gt; <em>Attributes</em> &gt; <em>ShaderAssignment</em>).</p>
+</li>
+<li><p class="first">Click and drag the ShaderAssignment node onto the connector between the Group and StandardOptions nodes. The ShaderAssignment node will be interjected between them.</p>
+<p><img alt="The ShaderAssignment and Disney material nodes" src="../../_images/graphEditorFirstShaderNodes.png" /></p>
+</li>
+</ol>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">
+In the Graph Editor, shader data flows from left to right.</p>
+</div>
+<p>In your newly shaded graph, the ShaderAssignment node takes the shader flowing in from the left and assigns it to Gaffy’s scene flowing in from the top. Now that Gaffy has received a proper shader, the whole image has turned black, because the scene currently lacks lighting.</p>
+</div>
+<div class="section" id="adding-an-environment-light">
+<h3>Adding an environment light<a class="headerlink" href="#adding-an-environment-light" title="Permalink to this headline">¶</a></h3>
+<p>For lights to take effect, they need to be combined with the main scene. For simplicity, use a global environment light:</p>
+<ol class="simple">
+<li>Create an Appleseed physical sky modelling node (<em>Appleseed</em> &gt; <em>Environment</em> &gt; <em>PhysicalSky</em>).</li>
+<li>Place it next to the Camera node in the Graph Editor.</li>
+<li>In the Node Editor, adjust the node’s angle and brightness plugs:<ul>
+<li>Set the Sun Phi Angle plug to <code class="docutils literal notranslate"><span class="pre">100</span></code>.</li>
+<li>Set the Luminance plug to <code class="docutils literal notranslate"><span class="pre">2.5</span></code>.</li>
+</ul>
+</li>
+<li>Connect the node’s out plug to the Group node’s in2 plug.</li>
+</ol>
+<p><img alt="A new environment light node" src="../../_images/graphEditorEnvironmentLightNode.png" /></p>
+<p>For the light to take effect, you will need to assign it:</p>
+<ol class="simple">
+<li>Select the AppleseedOptions node.</li>
+<li>In the Node Editor, expand the <em>Environment</em> section.</li>
+<li>Toggle the switch next to the Environment Light plug to enable it.</li>
+<li>Type <code class="docutils literal notranslate"><span class="pre">/group/light</span></code> into the plug’s field.</li>
+</ol>
+<p>The interactive render will now begin updating, and you will be able to see Gaffy with some basic shaders and lighting.</p>
+<p><img alt="The first render with a shader and lighting" src="../../_images/viewerRenderOneShader.png" /></p>
+</div>
+<div class="section" id="adding-textures">
+<h3>Adding textures<a class="headerlink" href="#adding-textures" title="Permalink to this headline">¶</a></h3>
+<p>As Gaffy is looking a bit bland, you should drive the shader with some robot textures:</p>
+<ol>
+<li><p class="first">Create an Appleseed 2D texture node (<em>Appleseed</em> &gt; <em>Shader</em> &gt; <em>Texture2d</em> &gt; <em>asTexture</em>).</p>
+</li>
+<li><p class="first">In the Node Editor, point the node to the textures:</p>
+<ul class="simple">
+<li>For the Filename plug, type <code class="docutils literal notranslate"><span class="pre">${GAFFER_ROOT}/resources/gafferBot/textures/base_COL/base_COL_&lt;UDIM&gt;.tx</span></code>.</li>
+</ul>
+</li>
+<li><p class="first">In the Graph Editor, connect the as_texture node’s Output Color plug to the as_disney_material node’s Common.Surface Color plug. Gaffy’s textures will now drive the color of the surface shader, and the render will update to show the combined results.</p>
+<p><img alt="Gaffy with textures" src="../../_images/viewerRenderTextures.png" /></p>
+</li>
+</ol>
+</div>
+<div class="section" id="adding-another-shader">
+<h3>Adding another shader<a class="headerlink" href="#adding-another-shader" title="Permalink to this headline">¶</a></h3>
+<p>Right now, the physical surface of all of Gaffy’s geometry looks the same, because the shader is applying to every component of the geometry. To fix this, you should create an additional metallic shader and apply it selectively to different locations.</p>
+<p>Begin by creating another shader:</p>
+<ol>
+<li><p class="first">Create and connect another pair of as_disney_material and as_closure2surface nodes.</p>
+</li>
+<li><p class="first">Give the shader some metallic properties:</p>
+<ul class="simple">
+<li>Set Metallicness to <code class="docutils literal notranslate"><span class="pre">0.8</span></code>.</li>
+<li>Set Surface Roughness to <code class="docutils literal notranslate"><span class="pre">0.4</span></code>.</li>
+</ul>
+</li>
+<li><p class="first">Select the as_closure2surface1 node and create another ShaderAssignment node.</p>
+</li>
+<li><p class="first">Interject the new ShaderAssignment1 node after the first ShaderAssignment node.</p>
+<p><img alt="A second shader in the Graph Editor" src="../../_images/graphEditorSecondShaderNodes.png" /></p>
+</li>
+</ol>
+<p>The Viewer will update to show the new shader.</p>
+<p><img alt="The second shader, rendered" src="../../_images/mainRenderTwoShaders.png" /></p>
+<p>You will immediately notice that now <strong>all</strong> the geometry is metallic. The new shader has overridden the previous one.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">
+The last ShaderAssignment node applied to a location takes precedence over any others.</p>
+</div>
+</div>
+<div class="section" id="filtering-a-shader">
+<h3>Filtering a shader<a class="headerlink" href="#filtering-a-shader" title="Permalink to this headline">¶</a></h3>
+<p>In order to selectively apply a shader to only certain locations in the scene, you will need to filter the shader assignment, using a filter node that points to specific locations in the scene:</p>
+<ol>
+<li><p class="first">Create a PathFilter node (<em>Scene</em> &gt; <em>Filters</em> &gt; <em>PathFilter</em>).</p>
+</li>
+<li><p class="first">In the Node Editor, click <img alt="the plus button" src="../../_images/plus.png" /> next to <em>Paths</em>. This will add a new text field.</p>
+</li>
+<li><p class="first">In the text field, type <code class="docutils literal notranslate"><span class="pre">/group/GAFFERBOT/C_torso_GRP/C_head_GRP/C_head_CPT/L_ear001_REN</span></code>. This is the full path to Gaffy’s left ear.</p>
+</li>
+<li><p class="first">Connect the PathFilter node’s out plug to the ShaderAssignment1 node’s filter plug (yellow, on the right).</p>
+<p><img alt="The connected PathFilter node" src="../../_images/graphEditorPathFilterNode.png" /></p>
+</li>
+</ol>
+<p>Now when you check the render, you will see that the chrome shader is only applied to Gaffy’s left ear. There are many other parts of Gaffy that could use the chrome treatment, but it would be tedious for you to manually enter multiple locations. Instead, we will demonstrate two easier ways to add locations to the filter: using text wildcards, and interacting directly with the geometry through the Viewer.</p>
+<div class="section" id="filtering-using-wildcards">
+<h4>Filtering using wildcards<a class="headerlink" href="#filtering-using-wildcards" title="Permalink to this headline">¶</a></h4>
+<p>Earlier, you used <code class="docutils literal notranslate"><span class="pre">/group/GAFFERBOT/C_torso_GRP/C_head_GRP/C_head_CPT/L_ear001_REN</span></code>, which only pointed to the left ear. You could apply the filter to both ears by adding wildcards to the <code class="docutils literal notranslate"><span class="pre">/L_ear001_REN</span></code> location in the path:</p>
+<ol class="simple">
+<li>Select the PathFilter node.</li>
+<li>In the Node Editor, double-click the path field you created earlier, and change it to <code class="docutils literal notranslate"><span class="pre">/group/GAFFERBOT/C_torso_GRP/C_head_GRP/C_head_CPT/*_ear*</span></code>. The filter will now match the left and the right ears.</li>
+</ol>
+</div>
+<div class="section" id="filtering-by-dragging-selections">
+<h4>Filtering by dragging selections<a class="headerlink" href="#filtering-by-dragging-selections" title="Permalink to this headline">¶</a></h4>
+<p>As your final lesson in this tutorial, add the metallic shader to the rest of the appropriate parts of Gaffy. This time, you can add to the filter by directly interacting with the scene:</p>
+<ol>
+<li><p class="first">In the top panel, switch to the Viewer containing the 3D geometry view.</p>
+</li>
+<li><p class="first">Zoom and pan to Gaffy’s face.</p>
+</li>
+<li><p class="first">Click Gaffy’s unibrow.</p>
+</li>
+<li><p class="first"><kbd>Shift</kbd> + click Gaffy’s mouth to add it to the selection.</p>
+<p><img alt="The face, with selection" src="../../_images/viewerSelectionFace.png" /></p>
+</li>
+<li><p class="first">Click and drag the selection (the cursor will change to <img alt="Replace objects" src="../../_images/replaceObjects.png" />), and hold it over the PathFilter node without releasing.</p>
+</li>
+<li><p class="first">While still holding the mouse button, hold <kbd>Shift</kbd> (the cursor will change to <img alt="Add objects" src="../../_images/addObjects.png" />). You are now adding to the path, rather than replacing it.</p>
+</li>
+<li><p class="first">Release the selection over the PathFilter node. This will add the locations as new values fields on the plug.</p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">
+Just as locations can be added by holding <kbd>Shift</kbd>, they can be removed by holding <kbd>Ctrl</kbd> (the cursor will change to <img alt="Remove objects" src="../../_images/removeObjects.png" />).</p>
+</div>
+<p>Add and remove locations to the filter as you see fit. Remember to switch between the two Viewers to check the render output as it updates. After adding Gaffy’s hands and bolts to the filter, you should achieve an image similar to this:</p>
+<p><img alt="The final render" src="../../_images/viewerRenderFinal.png" /></p>
+</div>
+</div>
+</div>
+<div class="section" id="recap">
+<h2>Recap<a class="headerlink" href="#recap" title="Permalink to this headline">¶</a></h2>
+<p>Congratulations! You’ve built and rendered your first scene in Gaffer.</p>
+<p>You should now have a basic understanding of Gaffer’s interface, the flow of data in a graph, how to manipulate the scene, and how to add geometry, lights, textures, and shaders.</p>
+<p>You should now have a solid basis for further learning and exploration.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../InstallingGaffer/index.html"><span class="doc">Installing Gaffer</span></a></li>
+<li><a class="reference internal" href="../../Interface/ControlsAndShortcuts/index.html"><span class="doc">Controls and Shorcuts</span></a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../SettingUpGafferCommand/index.html" class="btn btn-neutral float-right" title="Setting Up the “gaffer” Command" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../LaunchingGafferFirstTime/index.html" class="btn btn-neutral float-left" title="Launching Gaffer for the First Time" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2019 John Haddon, 2011-2019 Image Engine Design Inc.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
