@@ -1,0 +1,49 @@
+0.36.0
+======
+
+* Improved bindings by removing macros and replacing them with proper wrapper classes.
+
+* Added Window.childWindows() method.
+
+* Added initial (and limited) support for Parameterised::parameterChanged() methods. Currently only modifying parameter values is supported in parameterChanged() - support for modifying user data and presets will be added in later revisions.
+
+* The input and output connections for selected nodes are now drawn highlighted.
+
+* Added BlockedConnection class in C++. This handles the blocking and unblocking of connections in an exception-safe manner.
+
+* Added Node::plugFlagsChangedSignal().
+
+* Added Plug::ReadOnly flag, to allow plugs to be locked against modification of the input or value.
+
+* Added support for ["gaffer"]["readOnly"] bool parameter user data, mapping it to the Plug::ReadOnly flag. This user data may be modified in a ParameterModificationContext or in a Parameterised::parameterChanged() callback.
+
+* StringPlugValueWidget and PathPlugValueWidget now correctly set their text entry field to read only when the plug is read only.
+
+* PresetsOnlyParameterValueWidget now displays in a disabled state when a plug is not writable.
+
+* Fixed C/C++ Object already deleted test messages caused by DeferredPathPreview.
+
+* Fixed lifetime issues with ScriptWindows - they may now be constructed directly or acquire()d directly and their lifetime will be as expected (managed by the caller). ScriptWindow.connect() continues to operate as before - managing the lifetime of windows to correspond with the lifetime of scripts in the application.
+
+* Fixed problems caused by serialising plug flags as All - they would then acquire new values when loaded in a future where there are new flags available.
+
+* Added a SubTree node, for taking a branch of the tree and rerooting it back to /.
+
+* Fixed bug in ConnectionGadget::bound() which meant that sometimes the graph would not be framed correctly when first displaying a GraphEditor.
+
+* Fixed ColorChooserDialogue to actually use the colour passed to the constructor.
+
+* Window.addChildWindow() now always causes the child window to remain on top of the parent. Previously, this was documented as the behaviour, but it only worked for child dialogues which subsequently went into a modal state. This is achieved by setting the QtCore.Qt.Tool window flag - this is much better than WindowStaysOnTopHint because it hides the child window when the application becomes inactive on the mac - otherwise the window would remain on top of the windows for the newly activated application.
+
+* Fixed bug where colour chooser would remain after the parent swatch died, but be inoperative. It now remains but is still functional.
+
+* Added GafferScene::PathMatcher class, which provides accelerated path matching for use in the PathFilter.
+
+* PathFilter now supports * as a wildcard to match any portion of a name.
+
+* PathFilter now supports ... as a path entry, to match any number of entries.
+
+* Added a ParameterPath class for navigating Parameter hierarchies.
+
+* Fixed bug which prevented CompoundVectorParameters from being saved in presets.
+
