@@ -1,0 +1,27 @@
+0.55.4.0
+========
+
+Improvements
+------------
+
+- Spreadsheet : Added sections for the logical grouping of columns in large spreadsheets.
+
+Fixes
+-----
+
+- ImageTransform : Fixed bug in channel data hashing.
+- Spreadsheet :
+  - Fixed bug that could break promoted Spreadsheet UIs.
+  - Fixed bug that meant the current width was not checked in the row name width popup menu.
+  - Fixed bug when undoing section resize.
+  - Fixed crashes caused by removing a column.
+
+API
+---
+
+- NodeAlgo : Added graph traversal functions ([#3573](https://github.com/GafferHQ/gaffer/issues/3573)) :
+  - `visitUpstream()`, `visitDownstream()`, `visitConnected()`
+  - `findUpstream()`, `findDownstream()`, `findConnected()`
+  - `findAllUpstream()`, `findAllDownstream()`, `findAllConnected()`
+  - `upstreamNodes()`, `downstreamNodes()`, `connectedNodes()`
+
