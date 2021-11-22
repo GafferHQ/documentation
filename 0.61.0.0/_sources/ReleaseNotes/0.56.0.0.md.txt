@@ -1,0 +1,176 @@
+0.56.0.0
+========
+
+This major feature release brings support for deep images and Arnold 6, and contains a wealth of improvements to light and camera visualisation in the Viewer.
+
+> Caution : Bug fixes to the ImageReader, ImageWriter and Resize nodes mean that the generated images will differ substantially in some circumstances. See the Breaking Changes section for more details.
+
+> Note : All official release builds are for Arnold 6 only, but source-level compatibility remains for Arnold 5.4 for those who wish to make custom builds.
+
+> Note : The following nodes have renamed plugs and/or added features, such that files saved in 0.56 are not fully compatible with 0.55 : Instancer, OpenGLAttributes, Light and Camera. See Breaking Changes and Improvements sections for more details.
+
+Features
+--------
+
+- Deep image support ([#2668](https://github.com/GafferHQ/gaffer/issues/2668), [#3405](https://github.com/GafferHQ/gaffer/issues/3405)) :
+  - Updated ImageReader and ImageWriter to support deep images.
+  - Added new nodes for processing deep images : DeepToFlat, FlatToDeep, DeepMerge, DeepRecolor, DeepHoldout, DeepState, DeepTidy, Empty, DeepSampleCounts and DeepSampler.
+  - Updated existing nodes to support deep images where relevant.
+- Viewer : Added the Crop Window Tool to image views to allow a scene's crop window to be adjusted directly from the rendered image ([#2835](https://github.com/GafferHQ/gaffer/issues/2835)).
+- ImageTransform : Added support for transform concatenation. This improves speed and filtering quality for chains of adjacent ImageTransforms ([#2842](https://github.com/GafferHQ/gaffer/issues/2842)).
+- SphereLevelSet : Added new node for creating a level set representation of a sphere.
+
+Improvements
+------------
+
+- Viewer :
+  - Added visualisation of camera frustums and spot light cones. By default these are drawn only for selected objects, but menu items allow them to be enabled or disabled globally ([#3569](https://github.com/GafferHQ/gaffer/issues/3569)).
+  - Improved camera visualisation ([#58](https://github.com/GafferHQ/gaffer/issues/58)).
+  - Improved visualisation of lights :
+    - Added texture previews for Arnold's quad and skydome lights. All OSL shaders are supported, along with a small subset of Arnold shaders.
+    - Area lights are now drawn solid by default. This can be controlled via the Visualisation section of the Light node.
+    - Added intensity distribution preview for Arnold photometric lights.
+    - Extended color-correction to light textures, such that they now match rendered results ([#3407](https://github.com/GafferHQ/gaffer/issues/3407)).
+    - Reduced size of point lights to better match other light sources.
+    - Simplified the color indicator and removed the exposure wedges.
+    - Removed the contribution of intensity and exposure to the color indicator.
+    - Added support for mesh lights such that they draw a yellow outline around the source mesh.
+    - Improved display of Arnold quad lights set to portal mode.
+    - Added an approximation of Arnold area light spread.
+    - Added menu items to control visualiser scale.
+    - Added menu items to control the default drawing mode for lights.
+    - Improved <kbd>f</kbd> framing behaviour for light visualisations ([#3569](https://github.com/GafferHQ/gaffer/issues/3569)).
+    - Unified visualisation of light radius.
+- Light : Moved light visualisation plugs to the compound data mechanism to allow lights to opt-in to setting a value at their location ([#3407](https://github.com/GafferHQ/gaffer/issues/3407)).
+- Camera : Added Visualisation controls to the Camera node to allow frustum visualisation to be easily overridden per-camera ([#3569](https://github.com/GafferHQ/gaffer/issues/3569)).
+- OpenGLAttributes :
+  - Added new light and camera visualisation attributes.
+  - Added sensible limits on attribute value plugs to prevent invalid settings.
+- CropWindowTool :
+  - Added new mouse interactions to edit the crop region. Dragging outside creates a new region. Dragging inside moves the existing region. <kbd>Shift</kbd>-dragging inside creates a new region.
+  - Updated status presentation to match other tools ([#2835](https://github.com/GafferHQ/gaffer/issues/2835)).
+- Tools :
+  - Added generic support for precise tool adjustments by holding down <kbd>Shift</kbd> whilst adjusting tool handles ([#3324](https://github.com/GafferHQ/gaffer/issues/3324)).
+  - Changed the behaviour of existing precise tool handle adjustments such that the current handle position is maintained when the <kbd>Shift</kbd> key is depressed ([#3324](https://github.com/GafferHQ/gaffer/issues/3324)).
+- View navigation : Added support for precise movement adjustments by holding down <kbd>Shift</kbd> whilst using the scroll wheel or moving the camera in the Viewer and other Editors ([#3324](https://github.com/GafferHQ/gaffer/issues/3324)).
+- AnimationEditor : Changed the modifier key used to enable single-axis zoom has changed to <kbd>Ctrl</kbd> to allow use in conjunction with precise movement mode (<kbd>Shift</kbd>) ([#3324](https://github.com/GafferHQ/gaffer/issues/3324)).
+- Set expressions :
+  - Added `in` operator. The expression `A in B` selects all locations from set A which are descendants of a location from set B.
+  - Added `containing` operator. The expression `A containing B` selects all locations from set A which are ancestors of a location from set B.
+  - Removed restrictions on the allowable characters at the start of a set name.
+- Instancer :
+  - Renamed `instances` plug to `prototypes` and `index` plug to `prototypeIndex`. This clarifies their meaning and matches the terminology used in USD.
+  - Organised UI into sections.
+  - Added better defaults for the `orientation` and `scale` plugs.
+  - Added control over prototype root locations via a string array, which can be optionally specified using a plug, Constant primvar, or Vertex primvar.
+- InteractiveArnoldRender : Enabled progressive refinement.
+- ArnoldOptions : Added `subdivDicingCamera`, `subdivFrustumCulling` and `subdivFrustumPadding` options.
+- OSLObject : Added non-uniform scale to standard primitive variable menu.
+- OSLCode : Improved labelling of inputs and outputs. Since they represent variables used in the code, they are now labelled verbatim rather than prettified.
+- Error handling : The Cortex exception type is now included in error messages where relevant.
+- UI : Added the Gaffer version to the window title.
+- Set : Hid unused `paths` plugs from the UI, in preparation for eventual removal of the plug itself. The `filter` plug should now always be used in preference to the `paths` plug.
+- Layouts : Prevented editors pinned to a specific node from restoring with the editor pinned to an empty node set. Specific pinning is no longer saved or recalled.
+- Documentation : Added examples for OSLImage and OSLObject nodes.
+- Rendering : Added the name of the render node to image metadata via the `gaffer:sourceScene` header ([#2835](https://github.com/GafferHQ/gaffer/issues/2835)).
+- Test app : Added `stopOnFailure` arguments.
+
+Fixes
+-----
+
+- Resize : Fixed bug which caused unwanted image distortion when changing pixel aspect ratio.
+- ImageReader/ImageWriter : Fixed bug which caused colour transforms to be performed on premultiplied pixel data.
+- ImageTransform : Fixed inconsistent filtering of transforms containing rotation but no translation.
+- Launch : Fixed bug which prevented gaffer launching when stored on case destroying file systems ([#3477](https://github.com/GafferHQ/gaffer/issues/3477)).
+- CopyAttributes : Fixed bug loading scripts saved prior to version 0.55.0.0.
+- Mix : Fixed wrong behaviour outside of mask data window.
+- ImageStats : Fixed bug that would return 1.0 if the 4th channel was missing. Missing channels now always return 0.0.
+- Viewer :
+  - Fixed bug that caused the StandardLightVisualiser to be used instead of renderer-specific ones ([#3407](https://github.com/GafferHQ/gaffer/issues/3407)).
+  - Fixed bug that caused duplicate drawing of inherited light filter state ([#3502](https://github.com/GafferHQ/gaffer/issues/3502)).
+  - Fixed bug that caused unexpected results when dragging into the Viewer when the Crop Window Tool was active ([#2385](https://github.com/GafferHQ/gaffer/issues/2385)).
+- ParallelAlgo :
+  - Fixed handling of Python exceptions thrown from UIThreadCallHandler.
+  - Fixed GIL management for `popUIThreadCallHandler()`.
+- InteractiveRender : Fixed GIL management bug in `setContext()` Python bindings.
+- OSLLight : Fixed bug which prevented visualisation attributes taking effect.
+- BoolWidget : Fixed unwanted horizontal expansion.
+- Style : Fixed Qt application style to use the same style on all platforms.
+- Display : Fixed dirty propagation for new drivers and ensured that only the channelData plug is dirtied when new data is received ([#2845](https://github.com/GafferHQ/gaffer/issues/2845)).
+- LabelPlugValueWidget : Fixed bug that prevented updates if the `label` metadata depended on the plug name.
+- ArnoldOptions : Fixed bugs in section summary formatting.
+
+API
+---
+
+- Handle :
+  - Added an optional `processModifiers` argument to drag constructors that allows the built-in precision mode handling to be disabled ([#3324](https://github.com/GafferHQ/gaffer/issues/3324)).
+  - Added a convenience constructor for `LinearDrag` that creates a drag in an arbitrary direction on the camera plane ([#3324](https://github.com/GafferHQ/gaffer/issues/3324)).
+  - Added `AngularDrag` helper to manage drags that represent rotations around a single axis ([#3324](https://github.com/GafferHQ/gaffer/issues/3324)).
+- ImagePlug :
+  - Added plugs and methods to support deep data.
+  - Added `tilePixels()` and `pixelIndex()` convenience functions.
+- ImageAlgo :
+  - Added `tiles()` method, returning all the tiles for an image.
+  - Added `throwIfSampleOffsetsMismatch()` method.
+- FlatImageSource : Added a new base class to help in implementing image sources which generate flat data.
+- FlatImageProcessor : Added a new base class to help in implementing image processors which don't support deep data.
+- GafferOSL : Added ShadingEngineAlgo to simplify the generation of shading point data for images, and rendering networks to textures.
+- StandardLightVisualiser :
+  - Added `surfaceTexture` virtual method to allow derived classes to provide alternate surface representations ([#3407](https://github.com/GafferHQ/gaffer/issues/3407)).
+  - Added `sphereWireframe` protected method.
+  - Added support for optional `tintParameter` metadata for `quad`, `disk`, `cylinder` and `environment` type lights. This names a Color3f parameter that will used to tint the light's final appearance.
+- IECoreGLPreview :
+  - Added `VisualisationType` and `VisualisationMap` to allow classification of renderables returned by visualisers.
+  - IECoreGLPreview : Added support for more flexible visualisations via the `Visualisation` struct ([#3569](https://github.com/GafferHQ/gaffer/issues/3569)).
+- SceneAlgo :
+  - `history()` now returns History items for all upstream plugs in the history chain, not just those where a computation was performed.
+  - Added `sourceSceneName` and `sourceScene` methods to retrieve source scene information from an ImagePlug ([#3582](https://github.com/GafferHQ/gaffer/issues/3582)).
+- Process : Added `destinationPlug()` method.
+- GafferVDB : Added Interrupter class to forward Gaffer's cancellation to OpenVDB's algorithms.
+
+Breaking Changes
+----------------
+
+- Resize : A bug fix means that results are changed significantly when changing pixel aspect ratios.
+- ImageReader/ImageWriter : A bug fix means that results will now differ when applying colour transforms to images with alpha.
+- Instancer :
+  - Renamed `instances` and `index` plugs. Compatibility with old `.gfr` files is maintained via a config file.
+  - Attributes assigned to a prototype root are now instanced onto `<prototypeName>` rather then `<prototypeName>/<id>` (eg `/instances/robot` rather than `/instances/robot/0`)
+- OSLObject : Removed support for the `GAFFEROSL_OSLOBJECT_CONTEXTCOMPATIBILITY` environment variable.
+- ShaderAssignment : Removed support for the `GAFFERSCENE_SHADERASSIGNMENT_CONTEXTCOMPATIBILITY` environment variable.
+- bin : Renamed the `gaffer.py` launch script (to `__gaffer.py`) to avoid a collision with the main `Gaffer` module (see [#3477](https://github.com/GafferHQ/gaffer/issues/3477)). This will cause the process string to change on systems that don't support process renaming.
+- ViewportGadget : Added private members, ABI break only - source compatibility is maintained ([#3324](https://github.com/GafferHQ/gaffer/issues/3324)).
+- Handle : `LinearDrag::position` and `PlanarDrag::position` are no longer `const` methods. `RotateHandle`, `ScaleHandle` and `TranslateHandle` value provider methods lose `const`-ness accordingly.
+- ImagePlug :
+  - Removed `image()` and `imageHash()` methods. These are now available in the ImageAlgo namespace.
+  - Changed default channel names to an empty list.
+- ImageNode : Added virtual methods.
+- Light :
+  - Changed `Light::computeLight` return type to const ([#3407](https://github.com/GafferHQ/gaffer/issues/3407)).
+  - Added plug and accessors for `visualiserShaded` ([#3407](https://github.com/GafferHQ/gaffer/issues/3407)).
+- StandardLightVisualiser :
+  - Removed protected methods `faceCameraVertexSource()` and `environmentSphere()` ([#3407](https://github.com/GafferHQ/gaffer/issues/3407)).
+  - Changed signature of `quadPortal()` method.
+  - Changed signature of `spotlightParameters()` method.
+- LightFilterVisualiser : Moved `LightFilterVisualiser` into `IECoreGLPreview`, filter visualiser registrations will need updating ([#3502](https://github.com/GafferHQ/gaffer/issues/3502)).
+- ObjectToImage/ImagePrimitiveSource : Removed.
+- ParallelAlgoTest : Removed `ExpectedUIThreadCall`. Use `UIThreadCallHandler` instead.
+- OpenGLRenderer : `visualiser:scale` is now handled directly in the renderer. Visualisers should no longer apply this attribute to visualisations unless they need to invert this scale for any geometry-related components of the visualisation.
+- GafferScene : Renamed attribute `visualiser:scale` > `gl:visualiser:scale`. Note : Existing scenes with OpenGLAttribute nodes setting this will need values re-entering.
+- IECoreGLPreview :
+  - Changed the return type of `(Light|LightFilter|Attribute)Visualiser` classes. Visualisations are now a vector of `Visualisation` structs([#3569](https://github.com/GafferHQ/gaffer/issues/3569)).
+  - Changed `ObjectVisualiser` return type to `Visualisations`.
+- Arnold : Raised minimum required version to 5.4.
+- RendererAlgo : Changed signature for `outputOutput` to include the source scene plug ([#2835](https://github.com/GafferHQ/gaffer/issues/2835)).
+- ViewportGadget : Made the SelectionScope and RasterScope classes non-copyable.
+
+Build
+-----
+
+- Gaffer Dependencies : Updated to version 1.0.0 ([#3585](https://github.com/GafferHQ/gaffer/issues/3585)).
+- Cortex : Updated to version 10.0.0-a72 ([#3585](https://github.com/GafferHQ/gaffer/issues/3585)).
+- USD : Updated to version 20.02 ([#3585](https://github.com/GafferHQ/gaffer/issues/3585)).
+- OpenVDB : Updated to version 7.0.0 ([#3585](https://github.com/GafferHQ/gaffer/issues/3585)).
+- Arnold : Updated to version 6.0.1.0 ([#3585](https://github.com/GafferHQ/gaffer/issues/3585))
+
