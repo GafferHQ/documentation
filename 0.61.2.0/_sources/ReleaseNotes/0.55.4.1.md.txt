@@ -1,0 +1,10 @@
+0.55.4.1
+========
+
+Fixes
+-----
+
+- Catalogue :
+  - Fixed a rare inconsistency with re-selection after deleting re-ordered images.
+  - Fixed bug which prevented the Viewer hotkeys from working with Catalogues inside Boxes ([#3605](https://github.com/GafferHQ/gaffer/issues/3605)).
+
