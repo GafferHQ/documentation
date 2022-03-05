@@ -1,0 +1,19 @@
+0.53.0
+======
+
+* Added the concept of a global format for disconnected nodes along with a format plug.
+
+* Added the Constant node for GafferImage.
+
+* Added the Select node for GafferImage.
+
+* Fixed a bug which prevented Assignment nodes from being connected to Shaders outside the Box containing the Assignment.
+
+* Improved formatting in NumericWidgets.
+
+* Added NumericWidget.valueChangedSignal().
+
+* Fixed bug where editing a numeric plug value using cursor up/down didn't immediately update.
+
+* Added CompoundDataPlug::addMember() and CompoundDataPlug::addOptionalMember() overloads which take a ValuePlug instead of Data to provide the value for the member.
+
