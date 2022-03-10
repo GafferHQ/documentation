@@ -1,0 +1,10 @@
+0.58.6.3
+========
+
+Fixes
+-----
+
+- NumericWidget : Fixed editing bug in Qt 5.12.
+- Dispatch App : Fixed UI imports when not running in GUI mode.
+- Op App : Fixed UI imports when not running in GUI mode.
+
