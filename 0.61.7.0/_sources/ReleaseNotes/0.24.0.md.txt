@@ -1,0 +1,28 @@
+0.24.0
+======
+
+* ParameterisedHolder now correctly loads an instance of the held class
+following serialisation.
+
+* ParameterisedHolder::setParameterised() and OpHolder::setOp() now accept
+an optional keepExistingValues parameter which defaults to false. Passing
+true preserves existing plug values in preference to the values in the
+incoming Parameterised object.
+
+* TabbedContainer now allows the addition of a custom Widget to the top
+right corner using the setCornerWidget() and getCornerWidget() methods.
+
+* Fixed a bug which meant that the ButtonEvent::line field was incorrectly
+transformed when delivering events to Gadgets.
+
+* Fixed tab sizing issue on OS X.
+
+* Fixed crashes in ObjectParameterHandler triggered by plugs with null values.
+
+* Added enterSignal(), leaveSignal(), dragEnterSignal() and dragLeaveSignal() methods to Gadget. Nodules now highlight themselves when entered using this
+new functionality.
+
+* Fixed GafferUI to work with qt 4.6 as well as 4.7.
+
+* Gaffer can now be run embedded in Nuke.
+
