@@ -1,0 +1,45 @@
+0.21.0
+======
+
+* Added a selectionMenu widget.
+
+* Stylesheet restructured, enabling style overrides in widgets.
+
+* Improved stylesheet performance applying styles only in Window and Menu widgets.
+
+* Buttons can optionally have the frame removed using the setHasFrame() method or the hasFrame argument to the constructor. Additionally they no longer have minimum sizes defined by the stylesheet.
+
+* Minor style changes.
+
+* Disabled Qt's automatic merging of menubars with the OS X system menu. This was causing crashes and wasn't compatible with fullscreen mode either.
+
+* Added a simple ProgressBar widget.
+
+* Removing a node from a parent using removeChild() now automatically disconnects the node from the graph. Fixes issue [#38](https://github.com/GafferHQ/gaffer/issues/38).
+
+* Fixed a number of test failures which occurred only in the Image Engine build, due to the fact that we install the cortex ops with different version numbers than a standard install.
+
+* CompoundParameterValueWidget now updates the ui appropriately when plugs are added and removed. This can be seen in the Read node when switching between different file types.
+
+* File menu items now open file browsers in a more sensible location.
+
+* File browser now has a button to go up one directory level.
+
+* Containers may now be used in the python with statement to make the creation of nested layouts more straightforward. For example :
+
+	with GafferUI.Collapsible() :
+		with GafferUI.ScrolledContainer() :
+			with GafferUI.ListContainer( GafferUI.ListContainer.Orientation.Vertical ) :
+				GafferUI.TextWidget( "Making uis is easier now" )
+				GafferUI.Button()
+
+* Nodule::registerNodule now accepts regular expressions for plug names.
+
+* StandardNodeGadget::acceptsNodule is deprecated. Use Nodule::registerNodule in preference. Default implementation of StandardNodeGadget::acceptsNodule now always returns true.
+
+* Graph editor ui for ParameterisedHolders now only shows connections for ObjectPlugs, this prevents the interface being cluttered with connections for all the other parameter types.
+
+* Viewer is no longer hardcoded to display the result of the "output" plug - it now displays the result of the first output ObjectPlug. This allows it to view the results of procedurals and ops.
+
+* The node creation menus for Ops and Procedurals now create OpHolder and ProceduralHolder nodes rather than generic ParameterisedHolder nodes. Ops and procedurals may now be run in Gaffer.
+
