@@ -1,0 +1,8 @@
+0.59.9.5
+========
+
+Fixes
+-----
+
+- OSL Expression : Fixed crash due to exception in upstream computation.
+
