@@ -1,0 +1,26 @@
+license
+=======
+
+Prints the software licenses for Gaffer and other open source projects
+it is based on.
+
+-help
+-----
+
+Prints names and descriptions of each parameter rather than running the application.
+
+-threads
+--------
+
+The maximum number of threads used for computation. The default value of zero causes the number of threads to  be chosen automatically based on the available hardware.
+
+-profileFileName
+----------------
+
+If this is specified, then the application is run using the cProfile profiling module, and the results saved to the file for later examination.
+
+-withDependencies
+-----------------
+
+Display the copyright and licensing information for the dependencies.
+
