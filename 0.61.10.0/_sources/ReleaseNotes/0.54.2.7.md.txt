@@ -1,0 +1,10 @@
+0.54.2.7
+========
+
+Fixes
+-----
+
+- GraphComponent : Fixed Range and RecursiveRange iterators so that they correctly filter classes defined in Python ([#3441](https://github.com/GafferHQ/gaffer/issues/3441)).
+- MenuButton : Fixed bug that caused buttons to remain highlighted after their menu was closed.
+- StringPlug : Added compatibility for loading files saved in a future Gaffer 0.57.0.0 release.
+

@@ -1,0 +1,54 @@
+ShufflePrimitiveVariables
+=========================
+
+ShufflePrimitiveVariables is used to copy or rename arbitrary numbers of primitive variables
+at the filtered locations. The deleteSource plugs may be used to remove the original source
+primitive variable(s) after the shuffling has been completed.
+
+An additional context variable "${source}" can be used on the destination plugs to insert
+the name of each source primitive variable. For example, to prefix all primitive variables
+with "user:" set the source to "*" and the destination to "user:${source}").
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+adjustBounds
+------------
+
+Adjusts bounding boxes to account for the changes made to the object.
+
+> Caution : Adjusting boundings boxes has a performance penalty.
+> If you do not need accurate bounds or you know that the bounds
+> will only change slightly, you may prefer to turn this off.
+
+shuffles
+--------
+
+The primitive variables to be shuffled - arbitrary numbers of primitive variables
+may be shuffled via the source/destination plugs. The deleteSource plug may be used
+to remove the original primitive variable(s).

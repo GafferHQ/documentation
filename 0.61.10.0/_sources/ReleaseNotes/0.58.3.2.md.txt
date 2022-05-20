@@ -1,0 +1,8 @@
+0.58.3.2
+========
+
+Fixes
+-----
+
+- BranchCreator : Fixed bugs affecting set computation.
+

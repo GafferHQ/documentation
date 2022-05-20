@@ -1,0 +1,45 @@
+RandomChoice
+============
+
+Chooses random values from a list of choices, with optional weights
+to specify the relative probability of each choice.
+
+The randomness is generated from a seed and a context
+variable; to get useful variation either the seed or the
+value of the context variable must be varied too.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+seed
+----
+
+Seed for the random number generator. Different seeds
+produce different random numbers. When controlling two
+different properties using the same context variable,
+different seeds may be used to ensure that the generated
+values are different.
+
+seedVariable
+------------
+
+The most important plug for achieving interesting variation.
+Should be set to the name of a context variable which will
+be different for each evaluation of the node. Good examples
+are `scene:path` to generate a different value per scene
+location, or `frame` to generate a different value per frame.
+
+choices
+-------
+
+The choices that will be randomly selected between based on the seed.
+
+choices.weights
+---------------
+
+The list of weights for the choices. Choices with a higher weight
+have a greater chance of being chosen.

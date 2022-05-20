@@ -1,0 +1,13 @@
+0.52.3.5
+========
+
+Fixes
+-----
+
+- GLWidget : Fixed corrupted font rendering in overlay widgets ([#3002](https://github.com/GafferHQ/gaffer/issues/3002)).
+- Context : Fixed fallback value for `get()` method ([#2987](https://github.com/GafferHQ/gaffer/issues/2987)).
+- GraphLayout : Fixed GIL management bugs that could cause deadlock ([#2988](https://github.com/GafferHQ/gaffer/issues/2988)).
+- TweakPlug : Fixed `createCounterpart()` method, so TweakPlugs may now be promoted ([#3007](https://github.com/GafferHQ/gaffer/issues/3007)).
+- NodeEditor : Fixed bug that could cause keyboard focus to be lost when switching
+  between nodes ([#3008](https://github.com/GafferHQ/gaffer/issues/3008)).
+
