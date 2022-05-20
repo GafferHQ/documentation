@@ -1,0 +1,23 @@
+0.14.0
+======
+
+* The parameter userData ["UI"]["visible"] is now supported.
+
+* Fixed failing test GafferTest.ParameterisedHolderTest.testAddAndRemoveParameters. Parameters may now be added or removed within a ParameterisedHolder::ParameterModificationContext.
+
+* Fixed a few stylesheet issues that appeared when running under Gnome.
+
+* Added a GraphComponent::setChild() method - this operates in the same way as the __setitem__ python method. See documentation for the distinction between addChild() and setChild().
+
+* Fixed a bug whereby GraphComponent::getChild( "" ) would return the GraphComponent itself rather than nothing.
+
+* Fixed a bug dealing with parameters changing type within a ParameterisedHolder::ParameterModificationContext.
+
+* GraphComponent::parentChangedSignal() now also provides the previous parent to connected slots in addition to the child argument.
+
+* Fixed a bug where transferring a child from one parent to another would emit parentChangedSignal() twice, once with the child unparented from the old parent, and once with the child reparented to the new parent. Now the signal is only emitted once, omitting the bogus temporary unparenting signal.
+
+* Plugs now automatically disconnect their inputs and outputs when they are removed from their parent.
+
+* Plugs may no longer implement acceptsInput( 0 ) to return false - this was illogical as it prevents the undoing of a connection made by the user.
+
