@@ -1,0 +1,148 @@
+StandardAttributes
+==================
+
+Modifies the standard attributes on objects - these should
+be respected by all renderers.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+attributes
+----------
+
+The attributes to be applied - arbitrary numbers of user defined
+attributes may be added as children of this plug via the user
+interface, or using the CompoundDataPlug API via python.
+
+attributes.visibility
+---------------------
+
+Whether or not the object can be seen - invisible objects are
+not sent to the renderer at all. Typically more fine
+grained (camera, reflection etc) visibility can be
+specified using a renderer specific attributes node.
+Note that making a parent location invisible will
+always make all the children invisible too, regardless
+of their visibility settings.
+
+attributes.doubleSided
+----------------------
+
+Whether or not the object can be seen from both sides.
+Single sided objects appear invisible when seen from
+the back.
+
+attributes.displayColor
+-----------------------
+
+The default colour used to display the object in the absence
+of a specific shader assignment. Commonly used to control
+basic object appearance in the Viewer.
+
+> Tip : For more detailed control of object appearance in the
+> Viewer, use the OpenGLAttributes node.
+
+attributes.transformBlur
+------------------------
+
+Whether or not transformation animation on the
+object is taken into account in the rendered image.
+Use the transformBlurSegments plug to specify the number
+of segments used to represent the motion.
+
+attributes.transformBlurSegments
+--------------------------------
+
+The number of segments of transform animation to
+pass to the renderer when transformBlur is on.
+
+attributes.deformationBlur
+--------------------------
+
+Whether or not deformation animation on the
+object is taken into account in the rendered image.
+Use the deformationBlurSegments plug to specify the
+number of segments used to represent the motion.
+
+attributes.deformationBlurSegments
+----------------------------------
+
+The number of segments of transform animation to
+pass to the renderer when transformBlur is on.
+
+attributes.linkedLights
+-----------------------
+
+The lights to be linked to this object. Accepts a set expression or
+a space separated list of lights. Use "defaultLights" to refer to
+all lights that contribute to illumination by default.
+
+Examples
+--------
+
+All the default lights plus the lights in the `characterLights` set
+:
+
+`defaultLights | characterLights`
+
+All the default lights, but without the lights in the `interiorLights`
+set :
+
+`defaultLights - interiorLights`
+
+> Info : Lights can be added to sets either by using the `sets` plug
+> on the light node itself, or by using a separate Set node.
+
+attributes.filteredLights
+-------------------------
+
+The lights to be filtered by this light filter. Accepts a
+set expression or a space separated list of lights.
+Use "defaultLights" to refer to all lights that
+contribute to illumination by default.
+
+global
+------
+
+Causes the attributes to be applied to the scene globals
+instead of the individual locations defined by the filter.
+
+extraAttributes
+---------------
+
+An additional set of attributes to be added. Arbitrary numbers
+of attributes may be specified within a single `IECore.CompoundObject`,
+where each key/value pair in the object defines an attribute.
+This is convenient when using an expression to define the attributes
+and the attribute count might be dynamic. It can also be used to
+create attributes whose type cannot be handled by the `attributes`
+CompoundDataPlug, with `IECoreScene.ShaderNetwork` being one example.
+
+If the same attribute is defined by both the attributes and the
+extraAttributes plugs, then the value from the extraAttributes
+is taken.

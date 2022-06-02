@@ -1,0 +1,67 @@
+CopyPrimitiveVariables
+======================
+
+Copies primitive variables from a source scene, adding them to the objects
+of the main input scene.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+adjustBounds
+------------
+
+Adjusts bounding boxes to account for the changes made to the object.
+
+> Caution : Adjusting boundings boxes has a performance penalty.
+> If you do not need accurate bounds or you know that the bounds
+> will only change slightly, you may prefer to turn this off.
+
+source
+------
+
+The scene from which the primitive variables are copied.
+
+primitiveVariables
+------------------
+
+The names of the primitive variables to be copied. These should be
+separated by spaces and can use Gaffer's standard wildcards
+to match multiple variables.
+
+sourceLocation
+--------------
+
+The location in the source scene that primitive variables are copied from.
+By default, variables are copied from the location equivalent to the one
+they are being copied to. It is not an error if the location to be copied from
+does not exist; instead, no variables are copied.
+
+prefix
+------
+
+A prefix applied to the names of the copied primitive variables.
