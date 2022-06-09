@@ -1,0 +1,9 @@
+0.57.7.5
+========
+
+Fixes
+-----
+
+- Arnold Renderer : Fixed hangs when instancing the output of an Encapsulate node.
+- CropWindowTool : Fixed error handling bugs.
+

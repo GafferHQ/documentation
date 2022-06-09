@@ -1,0 +1,354 @@
+0.54.0.0
+========
+
+This major release brings support for Arnold's light blockers and adds a new _UV Inspector_
+editor for viewing UVs and textures. It also brings a host of core UI changes, including a
+new look and improvements to layout management and node pinning. Additionally we've made
+advances under the hood, resulting in improved performance and lower memory usage in many
+cases. Read on for further details of these and numerous other enhancements and fixes...
+
+> **Caution** : This release brings substantial performance improvements in the generation
+> of ShaderAssignments, but at the expense of removing support for using the `scene:path`
+> context variable in shader networks. We recommend migrating such setups to use a
+> CustomAttributes node to generate a context-varying attribute which is then referenced
+> by the shader. This approach improves scene generation performance in Gaffer and
+> prevents the passing of large numbers of unique shader networks to the renderer.
+> Temporary backwards compatibility for old networks can be enabled by setting the
+> `GAFFERSCENE_SHADERASSIGNMENT_CONTEXTCOMPATIBILITY` environment variable to `1`.
+>
+> The same optimization applies to the OSLObject node, with temporary backwards compatibility
+> being available separately by setting the `GAFFEROSL_OSLOBJECT_CONTEXTCOMPATIBILITY` environment
+> variable to `1`.
+
+Features
+--------
+
+- Light filters : Extended support for Arnold's light filters by adding blockers ([#3020](https://github.com/GafferHQ/gaffer/issues/3020)) :
+  - Added new ArnoldLightFilter node for creating blockers.
+  - Added attribute for linking blockers to lights to StandardAttributes node.
+- UVInspector : Added new editor for viewing UVs and associated textures ([#3273](https://github.com/GafferHQ/gaffer/issues/3273)).
+- SetVisualiser : Added node to allow visualisation of set membership in the Viewer ([#3117](https://github.com/GafferHQ/gaffer/issues/3117)).
+
+Improvements
+------------
+
+- Layouts :
+  - Improved tab management :
+    - Tabs can now be drag re-arranged, detached into new windows and closed/detached using a context menu ([#3197](https://github.com/GafferHQ/gaffer/issues/3197)).
+    - Layouts will now store and recall detached panels, and all positions, sizes and maximized/full screen state ([#3197](https://github.com/GafferHQ/gaffer/issues/3197)).
+    - Added tab close buttons ([#3211](https://github.com/GafferHQ/gaffer/issues/3211)).
+  - Added advanced pinning options, available from the context menu for the pinning icon ([#3270](https://github.com/GafferHQ/gaffer/issues/3270)) :
+    - Editors can now follow the source node for the current scene selection.
+    - Editors can be linked so that an editor follows all pinning changes applied
+      to another editor.
+- OSLImage :
+    - Added improved interface which provides image channel management directly on
+      the OSLImage node ([#3218](https://github.com/GafferHQ/gaffer/issues/3218)).
+    - Added `defaultFormat` plug. This allows OSLImage to be used without an
+      input image connected ([#3218](https://github.com/GafferHQ/gaffer/issues/3218)).
+    - Improved performance of shader input evaluation ([#3074](https://github.com/GafferHQ/gaffer/issues/3074)).
+- OSLObject :
+    - Added improved interface which provides primitive variable management directly on
+      the OSLObject node ([#3192](https://github.com/GafferHQ/gaffer/issues/3192)).
+    - Improved performance of shader input evaluation ([#3074](https://github.com/GafferHQ/gaffer/issues/3074)).
+    - Added `useAttributes` plug, which allows OSL shaders to query attributes from the
+      scene ([#3226](https://github.com/GafferHQ/gaffer/issues/3226)).
+- Appleseed : Updated to Appleseed 2.0.5 ([#3288](https://github.com/GafferHQ/gaffer/issues/3288)).
+- FilterResults : Improved performance. For certain FilterResults-heavy production
+  graphs, we have seen 4-5x speedups in total scene generation time ([#3174](https://github.com/GafferHQ/gaffer/issues/3174)).
+- Instancer/Parent/Seeds : Added a filter input to allow operation on multiple locations
+  at once ([#2917](https://github.com/GafferHQ/gaffer/issues/2917), [#3176](https://github.com/GafferHQ/gaffer/issues/3176)).
+- TransformTools : Added precision mode enabled by holding <kbd>Shift</kbd>. Added basic
+  snapping to increments by holding <kbd>Ctrl</kbd> ([#3277](https://github.com/GafferHQ/gaffer/issues/3277)).
+- Viewer : Prioritized update of objects being manipulated, resulting in much more fluid update ([#3144](https://github.com/GafferHQ/gaffer/issues/3144)).
+- Node Menu :
+  - Added an improved "fuzzy matching" search algorithm ([#2986](https://github.com/GafferHQ/gaffer/issues/2986)).
+  - Added an error indicator when a search matches nothing ([#2986](https://github.com/GafferHQ/gaffer/issues/2986)).
+  - Improved naming of nodes and scene locations for newly created
+    Arnold shaders and lights ([#3261](https://github.com/GafferHQ/gaffer/issues/3261)).
+- SceneReader : Added support for USD files that reference Alembic archives.
+- Text : Added support for Unicode characters ([#2999](https://github.com/GafferHQ/gaffer/issues/2999)).
+- PythonCommand : Improved performance ([#3029](https://github.com/GafferHQ/gaffer/issues/3029)).
+- GraphEditor :
+  - Added support for arbitrary node annotations specified by metadata.
+    Use `annotation:<name>:text` to specify the text to render, and `annotation:<name>:color`
+    to specify an associated color ([#3028](https://github.com/GafferHQ/gaffer/issues/3028)).
+  - Added <kbd>Ctrl</kbd> + click-drag marquee action to deselect nodes ([#3090](https://github.com/GafferHQ/gaffer/issues/3090)).
+  - Made it show the root instead of removing the GraphEditor when the viewed Box is deleted ([#3163](https://github.com/GafferHQ/gaffer/issues/3163)).
+- UIEditor : Added support for setting the icon for a node ([#3204](https://github.com/GafferHQ/gaffer/issues/3204)).
+- Stats app :
+  - Added `annotatedScript` argument to allow the saving of the script with
+    monitor annotations added to it ([#3028](https://github.com/GafferHQ/gaffer/issues/3028)).
+  - Added `-cacheMemoryLimit` and `-hashCacheSizeLimit` arguments for controlling
+    cache limits ([#3033](https://github.com/GafferHQ/gaffer/issues/3033)).
+  - Added support for render output profiling via `-scene` argument ([#3053](https://github.com/GafferHQ/gaffer/issues/3053)).
+  - Added a `-contextSanitiser` argument, used to check for common context handling
+    errors ([#3060](https://github.com/GafferHQ/gaffer/issues/3060)).
+  - Added entries for SharedSceneInterface limits and usage ([#3126](https://github.com/GafferHQ/gaffer/issues/3126)).
+- ArnoldTextureBake : Added optional median filter ([#3026](https://github.com/GafferHQ/gaffer/issues/3026)).
+- Hash cache : Reduced memory usage and improved performance ([#3033](https://github.com/GafferHQ/gaffer/issues/3033)).
+- GraphComponent : Reduced memory usage and improved script loading times ([#3080](https://github.com/GafferHQ/gaffer/issues/3080)).
+- Shader : Improved performance of network generation ([#3074](https://github.com/GafferHQ/gaffer/issues/3074)).
+- ShaderAssignment : Improved performance by removing support for varying shader networks
+  by scene location (via the `scene:path` context variable) ([#3074](https://github.com/GafferHQ/gaffer/issues/3074)).
+- AnimationEditor : Improved behaviour of the plug listing ([#3106](https://github.com/GafferHQ/gaffer/issues/3106)).
+  - Only selected nodes are shown, not their descendants.
+  - The ancestor node hierarchy is not shown redundantly.
+  - Improved performance.
+- Test app :
+  - All tests are now run by default ([#3101](https://github.com/GafferHQ/gaffer/issues/3101)).
+  - Added support for detecting performance regression/improvement ([#3127](https://github.com/GafferHQ/gaffer/issues/3127)).
+- MeshTangents : Added support for additional computation modes ([#3030](https://github.com/GafferHQ/gaffer/issues/3030)).
+- ImageWriter : Added DWA compression presets ([#3153](https://github.com/GafferHQ/gaffer/issues/3153)).
+- Numeric Bookmarks : Added serialization to preserve numeric bookmarks across sessions ([#3157](https://github.com/GafferHQ/gaffer/issues/3157)).
+- SetExpressions : Added support for wildcard characters in set names ([#3172](https://github.com/GafferHQ/gaffer/issues/3172)).
+- Lights :
+  - Added `visualiserScale` setting in new _Visualisation_ tab ([#3180](https://github.com/GafferHQ/gaffer/issues/3180)).
+  - By setting `visualiserScale` to 0, all visualisation computations can now be avoided ([#3178](https://github.com/GafferHQ/gaffer/issues/3178)).
+  - Added visualization for point light radius ([#3199](https://github.com/GafferHQ/gaffer/issues/3199)).
+- OpenGLAttributes : Added new _Light Visualiser_ section, with control over
+  visualization scale and maximum texture resolution ([#3219](https://github.com/GafferHQ/gaffer/issues/3219)).
+- UI : Improved stylesheet ([#3193](https://github.com/GafferHQ/gaffer/issues/3193), [#3229](https://github.com/GafferHQ/gaffer/issues/3229), [#3246](https://github.com/GafferHQ/gaffer/issues/3246), [#3249](https://github.com/GafferHQ/gaffer/issues/3249)).
+- SystemCommand : Added `shell` plug, to determine whether or not the supplied
+  command is interpreted as a shell command or executed directly ([#3230](https://github.com/GafferHQ/gaffer/issues/3230)).
+- ArnoldShader : Added metadata for new shader parameters introduced in Arnold 5.3 ([#3243](https://github.com/GafferHQ/gaffer/issues/3243)).
+
+Fixes
+-----
+
+- Dispatcher ([#3024](https://github.com/GafferHQ/gaffer/issues/3024)) :
+  - Added support for Switch nodes. The dedicated TaskSwitch node is
+    still available, but will be removed in a future release.
+  - Added support for ContextProcessor nodes such as ContextVariables and
+    TimeWarp. The dedicated TaskContextVariables node is still available, but
+    will be removed in a future release.
+- Light linking ([#3265](https://github.com/GafferHQ/gaffer/issues/3265)) :
+  - Fixed crash when hiding a linked light during an interactive Arnold render.
+  - Fixed crash when changing parameters on a linked light during an interactive
+    Arnold render.
+  - Fixed bug which caused light links to be output unnecessarily if non-lights
+    where inadvertently added to the `defaultLights` set.
+- TransformTool : Fixed crash when using the tool while a Catalogue node saves an
+  image in the background ([#3196](https://github.com/GafferHQ/gaffer/issues/3196)).
+- GraphEditor : Added bookmark annotations for Dots and other auxiliary nodes ([#3028](https://github.com/GafferHQ/gaffer/issues/3028)).
+- ArnoldTextureBake ([#3026](https://github.com/GafferHQ/gaffer/issues/3026)) :
+  - Connected external dispatcher settings to internal render task.
+  - Connected preTasks plug to internal tasks.
+  - Fixed leakage of internal context variables.
+- Viewer :
+  - Fixed keyboard modifier handling for object selection. Previously, holding
+    down any modifier key whilst drag-selecting or clicking an object in the Viewer would
+    modify the current selection. This behaviour was only intended to be triggered by the
+    Shift key ([#3095](https://github.com/GafferHQ/gaffer/issues/3095)).
+  - Fixed bug that prevented image updates after a computation error had occurred ([#3273](https://github.com/GafferHQ/gaffer/issues/3273)).
+- Scene : Fixed context handling bugs in Transform, SceneWriter, SceneAlgo, Set,
+  Isolate and Prune. This improves performance on some complex scenes ([#3060](https://github.com/GafferHQ/gaffer/issues/3060)).
+- Offset : Fixed context handling bug ([#3073](https://github.com/GafferHQ/gaffer/issues/3073)).
+- AnimationEditor ([#3106](https://github.com/GafferHQ/gaffer/issues/3106)) :
+  - Fixed visibility glitch in timeline hover indicator. It wasn't being
+    hidden when the mouse left the editor.
+  - Fixed bug when deselecting a curve - the plug listing selection was not being updated
+    to reflect the change.
+- PythonCommand :
+  - Prevented inadvertent modification of outer context ([#3101](https://github.com/GafferHQ/gaffer/issues/3101)).
+  - Sequence mode now allows access to static variables without specifying the frame ([#3262](https://github.com/GafferHQ/gaffer/issues/3262)).
+- Fixed widget signal/slot lifetime issues ([#3179](https://github.com/GafferHQ/gaffer/issues/3179)).
+    - Using ScopedConnections is no longer needed as `Widget` now derives from `Trackable`.
+    - ScopedConnections can still be used when wanting to replace connections on the fly.
+- NodeMenu : Fixed Delight/Light/DistantLight menu item ([#3216](https://github.com/GafferHQ/gaffer/issues/3216)).
+- CropWindowTool :
+  - Fixed incorrect results caused by a Switch node between viewed node and target ([#3207](https://github.com/GafferHQ/gaffer/issues/3207)).
+  - Fixed hangs caused by active CropWindowTool when viewing empty scene ([#3207](https://github.com/GafferHQ/gaffer/issues/3207)).
+  - Fixed bug that could allow a read-only plug to be edited ([#3239](https://github.com/GafferHQ/gaffer/issues/3239)).
+- Dispatch app : Fixed configuration bug which caused GafferUI to be loaded unnecessarily.
+  This could cause a `QXcbConnection Could not connect to display` error when run on a machine
+  without an X server ([#3237](https://github.com/GafferHQ/gaffer/issues/3237)).
+- Execute app : Stopped current frame of saved script leaking into the context for
+  `TaskNode::executeSequence()` ([#3262](https://github.com/GafferHQ/gaffer/issues/3262)).
+- Stats app : Fixed VTuneMonitor scoping ([#3196](https://github.com/GafferHQ/gaffer/issues/3196)).
+- Monitor : Fixed thread safety and scoping of monitors. Monitors now only see processes
+  launched on the thread they were scoped on, and parallel tasks that are spawned by those
+  processes ([#3196](https://github.com/GafferHQ/gaffer/issues/3196)).
+- Reference : Fixed problems that meant that metadata was lost when promoting a plug from
+  a reference ([#3258](https://github.com/GafferHQ/gaffer/issues/3258)).
+- GraphComponent : Fixed crashes caused by passing `None` as a child argument from Python
+  ([#3276](https://github.com/GafferHQ/gaffer/issues/3276), [#3279](https://github.com/GafferHQ/gaffer/issues/3279)).
+- Expression : Fixed bug whereby expressions could break if nodes were renamed during copy/paste
+  ([#3283](https://github.com/GafferHQ/gaffer/issues/3283)).
+- CustomAttributes : Fixed performance regression caused by addition of the `extraAttributes`
+  plug ([#3280](https://github.com/GafferHQ/gaffer/issues/3280)).
+- Warp : Fixed bug which prevented a derived class from using a single Engine for the whole
+  image. It is no longer necessary to append `tileOrigin` in `engineHash()` ([#3299](https://github.com/GafferHQ/gaffer/issues/3299)).
+
+Documentation
+-------------
+
+- Added "Anatomy of a Camera" which gives an overview of Gaffer's camera model, the terminology,
+  the camera data in the scene, and how the data flows through the graph ([#3050](https://github.com/GafferHQ/gaffer/issues/3050)).
+- Added a "Camera" section to "Working with Scenes" which covers usage and task information
+  about the Camera node, manipulating camera objects, the CameraTweaks node, render overrides,
+  and demos of a spherical and anamorphic camera setup ([#3050](https://github.com/GafferHQ/gaffer/issues/3050)).
+- Added "Light Linking" which shows how light linking is set up and runs through an example
+  scenario that would necessitate light links ([#3114](https://github.com/GafferHQ/gaffer/issues/3114)).
+- Added mechanism for providing example node networks in the help menu. Examples can optionally be
+  associated with certain node types. The Cog menu in the Node Editor lists any applicable
+  Examples for the node type being edited ([#3108](https://github.com/GafferHQ/gaffer/issues/3108)).
+- Added general improvements to readability and appearance in the stylesheet. Most notably,
+  this makes the headings consistent, and the spacing between elements uniform ([#3149](https://github.com/GafferHQ/gaffer/issues/3149)).
+- Added bootstrap scrollspy to improve signposting and to provide a mini-nav for articles ([#3159](https://github.com/GafferHQ/gaffer/issues/3159)).
+- Moved tutorials to appropriate sections ([#3210](https://github.com/GafferHQ/gaffer/issues/3210)).
+- Fixed broken links ([#3210](https://github.com/GafferHQ/gaffer/issues/3210)).
+
+API
+---
+
+- ComputeNode : Added `hashCachePolicy()` and `computeCachePolicy()` methods which can be overridden
+  to provide additional control over caching. Default behaviour is unchanged. The new
+  `Standard` policy can be used to prevent multiple threads computing the same result in
+  parallel, which is of particular relevance to expensive computes that load external resources.
+  Computes which spawn TBB tasks _must_ use the `TaskCollaboration` or `TaskIsolation` policies
+  ([#3174](https://github.com/GafferHQ/gaffer/issues/3174)).
+- ThreadState : Added new class to consolidate tracking of current context, process and
+  monitors on a per-thread basis. When spawning tasks from a compute, it is your responsibility
+  to transfer thread state onto the threads executing the tasks, whereas
+  before only context needed to be transferred. New constructors for the various
+  `Context::EditableScope` classes make this relatively painless ([#3196](https://github.com/GafferHQ/gaffer/issues/3196)).
+- ProcessException : Added new class used to wrap exceptions thrown during computation.
+  This provides information about the plug and context where the exception was thrown ([#3223](https://github.com/GafferHQ/gaffer/issues/3223)).
+- TextWidget/MultiLineTextWidget : Added support for Unicode characters. In this
+  case the `getText()` method will return a UTF-8 encoded string ([#2999](https://github.com/GafferHQ/gaffer/issues/2999)).
+- ContextSanitisers : Added new ContextSanitiser classes to GafferSceneTest and
+  GafferImageTest. These are Monitors which warn about common context handling mistakes
+  ([#3060](https://github.com/GafferHQ/gaffer/issues/3060), [#3073](https://github.com/GafferHQ/gaffer/issues/3073)).
+- TaskNode ([#3024](https://github.com/GafferHQ/gaffer/issues/3024), [#3025](https://github.com/GafferHQ/gaffer/issues/3025)) :
+  - Simplified implementation requirements for `preTasks()` and `postTasks()`
+    methods. It is now sufficient to construct `Tasks` directly from the input
+    plugs, with no requirement to find their source and check for a TaskNode.
+  - Added missing bindings for `Task( TaskPlug )` and `Task::plug()`.
+- ContextProcessor ([#3024](https://github.com/GafferHQ/gaffer/issues/3024)) :
+  - Added `inPlugContext()` method.
+  - Added support for working with `Plugs` rather than only `ValuePlugs`.
+- AnnotationsGadget : Added new gadget for rendering annotations for GraphGadgets ([#3028](https://github.com/GafferHQ/gaffer/issues/3028)).
+- MonitorAlgo : Added `annotate()` methods for turning Monitor statistics into
+  GraphEditor annotations ([#3028](https://github.com/GafferHQ/gaffer/issues/3028)).
+- ValuePlug :
+	- Added `set/getHashCacheSizeLimit()` methods for controlling hash cache memory usage ([#3033](https://github.com/GafferHQ/gaffer/issues/3033)).
+	- `isSetToDefault()` now returns false uncoditionally if a plug's value is being driven
+	  by a ComputeNode. Calling `isSetToDefault()` will never trigger a compute ([#3280](https://github.com/GafferHQ/gaffer/issues/3280)).
+- Context : Added `EditableScope::context()` method ([#3060](https://github.com/GafferHQ/gaffer/issues/3060)).
+- SceneTestCase ([#3060](https://github.com/GafferHQ/gaffer/issues/3060)) :
+  - Added a ContextSanitiser that is active for the duration of the tests.
+  - Improved assert methods.
+- GraphComponent : Added protected `parentChanged()` virtual method ([#3080](https://github.com/GafferHQ/gaffer/issues/3080)).
+- ImagePlug : Added convenience methods for evaluating global image properties ([#3073](https://github.com/GafferHQ/gaffer/issues/3073)).
+- GraphComponentPath : Added property for accessing the GraphComponent ([#3106](https://github.com/GafferHQ/gaffer/issues/3106)).
+- LightFilter : Added LightFilter class used as base for renderer-specific implementations ([#3020](https://github.com/GafferHQ/gaffer/issues/3020)).
+- NameValuePlug : Introduced new plug type for associating a name with a value ([#3161](https://github.com/GafferHQ/gaffer/issues/3161)).
+- SceneAlgo : `history()` now returns a nullptr when called for empty scenes instead of precipitating a segfault ([#3207](https://github.com/GafferHQ/gaffer/issues/3207)).
+- ExtensionAlgo : Added mechanism to export Boxes as Gaffer extensions via `exportExtension()` ([#3158](https://github.com/GafferHQ/gaffer/issues/3158)).
+  Gaffer extensions each define a new node type and are automatically integrated into the node menu.
+- StringPlugValueWidget : Added support for `stringPlugValueWidget:placeholderText` metadata ([#3218](https://github.com/GafferHQ/gaffer/issues/3218)).
+- Widget : Improved interaction with stylesheet. Widgets now provide `gafferClass` and `gafferClasses`.
+  Qt properties which allows stylesheets more precise control ([#3229](https://github.com/GafferHQ/gaffer/issues/3229)).
+- MetadataWidget : Added new class and derived classes to allow editing of metadata values via
+  the UI ([#3143](https://github.com/GafferHQ/gaffer/issues/3143)).
+- UIEditor : Added support for registering custom PlugValueWidgets and associated metadata ([#3143](https://github.com/GafferHQ/gaffer/issues/3143)).
+- TestRunner : Added new class with features for detecting performance regressions. Use the
+  `PerformanceTestMethod` and `PerformanceScope` nested classes to annotate unit tests which test
+  performance ([#3127](https://github.com/GafferHQ/gaffer/issues/3127), ([#3265](https://github.com/GafferHQ/gaffer/issues/3265)).
+- Plug : Deprecated `Cacheable` flag. Override `computeCachePolicy()` instead ([#3174](https://github.com/GafferHQ/gaffer/issues/3174)).
+- Reference : Added `hasMetadataEdit()` method ([#3258](https://github.com/GafferHQ/gaffer/issues/3258)).
+- ImageGadget : Added `set/getLabelsVisible()` accessors ([#3273](https://github.com/GafferHQ/gaffer/issues/3273)).
+- ImageView : Added `createDisplayTransform()` static method ([#3273](https://github.com/GafferHQ/gaffer/issues/3273)).
+- UVView : Added new View subclass for viewing UVs and textures ([#3273](https://github.com/GafferHQ/gaffer/issues/3273)).
+- SourceSet : Added new Set subclass whose contents automatically track the source node for the
+  current scene selection ([#3270](https://github.com/GafferHQ/gaffer/issues/3270)).
+- NodeSetEditor ([#3270](https://github.com/GafferHQ/gaffer/issues/3270)) :
+  - Added `setNodeSetDriver()`/`getNodeSetDriver()` methods to link editors.
+  - Added `drivenNodeSets()` method to query linked editors.
+  - Added `nodeSetDriverChangedSignal()` and `drivenNodeSetsChangedSignal()` signals
+    to allow editor links to be observed.
+  - Added `registerNodeSetDriverMode()` to allow custom link modes to be added.
+
+Build
+-----
+
+- Arnold : Updated to version 5.3.1.0.
+- Appleseed : Updated to version 2.0.5-beta.
+- OpenEXR : Updated to version 2.3.0.
+- OpenVDB : Updated to version 6.0.0.
+- Blosc : Updated to version 1.15.1.
+- PySide : Updated to version corresponding with Maya 2018 Update 6.
+- Cortex : Updated to version 10.0.0-a59.
+- TBB : Updated to version 2018 Update 5.
+- Alembic : Added python bindings.
+- Improved debugging support ([#3070](https://github.com/GafferHQ/gaffer/issues/3070)) :
+  - Added support for using ASAN option with GCC.
+  - Enabled TBB debugging features in DEBUG builds.
+  - Added `-fno-omit-frame-pointer` compiler flag for RELWITHDEBINFO builds.
+- Fixed warnings when building with XCode 10.2 ([#3094](https://github.com/GafferHQ/gaffer/issues/3094)).
+- Fixed problem where some Arnold modules were installed when `ARNOLD_ROOT` was
+  not specified ([#3101](https://github.com/GafferHQ/gaffer/issues/3101)).
+- Made GafferCortex an optional component at build time ([#3168](https://github.com/GafferHQ/gaffer/issues/3168)).
+- Reduced the number of errors thrown during documentation build ([#3212](https://github.com/GafferHQ/gaffer/issues/3212)).
+
+Breaking Changes
+----------------
+
+- OSLObject/OSLImage :
+  - The loading of networks from versions prior to Gaffer 0.45 is no longer supported ([#3192](https://github.com/GafferHQ/gaffer/issues/3192), [#3218](https://github.com/GafferHQ/gaffer/issues/3218)).
+  - Added a `useTransform` plug to OSLObject. This must now be turned on before a shader can query
+    transforms ([#3226](https://github.com/GafferHQ/gaffer/issues/3226)).
+- ShaderAssignment : Removed support for using the `scene:path` context variable in shader
+  networks. Temporary backwards compatibility can be enabled by setting the `GAFFERSCENE_SHADERASSIGNMENT_CONTEXTCOMPATIBILITY` environment variable to `1` ([#3074](https://github.com/GafferHQ/gaffer/issues/3074)).
+- OSLObject : Removed support for using the `scene:path` context variable in shader
+  networks. Temporary backwards compatibility can be enabled by setting the `GAFFEROSL_OSLOBJECT_CONTEXTCOMPATIBILITY` environment variable to `1` ([#3074](https://github.com/GafferHQ/gaffer/issues/3074)).
+- GraphComponent :
+  - Added `parentChanged()` virtual method ([#3080](https://github.com/GafferHQ/gaffer/issues/3080)).
+    > **Caution** : Experience in the Gaffer codebase suggests that `parentChanged()` was a
+    > relatively common method name, which may now be inadvertently overriding the new
+    > virtual method. Clang will warn for these cases if `-Wall` is used, but GCC requires
+    > `-Woverloaded-virtual` to be used.
+- TaskNode::Task ([#3024](https://github.com/GafferHQ/gaffer/issues/3024), [#3025](https://github.com/GafferHQ/gaffer/issues/3025)) :
+  - Removed `hash()` method and associated member data.
+  - Removed deprecated `node()` method.
+  - Removed less-than operator.
+  - The equality operator now compares plug and context instead of
+    hash.
+- ArrayPlug : Inputs are now required to be ArrayPlugs too ([#3116](https://github.com/GafferHQ/gaffer/issues/3116)).
+- BackdropNodeGadget/StandardNodeGadget : Removed private member variables ([#3028](https://github.com/GafferHQ/gaffer/issues/3028)).
+- SceneTestCase : Changed signatures for the following functions ([#3060](https://github.com/GafferHQ/gaffer/issues/3060)) :
+  - `assertPathsEqual()`
+  - `assertScenesEqual()`
+  - `assertPathHashesEqual()`
+  - `assertPathHashesNotEqual()`
+  - `assertSceneHashesEqual()`
+  - `assertSceneHashesNotEqual()`
+- Shader : Changed base class to ComputeNode ([#3074](https://github.com/GafferHQ/gaffer/issues/3074)).
+- TweakPlug : Added compulsory ValuePlug argument to constructor used for serialisation ([#3084](https://github.com/GafferHQ/gaffer/issues/3084)).
+- AnimationEditor : Removed `connectedCurvePlug()` method ([#3106](https://github.com/GafferHQ/gaffer/issues/3106)).
+- ParallelAlgo : Replaced `registerUIThreadCallHandler()` with `push/popUIThreadCallHandler()` ([#3101](https://github.com/GafferHQ/gaffer/issues/3101)).
+- Renderer API : Added `lightBlocker()` virtual method ([#3020](https://github.com/GafferHQ/gaffer/issues/3020)).
+- CompoundDataPlug : Removed MemberPlug and `addMember()` as well as `addOptionalMember()`. Use NameValuePlug instead ([#3161](https://github.com/GafferHQ/gaffer/issues/3161)).
+- TransformTool : Added private members (ABI change only - source compatibility is maintained) ([#3144](https://github.com/GafferHQ/gaffer/issues/3144)).
+- RenderController : Added argument to `updateInBackground()` (ABI change only, source compatibility is maintained) ([#3144](https://github.com/GafferHQ/gaffer/issues/3144)).
+- SceneGadget : Added new private member (ABI change only, source compatibility is maintained) ([#3144](https://github.com/GafferHQ/gaffer/issues/3144)).
+- LightVisualiser : The signature for `visualise()` now also includes the attributes ([#3180](https://github.com/GafferHQ/gaffer/issues/3180)).
+- StandardLightVisualiser :
+  - `pointRays()` now takes an optional argument specifying the light's radius ([#3199](https://github.com/GafferHQ/gaffer/issues/3199)).
+  - `environmentSphere()` now requires an additional `maxTextureResolution` argument ([#3219](https://github.com/GafferHQ/gaffer/issues/3219)).
+- LightFilterVisualiser : `visualise()` now takes `attributes` as additional argument ([#3260](https://github.com/GafferHQ/gaffer/issues/3260)).
+- BranchCreator : Added `affectsBranch*()` and `constantBranchSetNames()` virtual methods ([#3176](https://github.com/GafferHQ/gaffer/issues/3176)).
+- EvaluateLightLinks : Removed. This was a node used internally to translate light links to renderers,
+  work that is now done in RendererAlgo ([#3265](https://github.com/GafferHQ/gaffer/issues/3265)).
+- Context : Changed base class for `Scope`/`EditableScope`, and removed private member from `Scope`. Source compatibility is preserved ([#3196](https://github.com/GafferHQ/gaffer/issues/3196)).
+- Process : Changed base class, and removed optional `currentContext` argument from protected constructor ([#3196](https://github.com/GafferHQ/gaffer/issues/3196)).
+- Monitor ([#3196](https://github.com/GafferHQ/gaffer/issues/3196)) :
+  - Changed base class to `IECore::RefCounted`.
+  - Removed `setActive()/getActive()` methods. Use the Scope class instead.
+- ComputeNode : Added virtual methods ([#3174](https://github.com/GafferHQ/gaffer/issues/3174)).
+- ValuePlug : Removed `getObjectValueIfCached()` method ([#3174](https://github.com/GafferHQ/gaffer/issues/3174)).
+- TypedObjectPlug : Removed `getValueIfCached()` method ([#3174](https://github.com/GafferHQ/gaffer/issues/3174)).
+- GafferCortex : Removed GafferCortex module from standard builds ([#3253](https://github.com/GafferHQ/gaffer/issues/3253)).
+- Style : Changed color arguments to `renderLine()` and `renderText()` from `Color3f` to `Color4f` ([#3273](https://github.com/GafferHQ/gaffer/issues/3273)).
+
