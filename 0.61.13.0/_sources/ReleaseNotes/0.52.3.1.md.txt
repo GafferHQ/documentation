@@ -1,0 +1,10 @@
+0.52.3.1
+========
+
+Fixes
+-----
+
+- ArnoldMeshLight : Fixed light linking bug. ArnoldMeshLights are now included in the
+  `defaultLights` set by default. A new `defaultLight` plug controls this behaviour,
+  matching the `defaultLight` plug on other Light nodes ([#2926](https://github.com/GafferHQ/gaffer/issues/2926)).
+

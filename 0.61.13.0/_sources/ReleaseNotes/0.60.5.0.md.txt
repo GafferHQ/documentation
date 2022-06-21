@@ -1,0 +1,15 @@
+0.60.5.0
+========
+
+Improvements
+------------
+
+- PythonCommand : Added syntax highlighting and auto-complete.
+
+Fixes
+-----
+
+- Instancer :
+  - Fixed crash caused by engine being evicted from the cache.
+  - Fixed crash caused by points disappearing within the shutter range.
+
