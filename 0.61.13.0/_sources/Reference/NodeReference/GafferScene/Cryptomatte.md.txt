@@ -1,0 +1,98 @@
+Cryptomatte
+===========
+
+Outputs a matte channel generated from IDs selected from Cryptomatte AOVs.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The resulting image.
+
+enabled
+-------
+
+Turns the node on and off.
+
+in
+--
+
+The input image containing Cryptomatte image layers and optional metadata.
+
+layer
+-----
+
+The name of the Cryptomatte layer to use.
+
+manifestSource
+--------------
+
+The source of the Cryptomatte manifest.
+
+ - None: No manifest will be loaded.
+ - Metadata: From the first of the following image metadata entries that
+ exist for the selected Cryptomatte layer :
+   - `manifest` : The manifest data.
+   - `manif_file` : The name of a JSON manifest file stored in a
+   directory specified on the `manifestDirectory` plug.
+ - Sidecar File: From a JSON file specified on the `sidecarFile` plug.
+
+manifestDirectory
+-----------------
+
+A directory of JSON files containing Cryptomatte manifests.
+
+If a `manif_file` metadata entry exists for the selected Cryptomatte
+layer, it will be appended to this directory. The manifest is read from
+the file at the resulting path.
+
+sidecarFile
+-----------
+
+A JSON file containing a Cryptomatte manifest.
+
+File sequences with arbitrary padding may be specified using the '#' character
+as a placeholder for the frame numbers.
+
+**Supported file extensions** : json
+
+outputChannel
+-------------
+
+The name of the output channel containing the extracted matte.
+
+matteNames
+----------
+
+The list of names to be extracted as a matte.
+
+Names are matched against entries in the Cryptomatte manifest and
+Gaffer's standard wildcard characters can be used to match multiple
+names.
+
+ - /robot/*Arm matches /robot/leftArm, /robot/rightArm and
+   /robot/Arm. But does not match /robot/limbs/leftArm or
+   /robot/arm.
+
+ - /.../house matches /house, /street/house and /city/street/house.
+
+ - /robot[ABC] matches /robotA, /robotB and /robotC. But does not
+   match /robotD or /robota.
+
+Cryptomatte manifest entries containing '/' characters will be
+treated as hierarchical paths and a matte will be extracted for any
+entry that is matched or has an ancestor that is matched.
+
+ - /robot extracts mattes for /robot, /robot/leftArm and
+   /robot/rightArm. But does not extract /robotA or /robotLeftArm.
+
+ID values can be specified directly by wrapping a float ID value in
+angle brackets.
+
+ - `<value>`.

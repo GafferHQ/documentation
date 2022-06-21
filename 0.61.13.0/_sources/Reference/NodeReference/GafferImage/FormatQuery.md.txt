@@ -1,0 +1,32 @@
+FormatQuery
+===========
+
+Extracts the format of an input image, for driving the format input of another image node, or
+driving expressions.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+image
+-----
+
+The image to query.
+
+format
+------
+
+The format of the image ( as a FormatPlug, compatible with inputs on Constant or Resize ).
+
+center
+------
+
+The middle of the displayWindow.  Stored as V2f, since it could be a half-pixel.
+
+size
+----
+
+The size of the displayWindow as V2i.
