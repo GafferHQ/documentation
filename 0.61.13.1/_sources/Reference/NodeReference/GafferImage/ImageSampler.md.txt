@@ -1,0 +1,37 @@
+ImageSampler
+============
+
+Samples image colour at a specified pixel location.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+image
+-----
+
+The image to be sampled.
+
+channels
+--------
+
+The names of the four channels to be sampled.
+
+pixel
+-----
+
+The coordinates of the pixel to sample. These can have
+fractional values and bilinear interpolation will be used
+to interpolate between adjacent pixels.
+
+Note though that the coordinates at pixel centres are not integers.
+For example, the centre of the bottom left pixel of an image is
+at 0.5, 0.5.
+
+color
+-----
+
+The sampled colour.

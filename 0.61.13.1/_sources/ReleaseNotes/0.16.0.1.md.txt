@@ -1,0 +1,9 @@
+0.16.0.1
+========
+
+UI
+-----------------------------------------------------------------------
+
+- UIEditor : Update preset value on selection change.
+- ShaderSwitchUI : Fix NodeGraph representation ([#1461](https://github.com/GafferHQ/gaffer/issues/1461)).
+
