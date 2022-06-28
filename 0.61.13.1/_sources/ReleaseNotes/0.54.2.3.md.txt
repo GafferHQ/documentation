@@ -1,0 +1,15 @@
+0.54.2.3
+========
+
+Fixes
+-----
+
+- CollectScenes : Fixed bug in set computations. This first appeared as a failure to display lights in the viewer in certain circumstances ([#3497](https://github.com/GafferHQ/gaffer/issues/3497)).
+- Viewer : Fixed X-Ray shading mode on MacOS ([#3473](https://github.com/GafferHQ/gaffer/issues/3473)).
+- Caching : Changed the cache used in various sub-systems to avoid potential compute failures ([#3476](https://github.com/GafferHQ/gaffer/issues/3476)).
+- LRUCache : Fixed handling of cases where value computation for a cache-miss was cancelled in-flight, which then prevented the value ever being successfully retrieved ([#3469](https://github.com/GafferHQ/gaffer/issues/3469)).
+- ShaderTweaks : Fixed missing preset for Arnold Blockers.
+- Arnold : Fixed crash when disconnecting shader networks from lights ([#3484](https://github.com/GafferHQ/gaffer/issues/3484)).
+- VectorDataWidget : Fixed styling update bug for non-editable widgets.
+- ParallelAlgo : Fixed potential hang in `popUIThreadCallHandler()` Python bindings.
+
