@@ -1,0 +1,22 @@
+0.53.4.0
+========
+
+Improvements
+------------
+
+- ArnoldShaderUI ([#3087](https://github.com/GafferHQ/gaffer/issues/3087)) :
+  - Added support for `gaffer.layout.section.<sectionName>.collapsed`
+    metadata.
+  - Improved NodeEditor layout for barndoor and light_decay shaders.
+
+Fixes
+-----
+
+- Layout menu : Fixed crashes removing a panel while using Gaffer in Maya ([#3091](https://github.com/GafferHQ/gaffer/issues/3091)).
+- ShaderTweaks : Fixed crashes when copying and pasting a ShaderTweaks node ([#3084](https://github.com/GafferHQ/gaffer/issues/3084)).
+- OSL ShadingEngine :
+  - Fixed initialisation of `dPdz` in shader globals ([#3083](https://github.com/GafferHQ/gaffer/issues/3083)).
+  - Fixed intermittent crashes seen at shutdown ([#3093](https://github.com/GafferHQ/gaffer/issues/3093)).
+- CompoundDataPlug : Fixed GIL management bugs for `fill*()` methods ([#3079](https://github.com/GafferHQ/gaffer/issues/3079)).
+- Documentation : Fixed typos in ArnoldOptions documentation ([#3081](https://github.com/GafferHQ/gaffer/issues/3081)).
+
