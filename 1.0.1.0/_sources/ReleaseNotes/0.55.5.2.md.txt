@@ -1,0 +1,14 @@
+0.55.5.2
+========
+
+- Expression : Fixed retrieval of boolean context variables via the OSL `context()` function.
+- Backdrop : Fixed bug that prevented context variables from being used by the `title` and `description` plugs. All variables from the global script context are now available.
+- Box : Fixed bug that allowed locked plugs to be promoted.
+- TransformTools : Fixed rare crash triggered by selecting multiple objects.
+- Floating Editors : Fixed keyboard shortcuts ([#3632](https://github.com/GafferHQ/gaffer/issues/3632)).
+- ArnoldTextureBake :  Fixed imbalanced distribution of work among tasks when some UDIMs contain many more objects than others.
+- StandardOptions : Fixed bug which meant that the camera chooser dialogue started browsing in the user's home directory, not the root of the scene ([#3695](https://github.com/GafferHQ/gaffer/issues/3695)).
+- Spreadsheet :
+  - Fixed scrollbar flickering in Spreadsheets with two rows ([#3628](https://github.com/GafferHQ/gaffer/issues/3628)).
+  - Fixed bug which changed the width of the row name column when new rows were added.
+
