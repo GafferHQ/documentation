@@ -1,0 +1,37 @@
+0.53.5.0
+========
+
+Features
+--------
+
+- Reference : Added support for fileName search paths ([#3049](https://github.com/GafferHQ/gaffer/issues/3049)).
+  - Set the new `GAFFER_REFERENCE_PATHS` environment variable in order to load relative Reference files.
+
+Improvements
+------------
+
+- ArnoldShader/ArnoldLight :
+  - Added support for "gaffer.default" and "gaffer.userDefault" metadata ([#3112](https://github.com/GafferHQ/gaffer/issues/3112)).
+    There is an example .mtd file which provides Arnold 5.2 compatibility in contrib/arnold ([#3115](https://github.com/GafferHQ/gaffer/issues/3115)).
+  - Exposed the geometry parameters for the `standard_surface` shader in the NodeEditor ([#3104](https://github.com/GafferHQ/gaffer/issues/3104)).
+
+Fixes
+-----
+
+- Catalogue : Fixed bug when viewing a Catalogue after a ShaderView ([#3113](https://github.com/GafferHQ/gaffer/issues/3113)).
+  - Note this is actually a change to ShaderPlug itself, not to Catalogue.
+- Camera : Fixed bug in compatibility config ([#3100](https://github.com/GafferHQ/gaffer/issues/3100)).
+- Wedge : Fixed to work without compatibility configs ([#3122](https://github.com/GafferHQ/gaffer/issues/3122)).
+- AnimationEditor : Fixed bug affecting animated promoted plugs ([#3106](https://github.com/GafferHQ/gaffer/issues/3106)).
+- UIEditor : Fixed bug with '/' in presets (we now replace '/' with '_') ([#3103](https://github.com/GafferHQ/gaffer/issues/3103)).
+- Viewer : Fixed potential deadlocks when editing the camera in the Viewer ([#3121](https://github.com/GafferHQ/gaffer/issues/3121)).
+
+Documentation
+-------------
+
+- Added "Anatomy of a Camera" article to "Working with Scenes" section ([#3050](https://github.com/GafferHQ/gaffer/issues/3050)).
+- Added missing shortguts for "Controls and Shortcuts" ([#3111](https://github.com/GafferHQ/gaffer/issues/3111)).
+- Fixed recent screengrab errors and build targets ([#3066](https://github.com/GafferHQ/gaffer/issues/3066)).
+- Fixed shader assignment variable in Python tutorial ([#3099](https://github.com/GafferHQ/gaffer/issues/3099)).
+- Fixed reference to 'root' in Expression Scripting Reference ([#3107](https://github.com/GafferHQ/gaffer/issues/3107)).
+
