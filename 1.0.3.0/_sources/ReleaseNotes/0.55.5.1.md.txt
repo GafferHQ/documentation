@@ -1,0 +1,12 @@
+0.55.5.1
+========
+
+Fixes
+-----
+
+- Set expression context menus :
+  - Fixed bug that prevented the plug label context menu opening when the plug accepted set expressions.
+  - Fixed bug that prevented the SetFilter's set expression menu from appearing when attached to a CopyAttributes node.
+- CollectScenes : Fixed bug which caused errors when `RecursiveRange` encountered a CollectScenes node.
+- Range/RecursiveRange : Fixed problems caused by visiting CopyAttributes nodes.
+

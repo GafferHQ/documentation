@@ -1,0 +1,38 @@
+0.61.9.0
+========
+
+Features
+--------
+
+- ShaderQuery : Added new node for querying parameters from a shader at a location.
+
+Improvements
+------------
+
+- USD :
+  - Added support for reading `.usdz` files.
+  - Added support for `doubleSided` attribute.
+- ShaderTweaks : Added dialogue for choosing parameters to tweak instead of popup menus.
+
+Fixes
+-----
+
+- USD : Fixed reading and writing of Color4f shader parameters.
+- InteractiveArnoldRender : Fixed crash triggered by changing the filter on an ArnoldMeshLight.
+- NodeEditor : Stopped applying "green dot" non-default plug annotations to output plugs.
+- Dot : Fixed a case where adding a Dot node between a `BoxIn` node and a downstream node would reverse the input and output nodules' sides on the Dot.
+
+API
+---
+
+- PlugAlgo :
+  - Deprecated `extractDataFromPlug`. Use the equivalent `getValueAsData` instead.
+  - Added `setValueFromData` to set the value of an existing plug.
+  - Added `canSetValueFromData` to return whether or not a plug's value can be set from Data.
+- PathColumn : Add color swatch to cells containing `Color3fData` or `Color4fData`.
+
+Build
+------
+
+- Cortex : Updated to version 10.3.6.1.
+

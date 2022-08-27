@@ -1,0 +1,8 @@
+0.58.6.4
+========
+
+Fixes
+-----
+
+- Layouts : Fixed broken keyboard shortcuts in floating editors.
+

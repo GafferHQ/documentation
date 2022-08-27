@@ -1,0 +1,8 @@
+0.58.6.2
+========
+
+Fixes
+-----
+
+- NodeGadget : Fixed intermittent shutdown crash.
+
