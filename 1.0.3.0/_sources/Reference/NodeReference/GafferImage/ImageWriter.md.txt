@@ -1,0 +1,352 @@
+ImageWriter
+===========
+
+Writes image files to disk using OpenImageIO. All file
+types supported by OpenImageIO are supported by the
+ImageWriter.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+preTasks
+--------
+
+Input connections to upstream nodes which must be
+executed before this node.
+
+postTasks
+---------
+
+Input connections to nodes which must be
+executed after this node, but which don't
+need to be executed before downstream nodes.
+
+task
+----
+
+Output connections to downstream nodes which must
+not be executed until after this node.
+
+dispatcher
+----------
+
+Container for custom plugs which dispatchers use to
+control their behaviour.
+
+dispatcher.batchSize
+--------------------
+
+Maximum number of frames to batch together when dispatching tasks.
+If the node requires sequence execution `batchSize` will be ignored.
+
+dispatcher.immediate
+--------------------
+
+Causes this node to be executed immediately upon dispatch,
+rather than have its execution be scheduled normally by
+the dispatcher. For instance, when using the LocalDispatcher,
+the node will be executed immediately in the dispatching process
+and not in a background process as usual.
+
+When a node is made immediate, all upstream nodes are automatically
+considered to be immediate too, regardless of their settings.
+
+in
+--
+
+The image to be written to disk.
+
+fileName
+--------
+
+The name of the file to be written. File sequences with
+arbitrary padding may be specified using the '#' character
+as a placeholder for the frame numbers.
+
+**Supported file extensions** : bmp, dib, cin, dds, dpx, fits, hdr, rgbe, ico, iff, z, jpg, jpe, jpeg, jif, jfif, jfi, jp2, j2k, j2c, null, nul, exr, sxr, mxr, png, ppm, pgm, pbm, pnm, pfm, psd, pdd, psb, bay, bmq, cr2, crw, cs1, dc2, dcr, dng, erf, fff, k25, kdc, mdc, mos, mrw, nef, orf, pef, pxn, raf, raw, rdc, sr2, srf, x3f, arw, 3fr, cine, ia, kc2, mef, nrw, qtk, rw2, sti, rwl, srw, drf, dsc, ptx, cap, iiq, rwz, cr3, rla, sgi, rgb, rgba, bw, int, inta, socket, pic, tif, tiff, tx, env, sm, vsm, tga, tpic, term, zfile, osl, oso, oslgroup, oslbody
+
+channels
+--------
+
+The names of the channels to be written to the file.
+Names should be separated by spaces and may contain any
+of Gaffer's standard wildcards.
+
+colorSpace
+----------
+
+The colour space of the output image, used to convert the input image
+from the scene linear colorspace defined by the OpenColorIO config.
+The default behaviour is to automatically determine the colorspace by
+calling the function registered with `ImageWriter::setDefaultColorSpaceFunction()`.
+
+out
+---
+
+A pass-through of the input image.
+
+layout
+------
+
+Controls where channels are placed in the file, including how they are named.
+"Single part" writes all channels to the same part ( all interleaved ).
+"Part per layer" writes a separate part for each layer, so they may be loaded
+independently for better performance, and is the default.  "Part per view" is
+a compromise, where layers are not separated, but views are separated, so that
+stereo files can use independent data windows.
+
+There is also the option to use a layout that matches Nuke's default
+behaviour, but does not conform to the EXR specification. The Nuke presets
+match "Part per Layer", "Part per View", and "Single Part" respectively, but with
+the following deviations from the specification :
+
+* The layer name is omitted from the channel name
+* Custom channels from the main layer are placed in a part named other
+* The channel Z from the main layer is placed in a part named depth
+* The RGBA channels from secondary layers are renamed to red, green, blue, and alpha
+* When writing single part stereo, the view name comes before the layer name
+
+You may also pick "custom", and set up your own layout.  This allows for things
+like a mixed layout that is partially EXR spec compliant, and partially Nuke.  Or
+you could use a expression to group some layers together in the same part.
+
+layout.partName
+---------------
+
+Specifies the name to be stored in EXR's part name metadata.
+
+If different channels are given different part names, then a multipart
+file is produced.
+
+Special context variables available for setting layout plugs:
+
+* `${imageWriter:viewName}` : The current view
+* `${imageWriter:channelName}` : The current channel name
+* `${imageWriter:layerName}` : The prefix of the channel name
+* `${imageWriter:baseName}` : The suffix of the channel name
+* `${imageWriter:standardPartName}` : Like the layerName, but set to "rgba" instead of empty for the main layer
+* `${imageWriter:nukeViewName}` : Like viewName, but set to "main" when there is no current view
+* `${imageWriter:nukeLayerName}` : Like layerName, but set to "depth" for "Z", and "other" for custom channels of the main layer
+* `${imageWriter:nukeBaseName}` : Like baseName, but set to "red", "green", "blue", "alpha" instead of RGBA for layers other than the main layer.
+* `${imageWriter:nukePartName}` : Like standardPartName, but set to "depth" for "Z", and "other" for custom channels of the main layer
+* `${imageWriter:singlePartViewName}` : The current view, or "" if this is the first view. This should be used to compose channel names for single-part multi-view EXR files.
+
+layout.channelName
+------------------
+
+Specifies the channel name to be given to EXR.  To match the standard, this should just
+be exactly the Gaffer channel name.  But some other software like Nuke omits the layer prefix,
+and assumes that the part name will be prefixed to the channel.
+
+Special context variables available for setting layout plugs:
+
+* `${imageWriter:viewName}` : The current view
+* `${imageWriter:channelName}` : The current channel name
+* `${imageWriter:layerName}` : The prefix of the channel name
+* `${imageWriter:baseName}` : The suffix of the channel name
+* `${imageWriter:standardPartName}` : Like the layerName, but set to "rgba" instead of empty for the main layer
+* `${imageWriter:nukeViewName}` : Like viewName, but set to "main" when there is no current view
+* `${imageWriter:nukeLayerName}` : Like layerName, but set to "depth" for "Z", and "other" for custom channels of the main layer
+* `${imageWriter:nukeBaseName}` : Like baseName, but set to "red", "green", "blue", "alpha" instead of RGBA for layers other than the main layer.
+* `${imageWriter:nukePartName}` : Like standardPartName, but set to "depth" for "Z", and "other" for custom channels of the main layer
+* `${imageWriter:singlePartViewName}` : The current view, or "" if this is the first view. This should be used to compose channel names for single-part multi-view EXR files.
+
+matchDataWindows
+----------------
+
+For multi-view images, sets the data windows to be the same for all views, by expanding them
+all to include the union of all views.  Wastes disk space and processing time, but is
+required by Nuke for multi-view images.
+
+openexr
+-------
+
+Format options specific to OpenEXR files.
+
+openexr.mode
+------------
+
+The write mode for the OpenEXR file - scanline or tiled data.
+
+openexr.compression
+-------------------
+
+The compression method to use when writing the OpenEXR file.
+
+openexr.dwaCompressionLevel
+---------------------------
+
+The compression level used when writing files with DWAA or DWAB compression.
+Higher values decrease file size at the expense of image quality.
+
+openexr.dataType
+----------------
+
+The data type to be written to the OpenEXR file.  If you want to use different
+data types for different channels, you can drive this with an expression or spreadsheet,
+which may use the same context variables as the layout plugs ( the useful ones are
+`${imageWriter:channelName}`, `${imageWriter:layerName}` and `${imageWriter:baseName}`,
+for the whole channel name, and for the prefix and suffix respectively ).
+
+openexr.depthDataType
+---------------------
+
+Overriding the data type for depth channels is useful because many of the things depth is used
+for require greater precision.  This is a simple override which sets Z and ZBack to float precision.
+If you want to do something more complex, set this to `Use Default`, and connect an expression or
+spreadsheet to the `Data Type` plug.
+
+dpx
+---
+
+Format options specific to DPX files.
+
+dpx.dataType
+------------
+
+The data type to be written to the DPX file.
+
+tiff
+----
+
+Format options specific to TIFF files.
+
+tiff.mode
+---------
+
+The write mode for the TIFF file - scanline or tiled data.
+
+tiff.compression
+----------------
+
+The compression method to use when writing the TIFF file.
+
+tiff.dataType
+-------------
+
+The data type to be written to the TIFF file.
+
+field3d
+-------
+
+Format options specific to Field3D files.
+
+field3d.mode
+------------
+
+The write mode for the Field3D file - scanline or tiled data.
+
+field3d.dataType
+----------------
+
+The data type to be written to the Field3D file.
+
+fits
+----
+
+Format options specific to FITS files.
+
+fits.dataType
+-------------
+
+The data type to be written to the FITS file.
+
+iff
+---
+
+Format options specific to IFF files.
+
+iff.mode
+--------
+
+The write mode for the IFF file - scanline or tiled data.
+
+jpeg
+----
+
+Format options specific to Jpeg files.
+
+jpeg.compressionQuality
+-----------------------
+
+The compression quality for the Jpeg file to be written.
+A value between 0 (low quality, high compression) and
+100 (high quality, low compression).
+
+jpeg.chromaSubSampling
+----------------------
+
+The chroma sub sampling used to write the jpeg file.
+Note that the file will be stored as YCbCr instead of RGB.
+
+jpeg2000
+--------
+
+Format options specific to Jpeg2000 files.
+
+jpeg2000.dataType
+-----------------
+
+The data type to be written to the Jpeg2000 file.
+
+png
+---
+
+Format options specific to PNG files.
+
+png.compression
+---------------
+
+The compression method to use when writing the PNG file.
+
+png.compressionLevel
+--------------------
+
+The compression level of the PNG file. This is a value between
+0 (no compression) and 9 (most compression).
+
+rla
+---
+
+Format options specific to RLA files.
+
+rla.dataType
+------------
+
+The data type to be written to the RLA file.
+
+sgi
+---
+
+Format options specific to SGI files.
+
+sgi.dataType
+------------
+
+The data type to be written to the SGI file.
+
+targa
+-----
+
+Format options specific to Targa files.
+
+targa.compression
+-----------------
+
+The compression method to use when writing the Targa file.
+
+webp
+----
+
+Format options specific to WebP files.
+
+webp.compressionQuality
+-----------------------
+
+The compression quality for the WebP file to be written.
+A value between 0 (low quality, high compression) and
+100 (high quality, low compression).
