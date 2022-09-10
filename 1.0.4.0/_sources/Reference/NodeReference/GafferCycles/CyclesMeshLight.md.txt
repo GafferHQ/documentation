@@ -1,0 +1,77 @@
+CyclesMeshLight
+===============
+
+Turns mesh primitives into Cycles mesh lights by assigning
+an emission shader, turning off all visibility except for camera rays,
+and adding the meshes to the default lights set.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+cameraVisibility
+----------------
+
+Whether or not the mesh light is visible to camera
+rays.
+
+lightGroup
+----------
+
+The light group that the mesh light will contribute to.
+
+parameters
+----------
+
+The parameters of the Cycles emission shader that
+is applied to the meshes.
+
+parameters.color
+----------------
+
+Refer to Cycles's documentation of the emission
+shader.
+
+parameters.strength
+-------------------
+
+Refer to Cycles's documentation of the emission
+shader.
+
+parameters.surface_mix_weight
+-----------------------------
+
+Refer to Cycles's documentation of the emission
+shader.
+
+defaultLight
+------------
+
+Whether this light illuminates all geometry by default. When
+toggled, the light will be added to the "defaultLights" set, which
+can be referenced in set expressions and manipulated by downstream
+nodes.
