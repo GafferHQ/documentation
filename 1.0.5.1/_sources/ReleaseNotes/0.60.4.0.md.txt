@@ -1,0 +1,30 @@
+0.60.4.0
+========
+
+Features
+--------
+
+- ArnoldAttributes : Added Displacement section with plugs for controlling Arnold's `disp_autobump` and `autobump_visibility` parameters.
+
+Fixes
+-----
+
+- GraphEditor : The Dot created when you <kbd>Ctrl</kbd>+click on a connection is now selected automatically, so it can be repositioned by an immediate drag.
+- MetadataAlgo : Numeric bookmarks are no longer loaded inside nodes with `childNodesAreReadOnly` metadata, to prevent them "stealing" bookmarks from other nodes. Previously this only applied to nodes inside References.
+- Reference :
+  - Moved the `childNodesAreReadOnly` metadata registration to the Gaffer module, so it applies even without `GafferUI` being imported.
+  - Prevented `childNodesAreReadOnly` metadata baked into a referenced file from overriding the Reference node's own metadata.
+
+Breaking Changes
+----------------
+
+- ArnoldDisplacement : Deprecated the `autoBump` plug, use `ArnoldAttributes.autoBump` instead.
+
+Build
+-----
+
+- Updated to GafferHQ/dependencies 3.1.0 :
+  - Fixed missing `ssl` module in Python 3 builds.
+  - USD : Enabled OpenVDB support.
+- Added `BOOST_PYTHON_LIB_SUFFIX` option. This matches the approach used in Cortex.
+

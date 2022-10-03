@@ -1,0 +1,8 @@
+0.58.3.1
+========
+
+Fixes
+-----
+
+- Viewer : Fixed crash when viewing a rapidly changing monochrome image or soloed channel.
+
