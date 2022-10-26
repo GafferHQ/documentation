@@ -1,0 +1,15 @@
+0.60.8.0
+========
+
+Improvements
+------------
+
+- Catalogue : Added support for naming incoming images using a `catalogue:imageName` display driver parameter. The default `Interactive/Beauty` output now includes this parameter so that it can be specified via the Outputs node.
+
+Fixes
+-----
+
+- OSL Expression : Fixed crash due to exception in upstream computation.
+- OSLShader : Fixed loading of a further 85 MaterialX shaders which were renamed by https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/pull/909.
+- StandardNodeGadget : Changes to `nodeGadget:minWidth` metadata now take immediate effect in all GraphEditors.
+
