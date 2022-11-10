@@ -1,0 +1,12 @@
+0.61.14.2
+=========
+
+Fixes
+-----
+
+- Animation : Prevented negative zero slope.
+- Animation Editor :
+  - Fixed glitch when dragging a tangent having an opposite tangent with (+/-) inf slope.
+  - Fixed bug that caused exception to be raised when the parent node of an editable curve was removed.
+  - Fixed bug that prevented signals from being disconnected when a key was deleted.
+
