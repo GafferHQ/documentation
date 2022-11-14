@@ -1,0 +1,8 @@
+0.61.1.1
+========
+
+Fixes
+-----
+
+- InteractiveArnoldRender : Fixed Arnold 7 crash when stopping a render with global AOV shaders.
+
