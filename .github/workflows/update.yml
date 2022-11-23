@@ -39,4 +39,4 @@ jobs:
         delete-branch: true
         reviewers: |
           johnhaddon
-          danieldresser-ie
+          murraystevenson
