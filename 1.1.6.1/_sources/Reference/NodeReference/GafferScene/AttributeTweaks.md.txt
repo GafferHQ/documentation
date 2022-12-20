@@ -1,0 +1,53 @@
+AttributeTweaks
+===============
+
+Makes modifications to attributes.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+localise
+--------
+
+Turn on to allow location-specific tweaks to be made to inherited
+attributes. Attributes will be localised to locations matching the
+node's filter prior to tweaking. The original inherited attributes
+will remain untouched.
+
+ignoreMissing
+-------------
+
+Ignores tweaks targeting missing attributes. When off, missing attributes
+cause the node to error.
+
+tweaks
+------
+
+The tweaks to be made to the attributes. Arbitrary numbers of user defined
+tweaks may be added as children of this plug via the user interface, or
+using the AttributeTweaks API via python.

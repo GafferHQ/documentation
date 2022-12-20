@@ -1,0 +1,20 @@
+0.57.5.0
+========
+
+Improvements
+------------
+
+- ArnoldShader :
+  - Added support for `gaffer.icon STRING "name.png"` metadata in `.mtd` files.
+  - Added support for `gaffer.iconScale FLOAT scale` metadata in `.mtd` files.
+- ImageStats : Parallelised compute for improved performance.
+- Documentation : Added Spreadsheet article.
+
+Fixes
+-----
+
+- TransformTool : Fixed blank status message for certain non-editable selections.
+- Dispatcher : Fixed dispatch of two or more Switches or ContextProcessors connected together directly.
+- ArnoldTextureBake : Fixed recursion depth exception caused by more than ~300 meshes in a UDIM.
+- MergeScenes : Fixed bug in set computations which could trigger crashes with an overloaded cache.
+
