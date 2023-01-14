@@ -1,0 +1,33 @@
+0.58.2.0
+========
+
+Improvements
+------------
+
+- CollectScenes : Added support for collecting at roots of arbitrary depth.
+- AttributeVisualiser : Added support for V2f, V3f, V2i, V3i, V2d and V3d data types.
+- Node Editor : Added decoration to collapsed sections when any of their children have non-default values.
+- HierarchyView : Added <kbd>Ctrl + C</kbd> shortcut/context menu action to copy the selected paths to the clipboard.
+- UI : Added support for basic math operators (`+`, `-`, `/`, `*`, `%`) in numeric fields.
+
+Fixes
+-----
+
+- PrimitiveInspector :
+  - Fixed bug that caused data lists to lose their scroll position during updates.
+  - Fixed bug that could cause the inspector to show a different location to other Editors.
+  - Fixed bug when the selected location doesn't exist in the input scene.
+- Attributes : Fixed bug that could prevent interactive updates when the `global` plug was on.
+- CollectScenes : Fixed childNames hashing bug.
+- NodeAlgo : Fixed bug that caused `isSetToUserDefault()` to return `True` when the plug's input was from a ComputeNode.
+  Like `ValuePlug::isSetToDefault()`, `isSetToUserDefault()` will now never trigger a compute, and all computed inputs
+  are treated as non-default.
+- GafferArnold : Added missing GafferOSL Python bindings import.
+- Plug : Fixed bug that could break IPR updates following a node graph edit ([#3911](https://github.com/GafferHQ/gaffer/issues/3911)).
+- Viewer : Fixed CropWindow tool reset button size.
+
+API
+---
+
+- OpenImageIOReader : Added methods for controlling the maximum number of images files to keep open at one time.
+

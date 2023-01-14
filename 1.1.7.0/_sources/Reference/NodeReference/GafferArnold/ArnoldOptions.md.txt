@@ -1,0 +1,602 @@
+ArnoldOptions
+=============
+
+Sets global scene options applicable to the Arnold
+renderer. Use the StandardOptions node to set
+global options applicable to all renderers.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+options
+-------
+
+The options to be applied - arbitrary numbers of user defined options may be added
+as children of this plug via the user interface, or using the CompoundDataPlug API via
+python.
+
+options.bucketSize
+------------------
+
+Controls the size of the image buckets.
+The default size is 64x64 pixels.
+Bigger buckets will increase memory usage
+while smaller buckets may render slower as
+they need to perform redundant computations
+and filtering.
+
+options.bucketScanning
+----------------------
+
+Controls the order in which buckets are
+processed. A spiral pattern is the default.
+
+options.parallelNodeInit
+------------------------
+
+Enables Arnold's parallel node initialization.
+Note that some Arnold features may not be
+thread-safe, in which case enabling this option
+can cause crashes. One such example is Cryptomatte
+and its use in the AlSurface shader.
+
+options.threads
+---------------
+
+Specifies the number of threads Arnold
+is allowed to use. A value of 0 gives
+Arnold access to all available threads.
+
+options.aaSamples
+-----------------
+
+Controls the number of rays per pixel
+traced from the camera. The more samples,
+the better the quality of antialiasing,
+motion blur and depth of field. The actual
+number of rays per pixel is the square of
+the AA samples value - so a value of 3
+means 9 rays are traced, 4 means 16 rays are
+traced and so on.
+
+options.giDiffuseSamples
+------------------------
+
+Controls the number of rays traced when
+computing indirect illumination ("bounce light").
+The number of actual diffuse rays traced is the
+square of this number.
+
+options.giSpecularSamples
+-------------------------
+
+Controls the number of rays traced when
+computing specular reflections.
+The number of actual specular rays traced
+is the square of this number.
+
+options.giTransmissionSamples
+-----------------------------
+
+Controls the number of rays traced when
+computing specular refractions. The number of actual
+transmitted specular rays traced is the square of this number.
+
+options.giSSSSamples
+--------------------
+
+Controls the number of rays traced when
+computing subsurface scattering. The number of actual
+subsurface rays traced is the square of this number.
+
+options.giVolumeSamples
+-----------------------
+
+Controls the number of rays traced when
+computing indirect lighting for volumes.
+The number of actual rays traced
+is the square of this number. The volume
+ray depth must be increased from the default
+value of 0 before this setting is of use.
+
+options.aaSeed
+--------------
+
+Seeds the randomness used when generating samples.
+By default this is set to the current frame number
+so that the pattern of sampling noise changes every
+frame. It can be locked to a particular value so
+that sampling noise does not change from frame to
+frame.
+
+options.aaSampleClamp
+---------------------
+
+Sets a maximum for the values of individual pixel samples. This
+can help reduce fireflies.
+
+options.aaSampleClampAffectsAOVs
+--------------------------------
+
+Applies the sample clamping settings to all RGB and RGBA
+AOVs, in addition to the beauty image.
+
+options.indirectSampleClamp
+---------------------------
+
+Clamp fireflies resulting from indirect calculations.
+May cause problems with dulling highlights in reflections.
+
+options.lowLightThreshold
+-------------------------
+
+Light paths with less energy than this will be discarded.  This
+saves tracing shadow rays, but cuts off the light when it gets dim.
+Raising this improves performance, but makes the image potentially
+darker in some areas.
+
+options.enableAdaptiveSampling
+------------------------------
+
+If adaptive sampling is enabled, Arnold will take a minimum
+of ( aaSamples * aaSamples ) samples per pixel, and will then
+take up to ( aaSamplesMax * aaSamplesMax ) samples per pixel,
+or until the remaining estimated noise gets lower than
+aaAdaptiveThreshold.
+
+> Note : Arnold's adaptive sampling won't do anything if aaSamples == 1 : you need to set aaSamples to at least 2.
+
+options.aaSamplesMax
+--------------------
+
+The maximum sampling rate during adaptive sampling.  Like
+aaSamples, this value is squared.  So aaSamplesMax == 6 means up to 36 samples per pixel.
+
+options.aaAdaptiveThreshold
+---------------------------
+
+How much leftover noise is acceptable when terminating adaptive sampling.  Higher values
+accept more noise, lower values keep rendering longer to achieve smaller amounts of
+noise.
+
+options.enableProgressiveRender
+-------------------------------
+
+Enables progressive rendering, with a series of coarse low-resolution
+renders followed by a full quality render updated continuously.
+
+options.progressiveMinAASamples
+-------------------------------
+
+Controls the coarseness of the first low resolution pass
+of interactive rendering. A value of `-4` starts with 16x16 pixel
+blocks, `-3` gives 8x8 blocks, `-2` gives 4x4, `-1` gives 2x2 and
+`0` disables the low resolution passes completely.
+
+options.giTotalDepth
+--------------------
+
+The maximum depth of any ray (Diffuse + Specular +
+Transmission + Volume).
+
+options.giDiffuseDepth
+----------------------
+
+Controls the number of ray bounces when
+computing indirect illumination ("bounce light").
+
+options.giSpecularDepth
+-----------------------
+
+Controls the number of ray bounces when
+computing specular reflections.
+
+options.giTransmissionDepth
+---------------------------
+
+Controls the number of ray bounces when
+computing specular refractions.
+
+options.giVolumeDepth
+---------------------
+
+Controls the number of ray bounces when
+computing indirect lighting on volumes.
+
+options.autoTransparencyDepth
+-----------------------------
+
+The number of allowable transparent layers - after
+this the last object will be treated as opaque.
+
+options.maxSubdivisions
+-----------------------
+
+A global override for the maximum polymesh.subdiv_iterations.
+
+options.subdivDicingCamera
+--------------------------
+
+If specified, adaptive subdivision will be performed
+relative to this camera, instead of the render camera.
+
+options.subdivFrustumCulling
+----------------------------
+
+Disable subdivision of polygons outside the camera frustum.
+( Uses dicing camera if one has been set ).
+Saves performance, at the cost of inaccurate reflections
+and shadows.
+
+options.subdivFrustumPadding
+----------------------------
+
+When using subdivFrustumCulling, adds a world space bound
+around the frustum where subdivision still occurs.  Can be
+used to improve shadows, reflections, and objects the motion
+blur into frame.
+
+options.textureMaxMemoryMB
+--------------------------
+
+The maximum amount of memory to use for caching
+textures. Tiles are loaded on demand and cached,
+and when the memory limit is reached the least
+recently used tiles are discarded to make room
+for more. Measured in megabytes.
+
+options.texturePerFileStats
+---------------------------
+
+Turns on detailed statistics output for
+each individual texture file used.
+
+options.textureMaxSharpen
+-------------------------
+
+Controls the sharpness of texture lookups,
+providing a tradeoff between sharpness and
+the amount of texture data loaded. If
+textures appear too blurry, then the value
+should be increased to add sharpness.
+
+The theoretical optimum value is to match the
+number of AA samples, but in practice the
+improvement in sharpness this brings often
+doesn't justify the increased render time and
+memory usage.
+
+options.textureUseExistingTx
+----------------------------
+
+Automatically uses a `<filename>.tx` file if it exists, in
+preference to a `<filename>.jpg` (or any other file format) that has
+been specified. Particularly useful when used with
+`textureAutoGenerateTx`, which will automatically create the `.tx`
+file as necessary.
+
+> Info : The `.tx` file format provides improved performance and
+reduced memory usage, because it contains mip-mapped textures.
+
+options.textureAutoGenerateTx
+-----------------------------
+
+Automatically generates a `<filename>.tx` when given
+`<filename>.jpg` (or any other file format). Requires that
+`textureUseExistingTx` is also turned on. By default, textures
+are generated in the same folder as the source texture. Use
+`textureAutoTxPath` to specify an alternative destination.
+
+> Caution : This feature might cause problems if multiple render
+farm nodes are trying to convert the same textures in the same
+target folder at the same time, resulting in potential crashes,
+corrupt textures, and poor performance.
+
+options.textureAutoTxPath
+-------------------------
+
+Specifies an alternate destination folder for textures generated
+by `textureAutoGenerateTx`.
+
+options.ignoreTextures
+----------------------
+
+Ignores all file textures, rendering as
+if they were all white.
+
+options.ignoreShaders
+---------------------
+
+Ignores all shaders, rendering as a
+simple facing ratio shader instead.
+
+options.ignoreAtmosphere
+------------------------
+
+Ignores all atmosphere shaders.
+
+options.ignoreLights
+--------------------
+
+Ignores all lights.
+
+options.ignoreShadows
+---------------------
+
+Skips all shadow calculations.
+
+options.ignoreSubdivision
+-------------------------
+
+Treats all subdivision surfaces
+as simple polygon meshes instead.
+
+options.ignoreDisplacement
+--------------------------
+
+Ignores all displacement shaders.
+
+options.ignoreBump
+------------------
+
+Ignores all bump mapping.
+
+options.ignoreSSS
+-----------------
+
+Disables all subsurface scattering.
+
+options.ignoreImagers
+---------------------
+
+Disables all imagers.
+
+options.textureSearchPath
+-------------------------
+
+The locations used to search for texture
+files.
+
+options.proceduralSearchPath
+----------------------------
+
+The locations used to search for procedural
+DSOs.
+
+options.pluginSearchPath
+------------------------
+
+The locations used to search for shaders and other plugins.
+
+options.abortOnError
+--------------------
+
+Aborts the render if an error is encountered.
+
+options.errorColorBadTexture
+----------------------------
+
+The colour to display if an attempt is
+made to use a bad or non-existent texture.
+
+options.errorColorBadPixel
+--------------------------
+
+The colour to display for a pixel where
+a NaN is encountered.
+
+options.errorColorBadShader
+---------------------------
+
+The colour to display if a problem occurs
+in a shader.
+
+options.logFileName
+-------------------
+
+The name of a log file which Arnold will generate
+while rendering.
+
+options.logMaxWarnings
+----------------------
+
+The maximum number of warnings that will be reported.
+
+options.logInfo
+---------------
+
+Whether or not information messages are included in the log output.
+
+options.logWarnings
+-------------------
+
+Whether or not warning messages are included in the log output.
+
+options.logErrors
+-----------------
+
+Whether or not error messages are included in the log output.
+
+options.logDebug
+----------------
+
+Whether or not debug messages are included in the log output.
+
+options.logAssParse
+-------------------
+
+Whether or not ass parsing is included in the log output.
+
+options.logPlugins
+------------------
+
+Whether or not plugin loading is included in the log output.
+
+options.logProgress
+-------------------
+
+Whether or not progress messages are included in the log output.
+
+options.logNAN
+--------------
+
+Whether or not pixels with NaNs are included in the log output.
+
+options.logTimestamp
+--------------------
+
+Whether or not timestamp prefixes are included in the log output.
+
+options.logStats
+----------------
+
+Whether or not statistics are included in the log output.
+
+options.logBacktrace
+--------------------
+
+Whether or not stack backtraces from crashes are included in the log output.
+
+options.logMemory
+-----------------
+
+Whether or not memory usage prefixes are included in the log output.
+
+options.logColor
+----------------
+
+Whether or not coloured messages are included in the log output.
+
+options.consoleInfo
+-------------------
+
+Whether or not information messages are included in the console output.
+
+options.consoleWarnings
+-----------------------
+
+Whether or not warning messages are included in the console output.
+
+options.consoleErrors
+---------------------
+
+Whether or not error messages are included in the console output.
+
+options.consoleDebug
+--------------------
+
+Whether or not debug messages are included in the console output.
+
+options.consoleAssParse
+-----------------------
+
+Whether or not ass parsing is included in the console output.
+
+options.consolePlugins
+----------------------
+
+Whether or not plugin loading is included in the console output.
+
+options.consoleProgress
+-----------------------
+
+Whether or not progress messages are included in the console output.
+
+options.consoleNAN
+------------------
+
+Whether or not pixels with NaNs are included in the console output.
+
+options.consoleTimestamp
+------------------------
+
+Whether or not timestamp prefixes are included in the console output.
+
+options.consoleStats
+--------------------
+
+Whether or not statistics are included in the console output.
+
+options.consoleBacktrace
+------------------------
+
+Whether or not stack backtraces from crashes are included in the console output.
+
+options.consoleMemory
+---------------------
+
+Whether or not memory usage prefixes are included in the console output.
+
+options.consoleColor
+--------------------
+
+Whether or not coloured messages are included in the console output.
+
+options.statisticsFileName
+--------------------------
+
+The name of a statistics file where Arnold will store structured
+JSON statistics.
+
+options.profileFileName
+-----------------------
+
+The name of a profile json file where Arnold will store a
+detailed node performance graph. Use chrome://tracing to
+view the profile.
+
+options.abortOnLicenseFail
+--------------------------
+
+Aborts the render if a license is not available,
+instead of rendering with a watermark.
+
+options.skipLicenseCheck
+------------------------
+
+Skips the check for a license, always rendering
+with a watermark.
+
+options.renderDevice
+--------------------
+
+Can be used to put Arnold in GPU rendering mode, using your graphics card instead of CPU.  This is currently a beta with limited stability, and missing support for OSL and volumes.
+
+options.gpuMaxTextureResolution
+-------------------------------
+
+If non-zero, this will omit the high resolution mipmaps when in GPU mode, to avoid running out of GPU memory.
+
+extraOptions
+------------
+
+An additional set of options to be added. Arbitrary numbers
+of options may be specified within a single `IECore.CompoundObject`,
+where each key/value pair in the object defines an option.
+This is convenient when using an expression to define the options
+and the option count might be dynamic. It can also be used to
+create options whose type cannot be handled by the `options`
+CompoundDataPlug.
+
+If the same option is defined by both the `options` and the
+`extraOptions` plugs, then the value from the `extraOptions`
+is taken.
