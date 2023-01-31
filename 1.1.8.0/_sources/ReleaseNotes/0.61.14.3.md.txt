@@ -1,0 +1,9 @@
+0.61.14.3
+=========
+
+Fixes
+------
+
+- Arnold : Fixed rendering error for cubic curves with Vertex interpolation Quatf primitive variables.
+- ImageReader : Fixed reading of signed integer TIFF files, which were failing due to a missing colorspace configuration. Signed integer files are now assumed to contain linear data ([#4772](https://github.com/GafferHQ/gaffer/issues/4772)).
+
