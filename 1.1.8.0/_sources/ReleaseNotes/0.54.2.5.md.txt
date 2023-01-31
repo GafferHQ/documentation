@@ -1,0 +1,12 @@
+0.54.2.5
+========
+
+Fixes
+-----
+
+- PresetsPlugValueWidget : Fixed bug that meant no context variables were set when generating dynamic plug presets ([#3496](https://github.com/GafferHQ/gaffer/issues/3496)).
+- CropWindowTool : Fixed bug that meant no Context Variables were set when searching for the StandardOptions node ([#3496](https://github.com/GafferHQ/gaffer/issues/3496)).
+- FileIndexedIOPathPreview : Fixed bug which broke the UI when using an upcoming Cortex version.
+- ErrorDialogue : Fixed bug in handling of non-standard exceptions.
+- DispatchDialogue : Fixed bug in handling of non-standard exceptions.
+
