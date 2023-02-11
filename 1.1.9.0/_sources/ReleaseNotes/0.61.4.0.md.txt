@@ -1,0 +1,22 @@
+0.61.4.0
+========
+
+Features
+--------
+
+- FormatQuery : Added new node for querying the format of an image and outputting its displayWindow, pixelAspect, center and size.
+
+Improvements
+------------
+
+- GraphEditor : The focus gadget is now toggled when the button is released rather than when it is pressed. This helps avoid accidental toggling when performing marquee selection.
+- ErrorDialogue : Improved error text for SyntaxError exceptions, and added debug log messages containing Python stack traces.
+
+Fixes
+-----
+
+- GraphEditor : Fixed bug which could prevent the active node highlighting updating when the focus node was deleted.
+- InteractiveArnoldRender : Fixed warnings when editing a parameter of a light with a connected OSL shader.
+- ScriptNode : Fixed bug which meant that `focusChangedSignal()` wasn't emitted when the focus node was deleted.
+- Viewer : Fixed visualisation of IES lights.
+
