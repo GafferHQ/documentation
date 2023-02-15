@@ -1,0 +1,12 @@
+1.1.6.1
+=======
+
+Fixes
+-----
+
+- NodeEditor : Fixed updates for the green "non-default-value" dots in plug labels.
+- Cycles :
+  - Fixed handling of OSL shader component connections ([#4926](https://github.com/GafferHQ/gaffer/issues/4926)).
+  - Fixed crash when attempting to use a non-existent OSL shader.
+  - Fixed `Unsupported socket "tiles"` warning when loading the `image_texture` shader.
+
