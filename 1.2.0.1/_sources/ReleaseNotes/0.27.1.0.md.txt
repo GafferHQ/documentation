@@ -1,0 +1,24 @@
+0.27.1.0
+========
+
+Core
+----
+
+- Fixed crash caused by using an invalid expression language ([#1801](https://github.com/GafferHQ/gaffer/issues/1801)).
+
+Arnold
+------
+
+- Fixed motion blurred light bug ([#1805](https://github.com/GafferHQ/gaffer/issues/1805)).
+- Fixed overscan rendering ([#1803](https://github.com/GafferHQ/gaffer/issues/1803)).
+
+OSL
+---
+
+- Added support for matrix parameters ([#1798](https://github.com/GafferHQ/gaffer/issues/1798), [#1800](https://github.com/GafferHQ/gaffer/issues/1800))
+
+API
+---
+
+- Replaced cropWindow with renderRegion in new IECoreScenePreview::Renderer::camera().
+
