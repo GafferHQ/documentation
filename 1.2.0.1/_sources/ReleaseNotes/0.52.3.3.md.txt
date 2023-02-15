@@ -1,0 +1,10 @@
+0.52.3.3
+========
+
+Fixes
+-----
+
+- Arnold renderer : Fixed light linking bug ([#2947](https://github.com/GafferHQ/gaffer/issues/2947)).
+- ViewportGadget : Fixed bug in orthographic camera projection. This prevented the
+  CropWindowTool from working ([#2946](https://github.com/GafferHQ/gaffer/issues/2946)).
+
