@@ -1,0 +1,13 @@
+<!-- !NO_SCROLLSPY -->
+
+GafferUSD
+=========
+
+```{eval-rst}
+.. toctree::
+    :titlesonly:
+    :maxdepth: 1
+
+    USDAttributes.md
+    USDLayerWriter.md
+```

@@ -1,0 +1,8 @@
+0.57.7.6
+========
+
+Fixes
+-----
+
+- Viewer : Fixed corruption of the GL stack and potential crash caused by exceptions thrown during draw.
+

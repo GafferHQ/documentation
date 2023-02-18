@@ -1,0 +1,54 @@
+MeshSegments
+============
+
+Creates a uniform primitive variable of integer indices indicating which
+connected segment each face belongs to.  May create segments based on
+what is connected in the mesh's topology, or based on an indexed
+primitive variable ( for example, you may segment based on which faces
+share UVs in order to segment into UV islands ).
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+connectivity
+------------
+
+The name of the primitive variable which will determine the segmentation.
+You may specify an empty string, or any vertex primitive variable to use
+the vertex topology to determine segments, or use an indexed face-varying
+primitive variable - this will segment based on which face-vertices are
+connected ( for example, using indexed UVs will produce UV islands ).
+Uniform and constant primitive variables are also supported for consistency,
+but they just output which faces have the same uniform value, or put all
+faces in one segment.
+
+segment
+-------
+
+The name of the uniform primitive variable which will be created to hold
+the segment index for each face.

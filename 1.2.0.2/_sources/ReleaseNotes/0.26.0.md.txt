@@ -1,0 +1,12 @@
+0.26.0
+======
+
+* Gaffer.Application._executeStartupFiles() now takes an optional contextDict to allow variables to be passed to the startup scripts.
+
+* GafferBindings.Serialiser now has a public constructor and can be used directly. It still needs some refactoring.
+
+* Gaffer.ApplicationRoot now has a preferences() method which returns a node used to represent preferences. It also has a savePreferences() method to save the user preferences into a startup script. The GafferUI.ApplicationMenu
+provides access to this via a menu item.
+
+* Default stylesheet now does a better job of aligning the corner widget for the TabbedContainer.
+

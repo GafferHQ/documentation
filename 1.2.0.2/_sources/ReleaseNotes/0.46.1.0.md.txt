@@ -1,0 +1,27 @@
+0.46.1.0
+========
+
+Features
+--------
+
+- ReverseWinding : Added new node that reverses the winding order of meshes ([#2568](https://github.com/GafferHQ/gaffer/issues/2568)).
+- MeshDistortion : Added new node that calculates the distortion of a mesh from a
+  reference shape ([#2568](https://github.com/GafferHQ/gaffer/issues/2568)).
+
+Improvements
+------------
+
+- Stats app : Added `-sets` command line argument, to allow scene sets to be computed ([#2572](https://github.com/GafferHQ/gaffer/issues/2572)).
+- OSLObject : Added support for reading and writing UVs via new InUV and OutUV shaders ([#2569](https://github.com/GafferHQ/gaffer/issues/2569)).
+- SceneViewUI : Defer camera and light set computation until required ([#2567](https://github.com/GafferHQ/gaffer/issues/2567)).
+
+Fixes
+-----
+
+- Arnold : Fixed NodeEditor layout of new standard_surface shader parameters ([#2573](https://github.com/GafferHQ/gaffer/issues/2573)).
+- Catalogue : Fixed crash caused by non-writable directory ([#2571](https://github.com/GafferHQ/gaffer/issues/2571)).
+- Stats app : Fixed bugs in `-preCache` argument. It was using the wrong context and
+  not respecting the `-frames` flag ([#2572](https://github.com/GafferHQ/gaffer/issues/2572)).
+- WidgetAlgo : Fixed bug when `grab()` with the event loop running ([#2575](https://github.com/GafferHQ/gaffer/issues/2575)).
+- MapOffset : Fixed bug when offsetting an indexed uv set ([#2576](https://github.com/GafferHQ/gaffer/issues/2576)).
+
