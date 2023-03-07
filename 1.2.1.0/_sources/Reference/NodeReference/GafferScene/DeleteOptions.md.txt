@@ -1,0 +1,37 @@
+DeleteOptions
+=============
+
+A node which removes options from the globals.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+names
+-----
+
+The names of options to be removed. Names should be
+separated by spaces and can use Gaffer's standard wildcards.
+
+invertNames
+-----------
+
+When on, matching names are kept, and non-matching names are removed.
