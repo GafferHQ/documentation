@@ -1,0 +1,19 @@
+0.57.6.0
+========
+
+Fixes
+-----
+
+- Catalogue :
+  - Fixed incorrect column values when an image is renamed in a promoted Catalogue ([#3815](https://github.com/GafferHQ/gaffer/issues/3815)).
+  - Fixed dependency tracking and hashing bugs.
+  - Improved handling of missing images ([#3808](https://github.com/GafferHQ/gaffer/issues/3808)).
+- SetFilter : Sanitised context used to evaluate set expressions, by removing `scene:filter:inputScene` variable.
+- SceneAlgo : Removed cancellers from contexts referenced by history objects.
+- Context : Fixed Python `Canceller` lifetime management bug.
+
+API
+---
+
+- Context : Added copy constructor that allows an existing canceller to be omitted.
+
