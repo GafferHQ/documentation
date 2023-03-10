@@ -1,0 +1,535 @@
+CyclesOptions
+=============
+
+Sets global scene options applicable to the Cycles
+renderer. Use the StandardOptions node to set
+global options applicable to all renderers.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+options
+-------
+
+The options to be applied - arbitrary numbers of user defined options may be added
+as children of this plug via the user interface, or using the CompoundDataPlug API via
+python.
+
+options.logLevel
+----------------
+
+Internal Cycles debugging log-level.
+
+options.device
+--------------
+
+Device(s) to use for rendering.
+To specify multiple devices, there's a few examples under presets.
+
+To render on CPU and the first CUDA device:
+
+        CPU CUDA:00
+
+To render on the first and second OpenCL device:
+
+        OPENCL:00 OPENCL:01
+
+To render on every OptiX device found:
+
+        OPTIX:*
+
+To render on everything found (not recommended, 1 device may have multiple backends!)
+
+        CPU CUDA:* OPTIX:* OPENCL:*
+
+options.shadingSystem
+---------------------
+
+Shading system.
+
+- OSL : Use Open Shading Language (CPU rendering only).
+- SVM : Use Shader Virtual Machine.
+
+options.samples
+---------------
+
+Number of samples to render for each pixel. This is for the
+path integrator, use the other sampling parameters for the
+branched-path integrator.
+
+options.pixelSize
+-----------------
+
+Pixel Size.
+
+options.numThreads
+------------------
+
+The number of threads used for rendering.
+
+- The default value of 0 lets the renderer choose
+        an optimal number of threads based on the available
+        hardware.
+- Positive values directly set the number of threads.
+- Negative values can be used to reserve some cores
+        while otherwise letting the renderer choose the
+        optimal number of threads.
+
+options.timeLimit
+-----------------
+
+Time-limit.
+
+options.useProfiling
+--------------------
+
+Use Profiling.
+
+options.useAutoTile
+-------------------
+
+Automatically render high resolution images in tiles to reduce memory usage, using the specified tile size. Tiles are cached to disk while rendering to save memory.
+
+options.tileSize
+----------------
+
+Tile size for rendering.
+
+options.bvhLayout
+-----------------
+
+BVH Layout size. This corresponds with CPU architecture
+(the higher the faster, but might not be supported on old CPUs).
+
+options.useBvhSpatialSplit
+--------------------------
+
+Use BVH spatial splits: longer builder time, faster render.
+
+options.useBvhUnalignedNodes
+----------------------------
+
+Use special type BVH optimized for hair (uses more ram but renders faster).
+
+options.numBvhTimeSteps
+-----------------------
+
+Split BVH primitives by this number of time steps to speed up render time in cost of memory.
+
+options.hairSubdivisions
+------------------------
+
+Split BVH primitives by this number of time steps to speed up render time in cost of memory.
+
+options.hairShape
+-----------------
+
+Rounded Ribbons -Render hair as flat ribbon with rounded normals, for fast rendering.
+3D Curves - Render hair as 3D curve, for accurate results when viewing hair close up.
+
+options.textureLimit
+--------------------
+
+Limit the maximum texture size used by final rendering.
+
+options.minBounce
+-----------------
+
+Minimum number of light bounces. Setting this higher reduces noise in the first bounces,
+but can also be less efficient for more complex geometry like hair and volumes.
+
+options.maxBounce
+-----------------
+
+Total maximum number of bounces.
+
+options.maxDiffuseBounce
+------------------------
+
+Maximum number of diffuse reflection bounces, bounded by total
+maximum.
+
+options.maxGlossyBounce
+-----------------------
+
+Maximum number of glossy reflection bounces, bounded by total
+maximum.
+
+options.maxTransmissionBounce
+-----------------------------
+
+Maximum number of transmission reflection bounces, bounded by total
+maximum.
+
+options.maxVolumeBounce
+-----------------------
+
+Maximum number of volumetric scattering events.
+
+options.transparentMinBounce
+----------------------------
+
+Minimum number of transparent bounces. Setting this higher reduces noise in the first bounces,
+but can also be less efficient for more complex geometry like hair and volumes."
+
+options.transparentMaxBounce
+----------------------------
+
+Maximum number of transparent bounces.
+
+options.aoBounces
+-----------------
+
+Maximum number of Ambient Occlusion bounces.
+
+options.aoFactor
+----------------
+
+Ambient Occlusion factor.
+
+options.aoDistance
+------------------
+
+Ambient Occlusion Distance.
+
+options.volumeMaxSteps
+----------------------
+
+Maximum number of steps through the volume before giving up,
+to avoid extremely long render times with big objects or small step
+sizes.
+
+options.volumeStepRate
+----------------------
+
+"Globally adjust detail for volume rendering, on top of automatically estimated step size."
+"Higher values reduce render time, lower values render with more detail."
+
+options.causticsReflective
+--------------------------
+
+Use reflective caustics, resulting in a brighter image
+(more noise but added realism).
+
+options.causticsRefractive
+--------------------------
+
+Use refractive caustics, resulting in a brighter image
+(more noise but added realism).
+
+options.filterGlossy
+--------------------
+
+Adaptively blur glossy shaders after blurry bounces, to reduce
+noise at the cost of accuracy.
+
+options.useFrameAsSeed
+----------------------
+
+Use current frame as the seed value for the sampling pattern.
+
+options.seed
+------------
+
+Seed value for the sampling pattern. Disabled if "Use Frame As Seed" is on.
+
+options.sampleClampDirect
+-------------------------
+
+Clamp value for sampling direct rays.
+
+options.sampleClampIndirect
+---------------------------
+
+Clamp value for sampling indirect rays.
+
+options.startSample
+-------------------
+
+Start sample.
+
+options.lightSamplingThreshold
+------------------------------
+
+Probabilistically terminate light samples when the light
+contribution is below this threshold (more noise but faster
+rendering).
+Zero disables the test and never ignores lights.
+
+options.useAdaptiveSampling
+---------------------------
+
+Automatically determine the number of samples per pixel based on a variance estimation.
+
+options.adaptiveThreshold
+-------------------------
+
+Noise level step to stop sampling at, lower values reduce noise the cost of render time.
+Zero for automatic setting based on number of AA samples.
+
+options.adaptiveMinSamples
+--------------------------
+
+Minimum AA samples for adaptive sampling, to discover noisy features before stopping sampling.
+Zero for automatic setting based on number of AA samples.
+
+options.samplingPattern
+-----------------------
+
+Random sampling pattern used by the integrator.
+
+options.denoiserType
+--------------------
+
+Denoise the image with the selected denoiser.
+OptiX - Use the OptiX AI denoiser with GPU acceleration, only available on NVIDIA GPUs
+OpenImageDenoise - Use Intel OpenImageDenoise AI denoiser running on the CPU
+
+options.denoiseStartSample
+--------------------------
+
+Sample to start denoising the preview at.
+
+options.useDenoisePassAlbedo
+----------------------------
+
+Use albedo pass for denoising.
+
+options.useDenoisePassNormal
+----------------------------
+
+Use normal pass for denoising.
+
+options.denoiserPrefilter
+-------------------------
+
+None - No prefiltering, use when guiding passes are noise-free.
+Fast - Denoise color and guiding passes together. Improves quality when guiding passes are noisy using least amount of extra processing time.
+Accurate - Prefilter noisy guiding passes before denoising color. Improves quality when guiding passes are noisy using extra processing time.
+
+options.bgUseShader
+-------------------
+
+Use background shader. There must be a CyclesBackground node with
+a shader attached to it.
+
+options.bgCameraVisibility
+--------------------------
+
+Whether or not the background is visible to camera
+rays.
+
+options.bgDiffuseVisibility
+---------------------------
+
+Whether or not the background is visible to diffuse
+rays.
+
+options.bgGlossyVisibility
+--------------------------
+
+Whether or not the background is visible in
+glossy rays.
+
+options.bgTransmissionVisibility
+--------------------------------
+
+Whether or not the background is visible in
+transmission.
+
+options.bgShadowVisibility
+--------------------------
+
+Whether or not the background is visible to shadow
+rays - whether it casts shadows or not.
+
+options.bgScatterVisibility
+---------------------------
+
+Whether or not the background is visible to
+scatter rays.
+
+options.bgTransparent
+---------------------
+
+Make the background transparent.
+
+options.bgTransparentGlass
+--------------------------
+
+Background can be seen through transmissive surfaces.
+
+options.bgTransparentRoughnessThreshold
+---------------------------------------
+
+Roughness threshold of background shader in transmissive surfaces.
+
+options.volumeStepSize
+----------------------
+
+Distance between volume shader samples when rendering the volume
+(lower values give more accurate and detailed results, but also
+increases render time).
+
+options.exposure
+----------------
+
+Image brightness scale.
+
+options.passAlphaThreshold
+--------------------------
+
+Alpha threshold.
+
+options.displayPass
+-------------------
+
+Render pass to show in the 3D Viewport.
+
+options.showActivePixels
+------------------------
+
+When using adaptive sampling highlight pixels which are being sampled.
+
+options.filterType
+------------------
+
+Image filter type.
+
+options.filterWidth
+-------------------
+
+Pixel width of the filter.
+
+options.mistStart
+-----------------
+
+Start of the mist/fog.
+
+options.mistDepth
+-----------------
+
+End of the mist/fog.
+
+options.mistFalloff
+-------------------
+
+Falloff of the mist/fog.
+
+options.cryptomatteAccurate
+---------------------------
+
+Generate a more accurate Cryptomatte pass. CPU only, may render slower and use more memory.
+
+options.cryptomatteDepth
+------------------------
+
+Sets how many unique objects can be distinguished per pixel.
+
+options.dicingCamera
+--------------------
+
+Camera to use as reference point when subdividing geometry, useful
+to avoid crawling artifacts in animations when the scene camera is
+moving.
+
+options.useTextureCache
+-----------------------
+
+Enables out-of-core texturing to conserve RAM.
+
+options.textureCacheSize
+------------------------
+
+The size of the OpenImageIO texture cache in MB.
+
+options.textureAutoConvert
+--------------------------
+
+Automatically convert textures to .tx files for optimal texture
+cache performance.
+
+options.textureAcceptUnmipped
+-----------------------------
+
+Texture cached rendering without mip mapping is very expensive.
+Uncheck to prevent Cycles from using textures that are not mip
+mapped.
+
+options.textureAcceptUntiled
+----------------------------
+
+Texture cached rendering without tiled textures is very expensive.
+Uncheck to prevent Cycles from using textures that are not tiled.
+
+options.textureAutoTile
+-----------------------
+
+On the fly creation of tiled versions of textures that are not
+tiled. This can increase render time but helps reduce memory usage.
+
+options.textureAutoMip
+----------------------
+
+On the fly creation of mip maps of textures that are not mip
+mapped. This can increase render time but helps reduce memory
+usage.
+
+options.textureTileSize
+-----------------------
+
+The size of tiles that Cycles uses for auto tiling.
+
+options.textureBlurDiffuse
+--------------------------
+
+The amount of texture blur applied to diffuse bounces.
+
+options.textureBlurGlossy
+-------------------------
+
+The amount of texture blur applied to glossy bounces.
+
+options.useCustomCachePath
+--------------------------
+
+Use Custom Cache Path.
+
+options.customCachePath
+-----------------------
+
+Custom path for the texture cache.
+
+extraOptions
+------------
+
+An additional set of options to be added. Arbitrary numbers
+of options may be specified within a single `IECore.CompoundObject`,
+where each key/value pair in the object defines an option.
+This is convenient when using an expression to define the options
+and the option count might be dynamic. It can also be used to
+create options whose type cannot be handled by the `options`
+CompoundDataPlug.
+
+If the same option is defined by both the `options` and the
+`extraOptions` plugs, then the value from the `extraOptions`
+is taken.
