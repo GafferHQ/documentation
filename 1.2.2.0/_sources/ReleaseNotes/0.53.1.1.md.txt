@@ -1,0 +1,11 @@
+0.53.1.1
+========
+
+Fixes
+-----
+
+- PathListingWidget : Fixed GIL management bug which could cause hang when
+  interacting with the HierarchyView ([#3018](https://github.com/GafferHQ/gaffer/issues/3018)).
+- PlugValueWidget/PresetsPlugValueWidget : Fixed bugs handling leading '/'
+  characters in preset names ([#3016](https://github.com/GafferHQ/gaffer/issues/3016)).
+

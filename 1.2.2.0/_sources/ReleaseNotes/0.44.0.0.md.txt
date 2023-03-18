@@ -1,0 +1,46 @@
+0.44.0.0
+========
+
+Features
+--------
+
+- Added Checkerboard image node ([#2403](https://github.com/GafferHQ/gaffer/issues/2403)).
+- Added ArnoldAtmosphere and ArnoldBackground nodes ([#2444](https://github.com/GafferHQ/gaffer/issues/2444)).
+
+Improvements
+------------
+
+- NodeGraph : Added rendering of auxiliary connections, for instance between Expressions
+  and the nodes they are connected to ([#2436](https://github.com/GafferHQ/gaffer/issues/2436)).
+- Build : Hid symbols that do not need to be exported ([#2431](https://github.com/GafferHQ/gaffer/issues/2431)).
+- OSLObject : Added support for creating string primitive variables ([#2425](https://github.com/GafferHQ/gaffer/issues/2425)).
+- ArnoldShader : Added support for shader outputs of type string and boolean ([#2439](https://github.com/GafferHQ/gaffer/issues/2439)).
+
+Fixes
+-----
+
+- MessageWidget : Fixed crash when clicking on message buttons ([#2438](https://github.com/GafferHQ/gaffer/issues/2438)).
+- BoxIO : Fix promotion of ArrayPlugs ([#2446](https://github.com/GafferHQ/gaffer/issues/2446)).
+
+API
+---
+
+- Style : Added `renderAuxiliaryConnection()` method ([#2436](https://github.com/GafferHQ/gaffer/issues/2436)).
+- Scene : Added GlobalShader base class ([#2444](https://github.com/GafferHQ/gaffer/issues/2444)).
+- GafferVDB : Using IECoreVDB ([#2440](https://github.com/GafferHQ/gaffer/issues/2440)).
+
+Breaking Changes
+----------------
+
+- Plug : Removed deprecated PerformsSubstitutions flag. Use the `substitutions`
+  argument to the StringPlug constructor instead ([#2432](https://github.com/GafferHQ/gaffer/issues/2432)).
+- Style : Added a virtual method ([#2436](https://github.com/GafferHQ/gaffer/issues/2436)).
+- ArnoldAOVShader : Changed base class ([#2444](https://github.com/GafferHQ/gaffer/issues/2444)).
+
+Build
+-----
+
+- Added WARNINGS_AS_ERRORS build argument. This defaults to being on,
+  which is the same behaviour as before ([#2431](https://github.com/GafferHQ/gaffer/issues/2431)).
+- Added ASAN build argument for use with Clang ([#2434](https://github.com/GafferHQ/gaffer/issues/2434)).
+
