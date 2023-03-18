@@ -1,0 +1,14 @@
+0.53.6.3
+========
+
+Improvements
+------------
+
+- VectorTypedParameterHandler : Added support for Color3fVectorParameter ([#3228](https://github.com/GafferHQ/gaffer/issues/3228))
+- CompoundVectorParameterValueWidget : Now preserves selection when editing data ([#3228](https://github.com/GafferHQ/gaffer/issues/3228))
+
+Build
+-----
+
+- ie/options: Added support for Houdini 17.5 ([#3215](https://github.com/GafferHQ/gaffer/issues/3215))
+
