@@ -1,0 +1,10 @@
+0.58.6.6
+========
+
+Fixes
+-----
+
+- Arnold : Fixed rendering of encapsulated objects for which automatic instancing
+  is not possible. Examples include curves with non-zero `ai:curves:min_pixel_width`
+  and meshes with non-zero `ai:polymesh:subdiv_adaptive_error`.
+
