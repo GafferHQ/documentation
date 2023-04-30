@@ -1,0 +1,18 @@
+0.56.1.0
+========
+
+Features
+--------
+
+- MergeScenes : Added a new node for merging the hierarchies from multiple input scenes ([#3583](https://github.com/GafferHQ/gaffer/issues/3583)).
+
+Fixes
+-----
+
+- Set expression context menus :
+  - Fixed bug that prevented the plug label context menu opening when the plug accepted set expressions.
+  - Fixed bug that prevented the SetFilter's set expression menu from appearing when attached to a CopyAttributes node.
+- CollectScenes : Fixed bug which caused errors when `RecursiveRange` encountered a CollectScenes node.
+- Range/RecursiveRange : Fixed problems caused by visiting CopyAttributes nodes.
+- SceneAlgo : Fixed bug that caused unrelated processes to appear in `history()` results ([#3647](https://github.com/GafferHQ/gaffer/issues/3647)).
+
