@@ -1,0 +1,63 @@
+0.35.6
+======
+
+* Fixed problem where VectorDataWidget would grow to claim size it couldn't use.
+
+* VectorDataWidget now scrolls to show the new rows when rows have been added.
+
+* RenderableGadget now implements click and drag signal handlers to manage a set of selected objects.
+
+* Fixed bug where MultiLineTextWidget would emit textChangedSignal whenever setText was called, regardless of whether or not it made any changes.
+
+* Added insertText, setCursorPosition, getCursorPosition, cursorPositionAt, setFocussed and getFocussed methods to MultiLineTextWidget.
+
+* ScriptEditor now accepts drops for scene objects, plugs, and nodes, which can be dragged from the Viewer and the GraphEditor.
+
+* Added Widget.parentChangedSignal(), which does what you'd expect from the name.
+
+* Improved default sizing for OpDialogue.
+
+* Fixed CompoundParameter UIs to respect the ["UI"]["collapsed"] user data entry.
+
+* CompoundPlugValueWidget now has a collapsed constructor argument to replace the previous collapsible argument. This takes None, True or False as values, allowing the ui to be created as non-collapsible, collapsed or expanded.
+
+* Disallowing null values in plugs. This fixes bugs in the computation of hashes (all null values hashed the same, regardless of type, or what the actual default value was), and also simplifies coding (no more need for tests against null before using an Object).
+
+* Fixed bug where setting SplinePlug to a value with less points than before raised an Exception.
+
+* Fixed bug where SplinePlug::setToDefault did not work as expected.
+
+* Added ValuePlug::setCacheMemoryLimit() and ValuePlug::getCacheMemoryLimit(), to allow management of cache memory usage. Added startup/gui/cache.py to expose this to the user via the preferences.
+
+* Fixed bug which prevented user preferences from loading.
+
+* Improved drawing of very thin/small selection boxes - they had a tendency to disappear before.
+
+* Added Widget setHighlighted() and getHighlighted() methods, implementing highlight-on-hover for buttons and sliders.
+
+* Implemented drop of items into VectorDataWidget. This allows objects from the viewer to be dragged and dropped into a filter to perform assignments.
+
+* PlugValueWidget.popupMenuSignal now passes the PlugValueWidget to slots instead of the Plug.
+
+* Fixed bug where ColorPlugValueWidget would attempt to show colour pickers for non-editable plugs, resulting in errors.
+
+* NodeUI now also shows output plugs. They can be removed as necessary by registering None with PlugValueWidget.registerCreator().
+
+* ModelCacheSource now uses the new ModelCache class provided by Cortex.
+
+* Added a Random node, for producing random floats and colours based on a seed and a context item.
+
+* Fixed bug where plug popup menus tried to edit plugs which were not editable.
+
+* Fixed bug where the effects of TextWidget.setEditable() did not update the appearance of the widget.
+
+* Fixed bug which caused ExpressionNode to crash when the expression was changed while the output plug was being viewed by the UI.
+
+* Fixed bug which caused errors when connecting compatible children of CompoundPlugs together, if the CompoundPlugs were not themselves compatible enough for a complete connection between all child plugs to be made.
+
+* Fixed bug which prevents ExpressionNode from accepting a Plug with direction()==In as an input to the expression.
+
+* Fixed bug whereby GadgetWidget was passing buttonDoubleClick signals to buttonPress signals on the held gadget.
+
+* Added GraphEditor.nodeDoubleClickSignal().
+

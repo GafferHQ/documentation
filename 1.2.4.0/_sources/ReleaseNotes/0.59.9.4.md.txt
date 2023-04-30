@@ -1,0 +1,8 @@
+0.59.9.4
+========
+
+Fixes
+-----
+
+- Reference : Added support for Spreadsheets promoted inside another plug.
+
