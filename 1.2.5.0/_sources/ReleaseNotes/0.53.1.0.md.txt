@@ -1,0 +1,30 @@
+0.53.1.0
+========
+
+Improvements
+------------
+
+- Viewer : The "Edit Tweaks..." menu item now supports CameraTweaks nodes in addition
+  to ShaderTweaks ([#3013](https://github.com/GafferHQ/gaffer/issues/3013)).
+- HierarchyView : Added `Alt+E` and `Alt+Shift+E` shortcuts, matching those found in the
+  Viewer ([#3013](https://github.com/GafferHQ/gaffer/issues/3013)).
+
+Fixes
+-----
+
+- GLWidget : Fixed corrupted font rendering in overlay widgets ([#3002](https://github.com/GafferHQ/gaffer/issues/3002)).
+- SceneInspector : Fixed display of empty shader networks ([#2997](https://github.com/GafferHQ/gaffer/issues/2997)).
+- ShaderTweaks : Fixed auto-connection bugs that could cause a newly
+  created node to be connected to inappropriate inputs ([#3007](https://github.com/GafferHQ/gaffer/issues/3007)).
+- TweakPlug : Fixed `createCounterpart()` method, so TweakPlugs may now be promoted ([#3007](https://github.com/GafferHQ/gaffer/issues/3007)).
+- NodeEditor : Fixed bug that could cause keyboard focus to be lost when switching
+  between nodes ([#3008](https://github.com/GafferHQ/gaffer/issues/3008)).
+
+API
+---
+
+- SceneAlgo : Added `objectTweaks()` method, for finding the last tweak node in an
+  object's history ([#3013](https://github.com/GafferHQ/gaffer/issues/3013)).
+- KeyEvent : Added equality operators ([#3013](https://github.com/GafferHQ/gaffer/issues/3013)).
+- TweaksPlug : Added new class for holding a collection of TweakPlugs ([#3007](https://github.com/GafferHQ/gaffer/issues/3007)).
+
