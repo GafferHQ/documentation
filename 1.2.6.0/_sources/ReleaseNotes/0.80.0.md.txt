@@ -1,0 +1,29 @@
+0.80.0
+======
+
+UI
+--
+
+- NodeGraph now only drag-selects nodes that are wholly contained in the drag area, not merely intersecting it.
+- Added a Backdrop node ([#153](https://github.com/GafferHQ/gaffer/issues/153)).
+
+RenderMan
+---------
+
+- Added support for "help" shader annotation in RenderManShaderUI ([#536](https://github.com/GafferHQ/gaffer/issues/536)). This provides help for the shader as a whole and is mapped into the MetaData as the node description, appearing in the NodeEditor as a tooltip.
+
+API
+---
+
+- Added optional continuous update to string PlugValueWidgets, controlled by the continuousUpdate parameters to the constructor. This transfers the text from the ui to the plug on every keypress.
+
+Core
+----
+
+- Fixed serialisation of dynamic BoxPlugs.
+
+Documentation
+-------------
+
+- Improvements too numerous to mention.
+
