@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>0.59.0.0 &mdash; Gaffer 1.2.6.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/gaffer.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/scrollspy.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="0.58.6.7" href="0.58.6.7.html" />
+    <link rel="prev" title="0.59.1.0" href="0.59.1.0.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html">
+            <img src="../_static/GafferLogoMini.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.2.6.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted/index.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/InstallingGaffer/index.html">Installing Gaffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/LaunchingGafferFirstTime/index.html">Launching Gaffer for the First Time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/TutorialAssemblingTheGafferBot/index.html">Tutorial: Assembling the Gaffer Bot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/SettingUpGafferCommand/index.html">Setting Up the “gaffer” Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/ConfiguringGafferForThirdPartyTools/index.html">Configuring Gaffer for Third-Party Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../WorkingWithTheNodeGraph/index.html">Working with the Node Graph</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithTheNodeGraph/BoxNode/index.html">Box Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithTheNodeGraph/SpreadsheetNode/index.html">Spreadsheet Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithTheNodeGraph/Contexts/index.html">Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithTheNodeGraph/PerformanceBestPractices/index.html">Performance Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithTheNodeGraph/UsingThePerformanceMonitor/index.html">Using the Performance Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithTheNodeGraph/TutorialUsingTheOSLCodeNode/index.html">Tutorial: Using The OSLCode Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithTheNodeGraph/TutorialSettingUpASpreadsheet/index.html">Tutorial: Setting Up a Spreadsheet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../WorkingWithScenes/index.html">Working with Scenes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithScenes/AnatomyOfAScene/index.html">Anatomy of a Scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithScenes/AnatomyOfACamera/index.html">Anatomy of a Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithScenes/Camera/index.html">Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithScenes/LightLinking/index.html">Light Linking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../WorkingWithImages/index.html">Working with Images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithImages/AnatomyOfAnImage/index.html">Anatomy of an Image</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../WorkingWithThePythonScriptingAPI/index.html">Working with the Python Scripting API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithThePythonScriptingAPI/ThePythonEditor/index.html">The Python Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithThePythonScriptingAPI/TutorialNodeGraphEditingInPython/index.html">Tutorial: Node Graph Editing in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithThePythonScriptingAPI/TutorialQueryingAScene/index.html">Tutorial: Querying a Scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithThePythonScriptingAPI/TutorialStartupConfig1/index.html">Tutorial: Startup Config 1; Custom Global Context Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithThePythonScriptingAPI/TutorialStartupConfig2/index.html">Tutorial: Startup Config 2; Custom Bookmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WorkingWithThePythonScriptingAPI/TutorialStartupConfig3/index.html">Tutorial: Startup Config 3; Custom Node Menu Entries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Interface/index.html">Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Interface/ControlsAndShortcuts/index.html">Controls and Shortcuts</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Supplemental Material</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Reference/index.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Reference/NodeReference/index.html">Node Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/NodeReference/Gaffer/index.html">Gaffer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/Animation.html">Animation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/Backdrop.html">Backdrop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/Box.html">Box</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/BoxIn.html">BoxIn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/BoxOut.html">BoxOut</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/ComputeNode.html">ComputeNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/ContextQuery.html">ContextQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/ContextVariableTweaks.html">ContextVariableTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/ContextVariables.html">ContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/ContextVariablesComputeNode.html">ContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/DeleteContextVariables.html">DeleteContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/DeleteContextVariablesComputeNode.html">DeleteContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/DependencyNode.html">DependencyNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/Dot.html">Dot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/EditScope.html">EditScope</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/Expression.html">Expression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/Loop.html">Loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/LoopComputeNode.html">Loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/NameSwitch.html">NameSwitch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/Node.html">Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/Preferences.html">Preferences</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/Random.html">Random</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/RandomChoice.html">RandomChoice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/Reference.html">Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/ScriptNode.html">ScriptNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/Spreadsheet.html">Spreadsheet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/SubGraph.html">SubGraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/Switch.html">Switch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/SwitchComputeNode.html">Switch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/TimeWarp.html">TimeWarp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/Gaffer/TimeWarpComputeNode.html">TimeWarp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/NodeReference/GafferAppleseed/index.html">GafferAppleseed</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferAppleseed/AppleseedAttributes.html">AppleseedAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferAppleseed/AppleseedLight.html">AppleseedLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferAppleseed/AppleseedOptions.html">AppleseedOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferAppleseed/AppleseedRender.html">AppleseedRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferAppleseed/AppleseedShaderAdaptor.html">AppleseedShaderAdaptor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferAppleseed/AppleseedShaderBall.html">AppleseedShaderBall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferAppleseed/InteractiveAppleseedRender.html">InteractiveAppleseedRender</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/index.html">GafferArnold</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldAOVShader.html">ArnoldAOVShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldAtmosphere.html">ArnoldAtmosphere</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldAttributes.html">ArnoldAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldBackground.html">ArnoldBackground</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldCameraShaders.html">ArnoldCameraShaders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldColorManager.html">ArnoldColorManager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldDisplacement.html">ArnoldDisplacement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldImager.html">ArnoldImager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldLight.html">ArnoldLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldLightFilter.html">ArnoldLightFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldMeshLight.html">ArnoldMeshLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldOptions.html">ArnoldOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldRender.html">ArnoldRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldShader.html">ArnoldShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldShaderBall.html">ArnoldShaderBall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldTextureBake.html">ArnoldTextureBake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/ArnoldVDB.html">ArnoldVDB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferArnold/InteractiveArnoldRender.html">InteractiveArnoldRender</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/NodeReference/GafferCycles/index.html">GafferCycles</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferCycles/CyclesAttributes.html">CyclesAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferCycles/CyclesBackground.html">CyclesBackground</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferCycles/CyclesLight.html">CyclesLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferCycles/CyclesMeshLight.html">CyclesMeshLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferCycles/CyclesOptions.html">CyclesOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferCycles/CyclesRender.html">CyclesRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferCycles/CyclesShader.html">CyclesShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferCycles/CyclesShaderBall.html">CyclesShaderBall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferCycles/InteractiveCyclesRender.html">InteractiveCyclesRender</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/NodeReference/GafferDispatch/index.html">GafferDispatch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferDispatch/Dispatcher.html">Dispatcher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferDispatch/FrameMask.html">FrameMask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferDispatch/LocalDispatcher.html">LocalDispatcher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferDispatch/PythonCommand.html">PythonCommand</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferDispatch/SystemCommand.html">SystemCommand</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferDispatch/TaskContextProcessor.html">TaskContextProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferDispatch/TaskContextVariables.html">TaskContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferDispatch/TaskList.html">TaskList</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferDispatch/TaskNode.html">TaskNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferDispatch/TaskSwitch.html">TaskSwitch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferDispatch/Wedge.html">Wedge</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/NodeReference/GafferImage/index.html">GafferImage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Anaglyph.html">Anaglyph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/BleedFill.html">BleedFill</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Blur.html">Blur</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/CDL.html">CDL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Catalogue.html">Catalogue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/CatalogueSelect.html">CatalogueSelect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Checkerboard.html">Checkerboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Clamp.html">Clamp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/CollectImages.html">CollectImages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/ColorSpace.html">ColorSpace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Constant.html">Constant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/CopyChannels.html">CopyChannels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/CopyImageMetadata.html">CopyImageMetadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/CopyViews.html">CopyViews</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/CreateViews.html">CreateViews</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Crop.html">Crop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/DeepHoldout.html">DeepHoldout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/DeepMerge.html">DeepMerge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/DeepRecolor.html">DeepRecolor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/DeepSampleCounts.html">DeepSampleCounts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/DeepSampler.html">DeepSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/DeepState.html">DeepState</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/DeepTidy.html">DeepTidy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/DeepToFlat.html">DeepToFlat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/DeleteChannels.html">DeleteChannels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/DeleteImageMetadata.html">DeleteImageMetadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/DeleteViews.html">DeleteViews</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Dilate.html">Dilate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Display.html">Display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/DisplayTransform.html">DisplayTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Empty.html">Empty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Erode.html">Erode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/FlatImageProcessor.html">FlatImageProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/FlatImageSource.html">FlatImageSource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/FlatToDeep.html">FlatToDeep</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/FormatQuery.html">FormatQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Grade.html">Grade</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/ImageMetadata.html">ImageMetadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/ImageNode.html">ImageNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/ImageProcessor.html">ImageProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/ImageReader.html">ImageReader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/ImageSampler.html">ImageSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/ImageStats.html">ImageStats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/ImageTransform.html">ImageTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/ImageWriter.html">ImageWriter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/LUT.html">LUT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/LookTransform.html">LookTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Median.html">Median</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Merge.html">Merge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Mirror.html">Mirror</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Mix.html">Mix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Offset.html">Offset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/OpenImageIOReader.html">OpenImageIOReader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Premultiply.html">Premultiply</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Ramp.html">Ramp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Rectangle.html">Rectangle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Resample.html">Resample</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Resize.html">Resize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Saturation.html">Saturation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/SelectView.html">SelectView</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Shuffle.html">Shuffle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Text.html">Text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/UVWarp.html">VectorWarp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/Unpremultiply.html">Unpremultiply</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferImage/VectorWarp.html">VectorWarp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/NodeReference/GafferOSL/index.html">GafferOSL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferOSL/OSLCode.html">OSLCode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferOSL/OSLImage.html">OSLImage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferOSL/OSLLight.html">OSLLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferOSL/OSLObject.html">OSLObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferOSL/OSLShader.html">OSLShader</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/NodeReference/GafferScene/index.html">GafferScene</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/AimConstraint.html">AimConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/AttributeQuery.html">AttributeQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/AttributeTweaks.html">AttributeTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/AttributeVisualiser.html">AttributeVisualiser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Attributes.html">Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/BoundQuery.html">BoundQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Camera.html">Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/CameraTweaks.html">CameraTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/ClippingPlane.html">ClippingPlane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/ClosestPointSampler.html">ClosestPointSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/CollectPrimitiveVariables.html">CollectPrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/CollectScenes.html">CollectScenes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/CollectTransforms.html">CollectTransforms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/CoordinateSystem.html">CoordinateSystem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/CopyAttributes.html">CopyAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/CopyOptions.html">CopyOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/CopyPrimitiveVariables.html">CopyPrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Cryptomatte.html">Cryptomatte</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Cube.html">Cube</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/CurveSampler.html">CurveSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/CustomAttributes.html">CustomAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/CustomOptions.html">CustomOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/DeleteAttributes.html">DeleteAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/DeleteCurves.html">DeleteCurves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/DeleteFaces.html">DeleteFaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/DeleteGlobals.html">DeleteGlobals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/DeleteObject.html">DeleteObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/DeleteOptions.html">DeleteOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/DeleteOutputs.html">DeleteOutputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/DeletePoints.html">DeletePoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/DeletePrimitiveVariables.html">DeletePrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/DeleteSets.html">DeleteSets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Duplicate.html">Duplicate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Encapsulate.html">Encapsulate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/ExistenceQuery.html">ExistenceQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/ExternalProcedural.html">ExternalProcedural</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Filter.html">Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/FilterProcessor.html">FilterProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/FilterQuery.html">FilterQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/FilterResults.html">FilterResults</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/FilteredSceneProcessor.html">FilteredSceneProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/FramingConstraint.html">FramingConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/FreezeTransform.html">FreezeTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Grid.html">Grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Group.html">Group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/ImageToPoints.html">ImageToPoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Instancer.html">Instancer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/InteractiveRender.html">InteractiveRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Isolate.html">Isolate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/LightToCamera.html">LightToCamera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/LocaliseAttributes.html">LocaliseAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/MapOffset.html">MapOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/MapProjection.html">MapProjection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/MergeScenes.html">MergeScenes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/MeshDistortion.html">MeshDistortion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/MeshSegments.html">MeshSegments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/MeshSplit.html">MeshSplit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/MeshTangents.html">MeshTangents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/MeshToPoints.html">MeshToPoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/MeshType.html">MeshType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/MotionPath.html">MotionPath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/ObjectToScene.html">ObjectToScene</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/OpenGLAttributes.html">OpenGLAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/OpenGLRender.html">OpenGLRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/OpenGLShader.html">OpenGLShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/OptionQuery.html">OptionQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/OptionTweaks.html">OptionTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Options.html">Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Orientation.html">Orientation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Outputs.html">Outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Parameters.html">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Parent.html">Parent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/ParentConstraint.html">ParentConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/PathFilter.html">PathFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Plane.html">Plane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/PointConstraint.html">PointConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/PointsType.html">PointsType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/PrimitiveVariableExists.html">PrimitiveVariableExists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/PrimitiveVariableQuery.html">PrimitiveVariableQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/PrimitiveVariables.html">PrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Prune.html">Prune</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Rename.html">Rename</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Render.html">Render</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/ResamplePrimitiveVariables.html">ResamplePrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/ReverseWinding.html">ReverseWinding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/SceneElementProcessor.html">SceneElementProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/SceneNode.html">SceneNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/SceneProcessor.html">SceneProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/SceneReader.html">SceneReader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/SceneWriter.html">SceneWriter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Seeds.html">Seeds</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Set.html">Set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/SetFilter.html">SetFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/SetQuery.html">SetQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/SetVisualiser.html">SetVisualiser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Shader.html">Shader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/ShaderAssignment.html">ShaderAssignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/ShaderBall.html">ShaderBall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/ShaderQuery.html">ShaderQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/ShaderTweaks.html">ShaderTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/ShuffleAttributes.html">ShuffleAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/ShufflePrimitiveVariables.html">ShufflePrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Sphere.html">Sphere</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/StandardAttributes.html">StandardAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/StandardOptions.html">StandardOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/SubTree.html">SubTree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Text.html">Text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Transform.html">Transform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/TransformQuery.html">TransformQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/UDIMQuery.html">UDIMQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/UVSampler.html">UVSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Unencapsulate.html">Unencapsulate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/UnionFilter.html">UnionFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferScene/Wireframe.html">Wireframe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/NodeReference/GafferUSD/index.html">GafferUSD</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferUSD/USDAttributes.html">USDAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferUSD/USDLayerWriter.html">USDLayerWriter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/NodeReference/GafferVDB/index.html">GafferVDB</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferVDB/LevelSetOffset.html">LevelSetOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferVDB/LevelSetToMesh.html">LevelSetToMesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferVDB/MeshToLevelSet.html">MeshToLevelSet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferVDB/PointsGridToPoints.html">PointsGridToPoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferVDB/PointsToLevelSet.html">PointsToLevelSet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Reference/NodeReference/GafferVDB/SphereLevelSet.html">SphereLevelSet</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Reference/ScriptingReference/index.html">Scripting Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/ScriptingReference/CommonOperations/index.html">Common Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/ScriptingReference/StringSubstitutionSyntax/index.html">String Substitution Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/ScriptingReference/Expressions/index.html">Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/ScriptingReference/SetExpressions/index.html">Set Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/ScriptingReference/Metadata/index.html">Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Reference/CommandLineReference/index.html">Command Line Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/CommandLineReference/browser.html">browser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/CommandLineReference/cli.html">cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/CommandLineReference/dispatch.html">dispatch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/CommandLineReference/env.html">env</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/CommandLineReference/execute.html">execute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/CommandLineReference/gui.html">gui</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/CommandLineReference/license.html">license</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/CommandLineReference/python.html">python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/CommandLineReference/screengrab.html">screengrab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/CommandLineReference/stats.html">stats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/CommandLineReference/test.html">test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Reference/CommandLineReference/view.html">view</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Reference/ContextVariables/index.html">Context Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Release Notes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1.2.6.0.html">1.2.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2.5.0.html">1.2.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2.4.0.html">1.2.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2.3.0.html">1.2.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2.2.0.html">1.2.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2.1.1.html">1.2.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2.1.0.html">1.2.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2.0.2.html">1.2.0.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2.0.1.html">1.2.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.2.0.0.html">1.2.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.9.html">1.1.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.9.6.html">1.1.9.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.9.5.html">1.1.9.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.9.4.html">1.1.9.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.9.3.html">1.1.9.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.9.2.html">1.1.9.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.9.1.html">1.1.9.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.9.0.html">1.1.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.8.0.html">1.1.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.7.0.html">1.1.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.6.1.html">1.1.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.6.0.html">1.1.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.5.0.html">1.1.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.4.0.html">1.1.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.3.0.html">1.1.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.2.0.html">1.1.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.1.0.html">1.1.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.1.0.0.html">1.1.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.0.6.6.html">1.0.6.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.0.6.5.html">1.0.6.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.0.6.4.html">1.0.6.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.0.6.3.html">1.0.6.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.0.6.2.html">1.0.6.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.0.6.1.html">1.0.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.0.6.0.html">1.0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.0.5.1.html">1.0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.0.5.0.html">1.0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.0.4.0.html">1.0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.0.3.0.html">1.0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.0.2.1.html">1.0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.0.2.0.html">1.0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.0.1.0.html">1.0.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.0.0.0.html">1.0.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.14.7.html">0.61.14.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.14.6.html">0.61.14.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.14.5.html">0.61.14.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.14.4.html">0.61.14.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.14.3.html">0.61.14.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.14.2.html">0.61.14.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.14.1.html">0.61.14.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.14.0.html">0.61.14.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.13.1.html">0.61.13.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.13.0.html">0.61.13.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.12.0.html">0.61.12.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.11.0.html">0.61.11.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.10.0.html">0.61.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.9.0.html">0.61.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.8.0.html">0.61.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.7.0.html">0.61.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.6.0.html">0.61.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.5.0.html">0.61.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.4.0.html">0.61.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.3.0.html">0.61.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.2.0.html">0.61.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.1.1.html">0.61.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.1.0.html">0.61.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.0.0.html">0.61.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.12.2.html">0.60.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.12.1.html">0.60.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.12.0.html">0.60.12.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.11.0.html">0.60.11.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.10.0.html">0.60.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.9.0.html">0.60.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.8.0.html">0.60.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.7.1.html">0.60.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.7.0.html">0.60.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.6.1.html">0.60.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.6.0.html">0.60.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.5.0.html">0.60.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.4.0.html">0.60.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.3.0.html">0.60.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.2.1.html">0.60.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.2.0.html">0.60.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.1.0.html">0.60.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.0.0.html">0.60.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.59.9.5.html">0.59.9.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.59.9.4.html">0.59.9.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.59.9.3.html">0.59.9.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.59.9.2.html">0.59.9.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.59.9.1.html">0.59.9.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.59.9.0.html">0.59.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.59.8.0.html">0.59.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.59.7.0.html">0.59.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.59.6.0.html">0.59.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.59.5.0.html">0.59.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.59.4.0.html">0.59.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.59.3.0.html">0.59.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.59.2.0.html">0.59.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.59.1.0.html">0.59.1.0</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">0.59.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.6.7.html">0.58.6.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.6.6.html">0.58.6.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.6.5.html">0.58.6.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.6.4.html">0.58.6.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.6.3.html">0.58.6.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.6.2.html">0.58.6.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.6.1.html">0.58.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.6.0.html">0.58.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.5.2.html">0.58.5.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.5.1.html">0.58.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.5.0.html">0.58.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.4.0.html">0.58.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.3.2.html">0.58.3.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.3.1.html">0.58.3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.3.0.html">0.58.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.2.0.html">0.58.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.1.0.html">0.58.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.0.1.html">0.58.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.0.0.html">0.58.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.57.7.6.html">0.57.7.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.57.7.5.html">0.57.7.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.57.7.4.html">0.57.7.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.57.7.3.html">0.57.7.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.57.7.2.html">0.57.7.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.57.7.1.html">0.57.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.57.7.0.html">0.57.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.57.6.0.html">0.57.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.57.5.0.html">0.57.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.57.4.1.html">0.57.4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.57.4.0.html">0.57.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.57.3.0.html">0.57.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.57.2.0.html">0.57.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.57.1.0.html">0.57.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.57.0.0.html">0.57.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.56.2.6.html">0.56.2.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.56.2.5.html">0.56.2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.56.2.4.html">0.56.2.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.56.2.3.html">0.56.2.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.56.2.2.html">0.56.2.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.56.2.1.html">0.56.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.56.2.0.html">0.56.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.56.1.0.html">0.56.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.56.0.0.html">0.56.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.55.5.2.html">0.55.5.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.55.5.1.html">0.55.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.55.5.0.html">0.55.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.55.4.1.html">0.55.4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.55.4.0.html">0.55.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.55.3.0.html">0.55.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.55.2.1.html">0.55.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.55.2.0.html">0.55.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.55.1.0.html">0.55.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.55.0.0.html">0.55.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.54.2.7.html">0.54.2.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.54.2.6.html">0.54.2.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.54.2.5.html">0.54.2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.54.2.4.html">0.54.2.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.54.2.3.html">0.54.2.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.54.2.2.html">0.54.2.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.54.2.1.html">0.54.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.54.2.0.html">0.54.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.54.1.0.html">0.54.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.54.0.1.html">0.54.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.54.0.0.html">0.54.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.53.6.3.html">0.53.6.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.53.6.2.html">0.53.6.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.53.6.0.html">0.53.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.53.5.0.html">0.53.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.53.4.0.html">0.53.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.53.3.0.html">0.53.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.53.2.0.html">0.53.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.53.1.1.html">0.53.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.53.1.0.html">0.53.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.53.0.0.html">0.53.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.52.3.5.html">0.52.3.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.52.3.4.html">0.52.3.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.52.3.3.html">0.52.3.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.52.3.2.html">0.52.3.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.52.3.1.html">0.52.3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.52.3.0.html">0.52.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.52.2.0.html">0.52.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.52.1.0.html">0.52.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.52.0.0.html">0.52.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.51.0.0.html">0.51.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.50.0.0.html">0.50.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.49.1.0.html">0.49.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.49.0.1.html">0.49.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.49.0.0.html">0.49.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.48.1.0.html">0.48.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.48.0.0.html">0.48.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.47.0.0.html">0.47.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.46.1.0.html">0.46.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.46.0.0.html">0.46.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.45.3.0.html">0.45.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.45.2.0.html">0.45.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.45.1.0.html">0.45.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.45.0.0.html">0.45.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.44.0.0.html">0.44.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.43.0.0.html">0.43.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.42.0.0.html">0.42.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.41.0.0.html">0.41.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.40.0.0.html">0.40.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.34.0.0.html">0.34.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.33.3.0.html">0.33.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.33.2.0.html">0.33.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.33.1.0.html">0.33.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.33.0.0.html">0.33.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.32.0.0.html">0.32.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.31.0.0.html">0.31.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.30.2.0.html">0.30.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.30.1.0.html">0.30.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.30.0.0.html">0.30.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.29.0.0.html">0.29.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.28.3.0.html">0.28.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.28.2.1.html">0.28.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.28.2.0.html">0.28.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.28.1.0.html">0.28.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.28.0.1.html">0.28.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.28.0.0.html">0.28.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.27.1.0.html">0.27.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.27.0.1.html">0.27.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.27.0.0.html">0.27.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.26.0.0.html">0.26.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.25.1.0.html">0.25.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.25.0.0.html">0.25.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.24.1.0.html">0.24.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.24.0.0.html">0.24.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.23.2.0.html">0.23.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.23.1.0.html">0.23.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.23.0.1.html">0.23.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.23.0.0.html">0.23.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.22.0.0.html">0.22.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.21.0.0.html">0.21.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.20.0.0.html">0.20.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.19.0.0.html">0.19.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.18.0.0.html">0.18.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.17.0.0.html">0.17.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.16.0.4.html">0.16.0.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.16.0.3.html">0.16.0.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.16.0.2.html">0.16.0.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.16.0.1.html">0.16.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.16.0.0.html">0.16.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.15.0.0.html">0.15.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.14.0.0.html">0.14.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.13.1.0.html">0.13.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.13.0.0.html">0.13.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.12.1.0.html">0.12.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.12.0.0.html">0.12.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.11.0.0.html">0.11.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.10.1.0.html">0.10.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.10.0.0.html">0.10.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.9.0.0.html">0.9.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.8.2.0.html">0.8.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.8.1.0.html">0.8.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.8.0.0.html">0.8.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.7.0.0.html">0.7.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.0.0.html">0.6.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.5.0.1.html">0.5.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.5.0.0.html">0.5.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.4.0.0.html">0.4.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.3.0.0.html">0.3.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.2.1.0.html">0.2.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.2.0.0.html">0.2.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.1.1.0.html">0.1.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.1.0.0.html">0.1.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.101.0.html">0.101.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.100.0.html">0.100.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.99.0.html">0.99.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.98.0.html">0.98.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.97.0.html">0.97.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.96.0.html">0.96.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.95.0.html">0.95.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.94.0.html">0.94.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.93.0.html">0.93.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.92.1.html">0.92.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.92.0.html">0.92.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.91.0.html">0.91.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.90.0.html">0.90.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.89.0.html">0.89.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.88.1.html">0.88.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.88.0.html">0.88.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.87.1.html">0.87.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.87.0.html">0.87.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.86.0.html">0.86.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.85.1.html">0.85.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.85.0.html">0.85.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.84.0.html">0.84.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.83.0.html">0.83.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.82.0.html">0.82.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.81.0.html">0.81.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.80.0.html">0.80.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.79.0.html">0.79.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.78.0.html">0.78.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.77.0.html">0.77.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.76.0.html">0.76.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.75.0.html">0.75.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.74.0.html">0.74.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.73.0.html">0.73.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.72.2.html">0.72.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.72.1.html">0.72.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.72.0.html">0.72.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.71.0.html">0.71.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.70.0.html">0.70.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.69.1.html">0.69.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.69.0.html">0.69.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.68.0.html">0.68.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.67.0.html">0.67.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.66.0.html">0.66.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.65.0.html">0.65.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.64.0.html">0.64.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.63.1.html">0.63.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.63.0.html">0.63.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.62.1.html">0.62.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.62.0.html">0.62.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.61.0.html">0.61.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.60.0.html">0.60.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.59.0.html">0.59.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.58.0.html">0.58.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.57.0.html">0.57.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.56.0.html">0.56.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.55.0.html">0.55.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.54.0.html">0.54.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.53.0.html">0.53.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.52.0.html">0.52.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.51.0.html">0.51.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.36.0.html">0.36.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.35.7.html">0.35.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.35.6.html">0.35.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.35.5.html">0.35.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.35.4.html">0.35.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.35.3.html">0.35.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.35.2.html">0.35.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.35.1.html">0.35.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.35.0.html">0.35.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.34.0.html">0.34.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.33.2.html">0.33.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.33.1.html">0.33.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.33.0.html">0.33.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.32.1.html">0.32.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.32.0.html">0.32.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.31.0.html">0.31.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.30.0.html">0.30.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.29.0.html">0.29.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.28.1.html">0.28.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.28.0.html">0.28.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.27.0.html">0.27.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.26.0.html">0.26.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.25.0.html">0.25.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.24.0.html">0.24.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.23.0.html">0.23.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.22.1.html">0.22.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.22.0.html">0.22.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.21.0.html">0.21.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.20.0.html">0.20.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.19.0.html">0.19.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.18.0.html">0.18.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.17.0.html">0.17.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.16.0.html">0.16.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.15.1.html">0.15.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.15.0.html">0.15.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.14.0.html">0.14.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.13.0.html">0.13.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.12.0.html">0.12.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.11.0.html">0.11.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.10.0.html">0.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.9.0.html">0.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.8.0.html">0.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.7.0.html">0.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.6.0.html">0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.5.0.html">0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.4.0.html">0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0.3.0.html">0.3.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendices/index.html">Appendices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Appendices/License/index.html">License</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Gaffer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Release Notes</a> &raquo;</li>
+      <li>0.59.0.0</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>0.59.0.0<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<p>This release provides substantial improvements to USD support, an upgrade to Qt 5.12, and builds for both Python 2 and 3.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p></p>
+<ul class="simple">
+<li><p>The current plug values are now omitted when exporting a Box for referencing. See Improvements section for more details.</p></li>
+<li><p>Serialisation fixes for dynamic TransformPlugs and Transform2DPlugs mean that files saved in Gaffer 0.59 may not load
+in Gaffer 0.58. This only affects plugs with customised default values.</p></li>
+</ul>
+</div>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Unencapsulate : Added new node to expand capsules created by Encapsulate back into regular scene hierarchy. This discards the performance advantages of working with capsules, but is useful for debugging, or when it is necessary to alter a capsule’s contents downstream.</p></li>
+</ul>
+</section>
+<section id="improvements">
+<h2>Improvements<a class="headerlink" href="#improvements" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>USD :</p>
+<ul>
+<li><p>Mesh : Added automatic conversion of USD’s <code class="docutils literal notranslate"><span class="pre">st</span></code> primitive variables to and from Gaffer’s <code class="docutils literal notranslate"><span class="pre">uv</span></code> primitive variable.</p></li>
+<li><p>Curves : Added support for widths, type, wrap and basis.</p></li>
+<li><p>Points : Added support for widths and ids.</p></li>
+<li><p>Primitives :</p>
+<ul>
+<li><p>Added support for normals, velocity and acceleration.</p></li>
+<li><p>Added automatic conversion of USD’s <code class="docutils literal notranslate"><span class="pre">displayColor</span></code> primitive variable to and from Gaffer’s <code class="docutils literal notranslate"><span class="pre">Cs</span></code> primitive variable.</p></li>
+</ul>
+</li>
+<li><p>Camera : Added reading of cameras and the standard cameras set.</p></li>
+<li><p>Instancing :</p>
+<ul>
+<li><p>Improved interoperability with UsdGeomPointInstancers :</p>
+<ul>
+<li><p>A new “usd:pointInstancers” set is automatically generated on reading, allowing a single Gaffer Instancer/SetFilter to target all point instancers.</p></li>
+<li><p>Renamed point instancer primitive variables to align with the defaults on the Instancer node.</p></li>
+</ul>
+</li>
+<li><p>Improved performance and memory usage when reading scenes using USD’s scenegraph instancing.</p></li>
+</ul>
+</li>
+<li><p>Attributes :</p>
+<ul>
+<li><p>Added support for USD’s visibility attribute, converting it to and from Gaffer’s <code class="docutils literal notranslate"><span class="pre">scene:visible</span></code> attribute.</p></li>
+<li><p>Added support for USD’s <code class="docutils literal notranslate"><span class="pre">purpose</span></code> attribute, converting it to and from a <code class="docutils literal notranslate"><span class="pre">usd:purpose</span></code> string attribute in Gaffer.</p></li>
+<li><p>Added support for USD’s <code class="docutils literal notranslate"><span class="pre">kind</span></code> attribute, converting it to and from a <code class="docutils literal notranslate"><span class="pre">usd:kind</span></code> string attribute in Gaffer.</p></li>
+</ul>
+</li>
+<li><p>Sets :</p>
+<ul>
+<li><p>All UsdCollections can now be loaded as Gaffer sets.</p></li>
+<li><p>Gaffer sets are now written to standard UsdCollections, and not to an unusable default prim.</p></li>
+<li><p>Substantially improved performance for both reading and writing.</p></li>
+</ul>
+</li>
+<li><p>Untyped prims are now loaded as empty locations instead of being ignored.</p></li>
+<li><p>Improved warning logging.</p></li>
+</ul>
+</li>
+<li><p>Box :</p>
+<ul>
+<li><p>Improved strategy used for exporting for referencing. Before, the current values of the Box plugs were converted into the default values of the Reference during export. This was error prone as it was too easy to export new defaults after changing values for testing. We now export default values as they are, and omit current values completely. Two new menu items allow the default values to be authored explicitly from the current values at any time.</p></li>
+<li><p>Added “Reset Default Values” item to NodeEditor tool menu. This sets the default values for all plugs from their current values.</p></li>
+<li><p>Added “Reset Default Value” item to plug context menu. This sets the default value from the current value.</p></li>
+</ul>
+</li>
+<li><p>ImageReader : Added initial support for reading RAW files.</p></li>
+<li><p>CustomAttributes : <code class="docutils literal notranslate"><span class="pre">extraAttributes</span></code> is now a CompoundObjectPlug, allowing it to define complex attribute values including shading networks.</p></li>
+<li><p>GraphEditor : Improved performance slightly for large graphs.</p></li>
+<li><p>Warp : Defaulted <code class="docutils literal notranslate"><span class="pre">useDerivatives</span></code> to off for nodes created via the UI. Using derivatives is only beneficial when the warp is highly anisotropic, and it has a significant performance impact.</p></li>
+<li><p>CopyChannels : Improved performance for the special case of a single input.</p></li>
+<li><p>Catalogue/Viewer : Improved tile throughput for interactive renders.</p></li>
+<li><p>Performance : Replaced standard memory allocator with <a class="reference external" href="http://jemalloc.net/">jemalloc</a>. Set <code class="docutils literal notranslate"><span class="pre">GAFFER_JEMALLOC=0</span></code> to disable this and use the standard allocator.</p></li>
+<li><p>Merge : Optimized image merging.  This has been tackled in several ways, with different levels of impact.  Some extreme cases, such as using a multiply to merge two large datawindows with little overlap, now produce much smaller data windows.  Other cases can benefit a lot from being able to pass through input tiles unmodified.  For cases without a huge shortcut, there is an approximately 20% speedup from lower level optimization.</p></li>
+<li><p>Checkerboard : Optimized image generation when rotation is 0.</p></li>
+<li><p>InteractiveRender : Added a warning when attribute edits require geometry to be regenerated, as this can have a performance impact. Examples in Arnold include subdivision changes or changes to attributes inherited by procedurals.</p></li>
+<li><p>NodeMenu : Removed Loop node. This node can have severe consequences for performance if used inappropriately. Depending on the use case, the Collect nodes and others often provide a more performant alternative. The Loop node can still be created via the scripting API, but we recommend you consider the alternatives and/or request advice before using it.</p></li>
+<li><p>TransformTool : Improved tool state messaging to include node names and/or paths.</p></li>
+</ul>
+</section>
+<section id="fixes">
+<h2>Fixes<a class="headerlink" href="#fixes" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>USD :</p>
+<ul>
+<li><p>Fixed writing of animated creases and corners.</p></li>
+<li><p>Fixed writing of animated sphere radius.</p></li>
+<li><p>Fixed various animation reading bugs.</p></li>
+<li><p>Fixed handling of interpolation for normals.</p></li>
+<li><p>Fixed writing of indexed primitive variables to non-indexed USD attributes.</p></li>
+<li><p>Fixed handling of GeometricInterpretation/Role.</p></li>
+</ul>
+</li>
+<li><p>TransformTools : Fixed bug finding existing nodes inside EditScopes.</p></li>
+<li><p>Viewer : Fixed bug that caused mouse clicks in empty toolbar regions to be ignored.</p></li>
+<li><p>PlugAlgo/BoxIO : Fixed bug handling nested compound plugs.</p></li>
+<li><p>Resample : Fixed hash of intermediate <code class="docutils literal notranslate"><span class="pre">deep</span></code> plug.</p></li>
+<li><p>String matching :</p>
+<ul>
+<li><p>Fixed erroneous matches in specific cases involving multiple space-separated patterns and the <code class="docutils literal notranslate"><span class="pre">*</span></code> wildcard.</p></li>
+<li><p>Fixed severe performance problem caused by many <code class="docutils literal notranslate"><span class="pre">*</span></code> wildcards in space-separated match patterns.</p></li>
+</ul>
+</li>
+<li><p>Box/Reference :</p>
+<ul>
+<li><p>Fixed export and referencing of TransformPlugs with modified default values (<a class="reference external" href="https://github.com/GafferHQ/gaffer/issues/3946">#3946</a>).</p></li>
+<li><p>Fixed export and referencing of CompoundDataPlugs with modified default values (<a class="reference external" href="https://github.com/GafferHQ/gaffer/issues/3907">#3907</a>).</p></li>
+<li><p>Fixed loss of spreadsheet values when using “Duplicate as Box” (<a class="reference external" href="https://github.com/GafferHQ/gaffer/issues/3972">#3972</a>).</p></li>
+<li><p>Fixed export and referencing of SplinePlugs.</p></li>
+<li><p>Fixed incorrect presentation of referenced CompoundDataPlugs (<a class="reference external" href="https://github.com/GafferHQ/gaffer/issues/4020">#4020</a>).</p></li>
+</ul>
+</li>
+<li><p>Encapsulate : Fixed incorrect motion blur when deformation blur is turned on for the Capsule itself (<a class="reference external" href="https://github.com/GafferHQ/gaffer/issues/3557">#3557</a>).</p></li>
+<li><p>Spreadsheet : Fixed serialisation of default values which do not match those of the default row.</p></li>
+<li><p>Checkerboard : Checker colors are now exactly equal to the colorA and colorB parameters.  Previously, there were very tiny floating point errors which grew larger as the distance from origin increased.</p></li>
+<li><p>Transform2DPlug : Fixed serialisation of dynamic plugs, such as plugs promoted to a Box.</p></li>
+<li><p>SplinePlug : Fixed bug that meant <code class="docutils literal notranslate"><span class="pre">isSetToDefault()</span></code> could return true even if it had computed inputs. It now returns false in this case, and never triggers an upstream compute.</p></li>
+</ul>
+</section>
+<section id="api">
+<h2>API<a class="headerlink" href="#api" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Gadget :</p>
+<ul>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">updateLayout()</span></code> virtual method to simplify implementation of container types.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">dirty()</span></code> method for finer grained tracking of changes than <code class="docutils literal notranslate"><span class="pre">requestRender()</span></code> provided.</p></li>
+<li><p>Deprecated <code class="docutils literal notranslate"><span class="pre">requestRender()</span></code> method. Use <code class="docutils literal notranslate"><span class="pre">dirty()</span></code> instead.</p></li>
+</ul>
+</li>
+<li><p>OSLShader : Added <code class="docutils literal notranslate"><span class="pre">registerCompatibleShader()</span></code> method to allow connections from non-OSL shaders
+to be made.</p></li>
+<li><p>ImageGadget : Added <code class="docutils literal notranslate"><span class="pre">tileUpdateCount()</span></code> and <code class="docutils literal notranslate"><span class="pre">resetTileUpdateCount()</span></code> methods. These are useful for measuring performance.</p></li>
+<li><p>TestRunner : Added <code class="docutils literal notranslate"><span class="pre">PerformanceScope.setNumIterations()</span></code> method.</p></li>
+<li><p>TestCase/TestRunner : The hash cache is now cleared before running each test.</p></li>
+<li><p>TransformPlug/Transform2DPlug : Added constructor arguments for specifying child plug default values.</p></li>
+<li><p>ValuePlug :</p>
+<ul>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">defaultHash()</span></code> virtual method.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">dirtyCount()</span></code> public method.</p></li>
+</ul>
+</li>
+<li><p>ValuePlugSerialiser :</p>
+<ul>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">valueRepr()</span></code> method.</p></li>
+<li><p>Added support for <code class="docutils literal notranslate"><span class="pre">valuePlugSerialiser:omitParentNodePlugValues</span></code> context variable. This is used for exporting Boxes for referencing, and by ExtensionAlgo.</p></li>
+</ul>
+</li>
+<li><p>CompoundObjectPlug : AtomicCompoundDataPlugs are now accepted as inputs.</p></li>
+<li><p>ImageAlgo : <code class="docutils literal notranslate"><span class="pre">tiles()</span></code> now returns a top level dictionary containing all the tileOrigins as a V2iVectorData, and each channel as an ObjectVectorData of channelDatas with corresponding indices. This allows <code class="docutils literal notranslate"><span class="pre">tiles()</span></code> to run substantially faster, more than twice as fast if the input network is very cheap.</p></li>
+<li><p>ConfirmationDialogue : Added optional <code class="docutils literal notranslate"><span class="pre">details</span></code> constructor argument which accepts text to be shown in a collapsed “Details” section.</p></li>
+<li><p>Node :</p>
+<ul>
+<li><p>Improved speed of <code class="docutils literal notranslate"><span class="pre">RecursiveIterator</span></code> and <code class="docutils literal notranslate"><span class="pre">RecursiveRange</span></code> for nodes.</p></li>
+<li><p>Added new <code class="docutils literal notranslate"><span class="pre">GAFFER_NODE_DECLARE_TYPE</span></code> and <code class="docutils literal notranslate"><span class="pre">GAFFER_NODE_DEFINE_TYPE</span></code> macros. Subclasses should use these in preference to <code class="docutils literal notranslate"><span class="pre">GAFFER_GRAPHCOMPONENT_DECLARE_TYPE</span></code> and <code class="docutils literal notranslate"><span class="pre">GAFFER_GRAPHCOMPONENT_DEFINE_TYPE</span></code>.</p></li>
+<li><p>Deprecated all namespace-level iterator typedefs for Node and its subclasses. Use the class-level typedefs instead.</p></li>
+</ul>
+</li>
+<li><p>Plug : Deprecated all namespace-level iterator typedefs for Plug and its subclasses. Use the class-level typedefs instead.</p></li>
+<li><p>RendererAlgo :</p>
+<ul>
+<li><p>Moved RendererAlgo bindings into a <code class="docutils literal notranslate"><span class="pre">GafferScene.RendererAlgo</span></code> submodule. The old names are provided for temporary backwards compatibility but are considered deprecated and will be removed in the future.</p></li>
+<li><p>Added Python binding for <code class="docutils literal notranslate"><span class="pre">objectSamples()</span></code> function.</p></li>
+</ul>
+</li>
+<li><p>SceneTestCase : Changed base class to ImageTestCase, to provide methods for comparing images.</p></li>
+<li><p>Capsule : Expiry is no longer detected based on the dirtyCount of the source scene. This removes a debugging tool that could be useful, but allows nodes that create Capsules to have more granular hashing behaviour. If the behaviour of the source scene is captured by a hash that can be used by the capsule, then we can reuse the capsule when that hash matches, and we don’t need to invalidate if the capsule is changed back to a cached value.</p></li>
+</ul>
+</section>
+<section id="breaking-changes">
+<h2>Breaking Changes<a class="headerlink" href="#breaking-changes" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>USD :</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">st</span></code>, <code class="docutils literal notranslate"><span class="pre">displayColor</span></code> and UsdGeomPointInstancer primitive variables have been renamed.</p></li>
+<li><p>Removed reading/writing of <code class="docutils literal notranslate"><span class="pre">cortex:</span></code> prefixed attributes.</p></li>
+</ul>
+</li>
+<li><p>Gadget : Added new virtual method and private member variables.</p></li>
+<li><p>ImageGadget : Removed/moved private member variables.</p></li>
+<li><p>OpenColorIOTransform : Made <code class="docutils literal notranslate"><span class="pre">transform()</span></code> method protected rather than public.</p></li>
+<li><p>BackgroundMethodTest : Removed public visibility from private <code class="docutils literal notranslate"><span class="pre">TestWidget</span></code> and <code class="docutils literal notranslate"><span class="pre">WaitingSlot</span></code>.</p></li>
+<li><p>Box : The current plug values are now omitted when exporting for referencing, rather than being transformed into new default values.</p></li>
+<li><p>Reference : Removed support for boxes exported prior to version 0.9.0.0.</p></li>
+<li><p>TransformPlug/Transform2DPlug : Added constructor arguments.</p></li>
+<li><p>ValuePlug : Added virtual method.</p></li>
+<li><p>ValuePlugSerialiser : Removed support for <code class="docutils literal notranslate"><span class="pre">valuePlugSerialiser:resetParentPlugDefaults</span></code> context variable.</p></li>
+<li><p>NameValuePlugValueWidget : Removed support for using the <code class="docutils literal notranslate"><span class="pre">Plug.Dynamic</span></code> flag to determine whether or not the <code class="docutils literal notranslate"><span class="pre">name</span></code> plug is shown. Use <code class="docutils literal notranslate"><span class="pre">nameValuePlugValueWidget:ignoreNamePlug</span></code> metadata instead.</p></li>
+<li><p>Attributes : Changed type of <code class="docutils literal notranslate"><span class="pre">extraAttributes</span></code> plug from AtomicCompoundDataPlug to CompoundObjectPlug.</p></li>
+<li><p>Light/Camera : Removed button for adding custom plugs in the “Visualisation” section.</p></li>
+<li><p>Metadata : Removed compatibility for loading graph bookmarks created in versions prior to 0.33.0.0. Resave the file from Gaffer 0.58.0.0 to preserve the bookmarks if necessary.</p></li>
+<li><p>RendererAlgo :</p>
+<ul>
+<li><p>Objects which don’t support deformation blur are now always sampled at the integer frame time. Previously they were sampled at shutter open time if deformation blur was turned on.</p></li>
+<li><p>Changed type used to represent sample times from <code class="docutils literal notranslate"><span class="pre">std::set&lt;float&gt;</span></code> to <code class="docutils literal notranslate"><span class="pre">std::vector&lt;float&gt;</span></code>, to align with the <code class="docutils literal notranslate"><span class="pre">IECoreScenePreview::Renderer</span></code> API.</p></li>
+</ul>
+</li>
+<li><p>Encapsulate : Removed private data member.</p></li>
+</ul>
+</section>
+<section id="build">
+<h2>Build<a class="headerlink" href="#build" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Dependencies : Updated to version 2.1.1</p>
+<ul>
+<li><p>Qt 5.12.8</p></li>
+<li><p>Boost 1.68</p></li>
+<li><p>Cortex 10.1.2.0</p></li>
+<li><p>OpenEXR 2.4.1</p></li>
+<li><p>Appleseed 2.1.0-beta</p></li>
+<li><p>USD 20.11</p></li>
+<li><p>OpenSSL 1.1.1h</p></li>
+<li><p>See https://github.com/GafferHQ/dependencies/releases/tag/2.1.1 for full details.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="0.59.1.0.html" class="btn btn-neutral float-left" title="0.59.1.0" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="0.58.6.7.html" class="btn btn-neutral float-right" title="0.58.6.7" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2011-2019 John Haddon, 2011-2019 Image Engine Design Inc..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

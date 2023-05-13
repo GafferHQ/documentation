@@ -1,0 +1,37 @@
+InteractiveRender
+=================
+
+Performs interactive renders, updating the render on the fly
+whenever the input scene changes.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+in
+--
+
+The scene to be rendered.
+
+renderer
+--------
+
+The renderer to use.
+
+state
+-----
+
+Turns the rendering on and off, or pauses it.
+
+out
+---
+
+A direct pass-through of the input scene.
+
+messages
+--------
+
+Messages from the render process.
