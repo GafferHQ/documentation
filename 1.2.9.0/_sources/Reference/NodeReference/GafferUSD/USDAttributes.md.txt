@@ -1,0 +1,90 @@
+USDAttributes
+=============
+
+Authors attributes which have specific meaning in USD, but which
+do not influence Gaffer's native behaviour in any way (in which
+case they would belong on the StandardAttributes node).
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+attributes
+----------
+
+The attributes to be applied - arbitrary numbers of user defined
+attributes may be added as children of this plug via the user
+interface, or using the CompoundDataPlug API via python.
+
+attributes.purpose
+------------------
+
+Specifies the purpose of a location to be `default`, `render`,
+`proxy` or `guide`. See the [USD documentation](https://graphics.pixar.com/usd/release/glossary.html#usdglossary-purpose)
+for more details.
+
+> Note : Gaffer doesn't assign any intrinsic meaning to USD's
+> purpose. To control visibility using purpose, we recommend
+> using an AttributeQuery and Expression to query `usd:purpose`
+> and drive `StandardAttributes.visibility` appropriately.
+>
+> Also note that native proxy workflows can be built using
+> Gaffer's contexts, such that proxy or render geometry can appear
+> at the _same_ location in the scene hierarchy, depending on the
+> value of a context variable. This has benefits when selecting
+> and filtering objects.
+
+attributes.kind
+---------------
+
+Specifies the kind of a location to be any of the values
+from USD's kind registry. See the [USD documentation](https://graphics.pixar.com/usd/release/glossary.html#usdglossary-kind)
+for more details.
+
+> Note : Gaffer doesn't assign any intrinsic meaning to USD's
+> kind.
+
+global
+------
+
+Causes the attributes to be applied to the scene globals
+instead of the individual locations defined by the filter.
+
+extraAttributes
+---------------
+
+An additional set of attributes to be added. Arbitrary numbers
+of attributes may be specified within a single `IECore.CompoundObject`,
+where each key/value pair in the object defines an attribute.
+This is convenient when using an expression to define the attributes
+and the attribute count might be dynamic. It can also be used to
+create attributes whose type cannot be handled by the `attributes`
+CompoundDataPlug, with `IECoreScene.ShaderNetwork` being one example.
+
+If the same attribute is defined by both the attributes and the
+extraAttributes plugs, then the value from the extraAttributes
+is taken.
