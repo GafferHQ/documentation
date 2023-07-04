@@ -1,0 +1,8 @@
+1.2.0.1
+=======
+
+Fixes
+-----
+
+- Viewer : Fixed crash displaying Arnold quad lights in portal mode.
+
