@@ -1,0 +1,8 @@
+1.1.9.3
+=======
+
+Fixes
+-----
+
+- ImageReader : Made error message more descriptive when trying to access a channel that doesn't exist.
+
