@@ -1,0 +1,82 @@
+PointsToLevelSet
+================
+
+Converts a points primitive to an OpenVDB level set.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+width
+-----
+
+The name of a `float` primitive variable specifying the width of each point.
+The primitive variable may have either `Vertex` or `Constant` interpolation.
+If the primitive variable doesn't exist, a width of 1.0 is used.
+
+> Note : A point's width needs to be at least 3x `voxelSize` to contribute to
+> the level set. Smaller points will be ignored, and reported as a warning.
+
+widthScale
+----------
+
+An additional multiplier on the width of each point.
+
+useVelocity
+-----------
+
+Enables the creation of trails behind the points, based
+on the `velocity` primitive variable.
+
+velocity
+--------
+
+The name of a `V3f` primitive variable specifying the velocity
+of each point. Velocity is specified in local-space units per
+second, and the trail is automatically scaled to represent the
+motion within a single frame.
+
+velocityScale
+-------------
+
+An additional multiplier applied to the velocity of each point.
+
+grid
+----
+
+Name of the level set grid to be created.
+
+voxelSize
+---------
+
+Size of a voxel in the level set grid, specified in local space. Smaller voxel
+sizes will increase resolution, but take more memory and computation time.
+
+halfBandwidth
+-------------
+
+Defines the exterior and interior width of the level set in voxel units.
