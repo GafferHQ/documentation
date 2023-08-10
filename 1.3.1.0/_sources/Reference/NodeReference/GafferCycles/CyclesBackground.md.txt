@@ -1,0 +1,34 @@
+CyclesBackground
+================
+
+Assigns global shaders such as background and atmosphere shaders.
+This node is an abstract base class, so it can not be used directly -
+instead use the nodes derived from it.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+shader
+------
+
+The shader to be assigned. This will be stored as an
+option within the scene globals.
