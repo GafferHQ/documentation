@@ -1,0 +1,55 @@
+Encapsulate
+===========
+
+Encapsulates a portion of the scene by collapsing the hierarchy
+and replacing it with a procedural which will be evaluated at
+render time.
+
+This has two primary uses :
+
+- To optimise scene generation. Downstream nodes do not see
+  the encapsulated locations, so do not spend time processing
+  them.
+- To enable high-level instancing of hierarchies. If multiple
+  copies of the encapsulated procedural are made by the
+  downstream network, then the procedural itself can be instanced
+  at render time. This works no matter how the copies are
+  made, but typically the Instancer or Duplicate nodes would
+  be the most common method of copying the procedural.
+
+> Note : Encapsulation currently has some limitations
+>
+> - Motion blur attributes are not inherited - only
+>   attributes within the encapsulated hierarchy are
+>   considered.
+> - The `usd:purpose` attribute is not inherited - only
+>   attributes within the encapsulated hierarchy are
+>   considered.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
