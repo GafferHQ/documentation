@@ -1,0 +1,37 @@
+1.0.4.0
+=======
+
+Features
+--------
+
+- Edit Menu : Added "Duplicate with Inputs" menu item, with <kbd>Ctrl</kbd>+<kbd>D</kbd> shortcut.
+- OptionTweaks : Added node for tweaking options in a scene.
+- OptionQuery : Added node for querying options from a scene.
+- StandardAttributes : Added `automaticInstancing` plug to allow instancing to be disabled on selected locations. Currently supported only by the Arnold renderer.
+
+Improvements
+------------
+
+- TweakPlug : Added the ability to set `InternedStringData` from `StringData`.
+- GraphEditor : Added a warning for attempts to open the node creation menu in a read-only graph.
+- Light Editor :
+  - Added explanation to cell popup when a parameter cannot be edited because there are no editable sources.
+  - Added an error icon to a cell with an explanation in the tooltip when there is an error computing its value ([#4805](https://github.com/GafferHQ/gaffer/issues/4805)).
+
+Fixes
+-----
+
+- SceneReader :
+  - Fixed reading of Alembic files with animated visibility.
+  - Fixed reading of primitive variables from UsdGeomPointInstancers.
+- GraphEditor : Fixed bugs which allowed new connections to be made in read-only graphs.
+- NodeEditor : Fixed bugs which allowed plugs to be added to read-only tweaks nodes.
+- CyclesOptions : Fixed errors in section summaries.
+- NoduleLayout : Fixed shutdown crashes triggered by custom gadgets implemented in Python.
+- ShaderTweaks : Fixed error when attempting to use a `:` in a parameter name.
+
+Build
+-----
+
+- Cortex : Updated to 10.4.1.2.
+

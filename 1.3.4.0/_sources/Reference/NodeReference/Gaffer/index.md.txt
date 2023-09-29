@@ -1,0 +1,43 @@
+<!-- !NO_SCROLLSPY -->
+
+Gaffer
+======
+
+```{eval-rst}
+.. toctree::
+    :titlesonly:
+    :maxdepth: 1
+
+    Animation.md
+    Backdrop.md
+    Box.md
+    BoxIn.md
+    BoxOut.md
+    Collect.md
+    ComputeNode.md
+    ContextQuery.md
+    ContextVariableTweaks.md
+    ContextVariables.md
+    ContextVariablesComputeNode.md
+    DeleteContextVariables.md
+    DeleteContextVariablesComputeNode.md
+    DependencyNode.md
+    Dot.md
+    EditScope.md
+    Expression.md
+    Loop.md
+    LoopComputeNode.md
+    NameSwitch.md
+    Node.md
+    Preferences.md
+    Random.md
+    RandomChoice.md
+    Reference.md
+    ScriptNode.md
+    Spreadsheet.md
+    SubGraph.md
+    Switch.md
+    SwitchComputeNode.md
+    TimeWarp.md
+    TimeWarpComputeNode.md
+```
