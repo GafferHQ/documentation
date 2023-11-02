@@ -3,7 +3,6 @@
 import github
 
 import argparse
-import distutils.util
 import glob
 import os
 import shutil
@@ -22,8 +21,8 @@ parser.add_argument(
 parser.add_argument(
 	"--set-outputs",
 	dest = "setOutputs",
-	type = distutils.util.strtobool,
-	default = "0",
+	default = False,
+	action = "store_true",
 	help = "Echo the outputs needed by `.github/workflows/update.yml`."
 )
 args = parser.parse_args()
