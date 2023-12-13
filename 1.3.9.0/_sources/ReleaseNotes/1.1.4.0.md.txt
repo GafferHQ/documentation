@@ -1,0 +1,18 @@
+1.1.4.0
+=======
+
+Improvements
+------------
+
+- Cycles : Added support for custom attributes with either a `user:` or `render:` prefix. These can be authored in Gaffer and then read at render time using Cycle's attribute shader.
+
+Fixes
+-----
+
+- Catalogue : Fixed crashes when using the <kbd>↑</kbd> or <kbd>↓</kbd> keys immediately after adding or removing a column.
+- PathListingWidget : Fixed bug tracking the last selected path, which could cause crashes if the path was deleted or the columns were changed.
+- Image Viewer : Fixed dragging a color from the image view using a context with the wrong time, and an error that could show up when deleting the currently viewed image.
+- Cycles :
+  - Fixed background shader bug that could cause a crash, or cause the initial render in the Cycles viewport to be blank.
+  - Fixed light bug that triggered an assertion in Cycles debug builds.
+

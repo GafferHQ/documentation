@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial: Querying a Scene &mdash; Gaffer 1.3.9.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/gaffer.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/scrollspy.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial: Startup Config 1; Custom Global Context Variables" href="../TutorialStartupConfig1/index.html" />
+    <link rel="prev" title="Tutorial: Node Graph Editing in Python" href="../TutorialNodeGraphEditingInPython/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html">
+            <img src="../../_static/GafferLogoMini.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.3.9.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../GettingStarted/index.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../GettingStarted/InstallingGaffer/index.html">Installing Gaffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../GettingStarted/LaunchingGafferFirstTime/index.html">Launching Gaffer for the First Time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../GettingStarted/TutorialAssemblingTheGafferBot/index.html">Tutorial: Assembling the Gaffer Bot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../GettingStarted/SettingUpGafferCommand/index.html">Setting Up the “gaffer” Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../GettingStarted/ConfiguringGafferForThirdPartyTools/index.html">Configuring Gaffer for Third-Party Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../WorkingWithTheNodeGraph/index.html">Working with the Node Graph</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithTheNodeGraph/BoxNode/index.html">Box Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithTheNodeGraph/SpreadsheetNode/index.html">Spreadsheet Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithTheNodeGraph/Contexts/index.html">Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithTheNodeGraph/PerformanceBestPractices/index.html">Performance Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithTheNodeGraph/UsingThePerformanceMonitor/index.html">Using the Performance Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithTheNodeGraph/TutorialUsingTheOSLCodeNode/index.html">Tutorial: Using The OSLCode Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithTheNodeGraph/TutorialSettingUpASpreadsheet/index.html">Tutorial: Setting Up a Spreadsheet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../WorkingWithScenes/index.html">Working with Scenes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithScenes/AnatomyOfAScene/index.html">Anatomy of a Scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithScenes/AnatomyOfACamera/index.html">Anatomy of a Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithScenes/Camera/index.html">Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithScenes/LightLinking/index.html">Light Linking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../WorkingWithImages/index.html">Working with Images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../WorkingWithImages/AnatomyOfAnImage/index.html">Anatomy of an Image</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Working with the Python Scripting API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ThePythonEditor/index.html">The Python Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TutorialNodeGraphEditingInPython/index.html">Tutorial: Node Graph Editing in Python</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tutorial: Querying a Scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TutorialStartupConfig1/index.html">Tutorial: Startup Config 1; Custom Global Context Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TutorialStartupConfig2/index.html">Tutorial: Startup Config 2; Custom Bookmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TutorialStartupConfig3/index.html">Tutorial: Startup Config 3; Custom Node Menu Entries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Interface/index.html">Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Interface/ControlsAndShortcuts/index.html">Controls and Shortcuts</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Supplemental Material</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Reference/index.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Reference/NodeReference/index.html">Node Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/index.html">Gaffer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Animation.html">Animation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Backdrop.html">Backdrop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Box.html">Box</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/BoxIn.html">BoxIn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/BoxOut.html">BoxOut</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Collect.html">Collect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/ComputeNode.html">ComputeNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/ContextQuery.html">ContextQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/ContextVariableTweaks.html">ContextVariableTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/ContextVariables.html">ContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/ContextVariablesComputeNode.html">ContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/DeleteContextVariables.html">DeleteContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/DeleteContextVariablesComputeNode.html">DeleteContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/DependencyNode.html">DependencyNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Dot.html">Dot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/EditScope.html">EditScope</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Expression.html">Expression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Loop.html">Loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/LoopComputeNode.html">Loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/NameSwitch.html">NameSwitch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Node.html">Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Preferences.html">Preferences</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Random.html">Random</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/RandomChoice.html">RandomChoice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Reference.html">Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/ScriptNode.html">ScriptNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Spreadsheet.html">Spreadsheet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/SubGraph.html">SubGraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/Switch.html">Switch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/SwitchComputeNode.html">Switch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/TimeWarp.html">TimeWarp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/Gaffer/TimeWarpComputeNode.html">TimeWarp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/index.html">GafferArnold</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldAOVShader.html">ArnoldAOVShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldAtmosphere.html">ArnoldAtmosphere</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldAttributes.html">ArnoldAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldBackground.html">ArnoldBackground</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldCameraShaders.html">ArnoldCameraShaders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldColorManager.html">ArnoldColorManager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldDisplacement.html">ArnoldDisplacement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldImager.html">ArnoldImager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldLight.html">ArnoldLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldLightFilter.html">ArnoldLightFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldMeshLight.html">ArnoldMeshLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldOptions.html">ArnoldOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldRender.html">ArnoldRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldShader.html">ArnoldShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldShaderBall.html">ArnoldShaderBall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldTextureBake.html">ArnoldTextureBake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/ArnoldVDB.html">ArnoldVDB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferArnold/InteractiveArnoldRender.html">InteractiveArnoldRender</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/GafferCycles/index.html">GafferCycles</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferCycles/CyclesAttributes.html">CyclesAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferCycles/CyclesBackground.html">CyclesBackground</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferCycles/CyclesLight.html">CyclesLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferCycles/CyclesMeshLight.html">CyclesMeshLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferCycles/CyclesOptions.html">CyclesOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferCycles/CyclesRender.html">CyclesRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferCycles/CyclesShader.html">CyclesShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferCycles/CyclesShaderBall.html">CyclesShaderBall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferCycles/InteractiveCyclesRender.html">InteractiveCyclesRender</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/index.html">GafferDispatch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/Dispatcher.html">Dispatcher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/FrameMask.html">FrameMask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/LocalDispatcher.html">LocalDispatcher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/PythonCommand.html">PythonCommand</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/SystemCommand.html">SystemCommand</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/TaskContextProcessor.html">TaskContextProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/TaskContextVariables.html">TaskContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/TaskList.html">TaskList</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/TaskNode.html">TaskNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/TaskSwitch.html">TaskSwitch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferDispatch/Wedge.html">Wedge</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/index.html">GafferImage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Anaglyph.html">Anaglyph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/BleedFill.html">BleedFill</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Blur.html">Blur</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/CDL.html">CDL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Catalogue.html">Catalogue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/CatalogueSelect.html">CatalogueSelect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Checkerboard.html">Checkerboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Clamp.html">Clamp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/CollectImages.html">CollectImages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ColorSpace.html">ColorSpace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Constant.html">Constant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/CopyChannels.html">CopyChannels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/CopyImageMetadata.html">CopyImageMetadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/CopyViews.html">CopyViews</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/CreateViews.html">CreateViews</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Crop.html">Crop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeepHoldout.html">DeepHoldout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeepMerge.html">DeepMerge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeepRecolor.html">DeepRecolor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeepSampleCounts.html">DeepSampleCounts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeepSampler.html">DeepSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeepState.html">DeepState</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeepTidy.html">DeepTidy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeepToFlat.html">DeepToFlat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeleteChannels.html">DeleteChannels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeleteImageMetadata.html">DeleteImageMetadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DeleteViews.html">DeleteViews</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Dilate.html">Dilate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Display.html">Display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/DisplayTransform.html">DisplayTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Empty.html">Empty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Erode.html">Erode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/FlatImageProcessor.html">FlatImageProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/FlatImageSource.html">FlatImageSource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/FlatToDeep.html">FlatToDeep</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/FormatQuery.html">FormatQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Grade.html">Grade</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageMetadata.html">ImageMetadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageNode.html">ImageNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageProcessor.html">ImageProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageReader.html">ImageReader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageSampler.html">ImageSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageStats.html">ImageStats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageTransform.html">ImageTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/ImageWriter.html">ImageWriter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/LUT.html">LUT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/LookTransform.html">LookTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Median.html">Median</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Merge.html">Merge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Mirror.html">Mirror</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Mix.html">Mix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Offset.html">Offset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/OpenColorIOContext.html">OpenColorIOContext</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/OpenImageIOReader.html">OpenImageIOReader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Premultiply.html">Premultiply</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Ramp.html">Ramp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Rectangle.html">Rectangle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Resample.html">Resample</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Resize.html">Resize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Saturation.html">Saturation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/SelectView.html">SelectView</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Shuffle.html">Shuffle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Text.html">Text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/UVWarp.html">VectorWarp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/Unpremultiply.html">Unpremultiply</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferImage/VectorWarp.html">VectorWarp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/GafferOSL/index.html">GafferOSL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferOSL/OSLCode.html">OSLCode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferOSL/OSLImage.html">OSLImage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferOSL/OSLLight.html">OSLLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferOSL/OSLObject.html">OSLObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferOSL/OSLShader.html">OSLShader</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/index.html">GafferScene</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/AimConstraint.html">AimConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/AttributeQuery.html">AttributeQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/AttributeTweaks.html">AttributeTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/AttributeVisualiser.html">AttributeVisualiser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Attributes.html">Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/BoundQuery.html">BoundQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Camera.html">Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CameraTweaks.html">CameraTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ClippingPlane.html">ClippingPlane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ClosestPointSampler.html">ClosestPointSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CollectPrimitiveVariables.html">CollectPrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CollectScenes.html">CollectScenes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CollectTransforms.html">CollectTransforms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CoordinateSystem.html">CoordinateSystem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CopyAttributes.html">CopyAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CopyOptions.html">CopyOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CopyPrimitiveVariables.html">CopyPrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Cryptomatte.html">Cryptomatte</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Cube.html">Cube</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CurveSampler.html">CurveSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CustomAttributes.html">CustomAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/CustomOptions.html">CustomOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteAttributes.html">DeleteAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteCurves.html">DeleteCurves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteFaces.html">DeleteFaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteGlobals.html">DeleteGlobals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteObject.html">DeleteObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteOptions.html">DeleteOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteOutputs.html">DeleteOutputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeletePoints.html">DeletePoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeletePrimitiveVariables.html">DeletePrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteRenderPasses.html">DeleteRenderPasses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/DeleteSets.html">DeleteSets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Duplicate.html">Duplicate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Encapsulate.html">Encapsulate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ExistenceQuery.html">ExistenceQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ExternalProcedural.html">ExternalProcedural</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Filter.html">Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/FilterProcessor.html">FilterProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/FilterQuery.html">FilterQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/FilterResults.html">FilterResults</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/FilteredSceneProcessor.html">FilteredSceneProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/FramingConstraint.html">FramingConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/FreezeTransform.html">FreezeTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Grid.html">Grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Group.html">Group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ImageScatter.html">ImageScatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ImageToPoints.html">ImageToPoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Instancer.html">Instancer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/InteractiveRender.html">InteractiveRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Isolate.html">Isolate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/LightToCamera.html">LightToCamera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/LocaliseAttributes.html">LocaliseAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MapOffset.html">MapOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MapProjection.html">MapProjection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MergeScenes.html">MergeScenes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MeshDistortion.html">MeshDistortion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MeshNormals.html">MeshNormals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MeshSegments.html">MeshSegments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MeshSplit.html">MeshSplit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MeshTangents.html">MeshTangents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MeshToPoints.html">MeshToPoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MeshType.html">MeshType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/MotionPath.html">MotionPath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ObjectToScene.html">ObjectToScene</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/OpenGLAttributes.html">OpenGLAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/OpenGLRender.html">OpenGLRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/OpenGLShader.html">OpenGLShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/OptionQuery.html">OptionQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/OptionTweaks.html">OptionTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Options.html">Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Orientation.html">Orientation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Outputs.html">Outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Parameters.html">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Parent.html">Parent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ParentConstraint.html">ParentConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/PathFilter.html">PathFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Plane.html">Plane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/PointConstraint.html">PointConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/PointsType.html">PointsType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/PrimitiveVariableExists.html">PrimitiveVariableExists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/PrimitiveVariableQuery.html">PrimitiveVariableQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/PrimitiveVariables.html">PrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Prune.html">Prune</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Rename.html">Rename</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Render.html">Render</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/RenderPassWedge.html">RenderPassWedge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/RenderPasses.html">RenderPasses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ResamplePrimitiveVariables.html">ResamplePrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ReverseWinding.html">ReverseWinding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Scatter.html">Scatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SceneElementProcessor.html">SceneElementProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SceneNode.html">SceneNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SceneProcessor.html">SceneProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SceneReader.html">SceneReader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SceneWriter.html">SceneWriter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Seeds.html">Scatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Set.html">Set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SetFilter.html">SetFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SetQuery.html">SetQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SetVisualiser.html">SetVisualiser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Shader.html">Shader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ShaderAssignment.html">ShaderAssignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ShaderBall.html">ShaderBall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ShaderQuery.html">ShaderQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ShaderTweaks.html">ShaderTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ShuffleAttributes.html">ShuffleAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/ShufflePrimitiveVariables.html">ShufflePrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Sphere.html">Sphere</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/StandardAttributes.html">StandardAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/StandardOptions.html">StandardOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/SubTree.html">SubTree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Text.html">Text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Transform.html">Transform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/TransformQuery.html">TransformQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/UDIMQuery.html">UDIMQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/UVSampler.html">UVSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Unencapsulate.html">Unencapsulate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/UnionFilter.html">UnionFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferScene/Wireframe.html">Wireframe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/GafferUSD/index.html">GafferUSD</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferUSD/USDAttributes.html">USDAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferUSD/USDLayerWriter.html">USDLayerWriter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferUSD/USDLight.html">USDLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferUSD/USDShader.html">USDShader</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/NodeReference/GafferVDB/index.html">GafferVDB</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferVDB/LevelSetOffset.html">LevelSetOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferVDB/LevelSetToMesh.html">LevelSetToMesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferVDB/MeshToLevelSet.html">MeshToLevelSet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferVDB/PointsGridToPoints.html">PointsGridToPoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferVDB/PointsToLevelSet.html">PointsToLevelSet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferVDB/SphereLevelSet.html">SphereLevelSet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Reference/NodeReference/GafferVDB/VolumeScatter.html">VolumeScatter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Reference/ScriptingReference/index.html">Scripting Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/ScriptingReference/CommonOperations/index.html">Common Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/ScriptingReference/StringSubstitutionSyntax/index.html">String Substitution Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/ScriptingReference/Expressions/index.html">Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/ScriptingReference/SetExpressions/index.html">Set Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/ScriptingReference/Metadata/index.html">Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Reference/CommandLineReference/index.html">Command Line Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/browser.html">browser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/cli.html">cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/dispatch.html">dispatch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/env.html">env</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/execute.html">execute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/gui.html">gui</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/license.html">license</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/python.html">python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/screengrab.html">screengrab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/stats.html">stats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/test.html">test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Reference/CommandLineReference/view.html">view</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Reference/ContextVariables/index.html">Context Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ReleaseNotes/index.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.3.9.0.html">1.3.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.3.8.0.html">1.3.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.3.7.0.html">1.3.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.3.6.1.html">1.3.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.3.6.0.html">1.3.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.3.5.0.html">1.3.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.3.4.0.html">1.3.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.3.3.0.html">1.3.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.3.2.0.html">1.3.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.3.1.0.html">1.3.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.3.0.0.html">1.3.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.10.5.html">1.2.10.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.10.4.html">1.2.10.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.10.3.html">1.2.10.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.10.2.html">1.2.10.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.10.1.html">1.2.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.10.0.html">1.2.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.9.0.html">1.2.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.8.0.html">1.2.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.7.0.html">1.2.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.6.0.html">1.2.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.5.0.html">1.2.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.4.0.html">1.2.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.3.0.html">1.2.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.2.0.html">1.2.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.1.1.html">1.2.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.1.0.html">1.2.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.0.2.html">1.2.0.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.0.1.html">1.2.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.2.0.0.html">1.2.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.9.7.html">1.1.9.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.9.6.html">1.1.9.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.9.5.html">1.1.9.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.9.4.html">1.1.9.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.9.3.html">1.1.9.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.9.2.html">1.1.9.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.9.1.html">1.1.9.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.9.0.html">1.1.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.8.0.html">1.1.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.7.0.html">1.1.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.6.1.html">1.1.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.6.0.html">1.1.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.5.0.html">1.1.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.4.0.html">1.1.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.3.0.html">1.1.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.2.0.html">1.1.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.1.0.html">1.1.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.1.0.0.html">1.1.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.0.6.6.html">1.0.6.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.0.6.5.html">1.0.6.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.0.6.4.html">1.0.6.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.0.6.3.html">1.0.6.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.0.6.2.html">1.0.6.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.0.6.1.html">1.0.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.0.6.0.html">1.0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.0.5.1.html">1.0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.0.5.0.html">1.0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.0.4.0.html">1.0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.0.3.0.html">1.0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.0.2.1.html">1.0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.0.2.0.html">1.0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.0.1.0.html">1.0.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ReleaseNotes/1.0.0.0.html">1.0.0.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Appendices/index.html">Appendices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Appendices/License/index.html">License</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Gaffer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Working with the Python Scripting API</a> &raquo;</li>
+      <li>Tutorial: Querying a Scene</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-querying-a-scene">
+<h1>Tutorial: Querying a Scene<a class="headerlink" href="#tutorial-querying-a-scene" title="Permalink to this headline"></a></h1>
+<p>Gaffer has a simple API for querying the scenes that are output from nodes. In this tutorial we’ll see how to use this API to traverse a scene hierarchy and examine its state.</p>
+<section id="making-a-scene">
+<h2>Making a scene<a class="headerlink" href="#making-a-scene" title="Permalink to this headline"></a></h2>
+<p>First off, we’ll create a simple scene using a network of basic nodes. Cut and paste the following into the Graph Editor to build the network. There’s no need to worry about the details of this part - it’s just a convenient way to create the network we need for the tutorial. If you do take a look though, you’ll see examples of the commands needed to create nodes, set values and make connections.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Gaffer</span>
+<span class="kn">import</span> <span class="nn">GafferScene</span>
+<span class="kn">import</span> <span class="nn">IECore</span>
+<span class="kn">import</span> <span class="nn">imath</span>
+
+<span class="n">__children</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Sphere&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">Sphere</span><span class="p">(</span> <span class="s2">&quot;Sphere&quot;</span> <span class="p">)</span>
+<span class="n">parent</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Sphere&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Sphere&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">V2fPlug</span><span class="p">(</span> <span class="s2">&quot;__uiPosition&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Sphere&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">V2fPlug</span><span class="p">(</span> <span class="s2">&quot;__uiPosition1&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Plane&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">Plane</span><span class="p">(</span> <span class="s2">&quot;Plane&quot;</span> <span class="p">)</span>
+<span class="n">parent</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Plane&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Plane&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">V2fPlug</span><span class="p">(</span> <span class="s2">&quot;__uiPosition&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Plane&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">V2fPlug</span><span class="p">(</span> <span class="s2">&quot;__uiPosition1&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">Group</span><span class="p">(</span> <span class="s2">&quot;Group&quot;</span> <span class="p">)</span>
+<span class="n">parent</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group&quot;</span><span class="p">][</span><span class="s2">&quot;in&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">ScenePlug</span><span class="p">(</span> <span class="s2">&quot;in1&quot;</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group&quot;</span><span class="p">][</span><span class="s2">&quot;in&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">ScenePlug</span><span class="p">(</span> <span class="s2">&quot;in2&quot;</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">V2fPlug</span><span class="p">(</span> <span class="s2">&quot;__uiPosition&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">V2fPlug</span><span class="p">(</span> <span class="s2">&quot;__uiPosition1&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Camera&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">Camera</span><span class="p">(</span> <span class="s2">&quot;Camera&quot;</span> <span class="p">)</span>
+<span class="n">parent</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Camera&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Camera&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">V2fPlug</span><span class="p">(</span> <span class="s2">&quot;__uiPosition&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Camera&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">V2fPlug</span><span class="p">(</span> <span class="s2">&quot;__uiPosition1&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">Group</span><span class="p">(</span> <span class="s2">&quot;Group1&quot;</span> <span class="p">)</span>
+<span class="n">parent</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group1&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group1&quot;</span><span class="p">][</span><span class="s2">&quot;in&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">ScenePlug</span><span class="p">(</span> <span class="s2">&quot;in1&quot;</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group1&quot;</span><span class="p">][</span><span class="s2">&quot;in&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">ScenePlug</span><span class="p">(</span> <span class="s2">&quot;in2&quot;</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">V2fPlug</span><span class="p">(</span> <span class="s2">&quot;__uiPosition&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">V2fPlug</span><span class="p">(</span> <span class="s2">&quot;__uiPosition1&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">StandardOptions</span><span class="p">(</span> <span class="s2">&quot;StandardOptions&quot;</span> <span class="p">)</span>
+<span class="n">parent</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">__children</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">V2fPlug</span><span class="p">(</span> <span class="s2">&quot;__uiPosition&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">V2fPlug</span><span class="p">(</span> <span class="s2">&quot;__uiPosition1&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;CustomAttributes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">CustomAttributes</span><span class="p">(</span> <span class="s2">&quot;CustomAttributes&quot;</span> <span class="p">)</span>
+<span class="n">parent</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">__children</span><span class="p">[</span><span class="s2">&quot;CustomAttributes&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;CustomAttributes&quot;</span><span class="p">][</span><span class="s2">&quot;attributes&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">NameValuePlug</span><span class="p">(</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">StringPlug</span><span class="p">(</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">),</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;member1&quot;</span><span class="p">,</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;CustomAttributes&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">V2fPlug</span><span class="p">(</span> <span class="s2">&quot;__uiPosition&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;CustomAttributes&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">V2fPlug</span><span class="p">(</span> <span class="s2">&quot;__uiPosition1&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;PathFilter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">GafferScene</span><span class="o">.</span><span class="n">PathFilter</span><span class="p">(</span> <span class="s2">&quot;PathFilter&quot;</span> <span class="p">)</span>
+<span class="n">parent</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">__children</span><span class="p">[</span><span class="s2">&quot;PathFilter&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;PathFilter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">V2fPlug</span><span class="p">(</span> <span class="s2">&quot;__uiPosition&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;PathFilter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">addChild</span><span class="p">(</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">V2fPlug</span><span class="p">(</span> <span class="s2">&quot;__uiPosition1&quot;</span><span class="p">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Default</span> <span class="o">|</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Flags</span><span class="o">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Sphere&quot;</span><span class="p">][</span><span class="s2">&quot;transform&quot;</span><span class="p">][</span><span class="s2">&quot;translate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="n">imath</span><span class="o">.</span><span class="n">V3f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Sphere&quot;</span><span class="p">][</span><span class="s2">&quot;__uiPosition&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mf">8.01966095</span><span class="p">,</span> <span class="mf">9.80717945</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Plane&quot;</span><span class="p">][</span><span class="s2">&quot;transform&quot;</span><span class="p">][</span><span class="s2">&quot;rotate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="n">imath</span><span class="o">.</span><span class="n">V3f</span><span class="p">(</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Plane&quot;</span><span class="p">][</span><span class="s2">&quot;dimensions&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Plane&quot;</span><span class="p">][</span><span class="s2">&quot;divisions&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2i</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Plane&quot;</span><span class="p">][</span><span class="s2">&quot;__uiPosition&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="o">-</span><span class="mf">4.33150482</span><span class="p">,</span> <span class="mf">9.96185112</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group&quot;</span><span class="p">][</span><span class="s2">&quot;in&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">setInput</span><span class="p">(</span> <span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Plane&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group&quot;</span><span class="p">][</span><span class="s2">&quot;in&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">setInput</span><span class="p">(</span> <span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Sphere&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="s1">&#39;geometry&#39;</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group&quot;</span><span class="p">][</span><span class="s2">&quot;__uiPosition&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mf">2.26130295</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.60483646</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Camera&quot;</span><span class="p">][</span><span class="s2">&quot;transform&quot;</span><span class="p">][</span><span class="s2">&quot;translate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="n">imath</span><span class="o">.</span><span class="n">V3f</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.10000002</span><span class="p">,</span> <span class="mf">5.30000019</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Camera&quot;</span><span class="p">][</span><span class="s2">&quot;__uiPosition&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mf">20.4540863</span><span class="p">,</span> <span class="mf">9.92141724</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group1&quot;</span><span class="p">][</span><span class="s2">&quot;in&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">setInput</span><span class="p">(</span> <span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group1&quot;</span><span class="p">][</span><span class="s2">&quot;in&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">setInput</span><span class="p">(</span> <span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Camera&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group1&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="s1">&#39;world&#39;</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group1&quot;</span><span class="p">][</span><span class="s2">&quot;__uiPosition&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mf">8.91635609</span><span class="p">,</span> <span class="o">-</span><span class="mf">12.811451</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;in&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setInput</span><span class="p">(</span> <span class="n">__children</span><span class="p">[</span><span class="s2">&quot;CustomAttributes&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;options&quot;</span><span class="p">][</span><span class="s2">&quot;renderCamera&quot;</span><span class="p">][</span><span class="s2">&quot;value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="s1">&#39;/world/camera&#39;</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;options&quot;</span><span class="p">][</span><span class="s2">&quot;renderCamera&quot;</span><span class="p">][</span><span class="s2">&quot;enabled&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="kc">True</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;options&quot;</span><span class="p">][</span><span class="s2">&quot;renderResolution&quot;</span><span class="p">][</span><span class="s2">&quot;enabled&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="kc">True</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;__uiPosition&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mf">10.4163561</span><span class="p">,</span> <span class="o">-</span><span class="mf">29.6934471</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;CustomAttributes&quot;</span><span class="p">][</span><span class="s2">&quot;in&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setInput</span><span class="p">(</span> <span class="n">__children</span><span class="p">[</span><span class="s2">&quot;Group1&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;CustomAttributes&quot;</span><span class="p">][</span><span class="s2">&quot;filter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setInput</span><span class="p">(</span> <span class="n">__children</span><span class="p">[</span><span class="s2">&quot;PathFilter&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;CustomAttributes&quot;</span><span class="p">][</span><span class="s2">&quot;attributes&quot;</span><span class="p">][</span><span class="s2">&quot;member1&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="s1">&#39;myString&#39;</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;CustomAttributes&quot;</span><span class="p">][</span><span class="s2">&quot;attributes&quot;</span><span class="p">][</span><span class="s2">&quot;member1&quot;</span><span class="p">][</span><span class="s2">&quot;value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="s1">&#39;aaa&#39;</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;CustomAttributes&quot;</span><span class="p">][</span><span class="s2">&quot;__uiPosition&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mf">10.4163561</span><span class="p">,</span> <span class="o">-</span><span class="mf">22.0981121</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;PathFilter&quot;</span><span class="p">][</span><span class="s2">&quot;paths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="n">IECore</span><span class="o">.</span><span class="n">StringVectorData</span><span class="p">(</span> <span class="p">[</span> <span class="s1">&#39;/world/geometry/sphere&#39;</span> <span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">__children</span><span class="p">[</span><span class="s2">&quot;PathFilter&quot;</span><span class="p">][</span><span class="s2">&quot;__uiPosition&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span> <span class="n">imath</span><span class="o">.</span><span class="n">V2f</span><span class="p">(</span> <span class="mf">21.2740936</span><span class="p">,</span> <span class="o">-</span><span class="mf">12.715106</span> <span class="p">)</span> <span class="p">)</span>
+
+<span class="k">del</span> <span class="n">__children</span>
+</pre></div>
+</div>
+</section>
+<section id="our-first-scene-queries">
+<h2>Our first scene queries<a class="headerlink" href="#our-first-scene-queries" title="Permalink to this headline"></a></h2>
+<p>Scenes are output from nodes through the out plug found at the bottom of each node. We make queries by calling methods of this plug. To refer to the plug in the Python Editor, we can either type a reference to it in directly, or middle-mouse drag it from the Graph Editor to the Python Editor. To query the output of the StandardOptions node we’ll be using the following :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Note that we’re just using Python dictionary syntax to access a node by name and then to access a named plug within it. This plug is the gateway to our queries, so let’s make our first query by getting the global settings from within the scene - these are settings created by the various Options nodes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">root</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">][</span><span class="s2">&quot;globals&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span> <span class="nb">type</span><span class="p">(</span> <span class="n">g</span> <span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">g</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;option:render:camera&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;option:render:resolution&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>There are a couple of things to note here. Firstly, although the out plug appears as a single plug in the Graph Editor, it actually has several child plugs, which allow different aspects of the scene to be queried. We accessed the <code class="docutils literal notranslate"><span class="pre">globals</span></code> plug using dictionary syntax, and then retrieved its value using the <code class="docutils literal notranslate"><span class="pre">getValue()</span></code> method. The result was an <code class="docutils literal notranslate"><span class="pre">IECore::CompoundObject</span></code> which we can pretty much treat like a dictionary, with the minor annoyance that we need to use <code class="docutils literal notranslate"><span class="pre">.value</span></code> to actually retrieve the final value we want.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">option:render:camera</span></code> globals entry tells us that the user wants to render through a camera called <code class="docutils literal notranslate"><span class="pre">/world/camera</span></code>, so let’s try to retrieve the object representing the camera. Just as the globals within the scene were represented by a <code class="docutils literal notranslate"><span class="pre">globals</span></code> plug, the objects are represented by an <code class="docutils literal notranslate"><span class="pre">object</span></code> plug. Maybe we can get the camera out using a simple <code class="docutils literal notranslate"><span class="pre">getValue()</span></code> call as before?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">root</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">][</span><span class="s2">&quot;object&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+<span class="n">Gaffer</span><span class="o">.</span><span class="n">ProcessException</span> <span class="p">:</span> <span class="n">line</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">Group1</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">object</span> <span class="p">:</span> <span class="n">Context</span> <span class="n">has</span> <span class="n">no</span> <span class="n">variable</span> <span class="n">named</span> <span class="s2">&quot;scene:path&quot;</span>
+</pre></div>
+</div>
+<p>That didn’t work out so well did it? The problem is that whereas the globals are <strong>global</strong>, different objects are potentially available at each point in the scene hierarchy - we need to say which part of the hierarchy we want the object from. We do that as follows :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">Gaffer</span><span class="o">.</span><span class="n">Context</span><span class="p">(</span> <span class="n">root</span><span class="o">.</span><span class="n">context</span><span class="p">()</span> <span class="p">)</span> <span class="k">as</span> <span class="n">context</span> <span class="p">:</span>
+	<span class="n">context</span><span class="p">[</span><span class="s2">&quot;scene:path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">IECore</span><span class="o">.</span><span class="n">InternedStringVectorData</span><span class="p">(</span> <span class="p">[</span> <span class="s1">&#39;world&#39;</span><span class="p">,</span> <span class="s1">&#39;camera&#39;</span> <span class="p">]</span> <span class="p">)</span>
+	<span class="n">camera</span> <span class="o">=</span> <span class="n">root</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">][</span><span class="s2">&quot;object&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span>
+	<span class="nb">print</span><span class="p">(</span> <span class="n">camera</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Context</span></code> class is central to the way Gaffer works - a single plug can output entirely different values depending on the <a class="reference internal" href="../../WorkingWithTheNodeGraph/Contexts/index.html"><span class="doc std std-doc">Context</span></a> in which <code class="docutils literal notranslate"><span class="pre">getValue()</span></code> is called. Here we provided a Context as a path within the scene, but for an image node we’d provide a Context with a tile location and channel name. Contexts allow Gaffer to multithread efficiently - each thread uses it’s own Context so each thread can be querying a different part of the scene or a different location in an image. That was a bit wordy though wasn’t it? For now let’s pretend we didn’t even take this detour and let’s use a utility method that does the same thing instead :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">camera</span> <span class="o">=</span> <span class="n">root</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">object</span><span class="p">(</span> <span class="s2">&quot;/world/camera&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Much better. Let’s take a look at what we got :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">camera</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">camera</span><span class="o">.</span><span class="n">parameters</span><span class="p">()[</span><span class="s2">&quot;projection&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">camera</span><span class="o">.</span><span class="n">parameters</span><span class="p">()[</span><span class="s2">&quot;focalLength&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">camera</span><span class="o">.</span><span class="n">parameters</span><span class="p">()[</span><span class="s2">&quot;clippingPlanes&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Again, the camera looks a lot like a dictionary, so queries aren’t too hard.</p>
+</section>
+<section id="further-queries">
+<h2>Further queries<a class="headerlink" href="#further-queries" title="Permalink to this headline"></a></h2>
+<p>Having our camera is all well and good, but we don’t know where it is located spatially. It might come as no surprise to find that transforms are represented as another child plug alongside <code class="docutils literal notranslate"><span class="pre">globals</span></code> and <code class="docutils literal notranslate"><span class="pre">object</span></code>, and that we can query it in the same way. This time we’ll skip that pesky Context stuff entirely, and use another utility method :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">transform</span> <span class="o">=</span> <span class="n">root</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span> <span class="s2">&quot;/world/camera&quot;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">transform</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>That gave us the local transform for the camera in the form of a matrix - we could also use the <code class="docutils literal notranslate"><span class="pre">fullTransform()</span></code> method if we wanted the global transform.</p>
+<p>That’s about all we want to know about the camera, but what about that sphere? Does it have any properties we might be interested in? We should be able to guess by now that we can get at the object and transform in the same way as we did for the camera :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphereObject</span> <span class="o">=</span> <span class="n">root</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">object</span><span class="p">(</span> <span class="s2">&quot;/world/geometry/sphere&quot;</span> <span class="p">)</span>
+<span class="n">sphereTransform</span> <span class="o">=</span> <span class="n">root</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span> <span class="s2">&quot;/world/geometry/sphere&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>But what about the CustomAttributes node that was applied to the sphere? How can we query what that did? Not surprisingly, the attributes of the sphere are retrieved via an <code class="docutils literal notranslate"><span class="pre">attributes</span></code> plug, or for the lazy Context dodgers amongst us, an <code class="docutils literal notranslate"><span class="pre">attributes()</span></code> utility method :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">root</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">attributes</span><span class="p">(</span> <span class="s2">&quot;/world/geometry/sphere&quot;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">a</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">a</span><span class="p">[</span><span class="s2">&quot;myString&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>If the sphere had a shader assigned to it, that would appear as <code class="docutils literal notranslate"><span class="pre">a[&quot;shader&quot;]</span></code>, but we’ve deliberately left that out for now to keep this tutorial renderer agnostic.</p>
+</section>
+<section id="traversing-the-hierarchy">
+<h2>Traversing the hierarchy<a class="headerlink" href="#traversing-the-hierarchy" title="Permalink to this headline"></a></h2>
+<p>One of the key features of the queries above was that they were random access - we could query any location in the scene at any time, without needing to query the parent locations first. That’s all well and good, but until now we’ve been using prior knowledge of the scene structure to decide what to query. In a real situation, our code doesn’t know that <code class="docutils literal notranslate"><span class="pre">/world/geometry/sphere</span></code> even exists. We need a means of querying the structure of the scene first, so that we can then query the contents at each location. Oddly enough, the structure is just communicated with another plug alongside the others - this time one called <code class="docutils literal notranslate"><span class="pre">childNames</span></code>. And oddly enough, there’s a utility method to help us get its value within the proper Context. Let’s start at the root and see what we can find :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">root</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">childNames</span><span class="p">(</span> <span class="s2">&quot;/&quot;</span> <span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">root</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">childNames</span><span class="p">(</span> <span class="s2">&quot;/world&quot;</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Rather than continue this manual exploration, let’s write a simple recursive function to traverse the scene and print what it finds :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visit</span><span class="p">(</span> <span class="n">scene</span><span class="p">,</span> <span class="n">path</span> <span class="p">)</span> <span class="p">:</span>
+
+	<span class="nb">print</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Transform : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span> <span class="n">scene</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Object : &quot;</span> <span class="o">+</span> <span class="n">scene</span><span class="o">.</span><span class="n">object</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span><span class="o">.</span><span class="n">typeName</span><span class="p">()</span> <span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Attributes : &quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">scene</span><span class="o">.</span><span class="n">attributes</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="p">)</span> <span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Bound : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span> <span class="n">scene</span><span class="o">.</span><span class="n">bound</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="p">)</span>
+	<span class="k">for</span> <span class="n">childName</span> <span class="ow">in</span> <span class="n">scene</span><span class="o">.</span><span class="n">childNames</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">:</span>
+		<span class="n">visit</span><span class="p">(</span> <span class="n">scene</span><span class="p">,</span> <span class="n">path</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span> <span class="s2">&quot;/&quot;</span> <span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span> <span class="n">childName</span> <span class="p">)</span> <span class="p">)</span>
+
+<span class="n">visit</span><span class="p">(</span> <span class="n">root</span><span class="p">[</span><span class="s2">&quot;StandardOptions&quot;</span><span class="p">][</span><span class="s2">&quot;out&quot;</span><span class="p">],</span> <span class="s2">&quot;/&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>That’s pretty much all there is to it. There’s a little more to learn in terms of the APIs for the particular Cortex objects that might be returned by a query, but the above examples hopefully provide a good starting point for exploration.</p>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../ThePythonEditor/index.html"><span class="doc std std-doc">The Python Editor</span></a></p></li>
+<li><p><a class="reference internal" href="../../WorkingWithTheNodeGraph/Contexts/index.html"><span class="doc std std-doc">Context</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../TutorialNodeGraphEditingInPython/index.html" class="btn btn-neutral float-left" title="Tutorial: Node Graph Editing in Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../TutorialStartupConfig1/index.html" class="btn btn-neutral float-right" title="Tutorial: Startup Config 1; Custom Global Context Variables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2011-2019 John Haddon, 2011-2019 Image Engine Design Inc..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
