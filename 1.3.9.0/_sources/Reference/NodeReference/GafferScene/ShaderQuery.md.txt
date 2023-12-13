@@ -1,0 +1,60 @@
+ShaderQuery
+===========
+
+Queries shader parameters from a scene location, creating outputs
+for each parameter.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+scene
+-----
+
+The scene to query the shader for.
+
+location
+--------
+
+The location within the scene to query the shader at.
+> Note : If the location does not exist then the query will not be
+> performed and all outputs will be set to their default values.
+
+shader
+------
+
+The name of the shader to query.
+> Note : If the shader does not exist then the query will not be
+> performed and all outputs will be set to their default values.
+
+inherit
+-------
+
+Queries inherited shader assignments if the location has no local
+assignment of its own.
+
+queries
+-------
+
+The shader parameters to be queried - arbitrary numbers of shader
+parameters may be added as children of this plug via the user interface,
+or via python. Each child is a `NameValuePlug` whose `name` plug is
+the shader parameter to query, and whose `value` plug is the default
+value to use if the shader parameter can not be retrieved.
+
+The full network of the shader given by `shader` is available
+to be queried. Parameters on shaders in the network other than the
+output shader can be specified as `shaderName.parameterName`.
+
+> Note : If either the shader or parameter does not exist then the
+> query will not be performed and all outputs will be set to their
+> default values.
+
+out
+---
+
+The parent plug of the query outputs. The order of outputs corresponds
+to the order of children of `queries`.
