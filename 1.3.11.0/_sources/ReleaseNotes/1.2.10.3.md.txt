@@ -1,0 +1,8 @@
+1.2.10.3
+========
+
+Fixes
+-----
+
+- DispatchDialogue : Changed the button label for the results display from "Ok" to "Close".
+
