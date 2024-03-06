@@ -1,0 +1,213 @@
+1.3.0.0
+=======
+
+Features
+--------
+
+- MeshNormals : Added a new node for adjusting mesh normals.
+- VolumeScatter : Added a new node for scattering points throughout a volume.
+- Cycles : Updated to version 3.5.0.
+- LightTool : Added 3d viewer tool for manipulating lights. Manipulation of spot light cone and penumbra angles is currently supported.
+
+Improvements
+------------
+
+- 3D Viewer :
+  - Added OpenColorIO colour management.
+  - Added exposure, gamma and solo channel settings.
+  - Ancestors and siblings of locations included in the Visible Set are no longer drawn while their ancestors are collapsed.
+  - Added red wireframe colour to the bounding box of locations excluded from the Visible Set.
+- UVInspector : Added exposure, gamma and solo channel settings.
+- ImageReader : The `colorSpace` widget now displays the name of the assumed colorspace when in `Automatic` mode.
+- ImageReader, ImageWriter : The `colorSpace` menu is now filtered using the `file-io` category, if the current OpenColorIO config provides it.
+- ImageReader, OpenImageIOReader : Added `fileValid` BoolPlug that outputs `True` if the required file exists for the current frame.
+- OpenColorIO :
+  - Updated default config to ACES Studio 1.3.
+  - Added `openColorIO` plug to ScriptNode, allowing the OpenColorIO config, working space, variables and display transform to be customised on a per-script basis.
+  - Improved colorspace menus :
+    - Organised colorspaces into submenus by family.
+    - Removed unwanted title-casing, so that names are now displayed verbatim.
+    - Added control over the presence of roles by registering `openColorIO:includeRoles` metadata to the relevant plugs.
+  - Improved View display transform menu :
+    - Ordered menu items to match the order in the OpenColorIO config.
+    - Removed "Default" view.
+    - Added menu options for changing the current Display.
+    - Allowed the available views to be filtered using an `openColorIO:activeViews` metadata value registered on the View's `displayTransform.name` plug. Values should be space-separated names, optionally containing wildcards.
+  - OpenColorIOContext : Added a new node that creates Gaffer context variables to define the OpenColorIO config used by upstream nodes. This allows different OpenColorIO configs to be used in different Gaffer contexts.
+  - OpenColorIOTransform :
+    - Improved performance.
+    - Improved detection of no-op transforms, such as when converting between colorspace aliases like `scene_linear` and `ACEScg`.
+  - ColorSpace : Defaulted the input and output space to the current working space.
+  - DisplayTransform : Defaulted the input space to the current working space, and the display and view to the defaults defined by the current OpenColorIO config.
+  - ArnoldColorManager : Improved defaults to match Gaffer's current OpenColorIO configuration.
+- Seeds :
+  - Renamed to Scatter.
+  - Added sampling of primitive variables from the source mesh onto the scattered points, controlled using the new `primitiveVariables` plug.
+  - Added `referencePosition` plug to allow point distribution to be fixed on animated meshes.
+  - Added `uv` plug to allow the space within which the points are scattered to be controlled.
+  - Added support for density primitive variable values above `1`.
+  - Improved numerical accuracy.
+  - Improved performance.
+- VectorDataPlugValueWidget : Computation errors are now reflected by a red background colour.
+- VectorWarp : Added `Bilinear` filter, for faster but lower quality warping.
+- Dilate, Erode, Median, Resample, Resize, ImageTransform, Blur, VectorWarp : Improved performance significantly. For example, a Blur with a large radius is now almost 6x faster.
+- RotateTool : Added the ability to rotate an axis whose plane of rotation is parallel or nearly parallel to the view.
+- OptionQuery : Added support for querying generic `IECore::Object` values using an `ObjectPlug`.
+- HierarchyView :
+  - Added support for inclusion and exclusion of leaf level locations to the Visible Set.
+  - Added <kbd>F</kbd> shortcut to expand ancestors and frame selected paths. This replaces the previous behaviour of automatic updates to expansion and framing in the HierarchyView on selection change.
+- CyclesOptions :
+  - Added `useLightTree` plug.
+  - Added path guiding options.
+- CyclesAttributes :
+  - Added `emissionSamplingMethod` plug.
+  - Added `isCausticsCaster` and `isCausticsReceiver` plugs.
+- Render : Improved clearing of the compute and hash caches prior to rendering, potentially providing more memory to the renderer. Note that clearing is now only performed in the `execute` and `dispatch` apps.
+
+Fixes
+-----
+
+- UVInspector : Removed display transform from UV wireframes and grid.
+- Viewer :
+  - Gamma is now applied after the display transform, not before.
+  - Fixed image viewer's active tile indicators from becoming stuck when a computation was cancelled.
+- Expression : Fixed parsing of Python expressions combining subscripts (`[]`) and `context` methods ([#3088](https://github.com/GafferHQ/gaffer/issues/3088), [#3613](https://github.com/GafferHQ/gaffer/issues/3613), [#5250](https://github.com/GafferHQ/gaffer/issues/5250)).
+- ConnectionCreatorWrapper : Fixed bug which forced PlugAdder derived classes to implement `updateDragEndPoint()` unnecessarily.
+- Plug : Fixed bug which caused stale values to be retrieved from the cache for plugs that had been renamed.
+- ValuePlug : Fixed results when graph edits and computes are interleaved within a DirtyPropagationScope ([#1971](https://github.com/GafferHQ/gaffer/issues/1971)).
+- OpenColorIOTransform : Fixed error processing deep image tiles containing no samples.
+- Seeds :
+  - Fixed duplicate points at triangle edges.
+  - Fixed handling of points exactly at the density threshold.
+- ObjectSource, Group : Prevented the creation of locations with invalid names - `..`, `...` or anything containing `/` or a filter wildcard.
+- BranchCreator : Prevented the use of `...` and other filter wildcards in the `destination`.
+- TranslateTool : Fixed dragging in a plane parallel to an orthographic view. Translation in that case now behaves the same as dragging an axis.
+- Window : Fixed handling of `**kw` constructor arguments. These were being passed to the `QWidget` constructor where they caused errors, instead of being passed to the ContainerWidget base class.
+- PresetsPlugValueWidget : Fixed label update for context-sensitive presets.
+- PlugValueWidget : Fixed value update when auxiliary plugs depend on the context but the primary plugs do not.
+- Cycles : Fixed handling of `cycles:shader:volume_sampling_method` and `cycles:shader:volume_interpolation_method` attributes, which were being ignored previously.
+- OptionQuery : Fixed bug which allowed duplicate queries to be added in the UI.
+
+API
+---
+
+- GraphComponent :
+  - Added an `oldName` argument to `nameChangedSignal()` slot signature.
+  - Added a `nameChanged()` protected virtual method, which can be overridden to receive notifications of name changes before
+    they are made public by `nameChangedSignal()`.
+  - Colon (`:`) is now an allowed character in names.
+- View : Added DisplayTransform add-on class which can be used to add colourspace management to any View.
+- ViewportGadget : A post-process shader can now be applied to any layer, not just the main one.
+- SceneGadget : Added `setLayer()` and `getLayer()` methods, which allow the destination `Gadget::Layer` to be specified.
+- TestCase : Added `ignoreMessage()` method, to register messages that should not be treated as test failures.
+- OpenColorIOTransform : Automated image pass-throughs when the `transform()` method returns a no-op. Derived classes no longer need to implement their own pass-through.
+- OpenColorIOTransformUI :
+  - Added support for `openColorIO:categories` and `openColorIO:includeRoles` metadata to `colorSpacePresetNames()`. These may be registered on a per-plug basis to control the colorspaces shown for that plug.
+  - Added support for `openColorIO:extraPresetNames` and `openColorIO:extraPresetValues` metadata to add presets not defined by the OpenColorIO config.
+- OpenColorIOAlgo : Added a new namespace that allows the OpenColorIO config and working space to be defined via the Gaffer context.
+- OpenColorIOConfigPlug : Added a new plug type to aid in configuring the OpenColorIO context for a ScriptNode.
+- ImageReader/ImageWriter : Added a `config` argument to the `DefaultColorSpaceFunction` definition. This is passed the OpenColorIO config currently being used by the node.
+- ValuePlug :
+  - Added Python bindings for derived classes' `ValueType` type alias.
+  - Added `now` argument to `clearHashCache()` method.
+- Color4fVectorDataPlug : Added a plug type for storing arrays of `Color4f`.
+- TypedObjectPlug : Added default value for `direction` and `defaultValue` constructor arguments.
+- VectorDataWidget : Added `setErrored()` and `getErrored()` methods to control an error state. Errors are reflected by a red background colour.
+- PlugLayout :
+  - Added support for `layout:minimumWidth` metadata.
+  - Tabs are now hidden if all their child plugs are hidden by `layout:visibilityActivator` metadata.
+- PlugValueWidget :
+  - Added `typeMetadata` argument to `create()` to use an alternative key to `plugValueWidget:type` when looking up widget type.
+  - Added `_valuesDependOnContext()` method which may be overridden by derived classes.
+- PresetsPlugValueWidget : Added `presetsPlugValueWidget:customWidgetType` metadata, to allow the type for the custom widget to be specified.
+- TabbedContainer : Added `setTabVisible()` and `getTabVisible()` methods.
+- Removed use of `RTLD_GLOBAL` for loading Python modules.
+- SceneAlgo : Added `validateName()` function.
+- Sampler : Added `visitPixels()` method, which provides an optimised method for accessing all pixels in a region.
+- Handle::AngularDrag : Added `isLinearDrag()` method.
+- Widget : Added per-widget control over colour display transforms via new `setDisplayTransform()`, `getDisplayTransform()` and `displayTransform()` methods.
+- VisibleSet : Added `VisibleSet::Visibility` struct containing `drawMode` and `descendantsVisible` members.
+- ValuePlug : Improved `getValue()` performance, particularly when retrieving previously computed values from the cache. One benchmark shows a 50% reduction in runtime when the cache is under heavy contention from many threads.
+- PathListingWidget :
+  - Added `expandToSelection()` method.
+  - Added `scrollToFirst()` method to scroll to the first path found in the provided PathMatcher.
+
+Breaking Changes
+----------------
+
+- Appleseed : Removed Appleseed support. We suggest Cycles as an actively maintained open-source alternative.
+- ColorSwatch, ColorChooser, ColorChooserDialogue : Removed `useDisplayTransform` constructor argument. Use `Widget.setDisplayTransform()` instead.
+- GraphComponent : Changed slot signature for `nameChangedSignal()`.
+- GLWidget :
+  - A GL context is no longer available in `_resize()`.
+  - Removed `BufferOptions.Double`.
+- GadgetWidget : Removed `bufferOptions` constructor argument.
+- ImageView :
+  - Removed `lutGPU` plug.
+  - Removed DisplayTransform methods. Use `View::DisplayTransform` instead.
+  - Moved `exposure`, `gamma`, `clipping` and `soloChannel` plugs under a `displayTransform` parent plug.
+  - Moved the `displayTransform` plug to `displayTransform.name`.
+- ViewportGadget : Changed function signature for `setPostProcessShader()` and `getPostProcessShader()`.
+- UVInspector : Moved the `displayTransform` plug to `displayTransform.name`.
+- ImageReader : Renamed `None` preset to `Automatic`.
+- ImageReader/ImageWriter : Added a `config` argument to `DefaultColorSpaceFunction`. If implementing such a function in Python, it can be compatible with both Gaffer 1.2 and 1.3 if the argument is declared as `config = PyOpenColorIO.GetCurrentConfig()`.
+- OpenColorIOTransform :
+  - Removed `availableColorSpaces()` and `availableRoles()` methods.
+  - Deprecated `context` plug.
+- OpenColorIO : Changed default config.
+- PathListingWidget : Removed `expandNonLeaf` argument from `setSelection()` and `setSelectedPaths()` methods.
+- Subprocess32 : Removed Python module.
+- Six : Removed Python module.
+- Gaffer : Class constructors are now declared explicit disabling implicit conversions.
+- Seeds :
+  - Renamed to Scatter.
+  - Bugs fixes have made small changes to the point distribution.
+- ColorProcessor : Refactored virtual methods that must be implemented by derived classes :
+  - Replaced `processColorData()` with `colorProcessor()` method that returns a `ColorProcessorFunction`.
+  - Replaced `affectsColorData()` with `affectsColorProcessor()` and `hashColorData()` with `hashColorProcessor()`.
+  - Simplified implementation of pass-throughs when the color processor is a no-op. Derived classes may simply
+    return an empty `ColorProcessorFunction`, and everything else is taken care of in the base class.
+- PlugValueWidget :
+  - Removed support for deprecated `layout:widgetType` metadata. Use `plugValueWidget:type` metadata instead.
+  - Removed `useTypeOnly` argument from `create()` function. Pass `typeMetadata = None` instead.
+- MeshTangents : Changed the edge used by `Mode::FirstEdge`.
+- Handle::AngularDrag : Fixed mismatch between comment and implementation regarding the axis for zero rotation. The constructor arguments `axis0` and `axis1` were changed to `normal` and `axis0` respectively.
+- Preferences : Removed `displayColorSpace` plug. Use the ScriptNode's `openColorIO` plug instead.
+- GafferUI.DisplayTransform : Removed. Use `Widget.setDisplayTransform()` instead.
+- ColorSpace : The `inputSpace` and `outputSpace` default values are now interpreted as the working space rather than as invalid spaces. This means that a node where only one space has been specified is no longer a pass-through as it was before.
+- DisplayTransform :
+  - The `inputSpace` default value is now interpreted as the working space rather than as an invalid space. This means that a node without `inputSpace` specified is no longer a pass-through as it was before.
+  - The `display` and `view` default values are now interpreted as the default defined by the current OpenColorIO config, rather than as invalid values. This means that a node without `display` or `view` specified is no longer a pass-through as it was before.
+- gaffer test : Replaced `-performanceOnly` flag with `-category` argument which may be set to `performance` for the same as the old `-performanceOnly`, or `standard` for the converse.
+- VisibleSet : Renamed `VisibleSet::match()` to `visibility()` and changed return type.
+- SceneView : Removed `gridPlug()` method.
+- TypedPlug : Moved implementation code from `TypedPlug.inl` to `TypedPlugImplementation.h`.
+- TypedObjectPlug : Moved implementation code from `TypedObjectPlug.inl` to `TypedObjectPlugImplementation.h`.
+- Xerces : Removed. This library was only needed by Appleseed.
+- CyclesAttributes : Replaced `useMis` with `emissionSamplingMethod`.
+
+Build
+-----
+
+- Boost :
+  - Updated to version 1.80.0.
+  - Stopped linking unnecessarily to `iostreams`, `date_time`, `wave` and `system` libraries.
+- Cortex : Updated to version 10.5.0.0.
+- Cycles : Updated to version 3.5.0.
+- Imath : Added version 3.1.7.
+- MaterialX : Added version 1.38.4.
+- Minizip : Added version 3.0.9.
+- OpenColorIO : Updated to version 2.2.1.
+- OpenEXR :
+  - Updated to version 3.1.7.
+  - Stopped linking unnecessarily to the `IlmImf` library.
+- OpenImageIO : Updated to version 2.4.11.0.
+- OpenPGL : Added version 0.4.1.
+- Partio : Added version 1.14.6.
+- PCG : Added latest version.
+- PyBind11 : Updated to version 2.10.4.
+- PySide : Updated to version 5.15.8.
+- Qt : Updated to version 5.15.8.
+- USD : Updated to version 23.05.
+- ZLib : Added version 1.2.13.
+

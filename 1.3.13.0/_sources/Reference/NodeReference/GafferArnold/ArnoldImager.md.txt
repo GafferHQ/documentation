@@ -1,0 +1,52 @@
+ArnoldImager
+============
+
+Assigns an imager. This is stored as an `ai:imager` option in Gaffer's
+globals, and applied to all render outputs.
+
+> Tip : Use the `layer_selection` parameter on each imager to control
+> which AOVs the imager applies to.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+imager
+------
+
+The imager to be assigned. The output of an ArnoldShader node
+holding an imager should be connected here. Multiple imagers may be
+assigned at once by chaining them together via their `input`
+parameters, and then assigning the final imager via the ArnoldImager
+node.
+
+mode
+----
+
+The mode used to combine the `imager` input with any imagers that
+already exist in the globals.
+
+- Replace : Removes all pre-existing imagers, and replaces them with
+  the new ones.
+- InsertFirst : Inserts the new imagers so that they will be run before
+  any pre-existing imagers.
+- InsertLast : Inserts the new imagers so that they will be run after
+  any pre-existing imagers.
