@@ -36,6 +36,7 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       with:
+        base: gh-pages
         commit-message: "${{steps.update.outputs.title}}\n\n${{steps.update.outputs.body}}"
         title: ${{steps.update.outputs.title}}
         body: ${{steps.update.outputs.body}}
