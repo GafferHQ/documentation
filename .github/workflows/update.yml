@@ -2,6 +2,8 @@ name: Update from Releases
 
 on:
   push:
+    branches:
+      - gh-pages
   schedule:
      # At the end of every day
      - cron: 0 0 * * *
