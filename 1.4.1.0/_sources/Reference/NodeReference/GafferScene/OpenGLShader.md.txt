@@ -1,0 +1,50 @@
+OpenGLShader
+============
+
+Loads GLSL shaders for use in the viewer and the OpenGLRender node.
+GLSL shaders are loaded from *.frag and *.vert files in directories
+specified by the IECOREGL_SHADER_PATHS environment variable.
+
+Use the ShaderAssignment node to assign shaders to objects in the
+scene.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+name
+----
+
+The name of the shader being represented. This should
+be considered read-only. Use the Shader.loadShader()
+method to load a shader.
+
+type
+----
+
+The type of the shader being represented. This should
+be considered read-only. Use the Shader.loadShader()
+method to load a shader.
+
+attributeSuffix
+---------------
+
+Suffix for the attribute used for shader assignment.
+
+parameters
+----------
+
+Where the parameters for the shader are represented.
+
+enabled
+-------
+
+Turns the node on and off.
+
+out
+---
+
+The output from the shader.
