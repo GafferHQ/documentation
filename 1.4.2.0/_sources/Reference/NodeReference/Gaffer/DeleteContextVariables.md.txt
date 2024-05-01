@@ -1,0 +1,21 @@
+DeleteContextVariables
+======================
+
+Removes variables from the Context so that they won't be visible to upstream nodes.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+enabled
+-------
+
+Turns the node on and off.
+
+variables
+---------
+
+The variables to be deleted.
