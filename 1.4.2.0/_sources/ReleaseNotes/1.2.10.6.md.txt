@@ -1,0 +1,8 @@
+1.2.10.6
+========
+
+Fixes
+-----
+
+- Context : Fixed potential crash when setting a variable with ownership.
+

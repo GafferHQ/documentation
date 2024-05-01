@@ -1,0 +1,65 @@
+Parent
+======
+
+Parents additional child hierarchies into the main scene hierarchy.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+parent
+------
+
+The location which the children are parented under. This is
+ignored when a filter is connected, in which case the children
+are parented under all the locations matched by the filter.
+
+destination
+-----------
+
+The location where the children will be placed in the output scene.
+The default is to place the children under the parent, but they may
+be relocated anywhere while still inheriting the parent's transform.
+This is particularly useful when parenting lights to geometry but
+wanting to group them and control their visibility separately.
+
+When the destination is evaluated, the `${scene:path}` variable holds
+the source location matched by the filter. This allows the children
+to be placed relative to the "parent". For example, `${scene:path}/..`
+will place the children alongside the "parent" rather than under it.
+
+children
+--------
+
+The child hierarchies to be parented.
+
+parentVariable
+--------------
+
+A context variable used to pass the location of the parent to the
+upstream nodes connected into the `children` plug. This can be used
+to procedurally vary the children at each different parent location.
