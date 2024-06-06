@@ -1,0 +1,39 @@
+LocaliseAttributes
+==================
+
+Copies inherited attributes into local attributes.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+attributes
+----------
+
+The names of the attributes to localise. These should be
+separated by spaces and can use Gaffer's standard wildcards
+to match multiple attributes.

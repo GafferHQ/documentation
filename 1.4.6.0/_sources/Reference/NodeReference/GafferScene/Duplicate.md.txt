@@ -1,0 +1,76 @@
+Duplicate
+=========
+
+Duplicates a part of the scene. The duplicates
+are parented alongside the original, and have
+a transform applied to them.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+parent
+------
+
+For internal use only.
+
+destination
+-----------
+
+The location where the copies will be placed in the output scene.
+The default value places them alongside the original.
+
+target
+------
+
+The part of the scene to be duplicated.
+
+> Caution : Deprecated. Please connect a filter instead.
+
+copies
+------
+
+The number of copies to be made.
+
+name
+----
+
+The name given to the copies. If this
+is left empty, the name from the target
+will be used instead. The names will have
+a numeric suffix applied to distinguish
+between the different copies, unless only a
+single copy is being made. Even in the case
+of a single copy, a suffix will be applied
+if necessary to keep the names unique.
+
+transform
+---------
+
+The transform to be applied to the copies. The transform
+is applied iteratively, so the second copy is transformed
+twice, the third copy is transformed three times and so on.
