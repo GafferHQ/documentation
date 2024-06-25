@@ -1,0 +1,57 @@
+LevelSetToMesh
+==============
+
+Converts a level set VDB object to a mesh primitive .
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+adjustBounds
+------------
+
+Adjusts bounding boxes to account for the changes made to the object.
+
+> Caution : Adjusting boundings boxes has a performance penalty.
+> If you do not need accurate bounds or you know that the bounds
+> will only change slightly, you may prefer to turn this off.
+
+grid
+----
+
+Name of the level set grid to create a mesh primitive from.
+
+isoValue
+--------
+
+Value which defines the isosurface to convert to a mesh primitive.
+Usually this is set to zero but setting a small positive number will generate a dilated mesh and negative will create an eroded mesh.
+
+adaptivity
+----------
+
+Adaptively generate fewer polygons from level set. 0 - uniform meshing, 1 - maximum level of adaptivity.
