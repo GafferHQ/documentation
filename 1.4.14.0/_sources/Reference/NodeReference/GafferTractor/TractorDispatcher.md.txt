@@ -1,0 +1,135 @@
+TractorDispatcher
+=================
+
+Dispatches tasks by spooling them to a renderfarm
+managed by Pixar's Tractor software.
+
+This dispatcher deliberately provides a very simple
+one-to-one mapping between Gaffer's nodes and plugs
+and Tractor's Tasks and attributes. This can be
+customised on a site-by-site basis with user defaults
+and expressions for the plugs, or for more complete
+control, with TractorDispatcher.preSpoolSignal().
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+preTasks
+--------
+
+Input connections to upstream nodes which must be
+executed before this node.
+
+postTasks
+---------
+
+Input connections to nodes which must be
+executed after this node, but which don't
+need to be executed before downstream nodes.
+
+task
+----
+
+Output connections to downstream nodes which must
+not be executed until after this node.
+
+dispatcher
+----------
+
+Container for custom plugs which dispatchers use to
+control their behaviour.
+
+dispatcher.batchSize
+--------------------
+
+Maximum number of frames to batch together when dispatching tasks.
+If the node requires sequence execution `batchSize` will be ignored.
+
+dispatcher.immediate
+--------------------
+
+Causes this node to be executed immediately upon dispatch,
+rather than have its execution be scheduled normally by
+the dispatcher. For instance, when using the LocalDispatcher,
+the node will be executed immediately in the dispatching process
+and not in a background process as usual.
+
+When a node is made immediate, all upstream nodes are automatically
+considered to be immediate too, regardless of their settings.
+
+dispatcher.tractor
+------------------
+
+Settings that control how tasks are
+dispatched to Tractor.
+
+dispatcher.tractor.service
+--------------------------
+
+A Tractor "service key expression" used to select
+blades on which tasks will be executed.
+
+dispatcher.tractor.tags
+-----------------------
+
+A space separated list of tags that can be
+used with Tractor's limits to constrain
+the number of concurrent tasks. Typically this is
+used to ensure that tasks using commercial
+software do not exceed the available license
+count.
+
+tasks
+-----
+
+The tasks to be executed by this dispatcher.
+
+framesMode
+----------
+
+Determines the active frame range to be dispatched as
+follows :
+
+  - CurrentFrame dispatches the current frame only, as
+    specified by the `${frame}` context variable.
+  - FullRange uses the full frame range as specified by the
+    `${frameRange:start}` and `${frameRange:end}`
+    context variables.
+  - CustomRange uses a user defined range, as specified by
+    the `frameRange` plug.
+
+frameRange
+----------
+
+The frame range to be used when framesMode is "CustomRange".
+
+jobName
+-------
+
+A descriptive name for the job.
+
+jobsDirectory
+-------------
+
+A directory to store temporary files used by the dispatcher.
+
+service
+-------
+
+A Tractor "service key expression" used to select
+blades on which tasks will be executed. The default
+value matches all blades. Typically this default is
+sufficient for the job itself, but more restrictive
+values may be needed for the dispatcher.tractor.service
+plugs on each dispatched node.
+
+envKey
+------
+
+An arbitrary key passed to the remote Tractor blade,
+to be used by environment handlers which configure
+the way the blade launches commands.
