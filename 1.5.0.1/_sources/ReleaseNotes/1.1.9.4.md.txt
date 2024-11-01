@@ -1,0 +1,8 @@
+1.1.9.4
+=======
+
+Fixes
+-----
+
+- Viewer : Fixed bugs which could prevent an object from being updated if its computation was previously interrupted.
+

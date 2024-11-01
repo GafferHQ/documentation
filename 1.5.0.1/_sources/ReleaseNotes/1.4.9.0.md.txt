@@ -1,0 +1,50 @@
+1.4.9.0
+=======
+
+Improvements
+------------
+
+- Cryptomatte : Renamed `__manifestScene` plug to `manifestScene` so it is no longer considered to be private.
+- EditScopePlugValueWidget : Width can now be configured via `<layoutName>:width` metadata. This enables customisation of the Edit Scope menu width by registering metadata in a startup file, such as `Gaffer.Metadata.registerValue( GafferSceneUI.RenderPassEditor.Settings, "editScope", "layout:width", 450 )` to double the standard width of the Edit Scope menu in the Render Pass Editor.
+- ArnoldShader :
+  - The following parameters are now visible in the GraphEditor :
+    - The `aov_input` parameter of the `aov_write_int` shader.
+    - The `data_input` parameter of the `color_jitter` shader.
+    - The `input_int` and `seed` parameters of the `random` shader.
+    - The `index` parameters of the `switch_rgba` and `switch_shader` shaders.
+    - The `default` parameter of the `user_data_int` shader.
+  - The following parameters can now be made visible in the GraphEditor :
+    - The `flake_layers` parameter of the `car_paint` shader.
+    - The `data_seed`, `proc_seed`, `obj_seed`, and `face_seed` parameters of the `color_jitter` shader.
+- EditScope : Added summaries of set membership edits in the NodeEditor.
+- LightEditor : Mute and solo columns now accurately reflect the presence of the `light:mute` attribute (for the Mute column) and membership in the `soloLights` set (for the Solo column) for all scene locations, not just for lights.
+- RenderPassEditor : The currently active render pass can now be unset by double clicking on its green dot in the "Active" column.
+- HierarchyView, LightEditor, RenderPassEditor, SetEditor : Reduced potential UI stalls when first showing a scene.
+- ShaderTweaks : Added support for wildcards in the shader name, in order to tweak multiple shaders at once.
+
+Fixes
+-----
+
+- HierarchyView, LightEditor, PrimitiveInspector, SceneInspector : Fixed bug which allowed scenes from private plugs to be displayed.
+- PrimitiveInspector : Fixed bug which claimed "Location does not exist" for objects without any primitive variables.
+- OpenColorIO : Fixed the display transform used to show colours in popups.
+- SceneInspector : Fixed "Show History" menu items.
+- ImageGadget : Fixed loading of non-8-bit images. Among other things, this fixes the display of 16 bit node icons in the GraphEditor.
+- Arnold : Fixed rendering of VDB volumes without `file_mem_bytes` metadata.
+- Cycles : Fixed bug preventing a background light from being added to a light group.
+- LightEditor : Fixed regression (introduced in 1.4.8.0) causing the mute and solo icons to not show up for groups.
+- Windows : Fixed conflicts with other software installations on `PATH`. The `PXR_USD_WINDOWS_DLL_PATH` environment variable is now set to an empty string if it is not already set, preventing USD from adding all entries from `PATH` to Python's DLL search paths.
+- AnnotationsGadget : Fixed potential hang in `annotationText()` Python binding.
+- FormatPlug : Fixed potential hang in `acquireDefaultFormatPlug()` Python binding.
+- ImageReader : Fixed array metadata loading bugs, including the loading of `ICCProfile` metadata.
+
+API
+---
+
+- PopupWindow : Added `parent` argument to `popup()` method. This allows popup windows to inherit the display transform from the main UI.
+
+Build
+-----
+
+- Cortex : Updated to version 10.5.9.1.
+
