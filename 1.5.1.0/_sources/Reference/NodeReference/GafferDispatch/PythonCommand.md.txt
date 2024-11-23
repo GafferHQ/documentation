@@ -1,0 +1,126 @@
+PythonCommand
+=============
+
+Runs python code.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+preTasks
+--------
+
+Input connections to upstream nodes which must be
+executed before this node.
+
+postTasks
+---------
+
+Input connections to nodes which must be
+executed after this node, but which don't
+need to be executed before downstream nodes.
+
+task
+----
+
+Output connections to downstream nodes which must
+not be executed until after this node.
+
+dispatcher
+----------
+
+Container for custom plugs which dispatchers use to
+control their behaviour.
+
+dispatcher.batchSize
+--------------------
+
+Maximum number of frames to batch together when dispatching tasks.
+If the node requires sequence execution `batchSize` will be ignored.
+
+dispatcher.immediate
+--------------------
+
+Causes this node to be executed immediately upon dispatch,
+rather than have its execution be scheduled normally by
+the dispatcher. For instance, when using the LocalDispatcher,
+the node will be executed immediately in the dispatching process
+and not in a background process as usual.
+
+When a node is made immediate, all upstream nodes are automatically
+considered to be immediate too, regardless of their settings.
+
+dispatcher.tractor
+------------------
+
+Settings that control how tasks are
+dispatched to Tractor.
+
+dispatcher.tractor.service
+--------------------------
+
+A Tractor "service key expression" used to select
+blades on which tasks will be executed.
+
+dispatcher.tractor.tags
+-----------------------
+
+A space separated list of tags that can be
+used with Tractor's limits to constrain
+the number of concurrent tasks. Typically this is
+used to ensure that tasks using commercial
+software do not exceed the available license
+count.
+
+command
+-------
+
+The command to run. This may reference any of the
+variables by name, and also the node itself as `self`
+and the current Context as `context`.
+
+variables
+---------
+
+An arbitrary set of variables which can be accessed via
+the `variables` dictionary within the python command.
+
+framesMode
+----------
+
+Determines how tasks for different frames are distributed
+between calls to the command :
+
+- Single : The command will be called for a single frame at a time.
+- Batch : The command will be called once for each batch of frames
+  defined by `dispatcher.batchSize`.
+- Sequence : The command will be called once for all frames.
+
+In Batch and Sequences modes, an additional variable called `frames`
+is available to the command, containing a list of all frame
+numbers for which execution should be performed. The Context may
+be updated to reference any frame from this list, and accessing
+a variable returns the value for the current frame.
+
+A typical structure for the command might look something like this :
+
+```
+# Do some one-time initialization
+...
+# Process all frames
+for frame in frames :
+        context.setFrame( frame )
+        # Read variables after setting the frame to get
+        # the right values for that frame.
+        v = variables["v"]
+        ...
+# Do some one-time finalization
+...
+```
+
+> Note : In Single mode, the command will only be called for each
+> frame if the inputs are animated. If the inputs are static
+> then the command will only be called once.
