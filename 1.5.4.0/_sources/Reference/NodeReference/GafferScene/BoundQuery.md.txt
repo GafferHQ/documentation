@@ -1,0 +1,50 @@
+BoundQuery
+==========
+
+Queries a particular location in a scene and outputs the bound.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+scene
+-----
+
+The scene to query the bounds for.
+
+location
+--------
+
+The location within the scene to query the bound at.
+> Note : If the location does not exist then the query will not be
+> performed and all outputs will be set to their default values.
+
+space
+-----
+
+The space to query the bound in.
+
+relativeLocation
+----------------
+
+The location within the scene to use for relative space mode.
+> Note : If the location does not exist then the query will not be
+> performed and all outputs will be set to their default values.
+
+bound
+-----
+
+Bounding box at specified location in specified space.
+
+center
+------
+
+Center point vector of the requested bound.
+
+size
+----
+
+Size vector of the requested bound.
