@@ -1,0 +1,41 @@
+_PointInstancerAdaptor
+======================
+
+This internal node is used to implement automatic translation of USD point instancers at render time.
+It should never been by users, but DocumentationTest still complains if it isn't documented.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+renderer
+--------
+
+Part of the standard renderAdaptor API, this is how a render adaptor is passed a string for
+the current renderer name. Used to decide whether encapsulation is supported.
+
+defaultEnabledPerRenderer
+-------------------------
+
+Controls whether the adaptor is hidden by default. Contains a dict, with a boolean value for
+each renderer. Defaults true for any renderers not specified in the dict. Slightly weird
+interface, but is basically internal. It should only ever be edited by the expansion menu
+set up in startup/GafferSceneUI/usdPointInstancerAdaptor.py
