@@ -1,0 +1,87 @@
+MeshTangents
+============
+
+Adds surface tangent primitive variables to the mesh based on either UV or topology information.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+mode
+----
+
+The style of how to calculate the Tangents.
+(UV) calculates the tangents based on the gradient of the the corresponding UVs
+(FirstEdge) defines the vector to the first neighbor as tangent and the bitangent orthogonal to tangent and normal
+(TwoEdges) defines the vector between the first two neighbors as tangent and the bitangent orthogonal to tangent and normal
+(PrimitiveCentroid) points the tangent towards the primitive centroid and the bitangent orthogonal to tangent and normal
+
+orthogonal
+----------
+
+Adjusts vTangent to be orthogonal to the uTangent.
+
+leftHanded
+----------
+
+Make the local coordinate frame left handed
+
+position
+--------
+
+Name of the primitive variable which contains the position data used to calculate tangents & binormals.
+For example 'Pref' would compute tangents using the reference positions (if defined)
+
+normal
+------
+
+Name of the primitive variable which contains the normals used to calculate tangents & binormals.
+
+uvSet
+-----
+
+Name of the UV set primitive variable used to calculate uTangent & vTangent.
+
+uTangent
+--------
+
+Name of the primitive variable which will contain the uTangent data.
+
+vTangent
+--------
+
+Name of the primitive variable which will contain the vTangent data.
+
+tangent
+-------
+
+Name of the primitive variable which will contain the tangent data.
+
+biTangent
+---------
+
+Name of the primitive variable which will contain the biTangent data.
