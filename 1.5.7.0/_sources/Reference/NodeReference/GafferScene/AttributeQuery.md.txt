@@ -1,0 +1,40 @@
+AttributeQuery
+==============
+
+Query a particular location in a scene and outputs attribute.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+scene
+-----
+
+The scene to query the attribute for.
+
+location
+--------
+
+The location within the scene to query the attribute at.
+> Note : If the location does not exist then the query will not be
+> performed and all outputs will be set to their default values.
+
+attribute
+---------
+
+The name of the attribute to query.
+> Note : If the attribute does not exist then the query will not be
+> performed and all outputs will be set to their default values.
+
+inherit
+-------
+
+Should inherited attributes or be considered or not.
+
+exists
+------
+
+Outputs true if both attribute and location exist, otherwise false.
