@@ -1,0 +1,374 @@
+RenderManAttributes
+===================
+
+Applies RenderMan attributes to objects in the scene.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+attributes
+----------
+
+The attributes to be applied - arbitrary numbers of user defined
+attributes may be added as children of this plug via the user
+interface, or using the CompoundDataPlug API via python.
+
+attributes.ri:grouping:id
+-------------------------
+
+Grouping id used for raytrace disambiguation purposes.
+
+attributes.ri:identifier:lpegroup
+---------------------------------
+
+Grouping membership used for light path expressions.
+
+attributes.ri:bake:activeudims
+------------------------------
+
+Active udims for Integrator baking of texture atlases.  Lists and ranges of udims 
+can be provided in the string, for example:
+  Attribute "bake" "string activeudims" "1001,1003,1005-1006".
+The default is "" which means all udims get baked.
+
+attributes.ri:bake:udimresolutions
+----------------------------------
+
+Udim texure resolutions for Integrator baking of texture atlases.  Lists and ranges
+of udims can be provided in the string, for example:
+Attribute "bake" "string udimresolutions" "1001 512 512  1002,1003 64 32  1005-1006 16 16"
+If the string is empty (the default) then the Display Format resolution will be used.
+
+attributes.ri:Ri:Matte
+----------------------
+
+Indicates matte object.
+
+attributes.ri:shade:indexofrefraction
+-------------------------------------
+
+Override material IOR for nested dielectrics.
+
+attributes.ri:shade:minsamples
+------------------------------
+
+Min Pixel Samples.  For fine-tuning adaptive sampling.
+
+attributes.ri:shade:relativepixelvariance
+-----------------------------------------
+
+PixelVariance multiplier for camera visible objects.  For fine-tuning adaptive sampling.
+
+attributes.ri:trace:holdout
+---------------------------
+
+Indicates holdout object.
+
+attributes.ri:trace:intersectpriority
+-------------------------------------
+
+Raytrace intersection priority for nested dielectrics.
+
+attributes.ri:trace:maxdiffusedepth
+-----------------------------------
+
+Maximum diffuse light bounces.
+
+attributes.ri:trace:maxspeculardepth
+------------------------------------
+
+Maximum specular light bounces.
+
+attributes.ri:visibility:camera
+-------------------------------
+
+Indicates if object is visible to camera rays.
+
+attributes.ri:visibility:indirect
+---------------------------------
+
+Indicates if object is visible to indirect (reflection and refraction) rays.
+
+attributes.ri:visibility:transmission
+-------------------------------------
+
+Indicates if object is visible to shadow rays.
+
+attributes.ri:curves:widthaffectscurvature
+------------------------------------------
+
+Indicates whether curve width should be used when computing curve curvature.
+If turned off, only the curvature along the curve spline will be calculated.
+
+attributes.ri:derivatives:extrapolate
+-------------------------------------
+
+Extrapolated smooth normals across grid boundaries.
+
+attributes.ri:trace:autobias
+----------------------------
+
+Enable automatic raytrace bias.
+
+attributes.ri:trace:bias
+------------------------
+
+Manual raytrace bias in object space. Small values should be used to avoid
+artifacts such as shadow acne.
+
+attributes.ri:trace:sssautobias
+-------------------------------
+
+Enable automatic raytrace bias for subsurface scattering rays.
+
+attributes.ri:trace:sssbias
+---------------------------
+
+Manual raytrace bias (in object space) for subsurface scattering rays.
+Small values should be used to avoid artifacts such as surface acne.
+
+attributes.ri:trace:displacements
+---------------------------------
+
+Enable displacement shading.
+
+attributes.ri:displacementbound:CoordinateSystem
+------------------------------------------------
+
+The name of the coordinate system that the displacement bound is measured in.
+
+attributes.ri:displacementbound:offscreen
+-----------------------------------------
+
+Apply displacementbound to offscreen geometry when dicing. Geometry that is
+entirely offscreen, but displaces into view may be prone to undertessellation
+because of the offscreen dicing strategy. This can be corrected by enabling this
+control and setting a reasonable displacementbound. Doing so will incur a
+performance penalty commensurate with the size of the displacement bound.
+
+attributes.ri:displacementbound:sphere
+--------------------------------------
+
+Maximum displacement distance used to compute object bounds. This value should
+be as tight as possible.
+
+attributes.ri:dice:micropolygonlength
+-------------------------------------
+
+Micropolygon distance in raster space for "instanceprojection" dicing. Values
+are expressed in pixel size.
+
+attributes.ri:dice:offscreenstrategy
+------------------------------------
+
+Dicing method of objects outside the viewing frustum.
+
+attributes.ri:dice:rasterorient
+-------------------------------
+
+Turning this off enables non-oriented dicing, a mode of dicing that
+computes micropolygon sizes using non-oriented raster space rather than
+screen-aligned raster space. Non-oriented dicing is useful for displacement
+around edges where projected micropolygon distance can be arbitrarily small.
+
+attributes.ri:dice:strategy
+---------------------------
+
+Dicing method of objects within the viewing frustum.
+
+attributes.ri:dice:worlddistancelength
+--------------------------------------
+
+Micropolygon distance in world space for "worlddistance" dicing or object space for
+"objectdistance" dicing.
+
+attributes.ri:Ri:GeometricApproximationFocusFactor
+--------------------------------------------------
+
+Allows the renderer to use more coarse dicing for blurry objects due to
+depth of field.
+
+attributes.ri:dice:offscreenmultiplier
+--------------------------------------
+
+Dicing rate multiplier for objects outside the viewing frustum. If a value
+less than zero is specified, the value from the Option with the same name 
+will be used instead.
+
+attributes.ri:falloffpower
+--------------------------
+
+For use with points, if not supplied, or set to zero, the points will have a hard edge. A value of 1 is a "reasonable" value that emulates the usual cosine based falloff; this will likely be the goto value for most people doing volumetric particle effects. Values between 0 and 1 makes the falloff faster, eroding the point faster - point has "less presence". Values higher than 1 (up to infinity) makes the falloff slower to the point of being non-existent.
+
+attributes.ri:curve:opacitysamples
+----------------------------------
+
+number of opacity/presence shading samples along a curve for opacity caching, if equal to zero then the value is determined using the dicing oracle and the length of each curve.
+
+attributes.ri:curve:widthaffectscurvature
+-----------------------------------------
+
+When true the curve width of round curves is taken into account in the computation of the tube curvature, otherwise only the curvature along the curve is. This control does not affect curve ribbons.
+
+attributes.ri:dice:minlength
+----------------------------
+
+Volume minimum dice length. Negative indicates to automatically compute this value.
+
+attributes.ri:dice:minlengthspace
+---------------------------------
+
+Coordinate space of dice:minlength.
+
+attributes.ri:volume:aggregate
+------------------------------
+
+The name of the volume aggregate to which a volume
+belongs. If non-empty, the volume will only be
+rendered if the integrator explicitly uses that named
+aggregate, or if a surface shader such as PxrSurface
+binds the named aggregate to its interior.
+
+attributes.ri:volume:dsominmax
+------------------------------
+
+Currently only used for aggregate volumes, and only
+for volumes that use an ImplicitField DSO. If set to
+1, the DSO may be able to use stored information from
+the file directly to compute the minimum and maximum
+values within the volume. This may allow the renderer to
+avoid shading the volume up front, greatly decreasing
+time to first pixel. This can only be enabled if the
+density signal from the volume is used directly, or if
+the density signal is modulated only by the DSO
+itself. Any shading modifications of the density
+signal requires setting this parameter to off.
+
+attributes.ri:volume:fps
+------------------------
+
+The frames per second for volumetric velocity data. The 
+velocity data will be divided by this quantity to derive
+the velocity for the frame.
+
+attributes.ri:volume:shutteroffset
+----------------------------------
+
+The shutter offset used to interpret volumetric velocity.
+A value of 1 will use the current position of the 
+object and the position of the object on the next frame 
+as the time interval to use for motion blur. A value of -1 
+will use the position of the object on the previous frame 
+and the current position of the object as the time. A value 
+of 0 will generate an interval which begins halfway through 
+the previous frame and ends halfway into the next frame.
+
+attributes.ri:volume:velocityshuttercorrection
+----------------------------------------------
+
+If set to 1, volumetric velocity data for Eulerian motion 
+blur will be assumed to be relative to the entire frame, 
+and will be corrected to match the current shutter interval.
+If set to 0, no correction will be made.
+
+attributes.ri:volume:aggregaterespectvisibility
+-----------------------------------------------
+
+If set to 1, standard visibility attributes will be respected by
+the volume if it is part of an aggregate. If set to 0, the visibility 
+attributes will be ignored and only the integrator visibility settings
+will apply.
+
+attributes.ri:volume:dsovelocity
+--------------------------------
+
+Used only for aggregate volumes that use an ImplicitField DSO. If set to 1,
+the DSO can provide velocity bounds to the renderer directly via the BoxMotion
+call. This can allow the renderer to avoid upfront shading of the volume's
+velocity data when using Eulerian velocity, improving render time and time to
+first pixel greatly. This can only be enabled if the velocity signal from the DSO
+is used directly.
+
+attributes.ri:dice:pretessellate
+--------------------------------
+
+Pre-tessellate subdivision geometry to polygons.
+
+attributes.ri:dice:watertight
+-----------------------------
+
+Tessellate geometry with no holes. Watertight geometry requires less raytrace bias.
+
+attributes.ri:polygon:smoothdisplacement
+----------------------------------------
+
+Output smoothed (per-vertex) normals as Ndsp primvar, if
+polygon:smoothnormals hasn't already inserted smooth normals.
+
+attributes.ri:polygon:smoothnormals
+-----------------------------------
+
+Smooth (per-vertex) normals if not provided.
+
+attributes.ri:procedural:immediatesubdivide
+-------------------------------------------
+
+Used by RiProcedural to compel a procedural to immediately subdivide (behavior 
+supported via the __immediatesubdivide meta-parameter in RiProcedural2). This 
+attribute is "special" in that it is not inherited into sub-procedural contexts - 
+meaning parent immediate-subdivide procedurals don't accidentally trigger 
+immediate-subdivide children. A value of 0 (the default) disables, 1 enables, and 2 
+forces all child procedurals to crack immediately.
+
+attributes.ri:procedural:reentrant
+----------------------------------
+
+Enabling this attribute will cause any subsequent procedural to not lock the global 
+mutex. Note that this requires that the procedural be thread safe. This attribute is
+disabled by default, i.e. all procedurals remain locked.
+
+global
+------
+
+Causes the attributes to be applied to the scene globals
+instead of the individual locations defined by the filter.
+
+extraAttributes
+---------------
+
+An additional set of attributes to be added. Arbitrary numbers
+of attributes may be specified within a single `IECore.CompoundObject`,
+where each key/value pair in the object defines an attribute.
+This is convenient when using an expression to define the attributes
+and the attribute count might be dynamic. It can also be used to
+create attributes whose type cannot be handled by the `attributes`
+CompoundDataPlug, with `IECoreScene.ShaderNetwork` being one example.
+
+If the same attribute is defined by both the attributes and the
+extraAttributes plugs, then the value from the extraAttributes
+is taken.
