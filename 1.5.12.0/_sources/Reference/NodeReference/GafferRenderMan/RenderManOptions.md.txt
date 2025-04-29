@@ -1,0 +1,709 @@
+RenderManOptions
+================
+
+Sets global scene options applicable to the RenderMan
+renderer. Use the StandardOptions node to set
+global options applicable to all renderers.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+options
+-------
+
+The options to be applied - arbitrary numbers of user defined options may be added
+as children of this plug via the user interface, or using the CompoundDataPlug API via
+python.
+
+options.ri:hider:type
+---------------------
+
+Render mode.
+
+options.ri:hider:adaptall
+-------------------------
+
+If one or more channels are marked with relativepixelvariance &gt; 0.0, those 
+channels will control the adaptive sampling (and "adaptall" is ignored).
+
+However, if no channel is explicitly marked with relativepixelvariance &gt; 0.0,
+"adaptall" determines which channel(s) will be control the adaptive sampling: 
+When "adaptall" is enabled, all channels (beauty + AOVs) are considered
+when deciding if a pixel is converging. When "adaptall" is off (the default),
+the AOVs are ignored and only the beauty channel is considered for pixel
+convergence. So turning off "adaptall" may speed up your render if some of
+your AOVs never reach the specified variance threshold and you haven't
+explicitly marked any channels with relativepixelvariance &gt; 0.0.
+
+options.ri:hider:adaptivemetric
+-------------------------------
+
+Specifies the metric used to drive adaptive sampling.
+"contrast" measures the contrast between samples in a pixel.
+"variance" measures the variance of the samples in a pixel.
+"halfbuffer" splits the samples into two classes and measures the
+  difference between the average of each of the two sample classes.
+"contrast-v22" uses the relative contrast computation of RenderMan 22 and older.
+"variance-v22" uses the relative variance computation of RenderMan 22 and older.
+
+options.ri:hider:exposurebracket
+--------------------------------
+
+Intended exposure Bracket [min max] in post-production to help inform
+the adaptive sampling.
+
+options.ri:hider:extrememotiondof
+---------------------------------
+
+Enable improved sampling accuracy. In some cases where a large amount of
+motion blur is used with depth of field, sampling artifacts could cause an
+undesirable result. This flag causes a slower but more accurate sampling
+method to be used to alleviate the artifacts. Due to the performance
+degradations of this sampling method, this flag should only be used when
+necessary.
+
+options.ri:hider:incremental
+----------------------------
+
+Enables the progressive display of results (rather than bucketed results).
+
+options.ri:hider:decidither
+---------------------------
+
+Maximum allowed pixel decimation rate for interactive
+rendering.  When making rapid edits to heavy scenes and
+this setting is non-zero, the renderer will try to reduce
+tearing by updating the whole screen progressively with a
+dissolve-like effect.  Set this to zero to disable this and
+force it to fully update the buckets that it can get to.
+
+options.ri:hider:bluenoise
+--------------------------
+
+Setting to control whether the samples should have a visually
+pleasing blue noise distribution or not.  Default is 1 (on).
+Set to 0 (off) if the samples in adjacent pixels need to be
+completely decorrelated.
+
+options.ri:hider:jitter
+-----------------------
+
+This option toggles the jitter (variation) in camera samples.
+By default, this hider option is enabled (set to 1), meaning that camera samples
+will be placed randomly in a pixel location. When it is turned off,
+camera rays are placed in the center of the pixel. When turned off, 
+surface edges will appear aliased and jagged.
+
+options.ri:hider:geomShadowTermBias
+-----------------------------------
+
+This setting will control when to compute and apply a bias to Poly Meshes
+to avoid the geometric shadow terminator artifacts that appear for shading points
+when they are visible from a light wrt their shading normal, but not visible wrt
+their geometric normal. The default value is 1 (on). Set to 0 (off) if you don't
+want this bias to be applied to the Poly Meshes in your scene.
+
+options.ri:hider:maxsamples
+---------------------------
+
+An explicit limit for the number of samples. If maxsamples is equal to its
+default then the maximum number of samples will be set equal to 64.
+Note that minsamples defaults to the square root of the maxsamples setting.
+
+options.ri:hider:minextrasamples
+--------------------------------
+
+This is the minimum number of extra samples that a pixel
+should continue shooting with after a sample fails to meet
+its convergence test with the adaptive sampler.
+Defaults to matching minsamples.
+
+options.ri:hider:minsamples
+---------------------------
+
+Specifies the minimum number of samples for adaptive sampling. The default value
+is the square root of maxsamples.
+
+options.ri:hider:staticsampletime
+---------------------------------
+
+Controls the time at which the renderer will sample motion blurred 
+geometry when Sample Motion is disabled. The value here is measured
+relative to the shutter, i.e. 0 = shutter open, 1 = shutter close.
+
+options.ri:hider:samplestride
+-----------------------------
+
+This facilitates rendering several images in parallel (with the same 
+aamplestride but different sampleoffset) and then combine them 
+incrementally during interactive rendering.  Default value is 1.
+
+With non-adaptive sampling:
+Let's say you render four images with 256 samples each, with
+samplestride 4 and sampleoffsets 0, 1, 2, and 3.  If you combine those
+four images, you'll get exactly the same image as if you had rendered
+a single image with 1024 samples, and during incremental/interactive
+rendering you'll get the benefit of best use of the stratified
+progressive sample sequences.  If you can "assemble" images with
+samples 0-3, 4-7, 8-12, etc during interactive rendering, you've
+got the benefits of faster rendering without jumping to high samples
+early on.
+
+With adaptive sampling:
+Let's say you again render four images, each with "maxsamples" 256,
+with samplestride 4 and sampleoffsets 0, 1, 2, and 3.  This time with
+adaptive sampling (PixelVariance &gt; 0).  Since each of the four images
+is more noisy than the combined image, the adaptive sampling will use
+more samples before deciding that the image error is acceptable than
+if it had been rendered as a single image.  So the PixelVariance 
+setting may need to be adjusted.
+
+options.ri:hider:sampleoffset
+-----------------------------
+
+This allows several images to be rendered in parallel (with different
+sampleoffset values) and then combined.
+
+With non-adaptive sampling:
+Let's say you render four images with 256 samples each, with
+sampleoffsets 0, 256, 512, and 768. If you combine those four images,
+you'll get exactly the same image as if you had rendered a single image
+with 1024 samples.
+
+With adaptive sampling:
+Let's say you again render four images, each with "maxsamples" 256,
+with sampleoffsets 0, 256, 512, and 768. Let's say that due to
+adaptive sampling, some given pixel only gets 64 pixel samples in each
+of the four images. Then the combined image has been rendered with
+sample numbers 0-63, 256-319, 512-575, and 768-831. Due to the
+stratification of the samples, this is not quite as good as if you had
+rendered a single image with 256 consecutive samples.  However, it
+is still better than rendering a single image with only 64 samples.
+
+options.ri:Ri:PixelFilterName
+-----------------------------
+
+Distribution of camera ray directions for each pixel. In other words, the filter determines how the pixel samples are warped in screen space around the pixel center.
+
+options.ri:Ri:PixelFilterWidth
+------------------------------
+
+Width of the distribution of camera ray directions for each pixel.
+
+options.ri:Ri:PixelVariance
+---------------------------
+
+Controls adaptive sampling. This sets the upper bound on the acceptable estimated
+variance of the pixel values from the true pixel values.
+
+options.ri:Shutter:offset
+-------------------------
+
+Offset shutter open/close.
+
+options.ri:hider:bakemode
+-------------------------
+
+Specifies whether the renderer should bake Pattern results or Integrator results
+or both.
+
+options.ri:hider:primvar
+------------------------
+
+Specifies dicing manifold used when baking integrator results.
+
+options.ri:hider:invert
+-----------------------
+
+Specifies whether or not to invert the T texture coordinate when baking integrator
+results.
+
+options.ri:hider:bakeudimstride
+-------------------------------
+
+Stride when baking for a subset of udims.  Default 1 means bake all udims.
+
+options.ri:hider:bakeudimoffset
+-------------------------------
+
+Offset when baking for a subset of udims.  Used together with bakeudimstride.
+Default 0 means bake all udims when bakeudimstride is 1.
+
+options.ri:hider:bakebboxmin
+----------------------------
+
+Bounding box min for "integrator" baking of 3D point clouds (and for the integrator
+part of "all" baking.  In world space.  Ignored for "pattern" baking and for 2D baking.
+
+options.ri:hider:bakebboxmax
+----------------------------
+
+Bounding box max for "integrator" baking of 3D point clouds (and for the integrator
+part of "all" baking.  In world space.  Ignored for "pattern" baking and for 2D baking.
+
+options.ri:hider:raytracebaketesselation
+----------------------------------------
+
+Force the tesselation to be the same as the baking tesselation when raytracing 
+(for example when using a PxrOcclusion or PxrDirt shader). 
+This can reduce self intersections and give cleaner results but may increase the 
+density of polygons when raytracing.
+If you have multiple pattern bakes at different resolutions, the highest resolution 
+will be chosen. Don't attempt to use this option alongside interactive rendering.
+
+options.ri:lighting:selectionlearningscheme
+-------------------------------------------
+
+Employs a machine learning algorithm to more accurately importance
+sample lights, taking into account occlusion and light filters.
+
+options.ri:lighting:minimumestimate
+-----------------------------------
+
+Minimum estimate for light selection. Local lights whose estimate 
+falls below this value will be ignored. Increasing this value may 
+help speed up direct lighting at the expense of accuracy.
+
+options.ri:trace:worldoffset
+----------------------------
+
+Used as the origin when the worldorigin option is set to "worldoffset".
+
+options.ri:trace:worldorigin
+----------------------------
+
+Set a new world origin to give better floating point precision.
+
+options.ri:trace:bvhcompression
+-------------------------------
+
+Provides a hint to the system to favor memory utilization versus speed when
+constructing the ray accelerator. Valid values are in the range [0, 1], where
+the higher the values the more compact the memory representation.
+The control behaves almost lineraly with some discontinuities in the compression
+rate as different strategies are activated. The result obtained is likely to be
+scene dependent.
+As a rule of thumb, leave this control to 0 unless you need to reduce memory
+utilization in order to render a given scene or sequence. When tuning, set the
+control to 1 at first to see how much memory can be saved through compression and
+what time overhead is generated, then dial the number back to a lower value (if
+possible) and reach the deired balance between speed and memory usage.
+
+options.ri:curve:minwidth
+-------------------------
+
+Minimum curve width in raster coordinates.
+
+options.ri:dice:offscreenmultiplier
+-----------------------------------
+
+Dicing rate multiplier for objects outside the viewing frustum.
+
+options.ri:dice:triangle
+------------------------
+
+The method used for dicing "triangles". The default method "trim" renders
+triangles by trimming a quad. The "blp" method renders a quad with two points
+being coincident.
+
+options.ri:stitch:refwarning
+----------------------------
+
+Enable stitch warnings.
+
+options.ri:bucket:order
+-----------------------
+
+Render bucket order.
+
+options.ri:bucket:orderorigin
+-----------------------------
+
+First bucket for "spiral" and "circle" order. Image center is [-1 -1].
+
+options.ri:deep:flagvolumes
+---------------------------
+
+Auto is off for dtex, on otherwise.
+
+options.ri:checkpoint:asfinal
+-----------------------------
+
+When enabled, this keeps the extra channels and the
+checkpoint tag when writing the final image for the render.
+The final image will be identical to any other checkpoint,
+rather than a slimmed down image. This means that once your
+image has reached the quality you've set and it completes,
+it can always be restarted by the user later.
+
+options.ri:checkpoint:command
+-----------------------------
+
+System command to be called after checkpoint.  If
+system calls are enabled, then after a checkpoint has been
+written, the specified command will be called.  This is
+synchronous; the rendering threads are quiescent while this
+runs and will not resume again until the process returns,
+avoiding possible race conditions if the command takes a
+token %i will be replaced with the current increment,
+zero-padded to 5 digits.  The token %e will be replaced
+with the elapsed time in seconds, zero-padded to 6 digits.
+The token %r will be replaced with the reason for this
+update to the checkpoint files (either completely
+`finished`, `exiting` early due to exitat option, or a
+normal `checkpoint`).  Literal % characters may be inserted
+with %%.
+
+options.ri:checkpoint:exitat
+----------------------------
+
+How long render should run before writing a final
+checkpoint and terminating.  Value can also be a string such
+as "10m" or "0.5h". Set to 0 or empty to disable.
+
+options.ri:checkpoint:interval
+------------------------------
+
+Write framebuffers to disk every N progressive steps.
+If value is positive the units will be interpreted as
+seconds.  If value is negative its units will be
+interpreted as increments.  Value can also be a string such
+as "10m" or "0.5h".  Setting option to 0 or empty will disable
+checkpoints.
+
+options.ri:checkpoint:keepfiles
+-------------------------------
+
+If set to true then prman will write to a new,
+numbered image for each checkpoint.  Note:  This will
+disable the final write of a checkpoint file which means
+the render cannot be recovered using the 'recover' option.
+
+options.ri:shade:debug
+----------------------
+
+Shading debug level.
+
+options.ri:shade:roughnessmollification
+---------------------------------------
+
+Specular Roughness Mollification.  This selectively increases material
+roughness on secondary bounces after diffuse or broad glossy reflections
+and on highly curved surfaces.  This reduces noise and fireflies, but can
+also make caustics blurrier or disappear entirely.  Set this value to 0.0
+when you want to render ground-truth caustics.  The default value is 1.0.
+
+options.ri:shade:shadowBumpTerminator
+-------------------------------------
+
+Setting to control whether bump shadow terminators are smoothed in non-hair bxdfs.
+
+options.ri:statistics:jsonFilename
+----------------------------------
+
+File name for raw statistics JSON report.
+            
+
+options.ri:limits:brickmemory
+-----------------------------
+
+Brickmap cache size in kB.
+
+options.ri:limits:bucketsize
+----------------------------
+
+Size of render buckets in pixels.
+
+options.ri:limits:deepshadowerror
+---------------------------------
+
+Control lossy compression scheme to reduce file size of deep output. Setting to
+a high value will result in lower numbers of samples stored for each pixel.
+
+options.ri:limits:geocachememory
+--------------------------------
+
+Geometry cache size in kB.
+
+options.ri:limits:matrixcachememory
+-----------------------------------
+
+Matrix cache in kB.
+
+options.ri:limits:nurbcurvaturedicefactor
+-----------------------------------------
+
+NURBs max curvature multiplier.
+
+options.ri:limits:octreememory
+------------------------------
+
+None cache size in kB.
+
+options.ri:limits:opacitycachememory
+------------------------------------
+
+Opacity cache in kB.
+
+options.ri:limits:othreshold
+----------------------------
+
+Opacity Culling: When rendering scenes with a large number
+of semi-transparent layered objects (e.g. hair), the opacity
+culling threshold can be set for a significant time and memory savings.
+Essentially, a stack of visible points whose accumulated opacity is
+greater (in each channel) than the specified limit will be considered
+fully opaque by the hider, and objects behind the stack will be culled.
+
+options.ri:limits:pointmemory
+-----------------------------
+
+Point cache size in kB.
+
+options.ri:limits:ptexturememory
+--------------------------------
+
+PTex cache size in kB.
+
+options.ri:limits:rendermemory
+------------------------------
+
+Memory limit as percentage of machine memory.
+
+options.ri:limits:rendertime
+----------------------------
+
+Maximum render time in minutes.
+
+options.ri:limits:shadesize
+---------------------------
+
+The maximum number of vertices, not grid.
+
+options.ri:limits:texturememory
+-------------------------------
+
+Texture cache size in kB.
+
+options.ri:limits:threads
+-------------------------
+
+Set the number of threads that the renderer uses. If a value of 0 is specified
+then all CPUs will be utilized for rendering.  If a negative value '-N' is
+specified then prman will use all but N CPUs for rendering.
+
+options.ri:searchpath:archive
+-----------------------------
+
+Search path for Rib archives and DelayedReadArchive.
+
+options.ri:searchpath:dirmap
+----------------------------
+
+Search path remapping.
+
+options.ri:searchpath:display
+-----------------------------
+
+Search path for display plug-ins.
+
+options.ri:searchpath:procedural
+--------------------------------
+
+Search path for DynamicLoad procedural plug-ins.
+
+options.ri:searchpath:rifilter
+------------------------------
+
+Search path for Rif plug-ins.
+
+options.ri:searchpath:rixplugin
+-------------------------------
+
+Search path for shading plug-ins.
+
+options.ri:searchpath:shader
+----------------------------
+
+Search path for OSL pattern plug-ins.
+
+options.ri:searchpath:texture
+-----------------------------
+
+Search path for texture files.
+
+options.ri:osl:batched
+----------------------
+
+Enable OSL optimizations that allow execution of multiple shading points
+via vectorized instructions on supported processors (AVX, AVX2, AVX512).
+
+options.ri:osl:statisticslevel
+------------------------------
+
+Set the level of OSL statistics to track. Level 2 and above
+introduces timing which can have a small effect on performance.
+Level 4 and above includes internal OSL statistics.
+Level 5 includes statistics per shader. Other levels reserved
+for future use.
+
+options.ri:osl:verbose
+----------------------
+
+Sets the level of OSL messages to pass through.
+
+options.ri:volume:aggregatespace
+--------------------------------
+
+Space in which to compute aggregate volume metadata. Valid spaces are
+"world" and "camera". Generally the space should be chosen to minimize
+the range of motion of the volumes.
+
+options.ri:lpe:diffuse2
+-----------------------
+
+Defines the contents of the `D2` custom LPE lobe.
+
+options.ri:lpe:diffuse3
+-----------------------
+
+Defines the contents of the `D3` custom LPE lobe.
+
+options.ri:lpe:diffuse4
+-----------------------
+
+Defines the contents of the `D4` custom LPE lobe.
+
+options.ri:lpe:specular2
+------------------------
+
+Defines the contents of the `S2` custom LPE lobe.
+
+options.ri:lpe:specular3
+------------------------
+
+Defines the contents of the `S3` custom LPE lobe.
+
+options.ri:lpe:specular4
+------------------------
+
+Defines the contents of the `S4` custom LPE lobe.
+
+options.ri:lpe:specular5
+------------------------
+
+Defines the contents of the `S5` custom LPE lobe.
+
+options.ri:lpe:specular6
+------------------------
+
+Defines the contents of the `S6` custom LPE lobe.
+
+options.ri:lpe:specular7
+------------------------
+
+Defines the contents of the `S7` custom LPE lobe.
+
+options.ri:lpe:specular8
+------------------------
+
+Defines the contents of the `S8` custom LPE lobe.
+
+options.ri:lpe:user2
+--------------------
+
+Defines the contents of the `U2` custom LPE lobe.
+
+options.ri:lpe:user3
+--------------------
+
+Defines the contents of the `U3` custom LPE lobe.
+
+options.ri:lpe:user4
+--------------------
+
+Defines the contents of the `U4` custom LPE lobe.
+
+options.ri:lpe:user5
+--------------------
+
+Defines the contents of the `U5` custom LPE lobe.
+
+options.ri:lpe:user6
+--------------------
+
+Defines the contents of the `U6` custom LPE lobe.
+
+options.ri:lpe:user7
+--------------------
+
+Defines the contents of the `U7` custom LPE lobe.
+
+options.ri:lpe:user8
+--------------------
+
+Defines the contents of the `U8` custom LPE lobe.
+
+options.ri:interactiveDenoiser:enabled
+--------------------------------------
+
+Enables interactive denoising using RenderMan's `quicklyNoiseless` display driver. When on, all
+required denoising AOVs are added to the render automatically.
+
+options.ri:interactiveDenoiser:cheapPass
+----------------------------------------
+
+When on, the first pass will use a cheaper (slightly faster but lower
+quality) heuristic. This can be useful if rendering something that is
+converging very quickly and you want to prioritize getting a denoised
+result faster.
+
+options.ri:interactiveDenoiser:interval
+---------------------------------------
+
+The time interval in between denoise runs (in seconds).
+
+options.ri:interactiveDenoiser:minSamples
+-----------------------------------------
+
+The minimum number of average samples per bucket before the interactive denoiser runs for the first time.
+Changing this preference requires the render to be restarted for this option to be respected.
+
+options.ri:checkpoint:recover
+-----------------------------
+
+Enables recovery from a checkpoint created by a previous render.
+
+extraOptions
+------------
+
+An additional set of options to be added. Arbitrary numbers
+of options may be specified within a single `IECore.CompoundObject`,
+where each key/value pair in the object defines an option.
+This is convenient when using an expression to define the options
+and the option count might be dynamic. It can also be used to
+create options whose type cannot be handled by the `options`
+CompoundDataPlug.
+
+If the same option is defined by both the `options` and the
+`extraOptions` plugs, then the value from the `extraOptions`
+is taken.
