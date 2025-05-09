@@ -1,0 +1,9 @@
+1.1.9.7
+=======
+
+Fixes
+-----
+
+- EditMenu : Fixed errors using "Duplicate with Inputs" with certain configurations of Dot node ([#5309](https://github.com/GafferHQ/gaffer/issues/5309)).
+- Dot : Fixed the display of context-sensitive `label` values ([#5330](https://github.com/GafferHQ/gaffer/issues/5330)).
+
