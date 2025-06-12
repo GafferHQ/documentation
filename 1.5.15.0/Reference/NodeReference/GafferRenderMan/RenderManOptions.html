@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RenderManOptions &mdash; Gaffer 1.5.15.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/gaffer.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/scrollspy.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="RenderManSampleFilter" href="RenderManSampleFilter.html" />
+    <link rel="prev" title="RenderManMeshLight" href="RenderManMeshLight.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html">
+            <img src="../../../_static/GafferLogoMini.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.5.15.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../GettingStarted/index.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../GettingStarted/InstallingGaffer/index.html">Installing Gaffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../GettingStarted/LaunchingGafferFirstTime/index.html">Launching Gaffer for the First Time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../GettingStarted/TutorialAssemblingTheGafferBot/index.html">Tutorial: Assembling the Gaffer Bot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../GettingStarted/SettingUpGafferCommand/index.html">Setting Up the “gaffer” Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../GettingStarted/ConfiguringGafferForThirdPartyTools/index.html">Configuring Gaffer for Third-Party Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../WorkingWithTheNodeGraph/index.html">Working with the Node Graph</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithTheNodeGraph/BoxNode/index.html">Box Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithTheNodeGraph/SpreadsheetNode/index.html">Spreadsheet Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithTheNodeGraph/Contexts/index.html">Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithTheNodeGraph/PerformanceBestPractices/index.html">Performance Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithTheNodeGraph/UsingThePerformanceMonitor/index.html">Using the Performance Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithTheNodeGraph/TutorialUsingTheOSLCodeNode/index.html">Tutorial: Using The OSLCode Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithTheNodeGraph/TutorialSettingUpASpreadsheet/index.html">Tutorial: Setting Up a Spreadsheet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../WorkingWithScenes/index.html">Working with Scenes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithScenes/AnatomyOfAScene/index.html">Anatomy of a Scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithScenes/AnatomyOfACamera/index.html">Anatomy of a Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithScenes/Camera/index.html">Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithScenes/LightLinking/index.html">Light Linking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../WorkingWithImages/index.html">Working with Images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithImages/AnatomyOfAnImage/index.html">Anatomy of an Image</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../WorkingWithThePythonScriptingAPI/index.html">Working with the Python Scripting API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithThePythonScriptingAPI/ThePythonEditor/index.html">The Python Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithThePythonScriptingAPI/TutorialNodeGraphEditingInPython/index.html">Tutorial: Node Graph Editing in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithThePythonScriptingAPI/TutorialQueryingAScene/index.html">Tutorial: Querying a Scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithThePythonScriptingAPI/TutorialStartupConfig1/index.html">Tutorial: Startup Config 1; Custom Global Context Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithThePythonScriptingAPI/TutorialStartupConfig2/index.html">Tutorial: Startup Config 2; Custom Bookmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../WorkingWithThePythonScriptingAPI/TutorialStartupConfig3/index.html">Tutorial: Startup Config 3; Custom Node Menu Entries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Interface/index.html">Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Interface/ControlsAndShortcuts/index.html">Controls and Shortcuts</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Supplemental Material</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Node Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Gaffer/index.html">Gaffer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/Animation.html">Animation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/Backdrop.html">Backdrop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/Box.html">Box</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/BoxIn.html">BoxIn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/BoxOut.html">BoxOut</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/Collect.html">Collect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/ComputeNode.html">ComputeNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/ContextQuery.html">ContextQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/ContextVariableTweaks.html">ContextVariableTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/ContextVariables.html">ContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/DeleteContextVariables.html">DeleteContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/DependencyNode.html">DependencyNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/Dot.html">Dot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/EditScope.html">EditScope</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/Expression.html">Expression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/Loop.html">Loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/NameSwitch.html">NameSwitch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/Node.html">Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/PatternMatch.html">PatternMatch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/Preferences.html">Preferences</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/Random.html">Random</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/RandomChoice.html">RandomChoice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/Reference.html">Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/ScriptNode.html">ScriptNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/Spreadsheet.html">Spreadsheet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/SubGraph.html">SubGraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/Switch.html">Switch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Gaffer/TimeWarp.html">TimeWarp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferArnold/index.html">GafferArnold</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldAOVShader.html">ArnoldAOVShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldAtmosphere.html">ArnoldAtmosphere</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldAttributes.html">ArnoldAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldBackground.html">ArnoldBackground</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldCameraShaders.html">ArnoldCameraShaders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldColorManager.html">ArnoldColorManager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldDisplacement.html">ArnoldDisplacement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldImager.html">ArnoldImager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldLight.html">ArnoldLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldLightFilter.html">ArnoldLightFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldMeshLight.html">ArnoldMeshLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldOptions.html">ArnoldOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldProcedural.html">ArnoldProcedural</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldShader.html">ArnoldShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldShaderBall.html">ArnoldShaderBall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldTextureBake.html">ArnoldTextureBake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferArnold/ArnoldVDB.html">ArnoldVDB</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferCycles/index.html">GafferCycles</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../GafferCycles/CyclesAttributes.html">CyclesAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferCycles/CyclesBackground.html">CyclesBackground</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferCycles/CyclesLight.html">CyclesLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferCycles/CyclesMeshLight.html">CyclesMeshLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferCycles/CyclesOptions.html">CyclesOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferCycles/CyclesShader.html">CyclesShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferCycles/CyclesShaderBall.html">CyclesShaderBall</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferDelight/index.html">GafferDelight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../GafferDelight/DelightAttributes.html">DelightAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferDelight/DelightOptions.html">DelightOptions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferDispatch/index.html">GafferDispatch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../GafferDispatch/Dispatcher.html">Dispatcher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferDispatch/FrameMask.html">FrameMask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferDispatch/LocalDispatcher.html">LocalDispatcher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferDispatch/PythonCommand.html">PythonCommand</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferDispatch/SystemCommand.html">SystemCommand</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferDispatch/TaskContextProcessor.html">TaskContextProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferDispatch/TaskContextVariables.html">TaskContextVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferDispatch/TaskList.html">TaskList</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferDispatch/TaskNode.html">TaskNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferDispatch/TaskSwitch.html">TaskSwitch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferDispatch/Wedge.html">Wedge</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferImage/index.html">GafferImage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Anaglyph.html">Anaglyph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/BleedFill.html">BleedFill</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Blur.html">Blur</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/CDL.html">CDL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Catalogue.html">Catalogue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/CatalogueSelect.html">CatalogueSelect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Checkerboard.html">Checkerboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Clamp.html">Clamp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/CollectImages.html">CollectImages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/ColorSpace.html">ColorSpace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Constant.html">Constant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/ContactSheet.html">ContactSheet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/ContactSheetCore.html">ContactSheetCore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/CopyChannels.html">CopyChannels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/CopyImageMetadata.html">CopyImageMetadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/CopyViews.html">CopyViews</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/CreateViews.html">CreateViews</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Crop.html">Crop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/DeepHoldout.html">DeepHoldout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/DeepMerge.html">DeepMerge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/DeepRecolor.html">DeepRecolor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/DeepSampleCounts.html">DeepSampleCounts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/DeepSampler.html">DeepSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/DeepSlice.html">DeepSlice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/DeepState.html">DeepState</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/DeepTidy.html">DeepTidy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/DeepToFlat.html">DeepToFlat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/DeleteChannels.html">DeleteChannels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/DeleteImageMetadata.html">DeleteImageMetadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/DeleteViews.html">DeleteViews</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Dilate.html">Dilate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Display.html">Display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/DisplayTransform.html">DisplayTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Empty.html">Empty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Erode.html">Erode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/FlatImageProcessor.html">FlatImageProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/FlatImageSource.html">FlatImageSource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/FlatToDeep.html">FlatToDeep</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/FormatQuery.html">FormatQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Grade.html">Grade</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/ImageMetadata.html">ImageMetadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/ImageNode.html">ImageNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/ImageProcessor.html">ImageProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/ImageReader.html">ImageReader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/ImageSampler.html">ImageSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/ImageStats.html">ImageStats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/ImageTransform.html">ImageTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/ImageWriter.html">ImageWriter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/LUT.html">LUT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/LookTransform.html">LookTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Median.html">Median</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Merge.html">Merge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/MetadataOverlay.html">MetadataOverlay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Mirror.html">Mirror</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Mix.html">Mix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Offset.html">Offset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/OpenColorIOContext.html">OpenColorIOContext</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/OpenImageIOReader.html">OpenImageIOReader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Premultiply.html">Premultiply</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Ramp.html">Ramp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Rectangle.html">Rectangle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Resample.html">Resample</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Resize.html">Resize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Saturation.html">Saturation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/SelectView.html">SelectView</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Shuffle.html">Shuffle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/ShuffleImageMetadata.html">ShuffleImageMetadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Text.html">Text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/Unpremultiply.html">Unpremultiply</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferImage/VectorWarp.html">VectorWarp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferML/index.html">GafferML</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../GafferML/DataToTensor.html">DataToTensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferML/ImageToTensor.html">ImageToTensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferML/Inference.html">Inference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferML/TensorToImage.html">TensorToImage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferML/TensorToMesh.html">TensorToMesh</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferOSL/index.html">GafferOSL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../GafferOSL/OSLCode.html">OSLCode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferOSL/OSLImage.html">OSLImage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferOSL/OSLLight.html">OSLLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferOSL/OSLObject.html">OSLObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferOSL/OSLShader.html">OSLShader</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">GafferRenderMan</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="RenderManAttributes.html">RenderManAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RenderManDisplayFilter.html">RenderManDisplayFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RenderManIntegrator.html">RenderManIntegrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RenderManLight.html">RenderManLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RenderManLightFilter.html">RenderManLightFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RenderManMeshLight.html">RenderManMeshLight</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">RenderManOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RenderManSampleFilter.html">RenderManSampleFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RenderManShader.html">RenderManShader</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferScene/index.html">GafferScene</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/AimConstraint.html">AimConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/AttributeQuery.html">AttributeQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/AttributeTweaks.html">AttributeTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/AttributeVisualiser.html">AttributeVisualiser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Attributes.html">Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/BoundQuery.html">BoundQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Camera.html">Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/CameraTweaks.html">CameraTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ClippingPlane.html">ClippingPlane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ClosestPointSampler.html">ClosestPointSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/CollectPrimitiveVariables.html">CollectPrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/CollectScenes.html">CollectScenes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/CollectTransforms.html">CollectTransforms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/CoordinateSystem.html">CoordinateSystem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/CopyAttributes.html">CopyAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/CopyOptions.html">CopyOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/CopyPrimitiveVariables.html">CopyPrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Cryptomatte.html">Cryptomatte</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Cube.html">Cube</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/CurveSampler.html">CurveSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/CustomAttributes.html">CustomAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/CustomOptions.html">CustomOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/DeleteAttributes.html">DeleteAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/DeleteCurves.html">DeleteCurves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/DeleteFaces.html">DeleteFaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/DeleteGlobals.html">DeleteGlobals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/DeleteObject.html">DeleteObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/DeleteOptions.html">DeleteOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/DeleteOutputs.html">DeleteOutputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/DeletePoints.html">DeletePoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/DeletePrimitiveVariables.html">DeletePrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/DeleteRenderPasses.html">DeleteRenderPasses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/DeleteSets.html">DeleteSets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Duplicate.html">Duplicate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Encapsulate.html">Encapsulate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ExistenceQuery.html">ExistenceQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ExternalProcedural.html">ExternalProcedural</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Filter.html">Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/FilterProcessor.html">FilterProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/FilterQuery.html">FilterQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/FilterResults.html">FilterResults</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/FilteredSceneProcessor.html">FilteredSceneProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/FramingConstraint.html">FramingConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/FreezeTransform.html">FreezeTransform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Grid.html">Grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Group.html">Group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ImageScatter.html">ImageScatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ImageToPoints.html">ImageToPoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Instancer.html">Instancer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/InteractiveRender.html">InteractiveRender</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Isolate.html">Isolate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/LightToCamera.html">LightToCamera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/LocaliseAttributes.html">LocaliseAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/MapOffset.html">MapOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/MapProjection.html">MapProjection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/MergeCurves.html">MergeCurves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/MergeMeshes.html">MergeMeshes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/MergePoints.html">MergePoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/MergeScenes.html">MergeScenes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/MeshDistortion.html">MeshDistortion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/MeshNormals.html">MeshNormals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/MeshSegments.html">MeshSegments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/MeshSplit.html">MeshSplit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/MeshTangents.html">MeshTangents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/MeshTessellate.html">MeshTessellate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/MeshToPoints.html">MeshToPoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/MeshType.html">MeshType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/MotionPath.html">MotionPath</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ObjectToScene.html">ObjectToScene</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/OpenGLAttributes.html">OpenGLAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/OpenGLShader.html">OpenGLShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/OptionQuery.html">OptionQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/OptionTweaks.html">OptionTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Options.html">Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Orientation.html">Orientation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Outputs.html">Outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Parameters.html">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Parent.html">Parent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ParentConstraint.html">ParentConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/PathFilter.html">PathFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Plane.html">Plane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/PointConstraint.html">PointConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/PointsType.html">PointsType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/PrimitiveVariableExists.html">PrimitiveVariableExists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/PrimitiveVariableQuery.html">PrimitiveVariableQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/PrimitiveVariableTweaks.html">PrimitiveVariableTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/PrimitiveVariables.html">PrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Prune.html">Prune</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Rename.html">Rename</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Render.html">Render</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/RenderPassShader.html">RenderPassShader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/RenderPassTypeAdaptor.html">RenderPassTypeAdaptor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/RenderPassWedge.html">RenderPassWedge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/RenderPasses.html">RenderPasses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ResamplePrimitiveVariables.html">ResamplePrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ReverseWinding.html">ReverseWinding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Scatter.html">Scatter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/SceneElementProcessor.html">SceneElementProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/SceneNode.html">SceneNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/SceneProcessor.html">SceneProcessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/SceneReader.html">SceneReader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/SceneWriter.html">SceneWriter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Set.html">Set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/SetFilter.html">SetFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/SetQuery.html">SetQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/SetVisualiser.html">SetVisualiser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Shader.html">Shader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ShaderAssignment.html">ShaderAssignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ShaderBall.html">ShaderBall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ShaderQuery.html">ShaderQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ShaderTweakProxy.html">ShaderTweakProxy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ShaderTweaks.html">ShaderTweaks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ShuffleAttributes.html">ShuffleAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ShuffleOptions.html">ShuffleOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ShufflePrimitiveVariables.html">ShufflePrimitiveVariables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/ShuffleRenderPasses.html">ShuffleRenderPasses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Sphere.html">Sphere</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/StandardAttributes.html">StandardAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/StandardOptions.html">StandardOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/SubTree.html">SubTree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Text.html">Text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Transform.html">Transform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/TransformQuery.html">TransformQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/UDIMQuery.html">UDIMQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/UVSampler.html">UVSampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Unencapsulate.html">Unencapsulate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/UnionFilter.html">UnionFilter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferScene/Wireframe.html">Wireframe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferTractor/index.html">GafferTractor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../GafferTractor/TractorDispatcher.html">TractorDispatcher</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferUSD/index.html">GafferUSD</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../GafferUSD/PromotePointInstances.html">PromotePointInstances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferUSD/USDAttributes.html">USDAttributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferUSD/USDLayerWriter.html">USDLayerWriter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferUSD/USDLight.html">USDLight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferUSD/USDShader.html">USDShader</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../GafferVDB/index.html">GafferVDB</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../GafferVDB/LevelSetOffset.html">LevelSetOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferVDB/LevelSetToMesh.html">LevelSetToMesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferVDB/MeshToLevelSet.html">MeshToLevelSet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferVDB/PointsGridToPoints.html">PointsGridToPoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferVDB/PointsToLevelSet.html">PointsToLevelSet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferVDB/SphereLevelSet.html">SphereLevelSet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../GafferVDB/VolumeScatter.html">VolumeScatter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ScriptingReference/index.html">Scripting Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ScriptingReference/CommonOperations/index.html">Common Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ScriptingReference/StringSubstitutionSyntax/index.html">String Substitution Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ScriptingReference/Expressions/index.html">Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ScriptingReference/SetExpressions/index.html">Set Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ScriptingReference/Metadata/index.html">Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../CommandLineReference/index.html">Command Line Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../CommandLineReference/browser.html">browser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../CommandLineReference/cli.html">cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../CommandLineReference/dispatch.html">dispatch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../CommandLineReference/env.html">env</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../CommandLineReference/execute.html">execute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../CommandLineReference/gui.html">gui</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../CommandLineReference/license.html">license</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../CommandLineReference/python.html">python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../CommandLineReference/screengrab.html">screengrab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../CommandLineReference/stats.html">stats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../CommandLineReference/test.html">test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../CommandLineReference/view.html">view</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ContextVariables/index.html">Context Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ReleaseNotes/index.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.15.0.html">1.5.15.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.14.0.html">1.5.14.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.13.0.html">1.5.13.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.12.0.html">1.5.12.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.11.0.html">1.5.11.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.10.1.html">1.5.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.10.0.html">1.5.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.9.0.html">1.5.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.8.0.html">1.5.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.7.0.html">1.5.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.6.0.html">1.5.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.5.0.html">1.5.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.4.1.html">1.5.4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.4.0.html">1.5.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.3.0.html">1.5.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.2.0.html">1.5.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.1.0.html">1.5.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.0.1.html">1.5.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.5.0.0.html">1.5.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.15.6.html">1.4.15.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.15.5.html">1.4.15.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.15.4.html">1.4.15.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.15.3.html">1.4.15.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.15.2.html">1.4.15.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.15.1.html">1.4.15.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.15.0.html">1.4.15.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.14.0.html">1.4.14.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.13.0.html">1.4.13.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.12.0.html">1.4.12.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.11.0.html">1.4.11.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.10.0.html">1.4.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.9.0.html">1.4.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.8.0.html">1.4.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.7.0.html">1.4.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.6.0.html">1.4.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.5.0.html">1.4.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.4.0.html">1.4.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.3.0.html">1.4.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.2.0.html">1.4.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.1.0.html">1.4.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.4.0.0.html">1.4.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.16.9.html">1.3.16.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.16.8.html">1.3.16.8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.16.7.html">1.3.16.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.16.6.html">1.3.16.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.16.5.html">1.3.16.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.16.4.html">1.3.16.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.16.3.html">1.3.16.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.16.2.html">1.3.16.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.16.1.html">1.3.16.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.16.0.html">1.3.16.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.15.0.html">1.3.15.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.14.0.html">1.3.14.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.13.1.html">1.3.13.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.13.0.html">1.3.13.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.12.0.html">1.3.12.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.11.0.html">1.3.11.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.10.0.html">1.3.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.9.0.html">1.3.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.8.0.html">1.3.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.7.0.html">1.3.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.6.1.html">1.3.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.6.0.html">1.3.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.5.0.html">1.3.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.4.0.html">1.3.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.3.0.html">1.3.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.2.0.html">1.3.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.1.0.html">1.3.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.3.0.0.html">1.3.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.10.6.html">1.2.10.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.10.5.html">1.2.10.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.10.4.html">1.2.10.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.10.3.html">1.2.10.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.10.2.html">1.2.10.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.10.1.html">1.2.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.10.0.html">1.2.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.9.0.html">1.2.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.8.0.html">1.2.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.7.0.html">1.2.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.6.0.html">1.2.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.5.0.html">1.2.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.4.0.html">1.2.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.3.0.html">1.2.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.2.0.html">1.2.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.1.1.html">1.2.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.1.0.html">1.2.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.0.2.html">1.2.0.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.0.1.html">1.2.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.2.0.0.html">1.2.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.9.7.html">1.1.9.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.9.6.html">1.1.9.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.9.5.html">1.1.9.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.9.4.html">1.1.9.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.9.3.html">1.1.9.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.9.2.html">1.1.9.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.9.1.html">1.1.9.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.9.0.html">1.1.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.8.0.html">1.1.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.7.0.html">1.1.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.6.1.html">1.1.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.6.0.html">1.1.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.5.0.html">1.1.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.4.0.html">1.1.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.3.0.html">1.1.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.2.0.html">1.1.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.1.0.html">1.1.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.1.0.0.html">1.1.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.0.6.6.html">1.0.6.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.0.6.5.html">1.0.6.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.0.6.4.html">1.0.6.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.0.6.3.html">1.0.6.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.0.6.2.html">1.0.6.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.0.6.1.html">1.0.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.0.6.0.html">1.0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.0.5.1.html">1.0.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.0.5.0.html">1.0.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.0.4.0.html">1.0.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.0.3.0.html">1.0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.0.2.1.html">1.0.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.0.2.0.html">1.0.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.0.1.0.html">1.0.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ReleaseNotes/1.0.0.0.html">1.0.0.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Appendices/index.html">Appendices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Appendices/License/index.html">License</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Gaffer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Reference</a> &raquo;</li>
+          <li><a href="../index.html">Node Reference</a> &raquo;</li>
+          <li><a href="index.html">GafferRenderMan</a> &raquo;</li>
+      <li>RenderManOptions</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="rendermanoptions">
+<h1>RenderManOptions<a class="headerlink" href="#rendermanoptions" title="Permalink to this headline"></a></h1>
+<p>Sets global scene options applicable to the RenderMan
+renderer. Use the StandardOptions node to set
+global options applicable to all renderers.</p>
+<section id="user">
+<h2>user<a class="headerlink" href="#user" title="Permalink to this headline"></a></h2>
+<p>Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.</p>
+</section>
+<section id="out">
+<h2>out<a class="headerlink" href="#out" title="Permalink to this headline"></a></h2>
+<p>The processed output scene.</p>
+</section>
+<section id="enabled">
+<h2>enabled<a class="headerlink" href="#enabled" title="Permalink to this headline"></a></h2>
+<p>The on/off state of the node. When it is off, the node outputs the input scene unchanged.</p>
+</section>
+<section id="in">
+<h2>in<a class="headerlink" href="#in" title="Permalink to this headline"></a></h2>
+<p>The input scene</p>
+</section>
+<section id="options">
+<h2>options<a class="headerlink" href="#options" title="Permalink to this headline"></a></h2>
+<p>The options to be applied - arbitrary numbers of user defined options may be added
+as children of this plug via the user interface, or using the CompoundDataPlug API via
+python.</p>
+</section>
+<section id="options-ri-hider-type">
+<h2>options.ri:hider:type<a class="headerlink" href="#options-ri-hider-type" title="Permalink to this headline"></a></h2>
+<p>Render mode.</p>
+</section>
+<section id="options-ri-hider-adaptall">
+<h2>options.ri:hider:adaptall<a class="headerlink" href="#options-ri-hider-adaptall" title="Permalink to this headline"></a></h2>
+<p>If one or more channels are marked with relativepixelvariance &gt; 0.0, those
+channels will control the adaptive sampling (and “adaptall” is ignored).</p>
+<p>However, if no channel is explicitly marked with relativepixelvariance &gt; 0.0,
+“adaptall” determines which channel(s) will be control the adaptive sampling:
+When “adaptall” is enabled, all channels (beauty + AOVs) are considered
+when deciding if a pixel is converging. When “adaptall” is off (the default),
+the AOVs are ignored and only the beauty channel is considered for pixel
+convergence. So turning off “adaptall” may speed up your render if some of
+your AOVs never reach the specified variance threshold and you haven’t
+explicitly marked any channels with relativepixelvariance &gt; 0.0.</p>
+</section>
+<section id="options-ri-hider-adaptivemetric">
+<h2>options.ri:hider:adaptivemetric<a class="headerlink" href="#options-ri-hider-adaptivemetric" title="Permalink to this headline"></a></h2>
+<p>Specifies the metric used to drive adaptive sampling.
+“contrast” measures the contrast between samples in a pixel.
+“variance” measures the variance of the samples in a pixel.
+“halfbuffer” splits the samples into two classes and measures the
+difference between the average of each of the two sample classes.
+“contrast-v22” uses the relative contrast computation of RenderMan 22 and older.
+“variance-v22” uses the relative variance computation of RenderMan 22 and older.</p>
+</section>
+<section id="options-ri-hider-exposurebracket">
+<h2>options.ri:hider:exposurebracket<a class="headerlink" href="#options-ri-hider-exposurebracket" title="Permalink to this headline"></a></h2>
+<p>Intended exposure Bracket [min max] in post-production to help inform
+the adaptive sampling.</p>
+</section>
+<section id="options-ri-hider-extrememotiondof">
+<h2>options.ri:hider:extrememotiondof<a class="headerlink" href="#options-ri-hider-extrememotiondof" title="Permalink to this headline"></a></h2>
+<p>Enable improved sampling accuracy. In some cases where a large amount of
+motion blur is used with depth of field, sampling artifacts could cause an
+undesirable result. This flag causes a slower but more accurate sampling
+method to be used to alleviate the artifacts. Due to the performance
+degradations of this sampling method, this flag should only be used when
+necessary.</p>
+</section>
+<section id="options-ri-hider-incremental">
+<h2>options.ri:hider:incremental<a class="headerlink" href="#options-ri-hider-incremental" title="Permalink to this headline"></a></h2>
+<p>Enables the progressive display of results (rather than bucketed results).</p>
+</section>
+<section id="options-ri-hider-decidither">
+<h2>options.ri:hider:decidither<a class="headerlink" href="#options-ri-hider-decidither" title="Permalink to this headline"></a></h2>
+<p>Maximum allowed pixel decimation rate for interactive
+rendering.  When making rapid edits to heavy scenes and
+this setting is non-zero, the renderer will try to reduce
+tearing by updating the whole screen progressively with a
+dissolve-like effect.  Set this to zero to disable this and
+force it to fully update the buckets that it can get to.</p>
+</section>
+<section id="options-ri-hider-bluenoise">
+<h2>options.ri:hider:bluenoise<a class="headerlink" href="#options-ri-hider-bluenoise" title="Permalink to this headline"></a></h2>
+<p>Setting to control whether the samples should have a visually
+pleasing blue noise distribution or not.  Default is 1 (on).
+Set to 0 (off) if the samples in adjacent pixels need to be
+completely decorrelated.</p>
+</section>
+<section id="options-ri-hider-jitter">
+<h2>options.ri:hider:jitter<a class="headerlink" href="#options-ri-hider-jitter" title="Permalink to this headline"></a></h2>
+<p>This option toggles the jitter (variation) in camera samples.
+By default, this hider option is enabled (set to 1), meaning that camera samples
+will be placed randomly in a pixel location. When it is turned off,
+camera rays are placed in the center of the pixel. When turned off,
+surface edges will appear aliased and jagged.</p>
+</section>
+<section id="options-ri-hider-geomshadowtermbias">
+<h2>options.ri:hider:geomShadowTermBias<a class="headerlink" href="#options-ri-hider-geomshadowtermbias" title="Permalink to this headline"></a></h2>
+<p>This setting will control when to compute and apply a bias to Poly Meshes
+to avoid the geometric shadow terminator artifacts that appear for shading points
+when they are visible from a light wrt their shading normal, but not visible wrt
+their geometric normal. The default value is 1 (on). Set to 0 (off) if you don’t
+want this bias to be applied to the Poly Meshes in your scene.</p>
+</section>
+<section id="options-ri-hider-maxsamples">
+<h2>options.ri:hider:maxsamples<a class="headerlink" href="#options-ri-hider-maxsamples" title="Permalink to this headline"></a></h2>
+<p>An explicit limit for the number of samples. If maxsamples is equal to its
+default then the maximum number of samples will be set equal to 64.
+Note that minsamples defaults to the square root of the maxsamples setting.</p>
+</section>
+<section id="options-ri-hider-minextrasamples">
+<h2>options.ri:hider:minextrasamples<a class="headerlink" href="#options-ri-hider-minextrasamples" title="Permalink to this headline"></a></h2>
+<p>This is the minimum number of extra samples that a pixel
+should continue shooting with after a sample fails to meet
+its convergence test with the adaptive sampler.
+Defaults to matching minsamples.</p>
+</section>
+<section id="options-ri-hider-minsamples">
+<h2>options.ri:hider:minsamples<a class="headerlink" href="#options-ri-hider-minsamples" title="Permalink to this headline"></a></h2>
+<p>Specifies the minimum number of samples for adaptive sampling. The default value
+is the square root of maxsamples.</p>
+</section>
+<section id="options-ri-hider-staticsampletime">
+<h2>options.ri:hider:staticsampletime<a class="headerlink" href="#options-ri-hider-staticsampletime" title="Permalink to this headline"></a></h2>
+<p>Controls the time at which the renderer will sample motion blurred
+geometry when Sample Motion is disabled. The value here is measured
+relative to the shutter, i.e. 0 = shutter open, 1 = shutter close.</p>
+</section>
+<section id="options-ri-hider-samplestride">
+<h2>options.ri:hider:samplestride<a class="headerlink" href="#options-ri-hider-samplestride" title="Permalink to this headline"></a></h2>
+<p>This facilitates rendering several images in parallel (with the same
+aamplestride but different sampleoffset) and then combine them
+incrementally during interactive rendering.  Default value is 1.</p>
+<p>With non-adaptive sampling:
+Let’s say you render four images with 256 samples each, with
+samplestride 4 and sampleoffsets 0, 1, 2, and 3.  If you combine those
+four images, you’ll get exactly the same image as if you had rendered
+a single image with 1024 samples, and during incremental/interactive
+rendering you’ll get the benefit of best use of the stratified
+progressive sample sequences.  If you can “assemble” images with
+samples 0-3, 4-7, 8-12, etc during interactive rendering, you’ve
+got the benefits of faster rendering without jumping to high samples
+early on.</p>
+<p>With adaptive sampling:
+Let’s say you again render four images, each with “maxsamples” 256,
+with samplestride 4 and sampleoffsets 0, 1, 2, and 3.  This time with
+adaptive sampling (PixelVariance &gt; 0).  Since each of the four images
+is more noisy than the combined image, the adaptive sampling will use
+more samples before deciding that the image error is acceptable than
+if it had been rendered as a single image.  So the PixelVariance
+setting may need to be adjusted.</p>
+</section>
+<section id="options-ri-hider-sampleoffset">
+<h2>options.ri:hider:sampleoffset<a class="headerlink" href="#options-ri-hider-sampleoffset" title="Permalink to this headline"></a></h2>
+<p>This allows several images to be rendered in parallel (with different
+sampleoffset values) and then combined.</p>
+<p>With non-adaptive sampling:
+Let’s say you render four images with 256 samples each, with
+sampleoffsets 0, 256, 512, and 768. If you combine those four images,
+you’ll get exactly the same image as if you had rendered a single image
+with 1024 samples.</p>
+<p>With adaptive sampling:
+Let’s say you again render four images, each with “maxsamples” 256,
+with sampleoffsets 0, 256, 512, and 768. Let’s say that due to
+adaptive sampling, some given pixel only gets 64 pixel samples in each
+of the four images. Then the combined image has been rendered with
+sample numbers 0-63, 256-319, 512-575, and 768-831. Due to the
+stratification of the samples, this is not quite as good as if you had
+rendered a single image with 256 consecutive samples.  However, it
+is still better than rendering a single image with only 64 samples.</p>
+</section>
+<section id="options-ri-ri-pixelfiltername">
+<h2>options.ri:Ri:PixelFilterName<a class="headerlink" href="#options-ri-ri-pixelfiltername" title="Permalink to this headline"></a></h2>
+<p>Distribution of camera ray directions for each pixel. In other words, the filter determines how the pixel samples are warped in screen space around the pixel center.</p>
+</section>
+<section id="options-ri-ri-pixelfilterwidth">
+<h2>options.ri:Ri:PixelFilterWidth<a class="headerlink" href="#options-ri-ri-pixelfilterwidth" title="Permalink to this headline"></a></h2>
+<p>Width of the distribution of camera ray directions for each pixel.</p>
+</section>
+<section id="options-ri-ri-pixelvariance">
+<h2>options.ri:Ri:PixelVariance<a class="headerlink" href="#options-ri-ri-pixelvariance" title="Permalink to this headline"></a></h2>
+<p>Controls adaptive sampling. This sets the upper bound on the acceptable estimated
+variance of the pixel values from the true pixel values.</p>
+</section>
+<section id="options-ri-shutter-offset">
+<h2>options.ri:Shutter:offset<a class="headerlink" href="#options-ri-shutter-offset" title="Permalink to this headline"></a></h2>
+<p>Offset shutter open/close.</p>
+</section>
+<section id="options-ri-hider-bakemode">
+<h2>options.ri:hider:bakemode<a class="headerlink" href="#options-ri-hider-bakemode" title="Permalink to this headline"></a></h2>
+<p>Specifies whether the renderer should bake Pattern results or Integrator results
+or both.</p>
+</section>
+<section id="options-ri-hider-primvar">
+<h2>options.ri:hider:primvar<a class="headerlink" href="#options-ri-hider-primvar" title="Permalink to this headline"></a></h2>
+<p>Specifies dicing manifold used when baking integrator results.</p>
+</section>
+<section id="options-ri-hider-invert">
+<h2>options.ri:hider:invert<a class="headerlink" href="#options-ri-hider-invert" title="Permalink to this headline"></a></h2>
+<p>Specifies whether or not to invert the T texture coordinate when baking integrator
+results.</p>
+</section>
+<section id="options-ri-hider-bakeudimstride">
+<h2>options.ri:hider:bakeudimstride<a class="headerlink" href="#options-ri-hider-bakeudimstride" title="Permalink to this headline"></a></h2>
+<p>Stride when baking for a subset of udims.  Default 1 means bake all udims.</p>
+</section>
+<section id="options-ri-hider-bakeudimoffset">
+<h2>options.ri:hider:bakeudimoffset<a class="headerlink" href="#options-ri-hider-bakeudimoffset" title="Permalink to this headline"></a></h2>
+<p>Offset when baking for a subset of udims.  Used together with bakeudimstride.
+Default 0 means bake all udims when bakeudimstride is 1.</p>
+</section>
+<section id="options-ri-hider-bakebboxmin">
+<h2>options.ri:hider:bakebboxmin<a class="headerlink" href="#options-ri-hider-bakebboxmin" title="Permalink to this headline"></a></h2>
+<p>Bounding box min for “integrator” baking of 3D point clouds (and for the integrator
+part of “all” baking.  In world space.  Ignored for “pattern” baking and for 2D baking.</p>
+</section>
+<section id="options-ri-hider-bakebboxmax">
+<h2>options.ri:hider:bakebboxmax<a class="headerlink" href="#options-ri-hider-bakebboxmax" title="Permalink to this headline"></a></h2>
+<p>Bounding box max for “integrator” baking of 3D point clouds (and for the integrator
+part of “all” baking.  In world space.  Ignored for “pattern” baking and for 2D baking.</p>
+</section>
+<section id="options-ri-hider-raytracebaketesselation">
+<h2>options.ri:hider:raytracebaketesselation<a class="headerlink" href="#options-ri-hider-raytracebaketesselation" title="Permalink to this headline"></a></h2>
+<p>Force the tesselation to be the same as the baking tesselation when raytracing
+(for example when using a PxrOcclusion or PxrDirt shader).
+This can reduce self intersections and give cleaner results but may increase the
+density of polygons when raytracing.
+If you have multiple pattern bakes at different resolutions, the highest resolution
+will be chosen. Don’t attempt to use this option alongside interactive rendering.</p>
+</section>
+<section id="options-ri-lighting-selectionlearningscheme">
+<h2>options.ri:lighting:selectionlearningscheme<a class="headerlink" href="#options-ri-lighting-selectionlearningscheme" title="Permalink to this headline"></a></h2>
+<p>Employs a machine learning algorithm to more accurately importance
+sample lights, taking into account occlusion and light filters.</p>
+</section>
+<section id="options-ri-lighting-minimumestimate">
+<h2>options.ri:lighting:minimumestimate<a class="headerlink" href="#options-ri-lighting-minimumestimate" title="Permalink to this headline"></a></h2>
+<p>Minimum estimate for light selection. Local lights whose estimate
+falls below this value will be ignored. Increasing this value may
+help speed up direct lighting at the expense of accuracy.</p>
+</section>
+<section id="options-ri-trace-worldoffset">
+<h2>options.ri:trace:worldoffset<a class="headerlink" href="#options-ri-trace-worldoffset" title="Permalink to this headline"></a></h2>
+<p>Used as the origin when the worldorigin option is set to “worldoffset”.</p>
+</section>
+<section id="options-ri-trace-worldorigin">
+<h2>options.ri:trace:worldorigin<a class="headerlink" href="#options-ri-trace-worldorigin" title="Permalink to this headline"></a></h2>
+<p>Set a new world origin to give better floating point precision.</p>
+</section>
+<section id="options-ri-trace-bvhcompression">
+<h2>options.ri:trace:bvhcompression<a class="headerlink" href="#options-ri-trace-bvhcompression" title="Permalink to this headline"></a></h2>
+<p>Provides a hint to the system to favor memory utilization versus speed when
+constructing the ray accelerator. Valid values are in the range [0, 1], where
+the higher the values the more compact the memory representation.
+The control behaves almost lineraly with some discontinuities in the compression
+rate as different strategies are activated. The result obtained is likely to be
+scene dependent.
+As a rule of thumb, leave this control to 0 unless you need to reduce memory
+utilization in order to render a given scene or sequence. When tuning, set the
+control to 1 at first to see how much memory can be saved through compression and
+what time overhead is generated, then dial the number back to a lower value (if
+possible) and reach the deired balance between speed and memory usage.</p>
+</section>
+<section id="options-ri-curve-minwidth">
+<h2>options.ri:curve:minwidth<a class="headerlink" href="#options-ri-curve-minwidth" title="Permalink to this headline"></a></h2>
+<p>Minimum curve width in raster coordinates.</p>
+</section>
+<section id="options-ri-dice-offscreenmultiplier">
+<h2>options.ri:dice:offscreenmultiplier<a class="headerlink" href="#options-ri-dice-offscreenmultiplier" title="Permalink to this headline"></a></h2>
+<p>Dicing rate multiplier for objects outside the viewing frustum.</p>
+</section>
+<section id="options-ri-dice-triangle">
+<h2>options.ri:dice:triangle<a class="headerlink" href="#options-ri-dice-triangle" title="Permalink to this headline"></a></h2>
+<p>The method used for dicing “triangles”. The default method “trim” renders
+triangles by trimming a quad. The “blp” method renders a quad with two points
+being coincident.</p>
+</section>
+<section id="options-ri-stitch-refwarning">
+<h2>options.ri:stitch:refwarning<a class="headerlink" href="#options-ri-stitch-refwarning" title="Permalink to this headline"></a></h2>
+<p>Enable stitch warnings.</p>
+</section>
+<section id="options-ri-bucket-order">
+<h2>options.ri:bucket:order<a class="headerlink" href="#options-ri-bucket-order" title="Permalink to this headline"></a></h2>
+<p>Render bucket order.</p>
+</section>
+<section id="options-ri-bucket-orderorigin">
+<h2>options.ri:bucket:orderorigin<a class="headerlink" href="#options-ri-bucket-orderorigin" title="Permalink to this headline"></a></h2>
+<p>First bucket for “spiral” and “circle” order. Image center is [-1 -1].</p>
+</section>
+<section id="options-ri-deep-flagvolumes">
+<h2>options.ri:deep:flagvolumes<a class="headerlink" href="#options-ri-deep-flagvolumes" title="Permalink to this headline"></a></h2>
+<p>Auto is off for dtex, on otherwise.</p>
+</section>
+<section id="options-ri-checkpoint-asfinal">
+<h2>options.ri:checkpoint:asfinal<a class="headerlink" href="#options-ri-checkpoint-asfinal" title="Permalink to this headline"></a></h2>
+<p>When enabled, this keeps the extra channels and the
+checkpoint tag when writing the final image for the render.
+The final image will be identical to any other checkpoint,
+rather than a slimmed down image. This means that once your
+image has reached the quality you’ve set and it completes,
+it can always be restarted by the user later.</p>
+</section>
+<section id="options-ri-checkpoint-command">
+<h2>options.ri:checkpoint:command<a class="headerlink" href="#options-ri-checkpoint-command" title="Permalink to this headline"></a></h2>
+<p>System command to be called after checkpoint.  If
+system calls are enabled, then after a checkpoint has been
+written, the specified command will be called.  This is
+synchronous; the rendering threads are quiescent while this
+runs and will not resume again until the process returns,
+avoiding possible race conditions if the command takes a
+token %i will be replaced with the current increment,
+zero-padded to 5 digits.  The token %e will be replaced
+with the elapsed time in seconds, zero-padded to 6 digits.
+The token %r will be replaced with the reason for this
+update to the checkpoint files (either completely
+<code class="docutils literal notranslate"><span class="pre">finished</span></code>, <code class="docutils literal notranslate"><span class="pre">exiting</span></code> early due to exitat option, or a
+normal <code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>).  Literal % characters may be inserted
+with %%.</p>
+</section>
+<section id="options-ri-checkpoint-exitat">
+<h2>options.ri:checkpoint:exitat<a class="headerlink" href="#options-ri-checkpoint-exitat" title="Permalink to this headline"></a></h2>
+<p>How long render should run before writing a final
+checkpoint and terminating.  Value can also be a string such
+as “10m” or “0.5h”. Set to 0 or empty to disable.</p>
+</section>
+<section id="options-ri-checkpoint-interval">
+<h2>options.ri:checkpoint:interval<a class="headerlink" href="#options-ri-checkpoint-interval" title="Permalink to this headline"></a></h2>
+<p>Write framebuffers to disk every N progressive steps.
+If value is positive the units will be interpreted as
+seconds.  If value is negative its units will be
+interpreted as increments.  Value can also be a string such
+as “10m” or “0.5h”.  Setting option to 0 or empty will disable
+checkpoints.</p>
+</section>
+<section id="options-ri-checkpoint-keepfiles">
+<h2>options.ri:checkpoint:keepfiles<a class="headerlink" href="#options-ri-checkpoint-keepfiles" title="Permalink to this headline"></a></h2>
+<p>If set to true then prman will write to a new,
+numbered image for each checkpoint.  Note:  This will
+disable the final write of a checkpoint file which means
+the render cannot be recovered using the ‘recover’ option.</p>
+</section>
+<section id="options-ri-shade-debug">
+<h2>options.ri:shade:debug<a class="headerlink" href="#options-ri-shade-debug" title="Permalink to this headline"></a></h2>
+<p>Shading debug level.</p>
+</section>
+<section id="options-ri-shade-roughnessmollification">
+<h2>options.ri:shade:roughnessmollification<a class="headerlink" href="#options-ri-shade-roughnessmollification" title="Permalink to this headline"></a></h2>
+<p>Specular Roughness Mollification.  This selectively increases material
+roughness on secondary bounces after diffuse or broad glossy reflections
+and on highly curved surfaces.  This reduces noise and fireflies, but can
+also make caustics blurrier or disappear entirely.  Set this value to 0.0
+when you want to render ground-truth caustics.  The default value is 1.0.</p>
+</section>
+<section id="options-ri-shade-shadowbumpterminator">
+<h2>options.ri:shade:shadowBumpTerminator<a class="headerlink" href="#options-ri-shade-shadowbumpterminator" title="Permalink to this headline"></a></h2>
+<p>Setting to control whether bump shadow terminators are smoothed in non-hair bxdfs.</p>
+</section>
+<section id="options-ri-statistics-jsonfilename">
+<h2>options.ri:statistics:jsonFilename<a class="headerlink" href="#options-ri-statistics-jsonfilename" title="Permalink to this headline"></a></h2>
+<p>File name for raw statistics JSON report.</p>
+</section>
+<section id="options-ri-limits-brickmemory">
+<h2>options.ri:limits:brickmemory<a class="headerlink" href="#options-ri-limits-brickmemory" title="Permalink to this headline"></a></h2>
+<p>Brickmap cache size in kB.</p>
+</section>
+<section id="options-ri-limits-bucketsize">
+<h2>options.ri:limits:bucketsize<a class="headerlink" href="#options-ri-limits-bucketsize" title="Permalink to this headline"></a></h2>
+<p>Size of render buckets in pixels.</p>
+</section>
+<section id="options-ri-limits-deepshadowerror">
+<h2>options.ri:limits:deepshadowerror<a class="headerlink" href="#options-ri-limits-deepshadowerror" title="Permalink to this headline"></a></h2>
+<p>Control lossy compression scheme to reduce file size of deep output. Setting to
+a high value will result in lower numbers of samples stored for each pixel.</p>
+</section>
+<section id="options-ri-limits-geocachememory">
+<h2>options.ri:limits:geocachememory<a class="headerlink" href="#options-ri-limits-geocachememory" title="Permalink to this headline"></a></h2>
+<p>Geometry cache size in kB.</p>
+</section>
+<section id="options-ri-limits-matrixcachememory">
+<h2>options.ri:limits:matrixcachememory<a class="headerlink" href="#options-ri-limits-matrixcachememory" title="Permalink to this headline"></a></h2>
+<p>Matrix cache in kB.</p>
+</section>
+<section id="options-ri-limits-nurbcurvaturedicefactor">
+<h2>options.ri:limits:nurbcurvaturedicefactor<a class="headerlink" href="#options-ri-limits-nurbcurvaturedicefactor" title="Permalink to this headline"></a></h2>
+<p>NURBs max curvature multiplier.</p>
+</section>
+<section id="options-ri-limits-octreememory">
+<h2>options.ri:limits:octreememory<a class="headerlink" href="#options-ri-limits-octreememory" title="Permalink to this headline"></a></h2>
+<p>None cache size in kB.</p>
+</section>
+<section id="options-ri-limits-opacitycachememory">
+<h2>options.ri:limits:opacitycachememory<a class="headerlink" href="#options-ri-limits-opacitycachememory" title="Permalink to this headline"></a></h2>
+<p>Opacity cache in kB.</p>
+</section>
+<section id="options-ri-limits-othreshold">
+<h2>options.ri:limits:othreshold<a class="headerlink" href="#options-ri-limits-othreshold" title="Permalink to this headline"></a></h2>
+<p>Opacity Culling: When rendering scenes with a large number
+of semi-transparent layered objects (e.g. hair), the opacity
+culling threshold can be set for a significant time and memory savings.
+Essentially, a stack of visible points whose accumulated opacity is
+greater (in each channel) than the specified limit will be considered
+fully opaque by the hider, and objects behind the stack will be culled.</p>
+</section>
+<section id="options-ri-limits-pointmemory">
+<h2>options.ri:limits:pointmemory<a class="headerlink" href="#options-ri-limits-pointmemory" title="Permalink to this headline"></a></h2>
+<p>Point cache size in kB.</p>
+</section>
+<section id="options-ri-limits-ptexturememory">
+<h2>options.ri:limits:ptexturememory<a class="headerlink" href="#options-ri-limits-ptexturememory" title="Permalink to this headline"></a></h2>
+<p>PTex cache size in kB.</p>
+</section>
+<section id="options-ri-limits-rendermemory">
+<h2>options.ri:limits:rendermemory<a class="headerlink" href="#options-ri-limits-rendermemory" title="Permalink to this headline"></a></h2>
+<p>Memory limit as percentage of machine memory.</p>
+</section>
+<section id="options-ri-limits-rendertime">
+<h2>options.ri:limits:rendertime<a class="headerlink" href="#options-ri-limits-rendertime" title="Permalink to this headline"></a></h2>
+<p>Maximum render time in minutes.</p>
+</section>
+<section id="options-ri-limits-shadesize">
+<h2>options.ri:limits:shadesize<a class="headerlink" href="#options-ri-limits-shadesize" title="Permalink to this headline"></a></h2>
+<p>The maximum number of vertices, not grid.</p>
+</section>
+<section id="options-ri-limits-texturememory">
+<h2>options.ri:limits:texturememory<a class="headerlink" href="#options-ri-limits-texturememory" title="Permalink to this headline"></a></h2>
+<p>Texture cache size in kB.</p>
+</section>
+<section id="options-ri-limits-threads">
+<h2>options.ri:limits:threads<a class="headerlink" href="#options-ri-limits-threads" title="Permalink to this headline"></a></h2>
+<p>Set the number of threads that the renderer uses. If a value of 0 is specified
+then all CPUs will be utilized for rendering.  If a negative value ‘-N’ is
+specified then prman will use all but N CPUs for rendering.</p>
+</section>
+<section id="options-ri-searchpath-archive">
+<h2>options.ri:searchpath:archive<a class="headerlink" href="#options-ri-searchpath-archive" title="Permalink to this headline"></a></h2>
+<p>Search path for Rib archives and DelayedReadArchive.</p>
+</section>
+<section id="options-ri-searchpath-dirmap">
+<h2>options.ri:searchpath:dirmap<a class="headerlink" href="#options-ri-searchpath-dirmap" title="Permalink to this headline"></a></h2>
+<p>Search path remapping.</p>
+</section>
+<section id="options-ri-searchpath-display">
+<h2>options.ri:searchpath:display<a class="headerlink" href="#options-ri-searchpath-display" title="Permalink to this headline"></a></h2>
+<p>Search path for display plug-ins.</p>
+</section>
+<section id="options-ri-searchpath-procedural">
+<h2>options.ri:searchpath:procedural<a class="headerlink" href="#options-ri-searchpath-procedural" title="Permalink to this headline"></a></h2>
+<p>Search path for DynamicLoad procedural plug-ins.</p>
+</section>
+<section id="options-ri-searchpath-rifilter">
+<h2>options.ri:searchpath:rifilter<a class="headerlink" href="#options-ri-searchpath-rifilter" title="Permalink to this headline"></a></h2>
+<p>Search path for Rif plug-ins.</p>
+</section>
+<section id="options-ri-searchpath-rixplugin">
+<h2>options.ri:searchpath:rixplugin<a class="headerlink" href="#options-ri-searchpath-rixplugin" title="Permalink to this headline"></a></h2>
+<p>Search path for shading plug-ins.</p>
+</section>
+<section id="options-ri-searchpath-shader">
+<h2>options.ri:searchpath:shader<a class="headerlink" href="#options-ri-searchpath-shader" title="Permalink to this headline"></a></h2>
+<p>Search path for OSL pattern plug-ins.</p>
+</section>
+<section id="options-ri-searchpath-texture">
+<h2>options.ri:searchpath:texture<a class="headerlink" href="#options-ri-searchpath-texture" title="Permalink to this headline"></a></h2>
+<p>Search path for texture files.</p>
+</section>
+<section id="options-ri-osl-batched">
+<h2>options.ri:osl:batched<a class="headerlink" href="#options-ri-osl-batched" title="Permalink to this headline"></a></h2>
+<p>Enable OSL optimizations that allow execution of multiple shading points
+via vectorized instructions on supported processors (AVX, AVX2, AVX512).</p>
+</section>
+<section id="options-ri-osl-statisticslevel">
+<h2>options.ri:osl:statisticslevel<a class="headerlink" href="#options-ri-osl-statisticslevel" title="Permalink to this headline"></a></h2>
+<p>Set the level of OSL statistics to track. Level 2 and above
+introduces timing which can have a small effect on performance.
+Level 4 and above includes internal OSL statistics.
+Level 5 includes statistics per shader. Other levels reserved
+for future use.</p>
+</section>
+<section id="options-ri-osl-verbose">
+<h2>options.ri:osl:verbose<a class="headerlink" href="#options-ri-osl-verbose" title="Permalink to this headline"></a></h2>
+<p>Sets the level of OSL messages to pass through.</p>
+</section>
+<section id="options-ri-volume-aggregatespace">
+<h2>options.ri:volume:aggregatespace<a class="headerlink" href="#options-ri-volume-aggregatespace" title="Permalink to this headline"></a></h2>
+<p>Space in which to compute aggregate volume metadata. Valid spaces are
+“world” and “camera”. Generally the space should be chosen to minimize
+the range of motion of the volumes.</p>
+</section>
+<section id="options-ri-lpe-diffuse2">
+<h2>options.ri:lpe:diffuse2<a class="headerlink" href="#options-ri-lpe-diffuse2" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">D2</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-lpe-diffuse3">
+<h2>options.ri:lpe:diffuse3<a class="headerlink" href="#options-ri-lpe-diffuse3" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">D3</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-lpe-diffuse4">
+<h2>options.ri:lpe:diffuse4<a class="headerlink" href="#options-ri-lpe-diffuse4" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">D4</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-lpe-specular2">
+<h2>options.ri:lpe:specular2<a class="headerlink" href="#options-ri-lpe-specular2" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">S2</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-lpe-specular3">
+<h2>options.ri:lpe:specular3<a class="headerlink" href="#options-ri-lpe-specular3" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">S3</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-lpe-specular4">
+<h2>options.ri:lpe:specular4<a class="headerlink" href="#options-ri-lpe-specular4" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">S4</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-lpe-specular5">
+<h2>options.ri:lpe:specular5<a class="headerlink" href="#options-ri-lpe-specular5" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">S5</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-lpe-specular6">
+<h2>options.ri:lpe:specular6<a class="headerlink" href="#options-ri-lpe-specular6" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">S6</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-lpe-specular7">
+<h2>options.ri:lpe:specular7<a class="headerlink" href="#options-ri-lpe-specular7" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">S7</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-lpe-specular8">
+<h2>options.ri:lpe:specular8<a class="headerlink" href="#options-ri-lpe-specular8" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">S8</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-lpe-user2">
+<h2>options.ri:lpe:user2<a class="headerlink" href="#options-ri-lpe-user2" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">U2</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-lpe-user3">
+<h2>options.ri:lpe:user3<a class="headerlink" href="#options-ri-lpe-user3" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">U3</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-lpe-user4">
+<h2>options.ri:lpe:user4<a class="headerlink" href="#options-ri-lpe-user4" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">U4</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-lpe-user5">
+<h2>options.ri:lpe:user5<a class="headerlink" href="#options-ri-lpe-user5" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">U5</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-lpe-user6">
+<h2>options.ri:lpe:user6<a class="headerlink" href="#options-ri-lpe-user6" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">U6</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-lpe-user7">
+<h2>options.ri:lpe:user7<a class="headerlink" href="#options-ri-lpe-user7" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">U7</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-lpe-user8">
+<h2>options.ri:lpe:user8<a class="headerlink" href="#options-ri-lpe-user8" title="Permalink to this headline"></a></h2>
+<p>Defines the contents of the <code class="docutils literal notranslate"><span class="pre">U8</span></code> custom LPE lobe.</p>
+</section>
+<section id="options-ri-interactivedenoiser-enabled">
+<h2>options.ri:interactiveDenoiser:enabled<a class="headerlink" href="#options-ri-interactivedenoiser-enabled" title="Permalink to this headline"></a></h2>
+<p>Enables interactive denoising using RenderMan’s <code class="docutils literal notranslate"><span class="pre">quicklyNoiseless</span></code> display driver. When on, all
+required denoising AOVs are added to the render automatically.</p>
+</section>
+<section id="options-ri-interactivedenoiser-cheappass">
+<h2>options.ri:interactiveDenoiser:cheapPass<a class="headerlink" href="#options-ri-interactivedenoiser-cheappass" title="Permalink to this headline"></a></h2>
+<p>When on, the first pass will use a cheaper (slightly faster but lower
+quality) heuristic. This can be useful if rendering something that is
+converging very quickly and you want to prioritize getting a denoised
+result faster.</p>
+</section>
+<section id="options-ri-interactivedenoiser-interval">
+<h2>options.ri:interactiveDenoiser:interval<a class="headerlink" href="#options-ri-interactivedenoiser-interval" title="Permalink to this headline"></a></h2>
+<p>The time interval in between denoise runs (in seconds).</p>
+</section>
+<section id="options-ri-interactivedenoiser-minsamples">
+<h2>options.ri:interactiveDenoiser:minSamples<a class="headerlink" href="#options-ri-interactivedenoiser-minsamples" title="Permalink to this headline"></a></h2>
+<p>The minimum number of average samples per bucket before the interactive denoiser runs for the first time.
+Changing this preference requires the render to be restarted for this option to be respected.</p>
+</section>
+<section id="options-ri-checkpoint-recover">
+<h2>options.ri:checkpoint:recover<a class="headerlink" href="#options-ri-checkpoint-recover" title="Permalink to this headline"></a></h2>
+<p>Enables recovery from a checkpoint created by a previous render.</p>
+</section>
+<section id="extraoptions">
+<h2>extraOptions<a class="headerlink" href="#extraoptions" title="Permalink to this headline"></a></h2>
+<p>An additional set of options to be added. Arbitrary numbers
+of options may be specified within a single <code class="docutils literal notranslate"><span class="pre">IECore.CompoundObject</span></code>,
+where each key/value pair in the object defines an option.
+This is convenient when using an expression to define the options
+and the option count might be dynamic. It can also be used to
+create options whose type cannot be handled by the <code class="docutils literal notranslate"><span class="pre">options</span></code>
+CompoundDataPlug.</p>
+<p>If the same option is defined by both the <code class="docutils literal notranslate"><span class="pre">options</span></code> and the
+<code class="docutils literal notranslate"><span class="pre">extraOptions</span></code> plugs, then the value from the <code class="docutils literal notranslate"><span class="pre">extraOptions</span></code>
+is taken.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="RenderManMeshLight.html" class="btn btn-neutral float-left" title="RenderManMeshLight" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="RenderManSampleFilter.html" class="btn btn-neutral float-right" title="RenderManSampleFilter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2011-2019 John Haddon, 2011-2019 Image Engine Design Inc..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
