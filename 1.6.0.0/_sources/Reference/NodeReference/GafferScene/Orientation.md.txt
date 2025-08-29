@@ -1,0 +1,208 @@
+Orientation
+===========
+
+Converts between different representations of orientation, stored as
+primitive variables on an object. Supported representations include
+euler angles, quaternions, axis-angle form, aim vectors and matrices.
+
+Typically used to prepare points for instancing, as the Instancer node
+requires orientation to be provided as a quaternion, but it is often
+more convenient to prepare orientations in another representation.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+inMode
+------
+
+The method used to define the input orientations.
+
+deleteInputs
+------------
+
+Deletes the input primitive variables, so that they are
+not present on the output object.
+
+inEuler
+-------
+
+Name of the primitive variable that defines the input orientation
+as euler angles, measured in degrees. This variable should contain
+V3fVectorData.
+
+inOrder
+-------
+
+The rotation order of the input euler angles.
+
+inQuaternion
+------------
+
+Name of the primitive variable that defines the input orientation
+as quaternions. This variable should contain QuatfVectorData.
+
+inAxis
+------
+
+Name of the primitive variable that defines the axis component of
+the input orientations. This variable should contain V3fVectorData.
+
+inAngle
+-------
+
+Name of the primitive variable that defines the angle component of
+the input orientations. This variable should contain FloatVectorData.
+
+inXAxis
+-------
+
+Name of the primitive variable that defines the direction in which the
+X axis will be aimed. This variable should contain V3fVectorData.
+
+inYAxis
+-------
+
+Name of the primitive variable that defines the direction in which the
+Y axis will be aimed. This variable should contain V3fVectorData.
+
+inZAxis
+-------
+
+Name of the primitive variable that defines the direction in which the
+Z axis will be aimed. This variable should contain V3fVectorData.
+
+inMatrix
+--------
+
+Name of the primitive variable that defines the input orientations as
+a matrix. This variable should contain M33fVectorData.
+
+randomEnabled
+-------------
+
+Enables randomisation of the orientations. Randomisation
+is applied as a pre-transform of the input orientation.
+
+randomAxis
+----------
+
+A reference axis which the randomisation is specified relative
+to. Typically this would be the primary axis of the model being
+instanced.
+
+randomSpread
+------------
+
+Applies a random rotation away from the axis, specified in
+degrees. The maximum spread of 180 degrees gives a uniform
+randomisation over all possible directions.
+
+randomTwist
+-----------
+
+Applies a random rotation around the axis, specified in
+degrees.
+
+randomSpace
+-----------
+
+The space in which the randomisation is specified. This defines
+how it is combined with the input orientations.
+
+Local
+:       The randomisation is specified in local space and
+        is therefore post-multiplied onto the input orientations.
+        When using the Instancer, this is equivalent to randomising
+        the prototypes before they are instanced.
+
+Parent
+:       The transformation is specified in parent space and
+        is therefore pre-multiplied onto the input orientations.
+        When using the Instancer, this is equivalent to randomising
+        the instances after they are positioned.
+
+outMode
+-------
+
+The method used to define the output orientations. When
+creating orientations for the Instancer, the Quaternion
+mode should be used.
+
+outEuler
+--------
+
+Name of the primitive variable that will be created to store
+the output orientations as euler angles, measured in degrees.
+
+outOrder
+--------
+
+The rotation order of the output euler angles.
+
+outQuaternion
+-------------
+
+Name of the primitive variable that will be created to store
+the output orientations as quaternions.
+
+outAxis
+-------
+
+Name of the primitive variable that will be created to store
+the axis component of the output orientation.
+
+outAngle
+--------
+
+Name of the primitive variable that will be created to store
+the angle component of the output orientation.
+
+outXAxis
+--------
+
+Name of the primitive variable that will be created to store
+the x-axis aim vector of the output orientation.
+
+outYAxis
+--------
+
+Name of the primitive variable that will be created to store
+the y-axis aim vector of the output orientation.
+
+outZAxis
+--------
+
+Name of the primitive variable that will be created to store
+the z-axis aim vector of the output orientation.
+
+outMatrix
+---------
+
+Name of the primitive variable that will be created to store
+the output orientations as matrices. The matrices will be
+stored as M33fVectorData.
