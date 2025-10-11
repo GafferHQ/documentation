@@ -1,0 +1,47 @@
+ImageToTensor
+=============
+
+Converts images to tensors for use with the Inference node.
+
+> Note : Only the data window is converted, as it would typically be
+> wasteful to convert and process the empty pixels outside the data window.
+> If this is necessary, merge the image over a Constant image before
+> conversion.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+image
+-----
+
+The image to be converted.
+
+view
+----
+
+The image view to take the tensor data from.
+
+channels
+--------
+
+The list of channels to convert. Channels are added to the
+tensor in the order specified, so can be shuffled by changing
+the order. For example, an order of `[ "B", "G", "R" ]` might
+be needed for use with models trained on images using OpenCV
+conventions.
+
+interleaveChannels
+------------------
+
+Interleaves the channel data, so that all channels for a single
+pixel are adjacent in memory. Whether or not this is needed depends
+on the input requirements of the model the tensor is used with.
+
+tensor
+------
+
+The output tensor.
