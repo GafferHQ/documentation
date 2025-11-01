@@ -1,0 +1,23 @@
+SceneNode
+=========
+
+The base type for all nodes which are capable of generating a
+hierarchical scene.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs
+an empty scene.
