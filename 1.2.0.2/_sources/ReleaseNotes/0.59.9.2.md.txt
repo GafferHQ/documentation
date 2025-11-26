@@ -1,8 +1,0 @@
-0.59.9.2
-========
-
-Fixes
------
-
-- Merge : Fixed failure to update when only the dataWindow of an input changed.
-

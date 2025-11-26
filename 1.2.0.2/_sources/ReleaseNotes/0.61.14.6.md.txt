@@ -1,8 +1,0 @@
-0.61.14.6
-=========
-
-Fixes
------
-
-- GraphEditor : Fixed handling of errors on `Dot.labelType` and `Dot.label` plugs.
-

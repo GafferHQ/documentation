@@ -1,8 +1,0 @@
-0.49.0.1
-========
-
-Fixes
------
-
-Python bindings : Fixed several bugs which could cause Gaffer to hang ([#2789](https://github.com/GafferHQ/gaffer/issues/2789)).
-

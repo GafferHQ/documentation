@@ -1,9 +1,0 @@
-0.28.1
-======
-
-* Changed the default resize mode of OpDialogue/ErrorDialogue to be manual
-
-* Removed assert warning
-
-* Fixed juddering resize events when opening the OpDialogue, by optimising out unecessary calls in Widget.setVisible().
-

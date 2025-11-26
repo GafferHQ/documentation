@@ -1,9 +1,0 @@
-0.74.0
-======
-
-- Added a multitude of miscellaneous documentation improvements.
-- Implemented parameterName.type RenderManShader annotation ([#456](https://github.com/GafferHQ/gaffer/issues/456)).
-- Implemented parameterName.coshaderType RenderManShader annotation ([#460](https://github.com/GafferHQ/gaffer/issues/460)).
-- Fixed disabled Shader pass-through bugs.
-- Added variable length coshader array support to RenderManShader ([#462](https://github.com/GafferHQ/gaffer/issues/462)).
-
