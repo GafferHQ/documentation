@@ -1,7 +1,0 @@
-0.33.2
-======
-
-* Fixed the delete order of ListContainer that was causing popup windows
-
-* Fixed circular reference in menu that was causing popup windows
-

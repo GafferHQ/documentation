@@ -1,8 +1,0 @@
-1.4.15.5
-========
-
-Fixes
------
-
-- PythonEditor : Fixed bug preventing values from being inserted when dragging most VectorData types into the PythonEditor.
-

@@ -1,8 +1,0 @@
-0.92.1
-======
-
-#### Scene
-
-- Improved shader assignment reporting in SceneInspector ([#335](https://github.com/GafferHQ/gaffer/issues/335))
-- Improved shader handle generation
-
