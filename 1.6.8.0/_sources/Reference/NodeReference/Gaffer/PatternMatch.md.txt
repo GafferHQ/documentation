@@ -1,0 +1,43 @@
+PatternMatch
+============
+
+Tests an input string against a pattern, outputting true if the string
+matches.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+string
+------
+
+The string to be tested.
+
+pattern
+-------
+
+The pattern to match the string against. This can use any of
+Gaffer's standard wildcards :
+
+| Pattern   | Usage                                        |
+|:----------|:---------------------------------------------|
+| *         | Matches any string                           |
+| ?         | Matches any single character                 |
+| [ABC]     | Matches any single character from a list     |
+| [!ABC]    | Matches any single character not from a list |
+| [a-z]     | Matches any single character in a range      |
+| [!a-z]    | Matches any single character not in a range  |
+| \        | Escapes the next character                   |
+
+enabled
+-------
+
+Turns the node on and off. When off, `match` always outputs `false`.
+
+match
+-----
+
+Outputs `true` if the string matches the pattern, and `false` otherwise.
