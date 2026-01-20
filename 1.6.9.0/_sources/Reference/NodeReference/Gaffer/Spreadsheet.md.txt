@@ -1,0 +1,98 @@
+Spreadsheet
+===========
+
+Provides a spreadsheet designed for easy management of sets of
+associated plug values. Each column of the spreadsheet corresponds
+to an output value that can be connected to drive a plug on another
+node. Each row of the spreadsheet provides candidate values for each
+output, along with a row name and enabled status. Row names are matched
+against a selector to determine which row is passed through to the output.
+Row matching is performed as follows :
+
+- Matching starts with the second row and considers all subsequent
+  rows one by one until a match is found. The first matching row
+  is the one that is chosen.
+- Matching is performed using Gaffer's standard wildcard matching.
+  Each "name" may contain several individual patterns each separated
+  by spaces.
+- The first row is used as a default, and is chosen only if no other
+  row matches.
+
+> Note : The matching rules are identical to the ones used by the
+> NameSwitch node.
+
+## Keyboard Shortcuts
+
+- **<kbd>Return</kbd>**/**<kbd>Double Click</kbd>** Toggle/Edit selected cells.
+- **<kbd>D</kbd>** Toggle Enabled state of selected cells.
+- **<kbd>Ctrl</kbd> + <kbd>C</kbd>**/**<kbd>V</kbd>** Copy/Paste selected cells or rows.
+- **<kbd>Up</kbd>**, **<kbd>Down</kbd>**, **<kbd>Left</kbd>**, **<kbd>Right</kbd>** Move cell selection.
+- **<kbd>Shift</kbd> + <kbd>Up</kbd>**, **<kbd>Down</kbd>**, **<kbd>Left</kbd>**, **<kbd>Right</kbd>** Extend cell selection.
+- **<kbd>Ctrl</kbd> + <kbd>Up</kbd>**, **<kbd>Down</kbd>**, **<kbd>Left</kbd>**, **<kbd>Right</kbd>** Move keyboard focus.
+- **<kbd>Space</kbd>** Toggle selection state of cell with keyboard focus.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+enabled
+-------
+
+Turns the node on and off.
+
+selector
+--------
+
+The value that the row names will be matched against.
+Typically this will refer to a Context Variable using
+the `${variableName}` syntax.
+
+rows
+----
+
+Holds a child RowPlug for each row in the spreadsheet.
+
+out
+---
+
+The outputs from the spreadsheet. Contains a child plug for each
+column in the spreadsheet.
+
+enabledRowNames
+---------------
+
+An output plug containing the names of all currently enabled rows.
+
+resolvedRows
+------------
+
+An output plug containing the resolved cell values for all enabled
+rows, This can be used to drive expressions in situations where the
+standard `out` plug is not useful, or would be awkward to use. The
+values are formatted as follows :
+
+```
+{
+    "row1Name" : { "columnName" : columnValue, ... },
+    "row2Name" : { "columnName" : columnValue, ... },
+    ...
+}
+```
+
+> Note : The output is completely independent of the value of
+> `selector`.
+
+activeRowIndex
+--------------
+
+An output containing the index of the row that matches the selector
+in the current context.
+
+> Tip : The default row has index `0`, which converts to `False`
+> when used to drive a BoolPlug via a connection (all other values
+> convert to `True`). Therefore `Spreadsheet.activeRowIndex` can
+> be connected to a Node's `enabled` plug to disable the node when
+> no row is matched.
