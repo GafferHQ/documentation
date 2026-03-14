@@ -1,0 +1,27 @@
+PrimitiveVariableExists
+=======================
+
+Returns true if the given primitive variable exists in the input scene
+in the current scene path location.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+in
+--
+
+The scene to look for variables in.
+
+primitiveVariable
+-----------------
+
+The name of the primitive vairable to check for.
+
+out
+---
+
+True if the given primitive variable exists.
