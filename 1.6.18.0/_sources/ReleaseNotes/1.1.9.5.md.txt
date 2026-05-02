@@ -1,0 +1,8 @@
+1.1.9.5
+=======
+
+Fixes
+-----
+
+- VectorDataWidget : Fixed bugs preventing the display of headers and values for matrix and box data.
+
