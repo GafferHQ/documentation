@@ -1,0 +1,26 @@
+1.4.10.0
+========
+
+Improvements
+------------
+
+- LightEditor :
+  - Values of inherited attributes are now displayed in the Light Editor. These are presented as dimmed "fallback" values. Values are inherited from an ancestor of the inspected location or from attributes created in the scene globals.
+  - Default values are now displayed as dimmed "fallback" values for attributes that don't exist in the scene.
+  - When a fallback value is displayed, the cell's tooltip includes a description of the source of the value.
+- LightEditor, RenderPassEditor : Fallback values shown in the history window are displayed with the same dimmed text colour used for fallback values in editor columns.
+- EditScope : Filtered the EditScope menu to show only nodes that are active in the relevant context.
+
+Fixes
+-----
+
+- ImageReader : Fixed crash caused by invalid OpenEXR `multiView` attributes.
+- LightEditor, RenderPassEditor : Added missing icon representing use of the `CreateIfMissing` tweak mode in the history window.
+- Slider : Fixed bug where two undo steps were needed to get back to the original value when dragging.
+
+API
+---
+
+- ContextTracker : Added a new class that determines what contexts nodes are evaluated in relative to the focus node. This allows UI components to provide improved context-sensitive feedback to the user.
+- Loop : Added `previousIteration()` method.
+
