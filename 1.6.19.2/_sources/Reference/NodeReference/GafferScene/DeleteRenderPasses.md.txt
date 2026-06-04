@@ -1,0 +1,41 @@
+DeleteRenderPasses
+==================
+
+Deletes render passes from the scene globals.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+mode
+----
+
+Defines how the names listed in the `names` plug
+are treated. Delete mode deletes the listed names.
+Keep mode keeps the listed names, deleting all others.
+
+names
+-----
+
+The names of render passes to be deleted (or kept
+if the mode is set to Keep). Names should be separated
+by spaces and may contain any of Gaffer's standard
+wildcards.
