@@ -1,0 +1,18 @@
+1.1.1.0
+=======
+
+Improvements
+------------
+
+- LightEditor : Improved update performance, as a result of general improvements to the PathListingWidget that may improve performance elsewhere too.
+
+Fixes
+-----
+
+- Viewer : Fixed rendering of background in `Replace` comparison mode.
+
+Build
+-----
+
+- Fixed backwards compatibility with Boost 1.73 (broken in 1.1.0.0).
+
