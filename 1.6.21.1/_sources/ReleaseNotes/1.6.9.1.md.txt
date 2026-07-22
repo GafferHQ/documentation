@@ -1,0 +1,8 @@
+1.6.9.1
+=======
+
+Fixes
+-----
+
+- RenderMan : Fixed missing PxrDisplace shader `dispScale`, `dispVector`, and `modelDispVector` parameters. These parameters were omitted in 1.6.9.0.
+
