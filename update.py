@@ -69,7 +69,7 @@ if latestReleaseVersion <= latestDocVersion :
 
 # Otherwise we should download the release and add the docs to this repo
 
-packageName = "gaffer-{}-linux-gcc11".format( __versionToString( latestReleaseVersion ) )
+packageName = "gaffer-{}-linux".format( __versionToString( latestReleaseVersion ) )
 
 assetToDownload = None
 assets = latestRelease.get_assets()
