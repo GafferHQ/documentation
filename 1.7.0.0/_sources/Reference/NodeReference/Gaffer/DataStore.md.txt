@@ -1,0 +1,37 @@
+DataStore
+=========
+
+Stores data that will be saved to disk beside the Gaffer script, instead of stored inside
+the Gaffer serialisation. The next time the script is opened, the data will be deferred
+loaded when it is needed.
+
+Appropriate for any large data associated with a Gaffer script ( for example, if you need
+to store primitive variable values on large meshes ).
+
+Values are accessed using the setEntry/getEntry methods, and can also be read using regular
+plug evaluations.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+selector
+--------
+
+Chooses the entry to be output.
+Typically this will refer to a Context Variable using
+the `${variableName}` syntax.
+The `keys` plug outputs all valid keys you might want to use here.
+
+out
+---
+
+Outputs the entry corresponding to `selector`.
+
+keys
+----
+
+Outputs all entry keys.

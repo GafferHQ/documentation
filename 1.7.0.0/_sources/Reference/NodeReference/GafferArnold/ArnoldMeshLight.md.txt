@@ -1,0 +1,143 @@
+ArnoldMeshLight
+===============
+
+Turns mesh primitives into Arnold mesh lights by assigning
+a mesh_light shader, turning off all visibility except for camera rays,
+and adding the meshes to the default lights set.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+parameters
+----------
+
+The parameters of the light shader applied to the mesh.
+
+parameters.color
+----------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.intensity
+--------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.exposure
+-------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.cast_shadows
+-----------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.cast_volumetric_shadows
+----------------------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.shadow_density
+-------------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.shadow_color
+-----------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.samples
+------------------
+
+Light samples to take. Higher samples give better quality. Ignored when global light sampling is used.
+
+parameters.normalize
+--------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.diffuse
+------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.specular
+-------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.sss
+--------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.indirect
+-------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.max_bounces
+----------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.volume_samples
+-------------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.volume
+-----------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.aov
+--------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.sampling_mode
+------------------------
+
+Which sampling method to use. 'AUTO' means this light will be sampled according to the global 'option.light_samples' setting. Then GLS is used when options.light_samples > 0, otherwise all lights are sampled as if in 'LOCAL' mode. 'LOCAL' mode set means this light will be sampled according to its 'samples' parameter, regardless of 'option.light_samples' setting ensuring it is included in every shading event. Note: the global 'low_light_threshold' option may still cause this light to be skipped for a particular shading point if its contribution is below the threshold.
+
+defaultLight
+------------
+
+Whether this light illuminates all geometry by default. When
+toggled, the light will be added to the "defaultLights" set, which
+can be referenced in set expressions and manipulated by downstream
+nodes.
+
+cameraVisibility
+----------------
+
+Whether or not the mesh light is visible to camera
+rays.
