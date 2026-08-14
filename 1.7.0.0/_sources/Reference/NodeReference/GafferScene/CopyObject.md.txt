@@ -1,0 +1,56 @@
+CopyObject
+==========
+
+Copies objects from a source scene, replacing the filtered objects
+in the input scene. Objects include geometry such as meshes and curves,
+volumes, cameras etc.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+source
+------
+
+The scene from which the object is copied.
+
+sourceLocation
+--------------
+
+The location in the source scene that the copy is copied from.
+By default, objects are copied from the location equivalent to the one
+they are being copied to. It is not an error if the location to be copied from
+does not exist; instead, nothing is copied.
+
+adjustBounds
+------------
+
+Adjusts bounding boxes to account for the copied objects.
+
+> Caution : Adjusting boundings boxes has a performance penalty.
+> If you do not need accurate bounds or you know that the bounds
+> will only change slightly, you may prefer to turn this off.
