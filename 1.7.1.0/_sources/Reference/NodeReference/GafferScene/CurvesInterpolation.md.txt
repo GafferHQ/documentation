@@ -1,0 +1,64 @@
+CurvesInterpolation
+===================
+
+Defines how CurvesPrimitive geometry is interpolated, by
+modifying `basis` and `wrap`.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+basis
+-----
+
+The method used to interpolate the vertices of the curves.
+
+- Linear : Straight lines between vertices.
+- BSpline : Smooth interpolation approximating - but not passing
+  directly through - each vertex. Requires `Pinned` wrap mode to
+  interpolate all the way to the end vertices.
+- CatmullRom : Smooth interpolation passing directly through each
+  vertex. Requires `Pinned` wrap mode to interpolate all the way
+  to the end vertices.
+
+wrap
+----
+
+The treatment of the first and last curve segments.
+
+- Pinned : Automatically uses "phantom points" to ensure that
+  CatmullRom and BSpline curves interpolate all the way to their
+  endpoints. Equivalent to `NonPeriodic` for all other curve types.
+- Periodic : Wraps the curve around to form a closed loop.
+- NonPeriodic : Neither wraps the curve to produce a loop or introduces
+  phantom endpoints. Generally inferior to the other options.
+
+expandPinned
+------------
+
+When converting Pinned curves to NonPeriodic, adds the "phantom" vertices
+so that the curves continue to interpolate to their original endpoints.
