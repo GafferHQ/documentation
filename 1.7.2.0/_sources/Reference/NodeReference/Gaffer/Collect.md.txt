@@ -1,0 +1,56 @@
+Collect
+=======
+
+Collects arbitrary input values across a range of contexts, outputting
+arrays containing the values collected across that range.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+contextVariable
+---------------
+
+The context variable used to vary the values of the inputs being
+collected. This should be used in the node network upstream of the
+inputs.
+
+indexContextVariable
+--------------------
+
+The context variable used to specify the index being collected. This
+may be used in the node network upstream of the inputs.
+
+contextValues
+-------------
+
+The values of the context variable. Collection will be performed once
+for each context value.
+
+enabled
+-------
+
+Enables or disables collection. This may be varied based on the
+context variable, so that collection may be disabled in some
+contexts but not others. Only values for enabled contexts are
+included in the output arrays.
+
+in
+--
+
+Container of inputs to be collected from. Inputs may be added by
+calling `collectNode.addInput( plug )` or using the UI. Each input
+provides a corresponding output parented under the `out` plug.
+
+out
+---
+
+Container of array outputs corresponding to the inputs provided by the `in` plug.
+
+enabledValues
+-------------
+
+Outputs an array of the context values for which collection was enabled by the `enabled` plug.

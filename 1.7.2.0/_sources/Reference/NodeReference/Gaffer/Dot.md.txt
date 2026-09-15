@@ -1,0 +1,28 @@
+Dot
+===
+
+A utility node which can be used for organising large graphs.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+labelType
+---------
+
+The method used to apply an optional label
+to the dot. Using a node name is recommended,
+because it encourages the use of descriptive node
+names, and updates automatically when nodes are
+renamed or upstream connections change. The custom
+label does however provide more flexibility, since
+node names are restricted in the characters they
+can use.
+
+label
+-----
+
+The label displayed when the type is set to custom.

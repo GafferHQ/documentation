@@ -1,0 +1,51 @@
+VisibilityQuery
+===============
+
+Queries a scene location to see if it is visible, taking
+into account the `scene:visible` attribute on it and all of
+its ancestors.
+
+> Note : If an ancestor is invisible, then all its descendants
+> are too, no matter the value of their own `scene:visible`
+> attribute. In other words, invisible locations prune entire
+> subhierarchies from the scene.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+scene
+-----
+
+The scene to query the visibility from.
+
+location
+--------
+
+The location within to query the visibility for.
+
+> Note : If the location does not exist then the query will not be
+> performed and all outputs will be set to their default values.
+
+visible
+-------
+
+Outputs `True` if the location is visible, and `False` otherwise.
+
+invisibleAncestors
+------------------
+
+Outputs the list of all ancestors of `location` which have a
+`scene:visible` attribute set to `False`. This is the minimal
+list of locations that would need to be made visible in
+order for the location to be seen.
+
+> Note : Also includes the location itself if it has `scene:visible`
+> set to `False`.
+
+> Tip : To make the location visible, use DeleteAttributes to delete
+> the `scene:visible` attribute, filtering via a PathFilter driven
+> by `invisibleAncestors`.

@@ -1,0 +1,27 @@
+1.4.6.0
+=======
+
+- EditScopePlugValueWidget : Added icon representing the Edit Scope node colour.
+
+Fixes
+-----
+
+- LightPositionTool : Fixed bug that caused the target/pivot positions to be lost when placing a light with Z scale not equal to 1.0.
+- SceneWriter :
+  - Fixed writing of locations with names that are not valid USD identifiers.
+  - Fixed handling of shader parameters not supported in USD, such as texture inputs to OpenGLShader.
+- SceneReader : Fixed duplicate loading of `arnold:*` attributes on lights. These are now omitted, since they are converted to parameters on the light shader itself.
+- ShaderTweaks : Fixed potential crash if a ShaderTweakProxy was used to accidentally create a cyclic connection.
+- Spreadsheet : Fixed "Sets", "Operators" and "Select Affected Objects" popup menu items, which were broken in 1.4.5.0.
+
+Build
+-----
+
+- Cortex : Updated to version 10.5.8.0.
+
+API
+---
+
+- Menu : Menu items with "checkBox" enabled now draw their checked indicator in place of their "icon" when both are defined.
+- Image : Added `createSwatch()` static method.
+
