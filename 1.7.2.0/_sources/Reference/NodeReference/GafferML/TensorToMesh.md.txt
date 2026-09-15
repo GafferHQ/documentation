@@ -1,0 +1,50 @@
+TensorToMesh
+============
+
+Turns input tensors into a mesh.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The output mesh.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs
+an empty scene.
+
+name
+----
+
+The name of the object in the output scene.
+
+sets
+----
+
+A list of sets to include the object in. The
+names should be separated by spaces.
+
+transform
+---------
+
+The transform applied to the object.
+
+position
+--------
+
+The input tensor containing the point positions for the mesh to create. Typically this would be connected
+to the output of an Inference node that is doing mesh generation/processing.
+
+vertexIds
+---------
+
+The input tensor containing the vertex ids for the mesh to create. Typically this would be connected
+to the output of an Inference node that is doing mesh generation/processing.

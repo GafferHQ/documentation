@@ -1,0 +1,92 @@
+FileList
+========
+
+Searches the filesystem for files matching certain criteria,
+and outputs a list of the file paths.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+enabled
+-------
+
+Turns the node on and off.
+
+directory
+---------
+
+The directory in which to search for files. By default, all files
+in the directory will be returned. Use the `inclusions`, `exclusions`
+and `extensions` plugs to filter the files.
+
+refreshCount
+------------
+
+May be incremented to force a fresh search, taking into account
+any changes to the filesystem that have occurred since the
+previous one.
+
+inclusions
+----------
+
+A space-separated list of patterns used to filter the file
+list. Only filenames matching the patterns are included in
+the output. The following wildcards are available :
+
+- `*` : Matches any sequence of characters, except `/`.
+- `?` : Matches any single character.
+- `[A-Z]` : Matches any single character in the specified range.
+- `...` : Matches any number of subdirectories.
+
+Examples :
+
+- `*` : Matches all files in the directory.
+- `test*` : Matches all files starting with `test`.
+- `imageFiles/*` : Matches all files in an `imageFiles` subdirectory.
+- `imageFiles/.../*` : Matches recursively, finding all files in all
+  subdirectories of `imageFiles`.
+
+exclusions
+----------
+
+A space-separated list of patterns used to exclude files from the
+list. Supports the same wildcards as `inclusions`.
+
+extensions
+----------
+
+A list of file extensions to filter on. Extension comparison
+is case-insensitive.
+
+searchSubdirectories
+--------------------
+
+Extends the search to all subdirectories of `directory`.
+Equivalent to prefixing all `inclusions` and `exclusions`
+with `.../`.
+
+absolute
+--------
+
+Outputs absolute paths. When off, the output paths are relative
+to the `directory`.
+
+sequenceMode
+------------
+
+Defines how frame sequences are treated. A frame sequence is a group of files
+whose names differ only in their frame number.
+
+- Files : All files are listed. Files from frame sequences are listed individually.
+- Sequences : Files from each frame sequence are listed as a single path containing
+  `#` characters representing the frame numbers. Files not from a frame sequence are omitted.
+- FilesAndSequences : As for Sequences mode, but also including files not in any frame sequence.
+
+out
+---
+
+The list of all files found by the node.

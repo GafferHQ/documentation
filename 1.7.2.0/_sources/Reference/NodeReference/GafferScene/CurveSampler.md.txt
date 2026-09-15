@@ -1,0 +1,96 @@
+CurveSampler
+============
+
+Samples primitive variables from parametric positions on some
+source curves. The positions are specified using the index of
+the curve and its `v` parameter.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to determine which objects in the
+`in` scene will receive primitive variables sampled
+from the `sourceLocation` in the `source` scene.
+
+adjustBounds
+------------
+
+Adjusts bounding boxes to account for the changes made to the object.
+
+> Caution : Adjusting boundings boxes has a performance penalty.
+> If you do not need accurate bounds or you know that the bounds
+> will only change slightly, you may prefer to turn this off.
+
+source
+------
+
+The scene that contains the source primitive that
+primitive variables will be sampled from.
+
+sourceLocation
+--------------
+
+The location of the primitive in the `source` scene that
+will be sampled from.
+
+primitiveVariables
+------------------
+
+The names of the primitive variables to be sampled from the source
+primitive. These should be separated by spaces and can use Gaffer's
+standard wildcards to match multiple variables. The sampled variables
+are prefixed with `prefix` before being added to the sampling object.
+
+prefix
+------
+
+A prefix applied to the names of the sampled primitive variables before
+they are added to the sampling object. This is particularly useful when
+sampling something like "P", and not not wanting to modify the true
+vertex positions of the sampling primitive.
+
+status
+------
+
+The name of a boolean primitive variable created to record the success or
+failure of the sampling operation.
+
+curveIndex
+----------
+
+The name of an integer primitive variable that specifies the index of
+the curve to be sampled. If left unspecified, the first curve will be sampled.
+
+v
+-
+
+The name of a float primitive variable that specifies the parametric
+position on the curve to be sampled. A value of 0 corresponds to
+the start of the curve, and a value of 1 corresponds to the end.
+If left unspecified, a value of 0 is used.
+
+> Note : Values outside the `0-1` range are invalid and cannot
+> be sampled. In this case, the `status` output primitive variable
+> will contain `False` to indicate failure.

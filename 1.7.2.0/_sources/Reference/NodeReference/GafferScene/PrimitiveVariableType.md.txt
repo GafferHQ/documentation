@@ -1,0 +1,74 @@
+PrimitiveVariableType
+=====================
+
+Converts the type and/or geometric interpretation of primitive variables.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+primitiveVariables
+------------------
+
+The names of the primitive variables to be converted. These should be
+separated by spaces and can use Gaffer's standard wildcards to match
+multiple variables.
+
+type
+----
+
+The type the primitive variables are converted to. When converting
+arrays, this is the type of each element in the destination array.
+
+Primitive variables are converted using the following rules :
+
+- Single-component sources, such as `float` or `int`, are applied
+to every component of the destination. For example, a `float` primitive
+variable with a value of `2` is converted to `V2f( 2, 2 )`,
+and `V3f/Color3f( 2, 2, 2 )`.
+- Multi-component sources, such as `V3f` or `Color4f`, are applied
+per-component. Components missing from the destination are dropped,
+and extra components are set to zero. For example, `Color4f( 1, 2, 3, 4 )`
+becomes `V3f/Color3f( 1, 2, 3 )`, `V2f( 1, 2 )`, and `1`. `V2f( 1, 2 )`
+becomes `V3f/Color3f( 1, 2, 0 )`.
+- The alpha of a `Color4f` destination is the exception to the above rules
+and is instead set to `1`. For example, a `float` source with a value of `2`
+becomes `Color4f( 2, 2, 2, 1 )` and `V2f(1, 2)` becomes `Color4f( 1, 2, 0, 1 )`.
+- Floating point values are truncated towards zero when converted to an
+integer, so `2.75` becomes `2`, and `-2.75` becomes `-2`.
+- Values converted to integer types are clamped to the range of the
+destination type.
+
+interpretation
+--------------
+
+The geometric interpretation of each primitive variable. Only relevant
+for geometric types, such as `V2f` and `V3f`.
+
+> Tip : Geometric types converted from non-geometric types, such as
+> `float` and `Color3f`, default to `None` unless an interpretation
+> is chosen here.

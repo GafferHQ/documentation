@@ -1,0 +1,219 @@
+CyclesAttributes
+================
+
+Applies Cycles attributes to objects in the scene.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+global
+------
+
+Causes the node to be applied to the scene globals
+instead of the individual locations defined by the `filter`.
+
+attributes
+----------
+
+The attributes to be applied - arbitrary numbers of user defined
+attributes may be added as children of this plug via the user
+interface, or using the CompoundDataPlug API via python.
+
+attributes.cycles:visibility:camera
+-----------------------------------
+
+Whether or not the object is visible to camera
+rays. To hide an object completely, use the
+`scene:visible` attribute instead.
+
+attributes.cycles:visibility:diffuse
+------------------------------------
+
+Whether or not the object is visible to diffuse
+rays.
+
+attributes.cycles:visibility:glossy
+-----------------------------------
+
+Whether or not the object is visible in
+glossy rays.
+
+attributes.cycles:visibility:transmission
+-----------------------------------------
+
+Whether or not the object is visible in
+transmission.
+
+attributes.cycles:visibility:shadow
+-----------------------------------
+
+Whether or not the object is visible to shadow
+rays - whether it casts shadows or not.
+
+attributes.cycles:visibility:scatter
+------------------------------------
+
+Whether or not the object is visible to
+scatter rays.
+
+attributes.cycles:use_holdout
+-----------------------------
+
+Turns the object into a holdout matte.
+This only affects primary (camera) rays.
+
+attributes.cycles:is_shadow_catcher
+-----------------------------------
+
+Turns the object into a shadow catcher.
+
+attributes.cycles:shadow_terminator_shading_offset
+--------------------------------------------------
+
+Push the shadow terminator towards the light to hide artifacts on low poly geometry.
+
+attributes.cycles:shadow_terminator_geometry_offset
+---------------------------------------------------
+
+Offset rays from the surface to reduce shadow terminator artifact on low poly geometry. Only affects triangles at grazing angles to light.
+
+attributes.cycles:is_caustics_caster
+------------------------------------
+
+Cast Shadow Caustics.
+
+attributes.cycles:is_caustics_receiver
+--------------------------------------
+
+Receive Shadow Caustics.
+
+attributes.cycles:max_level
+---------------------------
+
+The max level of subdivision that can be
+applied.
+
+attributes.cycles:dicing_rate
+-----------------------------
+
+Multiplier for scene dicing rate.
+
+attributes.cycles:adaptive_space
+--------------------------------
+
+How to adaptively subdivide the mesh.
+
+- Pixel : Subdivide polygons to reach a specified pixel size on screen.
+- Object : Subdivide to reach a specified edge length in object space.
+
+attributes.cycles:lightgroup
+----------------------------
+
+Lightgroup membership of lights or objects with emission.
+
+attributes.cycles:volume_clipping
+---------------------------------
+
+Value under which voxels are considered empty space to
+optimize rendering.
+
+attributes.cycles:volume_step_size
+----------------------------------
+
+Distance between volume samples. When zero it is automatically
+estimated based on the voxel size.
+
+attributes.cycles:volume_object_space
+-------------------------------------
+
+Specify volume density and step size in object or world space.
+By default object space is used, so that the volume opacity and
+detail remains the same regardless of object scale.
+
+attributes.cycles:volume_velocity_scale
+---------------------------------------
+
+Scales velocity vectors used in motion blur computation.
+
+attributes.cycles:volume_precision
+----------------------------------
+
+Specifies volume data precision, lower values reduce
+memory consumption at the cost of detail.
+
+attributes.cycles:asset_name
+----------------------------
+
+Asset name for cryptomatte.
+
+attributes.cycles:shader:emission_sampling_method
+-------------------------------------------------
+
+Sampling strategy for emissive surfaces.
+
+attributes.cycles:shader:use_transparent_shadow
+-----------------------------------------------
+
+Use transparent shadows for this material if it contains a Transparent BSDF,
+disabling will render faster but not give accurate shadows.
+
+attributes.cycles:shader:volume_sampling_method
+-----------------------------------------------
+
+Sampling method to use for volumes.
+
+attributes.cycles:shader:volume_interpolation_method
+----------------------------------------------------
+
+Interpolation method to use for volumes.
+
+attributes.cycles:shader:volume_step_rate
+-----------------------------------------
+
+Scale the distance between volume shader samples when rendering the volume
+(lower values give more accurate and detailed results, but also increased render time).
+
+attributes.cycles:shader:displacement_method
+--------------------------------------------
+
+Method to use for the displacement.
+
+extraAttributes
+---------------
+
+An additional set of attributes to be added. Arbitrary numbers
+of attributes may be specified within a single `IECore.CompoundObject`,
+where each key/value pair in the object defines an attribute.
+This is convenient when using an expression to define the attributes
+and the attribute count might be dynamic. It can also be used to
+create attributes whose type cannot be handled by the `attributes`
+CompoundDataPlug, with `IECoreScene.ShaderNetwork` being one example.
+
+If the same attribute is defined by both the attributes and the
+extraAttributes plugs, then the value from the extraAttributes
+is taken.

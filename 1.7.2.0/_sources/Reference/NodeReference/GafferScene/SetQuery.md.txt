@@ -1,0 +1,46 @@
+SetQuery
+========
+
+Queries the set memberships of a location, and outputs a list of
+the sets that it belongs to.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+scene
+-----
+
+The scene to query.
+
+location
+--------
+
+The location to query the set memberships for.
+
+sets
+----
+
+The sets to query.
+
+inherit
+-------
+
+When on, locations are treated as being in a set if an
+ancestor location is in that set.
+
+matches
+-------
+
+The list of sets that the `location` is a member of. Returned in the
+order they are listed in the `sets` plug.
+
+firstMatch
+----------
+
+The first set from the `matches` output, or `""` if there were no matches.
+This is particularly convenient for use in a Spreadsheet's selector, to
+select rows based on the set membership of a location.
