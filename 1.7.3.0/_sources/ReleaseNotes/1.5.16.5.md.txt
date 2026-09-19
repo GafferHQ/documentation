@@ -1,0 +1,8 @@
+1.5.16.5
+========
+
+Fixes
+-----
+
+- EditScopeUI : Fixed crash if `childNodesAreReadOnly` metadata was edited while no EditScope was selected.
+

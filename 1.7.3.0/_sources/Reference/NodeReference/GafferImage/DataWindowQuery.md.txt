@@ -1,0 +1,36 @@
+DataWindowQuery
+===============
+
+Queries the data window of an image as well as the center and size of the data window.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+in
+--
+
+The image to query.
+
+view
+----
+
+The view to query.
+
+dataWindow
+----------
+
+The data window of the image.
+
+center
+------
+
+The center of the data window of the image.
+
+size
+----
+
+The size of the data window of the image.

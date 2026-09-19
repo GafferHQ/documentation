@@ -1,0 +1,31 @@
+ExistenceQuery
+==============
+
+Queries the existence of a specified location in a scene.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+scene
+-----
+
+The scene to query.
+
+location
+--------
+
+The location to query for existence.
+
+exists
+------
+
+Outputs true if the specified location exists, otherwise false.
+
+closestAncestor
+---------------
+
+Path to the closest ancestor that exists.

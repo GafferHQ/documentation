@@ -1,0 +1,27 @@
+DeepSampler
+===========
+
+Samples the full channel data of an image at a specified pixel location,
+including all deep samples.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+image
+-----
+
+The image to be sampled.
+
+pixel
+-----
+
+The integer coordinates of the pixel to sample.
+
+pixelData
+---------
+
+The sampled data, as a CompoundData with one FloatVectorData per channel.

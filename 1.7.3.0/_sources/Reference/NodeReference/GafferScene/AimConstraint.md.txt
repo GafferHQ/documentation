@@ -1,0 +1,111 @@
+AimConstraint
+=============
+
+Transforms objects so that they are aimed at
+a specified target.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+targetScene
+-----------
+
+The scene containing the target location to which objects are
+constrained. If this is unconnected, the main input scene
+is used instead.
+
+target
+------
+
+The scene location to which the objects are constrained.
+The world space transform of this location forms the basis
+of the constraint target, but is modified by the targetMode
+and targetOffset values before the constraint is applied.
+
+ignoreMissingTarget
+-------------------
+
+Causes the constraint to do nothing if the target location
+doesn't exist in the scene, instead of erroring.
+
+targetMode
+----------
+
+The precise location of the target transform - this can be
+derived from the origin, bounding box or from a specific primitive
+uv coordinate or vertex id of the target location.
+
+targetUV
+--------
+
+UV coordinate used in "UV" target mode.
+The node will error if the specified uv coordinate is out of range or does not map unambiguously
+to a single position on the primitive's surface unless ignoreMissingTarget is true.
+
+targetVertex
+------------
+
+Vertex id used in "Vertex" target mode.
+The node will error if the specified vertex id is out of range unless ignoreMissingTarget is true.
+The node will error if the specified primitive does not have a set of uvs named "uv" with
+FaceVarying or Vertex interpolation unless ignoreMissingTarget is true. The uvs will be used to
+construct a local coordinate frame.
+
+targetOffset
+------------
+
+An offset applied to the target transform before the constraint
+is applied. The offset is measured in the object space of the
+target location unless the target mode is UV or Vertex in which case
+the offset is measured relative to the local surface coordinate frame.
+
+keepReferencePosition
+---------------------
+
+Adjusts the constraint so that the original position of the object
+at the `referenceFrame` is maintained.
+
+referenceFrame
+--------------
+
+The reference frame used by the `keepReferencePosition` mode. The constraint
+is adjusted so that the original position at this frame is maintained.
+
+aim
+---
+
+The aim vector, specified in object space. The
+object will be transformed so that this vector
+points at the target.
+
+up
+--
+
+The up vector, specified in object space. The
+object will be transformed so that this vector
+points up in world space, as far as is possible.

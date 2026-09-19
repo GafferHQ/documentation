@@ -1,0 +1,50 @@
+PromotePointInstances
+=====================
+
+Convert points in a point cloud into instanced geometry. Assumes the point cloud matches the conventions of a USD PointInstancer.
+
+Promoted instances are placed in a "promoted" group beside the point cloud. The corresponding points in the point cloud are deactivated by modifying the "inactiveIds" primitive variable, so downstream instancers won't expand them again.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+in
+--
+
+The input scene.
+
+filter
+------
+
+The filter used to control which parts of the scene are processed. A Filter node should be connected here.
+
+out
+---
+
+The processed output scene.
+
+idList
+------
+
+A list of instance ids to promote. These are matched against the instanceId primvar, or the physical index of the points if that primvar isn't found.
+
+enabled
+-------
+
+Turns the node on and off.
+
+destination
+-----------
+
+Where to place the promoted instances - by default, we place the new group next to the point instances.
+
+Note that we don't want to place them under the instances - by USD convention, nothing underneath the instances will get rendered.
+
+name
+----
+
+The name of the group the promoted instances will be placed in.
