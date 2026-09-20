@@ -1,0 +1,152 @@
+PointInstancer
+==============
+
+Creates a PointInstancer by associating a list of prototypes with an input primitive containing points to instance the prototypes onto. Supports the procedural generation of new prototype variations based on time offsets and context variables specified using vertex primitive variables on the input primitive.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+in
+--
+
+The input scene.
+
+filter
+------
+
+The filter used to control which locations are converted to PointInstancers.
+
+prototypes
+----------
+
+The input scene containing the prototypes. The prototypes will be copied from here and parented under the instancer.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+Turns the node on and off.
+
+prototypesMode
+--------------
+
+Determines the locations of the prototypes to be instanced.
+
+- List : The `prototypesList` plug is used to explicitly define the prototype locations.
+- PrimitiveVariable : The `prototypesPrimitiveVariable` plug is used to name an existing primitive variable which contains the list of prototype locations.
+
+The locations will be stored on the output PointInstancer object as a constant primitive variable named `prototypeRoots`. This may be modified downstream prior to rendering, using nodes such as PrimitiveVariableTweaks.
+
+prototypeIndexMode
+------------------
+
+Determines the per-point index used to determine which prototype is instanced onto each point.
+
+- Constant : All points reference the same prototype, specified by the `prototypeIndex` plug.
+- Random : Prototypes are assigned randomly to points, with a uniform weighting. If more specific weightings are required, use the PrimitiveVariable mode with an upstream RandomPrimitiveVariable.
+- Primitive Variable : The `prototypeIndexPrimitiveVariable` is used to define the indices.
+
+The indices will be stored on the output PointInstancer object as a vertex primitive variable named `prototypeIndex`. This may be modified downstream prior to rendering, using nodes such as PrimitiveVariableTweaks.
+
+contextVariables
+----------------
+
+The names of per-vertex primitive variables on the input object that will be turned into context variables when evaluating the `prototypes` scene. A new prototype will be generated for each unique combination of context variable values.
+
+Names should be separated by spaces, and Gaffer's standard wildcards may be used.
+
+> Tip : Consider using a QuantizePrimitiveVariables node to limit the number of unique prototype variations. In the extreme, if every point had a different combination of primitive variables, there would be a unique prototype per point and there would be no instancing.
+
+timeOffset
+----------
+
+The name of a float primitive variable defining a time offset per point. Each unique time offset is used to define a new variation of the input prototype.
+
+> Tip : Consider using a QuantizePrimitiveVariables node to limit the number of unique prototype variations. In the extreme, if every point had a different time offset, there would be a unique prototype per point and there would be no instancing.
+
+prototypeFormat
+---------------
+
+A format specification used to customise the name of each prototype based on its context variables and time offset. The following format tokens are available :
+
+- `{name}` : The original prototype name before variation.
+- `{timeOffset}` : The time offset.
+- `{contextVariable}` : The value of a context variable.
+- `{hash}` : A hash value that uniquely identifies the prototype.
+
+> Note : Each prototype must have a unique name. If the time offset or any context variable is omitted from the format, the hash will be appended automatically to maintain this constraint.
+
+> Note : Special rules apply when formatting floating point values such as the time offset.
+> The '.' and '-' characters are not legal in USD identifiers, so to produce names that are
+> compatible with USD they are replaced with '_' and 'n' respectively.
+
+prototypesList
+--------------
+
+The list of prototype locations to use when `prototypesMode` is `List`.
+
+prototypesPrimitiveVariable
+---------------------------
+
+The primitive variable to use when `prototypesMode` is PrimitiveVariable. The primitive variable should contain a constant array of strings.
+
+prototypeIndex
+--------------
+
+The prototype index to use when `prototypeIndexMode` is Constant.
+
+prototypeIndexPrimitiveVariable
+-------------------------------
+
+The primitive variable to use when `prototypeIndexMode` is PrimitiveVariable. The primitive variable should contain an integer per vertex.
+
+position
+--------
+
+The name of a primitive variable defining the position of each instance. This will be shuffled to `P` in the output PointInstancer.
+
+> Tip : The default value is almost always sufficient.
+
+orientation
+-----------
+
+The name of a primitive variable defining the orientation of each instance as a quaternion. This will be shuffled to `orientation` in the output PointInstancer.
+
+scale
+-----
+
+The name of a primitive variable defining the scale of each instance as a vector. This will be shuffled to `scale` in the output PointInstancer.
+
+id
+--
+
+The name of a primitive variable used to give each point a unique identity. 
+This will be shuffled to `instanceId` on the output PointInstancer. Typically used in simulations where points are created and removed over time, and the index of the point is not stable across frames.
+
+invisibleIds
+------------
+
+The name of a primitive variable containing a list of IDs that should be omitted from the render. Will be shuffled to `invisibleIds` on the output PointInstancer.
+
+attributes
+----------
+
+The names of vertex primitive variables to retain for conversion to per-instance attributes. Such attributes can be read by shaders to drive per-instance shading variation.
+
+Names should be space separated and may contain Gaffer's standard wildcards.
+
+> Note : All other primitive variables will be deleted.
+
+prototypeIndexSeed
+------------------
+
+Seed used to generate the random prototype indices. Change this to
+generate a different set of indices.

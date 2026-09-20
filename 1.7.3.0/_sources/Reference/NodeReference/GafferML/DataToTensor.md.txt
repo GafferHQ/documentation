@@ -1,0 +1,36 @@
+DataToTensor
+============
+
+Converts Gaffer data to tensors for use with the Inference node.
+Potential data sources include PrimitiveVariableQuery nodes to fetch data
+from 3D scenes, or expressions to generate arbitrary input data.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+shapeMode
+---------
+
+Method used to determine the shape of the tensor.
+
+- Automatic : Derives the shape from the data automatically. For example, a V3fVectorData of size 10
+  would give a shape of `[ 10, 3 ]`.
+- Custom : The shape is specified manually using the `shape` plug.
+
+shape
+-----
+
+Defines the shape of the tensor. The product of the shape
+must equal the number of elements provided by the `data`
+plug.
+
+Only used when ShapeMode is Custom.
+
+tensor
+------
+
+The output tensor.

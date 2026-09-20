@@ -1,0 +1,62 @@
+MeshNormals
+===========
+
+Creates a normal primitive variable on a mesh, using the positions of adjacent vertices.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+interpolation
+-------------
+
+The interpolation of the normal primitive variable we are creating. Affects the shape of the resulting normals, because Uniform ( Per-Face ) normals are inherently faceted, whereas Vertex normals are always smooth.
+
+weighting
+---------
+
+How to weight the multiple faces that contribute to the normal of a vertex.
+"Equal" averages all faces connected to the vertex - simple to compute, but low quality.
+"Angle" gives good results for most meshes.
+"Area" may give good results on hard edge models with tight chamfers and large flat faces.
+
+thresholdAngle
+--------------
+
+Used to decide whether edges are smooth or sharp when generating a normal primvar with FaceVarying
+interpolation. FaceVertices with normals that differ by less than this angle will be averaged
+together into a smooth normal.
+
+position
+--------
+
+The name of the position primitive variable that drives everything.
+
+normal
+------
+
+The name of the normal primitive variable to output.

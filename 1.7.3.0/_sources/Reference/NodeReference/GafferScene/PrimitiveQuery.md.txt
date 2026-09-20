@@ -1,0 +1,73 @@
+PrimitiveQuery
+==============
+
+Queries the geometric primitive at a scene location, outputting its type and the
+sizes for each type of primitive variable interpolation (`Uniform`, `Vertex` etc).
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+enabled
+-------
+
+Turns the node on and off.
+
+scene
+-----
+
+The scene to query.
+
+location
+--------
+
+The location within the scene to query.
+> Note : If the location does not exist, or contains no primitive,
+> all outputs will be set to their default values.
+
+type
+----
+
+The type of primitive at the queried location, for example
+`MeshPrimitive` or `PointsPrimitive`. Empty if there is no
+primitive at the location.
+
+uniform
+-------
+
+The number of values needed for `Uniform` primitive variables
+at the queried location. Zero if there is no primitive at the
+location.
+
+> Info : For mesh primitives, this is the number of faces. For
+> curve primitives it is the number of individual curves.
+
+vertex
+------
+
+The number of values needed for `Vertex` primitive variables
+at the queried location. Zero if there is no primitive at
+the location.
+
+varying
+-------
+
+The number of values needed for `Varying` primitive variables
+at the queried location. Zero if there is no primitive at the
+location.
+
+faceVarying
+-----------
+
+The number of values needed for `FaceVarying` primitive variables
+at the queried location. Zero if there is no primitive at the
+location.
+
+primitive
+---------
+
+The complete Primitive from the queried location, or a NullObject
+if there is no primitive.
