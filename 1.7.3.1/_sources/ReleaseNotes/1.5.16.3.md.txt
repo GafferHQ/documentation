@@ -1,0 +1,9 @@
+1.5.16.3
+========
+
+Fixes
+-----
+
+- Outputs : Custom `gaffer:renderID` parameters are now preserved, allowing custom "netrender" style workflows to be implemented.
+- RenderPassEditor : Fixed bug that could cause duplicate tabs to appear when registering custom columns to an existing section via a different group key.
+

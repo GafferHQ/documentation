@@ -1,0 +1,12 @@
+<!-- !NO_SCROLLSPY -->
+
+GafferFlamenco
+==============
+
+```{eval-rst}
+.. toctree::
+    :titlesonly:
+    :maxdepth: 1
+
+    FlamencoDispatcher.md
+```

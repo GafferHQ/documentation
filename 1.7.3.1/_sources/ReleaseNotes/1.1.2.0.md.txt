@@ -1,0 +1,54 @@
+1.1.2.0
+=======
+
+Improvements
+------------
+
+- Viewer : Added support for selecting an image comparison node. This can be accessed by selecting the focus or selected node from the comparison widget at the top of the viewer, or by dragging an image node to the comparison widget.
+- Catalogue :
+  - Improved performance when interacting with large Catalogues.
+  - Added hover state to the output index column, to indicate clickability.
+  - Improved default column layout, so output index column is more compact.
+- Sets : Added "Select Affected Objects" to the following plugs' right click menu :
+  - Set expression and set name plugs
+  - Spreadsheet cells connected to a set expression or set name plug
+  - Plugs promoted from a set expression or set name plug
+- PathFilter : Added "Select Affected Objects" to the following plugs' right click menu :
+  - Plugs promoted from a `PathFilter.paths` plug (an unpromoted `PathFilter.paths` plug supports this since 0.61.13.0)
+  - Spreadsheet cells connected to a `PathFilter.paths` plug.
+  - Spreadsheet row names when the spreadsheet selector is set to `scene:path`.
+- Spreadsheet : Added support for metadata on the `name` and `enabled` plug of each row. Metadata registered on plugs in the default row is mirrored automatically onto all other rows.
+- ShuffleAttributes, ShufflePrimitiveVariables :
+  - Added `replaceDestination` plugs that may be used to specify whether each shuffle replaces existing destination data with the same name.
+  - Shuffles are now performed in the order they are defined, and separate shuffles may write to the same destination.
+
+Fixes
+-----
+
+- Catalogue : Removed incorrect error message on empty Catalogues.
+- Cycles :
+  - Fixed crash rendering a scene containing a CoordinateSystem ([#4865](https://github.com/GafferHQ/gaffer/issues/4865)).
+  - Fixed crash rendering a PointPrimitive with `N` primitive variable ([#4876](https://github.com/GafferHQ/gaffer/issues/4876)).
+  - Fixed handling of `Varying` primitive variable interpolation ([#4849](https://github.com/GafferHQ/gaffer/issues/4849)).
+  - Fixed handling of `Constant Color3f` primitive variables.
+  - Fixed handling of indexed primitive variables.
+  - Fixed `"attribute edit required geometry to be regenerated"` error when changing attributes on a camera.
+  - Fixed `cycles:shader:displacement_method` attribute handling ([#4893](https://github.com/GafferHQ/gaffer/issues/4893)).
+  - Fixed shader attribute substitutions ([#4921](https://github.com/GafferHQ/gaffer/issues/4921)).
+- PathFilter : Fixed error when selecting a path element from a promoted `PathFilter.paths` plug (introduced in 0.61.13.0).
+- ImageView : Fixed error with display of negative colors.
+- NodeEditor : Fixed updated of section summaries when they are changed in the UI Editor.
+- ArnoldColorManager : Fixed broken presets for `color_space_narrow` and `color_space_linear`.
+- Spreadsheet :
+  - Fixed bugs with inconsistent column ordering.
+  - Fixed bug that allowed operations on hidden columns included through shift-selection (was seen by users as the disable hotkey unexpectedly affecting columns on other tabs).
+- ArnoldDisplacement : Removed irrelevant shader name widget and `Reload` button.
+
+API
+---
+
+- PathColumn : Added support for a different icon to be shown when a cell is hovered.
+- SetUI : Removed `ui:scene:acceptsSet*` metadata from entries that are promoted along with a plug.
+- MetadataAlgo : Added `isPromotable()` method.
+- StandardLightVisualiser : Added a `muted` boolean to wireframe light drawing methods.
+
