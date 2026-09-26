@@ -1,0 +1,40 @@
+1.1.7.0
+=======
+
+Features
+--------
+
+- ContextVariableTweaks : Added a new node for tweaking the context used to evaluate upstream nodes.
+
+Improvements
+------------
+
+- Cycles :
+  - Replaced `size` on portals and quad lights with separate `width` and `height` parameters, and renamed `size` parameter of disk lights to `width`.
+  - Added `use_camera`, `use_caustics` and `normalize` parameters to lights.
+- TweakPlug : Added a `CreateIfMissing` mode, to only create a new value if one does not currently exist.
+- OSLObject : Added support for attribute substitutions using `<attr:myAttrName>` syntax in string parameters, provided that `useAttributes` is turned on.
+- UIEditor : Increased maximum size of the "Button Click Code" editor.
+
+Improvements
+------------
+
+- NodeEditor : Added "Promote Value and Switch" context menu item for promoting NameValuePlugs to Boxes.
+
+Fixes
+-----
+
+- Viewer :
+  - Fixed Default display transform so that it updates correctly when the default is changed via the Preferences dialogue, and when the context changes.
+  - Fixed drawing of image pixels to the left of the display window.
+- Cycles :
+  - Fixed custom AOVs (for SVM shading mode only, Cycles doesn't support custom AOVs in OSL mode) ([#5044](https://github.com/GafferHQ/gaffer/issues/5044)).
+  - Fixed units for distant light angle (now degrees and not radians).
+  - Fixed assignment of `emission` shader. Previously this was being assigned as a `cycles:light` attribute instead of `cycles:surface` ([#5058](https://github.com/GafferHQ/gaffer/issues/5058)).
+  - Hid internal shader plugs which shouldn't be exposed to the user (e.g. `surface_mix_weight`).
+- UVInspector : Fixed update delay when changing display transform.
+- Random : Fixed GIL management bug which could lead to hangs.
+- ShaderTweaks : Fixed `Remove` mode.
+- FilterQuery : Fixed bug which prevented the output from updating when the input scene changed ([#5066](https://github.com/GafferHQ/gaffer/issues/5066)).
+- Arnold : Fixed rendering of `token` enum parameter values loaded from USD.
+

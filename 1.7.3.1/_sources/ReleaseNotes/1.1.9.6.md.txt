@@ -1,0 +1,8 @@
+1.1.9.6
+=======
+
+Fixes
+-----
+
+- SceneReader : Fixed rounding errors which could cause the wrong sample to be read from a USD file. This was particularly noticeable for non-interpolable attributes such as visibility.
+

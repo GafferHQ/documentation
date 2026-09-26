@@ -1,0 +1,499 @@
+CyclesOptions
+=============
+
+Sets global scene options applicable to the Cycles
+renderer. Use the StandardOptions node to set
+global options applicable to all renderers.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+options
+-------
+
+The options to be applied - arbitrary numbers of user defined options may be added
+as children of this plug via the user interface, or using the CompoundDataPlug API via
+python.
+
+options.cycles:log_level
+------------------------
+
+Internal Cycles debugging log-level.
+
+options.cycles:device
+---------------------
+
+Device(s) to use for rendering.
+To specify multiple devices, there's a few examples under presets.
+
+To render on CPU and the first CUDA device:
+
+        CPU CUDA:00
+
+To render on the first and second OpenCL device:
+
+        OPENCL:00 OPENCL:01
+
+To render on every OptiX device found:
+
+        OPTIX:*
+
+To render on everything found (not recommended, 1 device may have multiple backends!)
+
+        CPU CUDA:* OPTIX:* OPENCL:*
+
+options.cycles:shadingsystem
+----------------------------
+
+Shading system.
+
+- OSL : Use Open Shading Language (CPU rendering only).
+- SVM : Use Shader Virtual Machine.
+
+options.cycles:session:samples
+------------------------------
+
+Number of samples to render for each pixel.
+
+options.cycles:session:pixel_size
+---------------------------------
+
+Pixel Size.
+
+options.cycles:session:threads
+------------------------------
+
+The number of threads used for rendering.
+
+- The default value of 0 lets the renderer choose
+        an optimal number of threads based on the available
+        hardware.
+- Positive values directly set the number of threads.
+- Negative values can be used to reserve some cores
+        while otherwise letting the renderer choose the
+        optimal number of threads.
+
+options.cycles:session:time_limit
+---------------------------------
+
+Time-limit.
+
+options.cycles:session:use_profiling
+------------------------------------
+
+Use Profiling.
+
+options.cycles:session:use_auto_tile
+------------------------------------
+
+Automatically render high resolution images in tiles to reduce memory usage, using the specified tile size. Tiles are cached to disk while rendering to save memory.
+
+options.cycles:session:tile_size
+--------------------------------
+
+Tile size for rendering.
+
+options.cycles:scene:bvh_layout
+-------------------------------
+
+BVH Layout size. This corresponds with CPU architecture
+(the higher the faster, but might not be supported on old CPUs).
+
+options.cycles:scene:use_bvh_spatial_split
+------------------------------------------
+
+Use BVH spatial splits: longer builder time, faster render.
+
+options.cycles:scene:use_bvh_unaligned_nodes
+--------------------------------------------
+
+Use special type BVH optimized for hair (uses more ram but renders faster).
+
+options.cycles:scene:num_bvh_time_steps
+---------------------------------------
+
+Split BVH primitives by this number of time steps to speed up render time in cost of memory.
+
+options.cycles:scene:hair_subdivisions
+--------------------------------------
+
+Split BVH primitives by this number of time steps to speed up render time in cost of memory.
+
+options.cycles:scene:hair_shape
+-------------------------------
+
+Round Ribbons - Render curves as flat ribbon with rounded normals, for fast rendering.
+3D Curves - Render curves as cylindrical 3D geometry, for accurate results when viewing hair close up.
+Linear 3D Curves - Render curves as cylindrical 3D geometry with linear interpolation.
+
+options.cycles:scene:texture_limit
+----------------------------------
+
+Limit the maximum texture size used by final rendering.
+
+options.cycles:integrator:min_bounce
+------------------------------------
+
+Minimum number of light bounces. Setting this higher reduces noise in the first bounces,
+but can also be less efficient for more complex geometry like hair and volumes.
+
+options.cycles:integrator:max_bounce
+------------------------------------
+
+Total maximum number of bounces.
+
+options.cycles:integrator:max_diffuse_bounce
+--------------------------------------------
+
+Maximum number of diffuse reflection bounces, bounded by total maximum.
+
+options.cycles:integrator:max_glossy_bounce
+-------------------------------------------
+
+Maximum number of glossy reflection bounces, bounded by total maximum.
+
+options.cycles:integrator:max_transmission_bounce
+-------------------------------------------------
+
+Maximum number of transmission reflection bounces, bounded by total maximum.
+
+options.cycles:integrator:max_volume_bounce
+-------------------------------------------
+
+Maximum number of volumetric scattering events.
+
+options.cycles:integrator:transparent_min_bounce
+------------------------------------------------
+
+Minimum number of transparent bounces. Setting this higher reduces noise in the first bounces,
+but can also be less efficient for more complex geometry like hair and volumes.
+
+options.cycles:integrator:transparent_max_bounce
+------------------------------------------------
+
+Maximum number of transparent bounces.
+
+options.cycles:integrator:ao_bounces
+------------------------------------
+
+Maximum number of ambient occlusion bounces.
+
+options.cycles:integrator:ao_factor
+-----------------------------------
+
+Ambient occlusion factor.
+
+options.cycles:integrator:ao_distance
+-------------------------------------
+
+Ambient occlusion distance.
+
+options.cycles:integrator:volume_ray_marching
+---------------------------------------------
+
+Render volumes using the biased volume ray marching approach from
+Cycles 4.5 and earlier. Cycles 5.0 defaults to unbiased volume sampling,
+which produces fewer artifacts but could result in more noise.
+
+> Tip : When ray marching is enabled the `volume_step_rate` and
+> `volume_max_steps` options control the step size and max steps.
+
+options.cycles:integrator:volume_max_steps
+------------------------------------------
+
+The maximum number of steps taken through a volume. Reduce this to
+avoid long render times with large volumes or small step sizes.
+
+> Info : Only used when the legacy `volume_ray_marching` option is enabled.
+
+options.cycles:integrator:volume_step_rate
+------------------------------------------
+
+Globally adjust detail for volumes. Higher values reduce render time,
+lower values render with more detail.
+
+> Info : Only used when the legacy `volume_ray_marching` option is enabled.
+
+options.cycles:integrator:caustics_reflective
+---------------------------------------------
+
+Use reflective caustics, resulting in a brighter image
+(more noise but added realism).
+
+options.cycles:integrator:caustics_refractive
+---------------------------------------------
+
+Use refractive caustics, resulting in a brighter image
+(more noise but added realism).
+
+options.cycles:integrator:filter_glossy
+---------------------------------------
+
+Adaptively blur glossy shaders after blurry bounces, to reduce
+noise at the cost of accuracy.
+
+options.cycles:integrator:seed
+------------------------------
+
+Seed value for the sampling pattern. If not specified, the frame number is used instead.
+
+options.cycles:integrator:sample_clamp_direct
+---------------------------------------------
+
+Clamp value for sampling direct rays.
+
+options.cycles:integrator:sample_clamp_indirect
+-----------------------------------------------
+
+Clamp value for sampling indirect rays.
+
+options.cycles:integrator:start_sample
+--------------------------------------
+
+Start sample.
+
+options.cycles:integrator:use_light_tree
+----------------------------------------
+
+Sample multiple lights more efficiently based on estimated contribution at every shading point.
+
+options.cycles:integrator:light_sampling_threshold
+--------------------------------------------------
+
+Probabilistically terminate light samples when the light
+contribution is below this threshold (more noise but faster
+rendering).
+`0` disables the test and never ignores lights.
+
+options.cycles:integrator:use_adaptive_sampling
+-----------------------------------------------
+
+Automatically determine the number of samples
+per pixel based on a variance estimation.
+
+options.cycles:integrator:adaptive_threshold
+--------------------------------------------
+
+Noise level step to stop sampling at, lower values reduce noise the cost of render time.
+`0` for automatic setting based on number of AA samples.
+
+options.cycles:integrator:adaptive_min_samples
+----------------------------------------------
+
+Minimum AA samples for adaptive sampling, to discover noisy features before stopping sampling.
+`0` for automatic setting based on number of AA samples.
+
+options.cycles:integrator:denoiser_type
+---------------------------------------
+
+Denoise the image with the selected denoiser.
+
+- OptiX : Use the OptiX AI denoiser with GPU acceleration, only available on NVIDIA GPUs
+- OpenImageDenoise : Use the Intel OpenImageDenoise AI denoiser running on the CPU
+
+> Tip : Only outputs that include a `denoise` parameter set to `true` will be denoised.
+> Denoised outputs are renamed to include a "denoised" suffix.
+
+options.cycles:denoise_device
+-----------------------------
+
+The device to denoise with. If multiple devices are specified, Cycles will denoise with
+the first suitable device from the list.
+
+`Automatic` mode allows Cycles to choose from all available devices that support the current
+denoiser.
+
+options.cycles:integrator:denoise_start_sample
+----------------------------------------------
+
+Sample to start denoising the preview at.
+
+options.cycles:integrator:use_denoise_pass_albedo
+-------------------------------------------------
+
+Use albedo pass for denoising.
+
+options.cycles:integrator:use_denoise_pass_normal
+-------------------------------------------------
+
+Use normal pass for denoising.
+
+options.cycles:integrator:denoiser_prefilter
+--------------------------------------------
+
+None - No prefiltering, use when guiding passes are noise-free.
+Fast - Denoise color and guiding passes together. Improves quality when guiding passes are noisy using least amount of extra processing time.
+Accurate - Prefilter noisy guiding passes before denoising color. Improves quality when guiding passes are noisy using extra processing time.
+
+options.cycles:integrator:use_guiding
+-------------------------------------
+
+Use path guiding for sampling paths. Path guiding incrementally
+learns the light distribution of the scene and guides path into directions
+with high direct and indirect light contributions.
+
+options.cycles:integrator:use_surface_guiding
+---------------------------------------------
+
+Use guiding when sampling directions on a surface.
+
+options.cycles:integrator:use_volume_guiding
+--------------------------------------------
+
+Use guiding when sampling directions inside a volume.
+
+options.cycles:integrator:guiding_training_samples
+--------------------------------------------------
+
+The maximum number of samples used for training path guiding.
+Higher samples lead to more accurate guiding, however may also
+unnecessarily slow down rendering once guiding is accurate enough.
+A value of 0 will continue training until the last sample.
+
+options.cycles:background:use_shader
+------------------------------------
+
+Use background shader. There must be a CyclesBackground node with
+a shader attached to it.
+
+options.cycles:background:visibility:camera
+-------------------------------------------
+
+Whether or not the background is visible to camera
+rays.
+
+options.cycles:background:visibility:diffuse
+--------------------------------------------
+
+Whether or not the background is visible to diffuse
+rays.
+
+options.cycles:background:visibility:glossy
+-------------------------------------------
+
+Whether or not the background is visible in
+glossy rays.
+
+options.cycles:background:visibility:transmission
+-------------------------------------------------
+
+Whether or not the background is visible in
+transmission.
+
+options.cycles:background:visibility:shadow
+-------------------------------------------
+
+Whether or not the background is visible to shadow
+rays - whether it casts shadows or not.
+
+options.cycles:background:visibility:scatter
+--------------------------------------------
+
+Whether or not the background is visible to
+scatter rays.
+
+options.cycles:background:transparent
+-------------------------------------
+
+Make the background transparent.
+
+options.cycles:background:transparent_glass
+-------------------------------------------
+
+Background can be seen through transmissive surfaces.
+
+options.cycles:background:transparent_roughness_threshold
+---------------------------------------------------------
+
+Roughness threshold of background shader in transmissive surfaces.
+
+options.cycles:film:exposure
+----------------------------
+
+Image brightness scale.
+
+options.cycles:film:pass_alpha_threshold
+----------------------------------------
+
+Alpha threshold.
+
+options.cycles:film:display_pass
+--------------------------------
+
+Render pass to show in the 3D Viewport.
+
+options.cycles:film:show_active_pixels
+--------------------------------------
+
+When using adaptive sampling highlight pixels which are being sampled.
+
+options.cycles:film:filter_type
+-------------------------------
+
+Image filter type.
+
+options.cycles:film:filter_width
+--------------------------------
+
+Pixel width of the filter.
+
+options.cycles:film:mist_start
+------------------------------
+
+Start of the mist/fog.
+
+options.cycles:film:mist_depth
+------------------------------
+
+End of the mist/fog.
+
+options.cycles:film:mist_falloff
+--------------------------------
+
+Falloff of the mist/fog.
+
+options.cycles:film:cryptomatte_depth
+-------------------------------------
+
+Sets how many unique objects can be distinguished per pixel.
+
+options.cycles:dicing_camera
+----------------------------
+
+Camera to use as reference point when subdividing geometry, useful
+to avoid crawling artifacts in animations when the scene camera is
+moving.
+
+extraOptions
+------------
+
+An additional set of options to be added. Arbitrary numbers
+of options may be specified within a single `IECore.CompoundObject`,
+where each key/value pair in the object defines an option.
+This is convenient when using an expression to define the options
+and the option count might be dynamic. It can also be used to
+create options whose type cannot be handled by the `options`
+CompoundDataPlug.
+
+If the same option is defined by both the `options` and the
+`extraOptions` plugs, then the value from the `extraOptions`
+is taken.

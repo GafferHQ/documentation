@@ -1,0 +1,76 @@
+LevelSetSmooth
+==============
+
+Smooths a level set VDB.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+adjustBounds
+------------
+
+Adjusts bounding boxes to account for the changes made to the object.
+
+> Caution : Adjusting boundings boxes has a performance penalty.
+> If you do not need accurate bounds or you know that the bounds
+> will only change slightly, you may prefer to turn this off.
+
+grids
+-----
+
+The names of the level set grids to smooth in the VDB object.
+Names should be separated by spaces and may contain any of
+Gaffer's standard wildcards.
+
+mode
+----
+
+The smoothing filter to apply to the level set.
+
+- Box : A separable box/mean filter. Fast to compute and provides simple and predictable
+  smoothing.
+- Gaussian : Produces smooth, gradual blurring, with nearby voxels contributing more
+  strongly than distant ones. Approximately four times slower than Box.
+- Median : Suppresses noise and outliers while generally preserving sharp details better than
+  Box or Gaussian. Relatively slow because the filter is not separable.
+- Mean Curvature : Smooths the surface according to how sharply it bends, affecting bumps and
+  sharp areas more strongly than flatter areas.
+- Laplacian : Diffuses values to neighbouring voxels, often producing similar results to
+  Mean Curvature while being faster to compute.
+- Fillet : Rounds off concave edges while leaving other areas unchanged. Useful for
+  smoothing internal corners and junctions between intersecting surfaces.
+
+radius
+------
+
+The radius of the Box, Gaussian, and Median smoothing kernels in voxel units.
+
+iterations
+----------
+
+The number of smoothing iterations.

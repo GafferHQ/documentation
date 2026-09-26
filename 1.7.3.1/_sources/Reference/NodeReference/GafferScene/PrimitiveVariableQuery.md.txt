@@ -1,0 +1,39 @@
+PrimitiveVariableQuery
+======================
+
+Queries primitive variables at a scene location, creating an output for
+each primitive variable.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+scene
+-----
+
+The scene to query the primitive variable from.
+
+location
+--------
+
+The location within the scene to query the primitive variable at.
+> Note : If the location does not exist then the query will not be
+> performed and all outputs will be set to their default values.
+
+queries
+-------
+
+The primitive variables to be queried - arbitrary numbers of primitive
+variables may be added as children of this plug via the user interface,
+or via python. Each child is a `NameValuePlug` whose `name` plug is the
+name of the primitive variable to query, and whose `value` plug is the
+default value to use if the primitive variable can not be retrieved.
+
+out
+---
+
+The parent plug of the query outputs. The order of outputs corresponds
+to the order of children of `queries`.
