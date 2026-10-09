@@ -1,9 +1,0 @@
-1.5.16.1
-========
-
-Fixes
------
-
-- Instancer : Fixed potential crash with encapsulated instancers.
-- AttributeEditor, LightEditor, RenderPassEditor : Fixed crash caused by incorrectly intercepting drags being performed by virtual sliders, such as those in the popup cell editors.
-
