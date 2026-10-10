@@ -1,0 +1,260 @@
+USDMeshLight
+============
+
+Turns mesh primitives into USD mesh lights by assigning a MeshLight
+shader and adding the meshes to the default lights set.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+parameters
+----------
+
+The parameters of the light shader applied to the mesh.
+
+parameters.intensity
+--------------------
+
+The base intensity of the light. Scales the
+brightness of the light linearly.
+
+parameters.exposure
+-------------------
+
+Exposure setting of the light. Scales
+the brightness of the light exponentially.
+
+parameters.color
+----------------
+
+The color of the emitted light, in the
+rendering color space.
+
+parameters.enableColorTemperature
+---------------------------------
+
+Controls whether colorTemperature is
+used.
+
+parameters.colorTemperature
+---------------------------
+
+The color temperature of the light, in
+degrees Kelvin.
+
+parameters.specular
+-------------------
+
+A multiplier for the effect of this light 
+on the specular response of materials.
+
+parameters.diffuse
+------------------
+
+A multiplier for the effect of this light
+on the diffuse response of materials.
+
+parameters.ri:light:intensityNearDist
+-------------------------------------
+
+intensityNearDist: Near distance between the point being illuminated and the light
+                at which the sample doesn't get brighter. This may help you avoid hot spots and
+                sampling issues where a light is near a surface.
+
+parameters.ri:light:specularNearDist
+------------------------------------
+
+specularNearDist: Near distance between the point with specular shading being illuminated 
+                and the light at which the sample doesn't get brighter. This may help you 
+                avoid hot spots and sampling issues where a light is near a specular surface.
+                Note that this value will not apply to lights as seen from the camera.
+
+parameters.ri:light:diffuseNearDist
+-----------------------------------
+
+diffuseNearDist: Near distance between the point with diffuse shading being illuminated 
+                and the light at which the sample doesn't get brighter. This may help you 
+                avoid hot spots and sampling issues where a light is near a diffuse surface.
+                Note that this value will not apply to lights as seen from the camera.
+
+parameters.ri:light:msApprox
+----------------------------
+
+Enable volume multi-scattering approximation.
+                When enabled, volume multi-scattering approximation mimics the effect of multi-scattering in aggregate volumes.
+
+parameters.ri:light:msApproxBleed
+---------------------------------
+
+The color of the light bleed from volume multi-scattering approximation.
+                Controls how much light bleeds into the volumes illuminated by this light.
+                Has no effect if 'Gain' (msApprox) is set to 0.
+
+parameters.ri:light:msApproxContribution
+----------------------------------------
+
+The color of the contribution of light from volume multi-scattering approximation.
+                Controls how much the light bleed contributes to the brightness of volumes illuminated by this light.
+                Has no effect if 'Gain' (msApprox) is set to 0.
+
+parameters.normalize
+--------------------
+
+Controls if the light power should be
+normalized by the surface area of the light. If enabled, the light power 
+remains constant if the light's area or angular size is changed.
+
+parameters.ri:light:traceLightPaths
+-----------------------------------
+
+Enables light and photon tracing from this light. This value enforces a 
+                physically-based light and as a side-effect disables thinShadow and 
+                visibleInRefractionPath. Users may use this feature to selectively decide 
+                which lights emit photons when using the PxrVCM or PxrUnified Integrators. 
+                Because it will automatically disable thin shadows, this should not be 
+                enabled when using the PxrPathTracer integrator.
+
+parameters.ri:light:thinShadow
+------------------------------
+
+thinShadow: Enable thin shadow and disable refraction caustics for this light.
+                This parameter will be ignored if Trace Light Paths is enabled. This is a
+                non-physical control that creates "fake" colored shadows for transmissive
+                objects without needing to generate photons for caustics.
+                Also for the paths where Cheap Caustics is enabled (surfaces marked "MWWalkable"),
+                then thinShadow is ignored as well.
+
+parameters.ri:light:visibleInRefractionPath
+-------------------------------------------
+
+visibleInRefractionPath: Make this light source visible in refraction paths.
+                This parameter will be ignored if Cheap Caustics is enabled.
+
+parameters.ri:light:cheapCaustics
+---------------------------------
+
+Enable manifold walk computation and disable thin shadow for this light.
+                This parameter will be ignored if Trace Light Paths is enabled.
+
+parameters.ri:light:cheapCausticsExcludeGroup
+---------------------------------------------
+
+Specifies the exclude shadow subset for manifold walk. Will be used to prevent occlusion during the search of caustic path.
+
+parameters.ri:light:importanceMultiplier
+----------------------------------------
+
+Importance of this light for noise control.
+
+parameters.ri:light:lightGroup
+------------------------------
+
+lightGroup: Specify the light group name used for light group LPEs. This is useful to generate per-light AOVs for later adjustment in compositing.
+
+parameters.arnold:aov
+---------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.arnold:cast_volumetric_shadows
+-----------------------------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.arnold:indirect
+--------------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.arnold:max_bounces
+-----------------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.arnold:samples
+-------------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.arnold:shadow_density
+--------------------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.arnold:sss
+---------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.arnold:volume
+------------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.arnold:volume_samples
+--------------------------------
+
+Refer to Arnold's documentation for further details.
+
+parameters.shadow:color
+-----------------------
+
+Specifies the color of the shadows cast by 
+the light
+
+parameters.shadow:distance
+--------------------------
+
+Specifies the maximum distance, measured
+between the occluder and the point on a surface, within which shadows are cast.
+
+parameters.shadow:enable
+------------------------
+
+Enables or disables whether the light
+casts shadows.
+
+parameters.shadow:falloff
+-------------------------
+
+Specifies the size of the shadow falloff
+zone, within the maximum shadow distance.
+
+parameters.shadow:falloffGamma
+------------------------------
+
+Controls the rate of falloff within the
+shadow falloff zone specified with `shadow:falloff`.
+
+defaultLight
+------------
+
+Whether this light illuminates all geometry by default. When
+toggled, the light will be added to the "defaultLights" set, which
+can be referenced in set expressions and manipulated by downstream
+nodes.

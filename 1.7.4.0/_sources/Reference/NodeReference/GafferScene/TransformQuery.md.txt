@@ -1,0 +1,62 @@
+TransformQuery
+==============
+
+Queries a particular location in a scene and outputs the transform.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+scene
+-----
+
+The scene to query the transform for.
+
+location
+--------
+
+The location within the scene to query the transform at.
+
+> Note : If the location does not exist then the query will not be
+> performed and all outputs will be set to their default values.
+
+space
+-----
+
+The space to query the transform.
+
+relativeLocation
+----------------
+
+The location within the scene to query the transform for relative space mode.
+
+> Note : If the location does not exist then the query will not be
+> performed and all outputs will be set to their default values.
+
+invert
+------
+
+Invert the result transform.
+
+matrix
+------
+
+4x4 matrix of the requested transform.
+
+translate
+---------
+
+Translation component of requested transform.
+
+rotate
+------
+
+Rotation component of requested transform (degrees).
+
+scale
+-----
+
+Scaling component of requested transform.

@@ -1,0 +1,51 @@
+1.2.3.0
+=======
+
+Features
+--------
+
+- Arnold : Added support for Arnold 7.2.
+- PointsToLevelSet : Added a new node for converting points primitives into OpenVDB level sets.
+
+Improvements
+------------
+
+- ArnoldOptions : Exposed Arnold 7.2.1.0's Global Light Sampling feature via a new `lightSamples` plug.
+- ArnoldAttributes : Added `shadowAutoBumpVisibility` plug, since Arnold 7.2.1.0 now correctly implements this feature.
+- Shader : Added support for shading input connections to splines. After double clicking on a spline to open the editor, you may select a control point, and then drag an input to the value control. Works in GafferImage, GafferObject and Arnold. Supports a max of 32 values in the spline.
+- FloatSpline and ColorSpline OSL shaders : Added a `direction` parameter, with options of `U`, `V`, `Diagonal`, `Radial` and `Custom`.
+- Constraint : Disabled the `referenceFrame` plug in the NodeEditor when `keepReferencePosition` is off.
+
+Fixes
+-----
+
+- OSLObject/OSLImage : Fixed missing `+` buttons in GraphEditor on Windows ([#5222](https://github.com/GafferHQ/gaffer/issues/5222)).
+- Viewer : Fixed missing VDB visualisations on Windows ([#5223](https://github.com/GafferHQ/gaffer/issues/5223)).
+- SceneReader : Fixed reading of USD primitives containing `primvars:normals`. These are now correctly loaded as a primitive variable called N, taking precedence over the UsdGeomPointBased normals attribute.
+- SceneWriter : Fixed writing of indexed normals to USD files, so that the indexing is retained on load. Note that this means that normals are now always written as `primvars:normals` and never via the UsdGeomPointBased `normals` attribute.
+- CompoundDataPlugValueWidget : Fixed bug which prevented the addition of new plugs when an existing plug had an input connection. This affected the ContextVariables, CustomOptions and CustomAttributes nodes, among others.
+
+API
+---
+
+- NoduleLayout : Added a warning message when a required custom gadget has not been registered.
+- GafferUITest.TestCase : Added testing of NodeGadgets to `assertNodeUIsHaveExpectedLifetime()`.
+- SceneView : Added Python binding for `resolutionGate()` method.
+- ViewportGadget : Added Python binding for `RasterScope` class.
+- OSLShader : Added support for `visibleExpression` and `enabledExpression` metadata in OSL shaders. These may provide an OSL expression to control the activation of parameters in Gaffer's node editor.
+
+Build
+-----
+
+- Cortex : Updated to version 10.4.7.0.
+
+Documentation
+-------------
+
+- Updated the "Anamorphic Camera Setup" example to use Cycles instead of Appleseed.
+- Updated the "Contact Sheet Generation" example to use Cycles instead of Appleseed.
+- Updated the "Macbeth Chart" example to use Cycles instead of Appleseed.
+- Updated the "Per-location Light Tweak Spreadsheet" example to use Cycles instead of Appleseed.
+- Updated the "Wedge Tests" example to use Cycles instead of Appleseed.
+- Updated the "Setting Up a Spreadsheet" tutorial to use Cycles instead of Appleseed.
+

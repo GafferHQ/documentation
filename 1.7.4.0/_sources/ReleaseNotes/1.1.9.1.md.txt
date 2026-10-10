@@ -1,0 +1,9 @@
+1.1.9.1
+=======
+
+Fixes
+-----
+
+- Cycles : Fixed crash triggered by unsupported shader parameters ([#5147](https://github.com/GafferHQ/gaffer/issues/5147)).
+- CompoundPlugValueWidget : Fixed errors when refreshing the widget.
+
