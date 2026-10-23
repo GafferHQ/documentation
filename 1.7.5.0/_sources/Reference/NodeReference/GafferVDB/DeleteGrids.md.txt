@@ -1,0 +1,48 @@
+DeleteGrids
+===========
+
+Deletes grids from an OpenVDB volume.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+mode
+----
+
+Defines how deletion is performed :
+
+- Delete : The listed grids are deleted.
+- Keep : The listed grids are kept, and all others are deleted.
+
+grids
+-----
+
+The names of the grids to be deleted (or kept
+if the mode is set to Keep). Names should be separated
+by spaces and may contain any of Gaffer's standard
+wildcards.

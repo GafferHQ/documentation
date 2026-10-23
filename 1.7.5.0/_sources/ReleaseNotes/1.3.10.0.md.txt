@@ -1,0 +1,38 @@
+1.3.10.0
+========
+
+Features
+--------
+
+- LightPositionTool : Added tool to the scene viewer to place shadows. With a light selected, holding <kbd>Shift</kbd> + <kbd>V</kbd> and clicking on geometry will set the pivot point used for casting a shadow. Holding <kbd>V</kdb> and clicking sets the point to receive the shadow. The light is repositioned to be the same distance from the pivot, along the pivot-shadow point line, and oriented to face the shadow point.
+
+Improvements
+------------
+
+- ArnoldShader, ArnoldColorManager, CyclesShader : Improved browsers for file parameters ([#5592](https://github.com/GafferHQ/gaffer/issues/5592), [#5602](https://github.com/GafferHQ/gaffer/issues/5602)) :
+  - Added filtering by extension.
+  - Added bookmarks.
+- USDLight : Added file browser for `shaping:ies:file` parameter.
+- OpenColorIOContext : Added file browser for `config` plug.
+- Layouts : Added the ability to load layouts containing editors that aren't currently available. This allows layouts containing new editors introduced in Gaffer 1.4 to be loaded in Gaffer 1.3.
+- TranslateTool, RotateTool : Added tooltip to the upper left corner of the Viewer explaining how to use the target modes.
+- LightTool : Changed the color of the non-highlighted handles to orange and the highlighted handles to cyan for consistency with other highlight colors.
+- Outputs : Variable substitutions are now applied to `gaffer:context:*` image metadata values. This is needed when the value of a context variable contains references to other variables, with the default value for `project:rootDirectory` being one example.
+
+Fixes
+-----
+
+- Arnold : Fixed translation of USD `uchar` attributes and shader parameters.
+- Orientation/Instancer : Now normalizes unnormalized quaternion inputs - this allows correctly processing files with primvars that contain unnormalized quaternions ( which it is possible to write from Houdini ).
+
+API
+---
+
+- EditScopeAlgo : Added support for editing options for a specific render pass.
+- ArnoldShaderUI : Added support for Gaffer filebrowser metadata in Arnold `.mtd` files. The following fields are supported, and correspond directly to the metadata documented on the PathPlugValueWidget and FileSystemPathPlugValueWidget :
+  - `path:leaf`
+  - `path:valid`
+  - `path:bookmarks`
+  - `fileSystemPath:extensions`
+  - `fileSystemPath:extensionsLabel`
+

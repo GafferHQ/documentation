@@ -1,0 +1,77 @@
+CyclesShaderBall
+================
+
+Generates scenes suitable for rendering shader balls with Cycles.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs
+an empty scene.
+
+shader
+------
+
+The shader to be rendered.
+
+resolution
+----------
+
+The resolution of the shader ball image, which
+is always a square.
+
+environment
+-----------
+
+An environment map used for lighting. Should be in latlong
+format.
+
+device
+------
+
+Device(s) to use for rendering.
+To specify multiple devices, there's a few examples under presets.
+
+To render on CPU and the first CUDA device:
+
+        CPU CUDA:00
+
+To render on the first and second OpenCL device:
+
+        OPENCL:00 OPENCL:01
+
+To render on every OptiX device found:
+
+        OPTIX:*
+
+To render on everything found (not recommended, 1 device may have multiple backends!)
+
+        CPU CUDA:* OPTIX:* OPENCL:*
+
+threads
+-------
+
+The number of threads used by Cycles to render the
+shader ball. A value of 0 uses all cores, and negative
+values reserve cores for other uses - to be used by
+the rest of the UI for instance.
+
+shadingSystem
+-------------
+
+Shading system.
+
+- OSL : Use Open Shading Language (CPU rendering only).
+- SVM : Use Shader Virtual Machine.

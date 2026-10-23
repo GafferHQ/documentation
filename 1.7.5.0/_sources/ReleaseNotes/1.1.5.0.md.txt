@@ -1,0 +1,32 @@
+1.1.5.0
+=======
+
+Features
+--------
+
+- PrimitiveVariableQuery : Added new node to query multiple primitive variables from a scene location.
+  - Each query specifies the name and type of the primitive variable
+  - Each query has a corresponding output plug with `exists`, `interpolation`, `type` and `value` child plugs.
+
+Improvements
+------------
+
+- ArnoldOptions : Added support for `texture_use_existing_tx`, `texture_auto_generate_tx` and `texture_auto_tx_path`.
+- Arnold : Added support for attributes containing InternedStringData, as would be obtained by loading `token` primvars from a USD file.
+- Random : Added the `outFloat` plug to the NodeEditor, and moved output plugs into their own `Outputs` section.
+
+Fixes
+-----
+
+- Arnold :
+  - Fixed deletion of `ai:transform_type` attribute during interactive renders. The object now reverts to the default transform type in this case.
+  - Fixed broken Viewer after Arnold encountered an error (such as a missing texture).
+  - Fixed `Tools/Arnold/Flush Cache` not working when no interactive renders are running.
+
+API
+---
+
+- TypedObjectPlug : Added V2fVectorDataPlug and V3iVectorDataPlug.
+- PlugAlgo : Added support for V2iVectorData, V3fVectorData and Color3fVectorData types in `canSetValueFromData()` and `setValueFromData()` functions.
+- VectorDataPlugValueWidget : Added support for V2iVectorData and Color3fVectorData plug types.
+

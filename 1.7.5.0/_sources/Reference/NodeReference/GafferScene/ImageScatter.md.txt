@@ -1,0 +1,90 @@
+ImageScatter
+============
+
+Scatters points across an image, using pixel values to control the density
+of the points. Arbitrary image channels may be converted to additional
+primitive variables on the points, and point width may also be driven by an
+image channel.
+
+> Note : Only the area of the `displayWindow` is considered. To
+> include overscan pixels, use a Crop node to extend the display
+> window.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs
+an empty scene.
+
+name
+----
+
+The name of the object in the output scene.
+
+sets
+----
+
+A list of sets to include the object in. The
+names should be separated by spaces.
+
+transform
+---------
+
+The transform applied to the object.
+
+image
+-----
+
+The image used to drive the point scattering process.
+
+view
+----
+
+The view within the image to be used by the scattering process.
+
+density
+-------
+
+The overall density of the scattered points, defined in points
+per pixel.
+
+densityChannel
+--------------
+
+The image channel used to modulate the density of the scattered points.
+Black pixels will receive no points and white pixels will receive the
+full amount as defined by the `density` plug.
+
+primitiveVariables
+------------------
+
+The image channels to be converted to primitive variables on
+the points. The chosen channels are converted using the
+following rules :
+
+- The main `RGB` channels are converted to a colour primitive variable called `Cs`.
+- `<layerName>.RGB` channels are converted to a colour primitive variable called `<layerName>`.
+- Other channels are converted to individual float primitive variables.
+
+width
+-----
+
+The width of the points. If `widthChannel` is used as well, then this acts as
+a multiplier on the channel values.
+
+widthChannel
+------------
+
+The channel used to provide per-point width values for the points.

@@ -1,0 +1,57 @@
+QuantizePrimitiveVariables
+==========================
+
+Quantizes the values of numeric primitive variables.
+Compound types such as vectors and colours are quantized
+on a component-by-component basis, with each component being
+quantized individually.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+names
+-----
+
+The names of the primitive variables to be affected.
+Names should be separated by spaces, and Gaffer's
+standard wildcard characters may be used.
+
+invertNames
+-----------
+
+When on, the primitive variables matched by names
+are unaffected, and the non-matching primitive
+variables are affected instead.
+
+quantization
+------------
+
+Controls the quantization. Each input value is rounded to the
+nearest multiple of the `quantization` value. The default of 0.0
+produces no quantization and increasing values cause quantization
+into increasingly coarse bands.

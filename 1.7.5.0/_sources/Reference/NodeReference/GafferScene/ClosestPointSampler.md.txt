@@ -1,0 +1,85 @@
+ClosestPointSampler
+===================
+
+Samples primitive variables from the closest point on
+the surface of a source primitive, and transfers the
+values onto new primitive variable on the sampling objects.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to determine which objects in the
+`in` scene will receive primitive variables sampled
+from the `sourceLocation` in the `source` scene.
+
+adjustBounds
+------------
+
+Adjusts bounding boxes to account for the changes made to the object.
+
+> Caution : Adjusting boundings boxes has a performance penalty.
+> If you do not need accurate bounds or you know that the bounds
+> will only change slightly, you may prefer to turn this off.
+
+source
+------
+
+The scene that contains the source primitive that
+primitive variables will be sampled from.
+
+sourceLocation
+--------------
+
+The location of the primitive in the `source` scene that
+will be sampled from.
+
+primitiveVariables
+------------------
+
+The names of the primitive variables to be sampled from the source
+primitive. These should be separated by spaces and can use Gaffer's
+standard wildcards to match multiple variables. The sampled variables
+are prefixed with `prefix` before being added to the sampling object.
+
+prefix
+------
+
+A prefix applied to the names of the sampled primitive variables before
+they are added to the sampling object. This is particularly useful when
+sampling something like "P", and not not wanting to modify the true
+vertex positions of the sampling primitive.
+
+status
+------
+
+The name of a boolean primitive variable created to record the success or
+failure of the sampling operation.
+
+position
+--------
+
+The primitive variable that provides the positions
+to find the closest point to. This defaults to "P",
+the vertex position of the sampling object.

@@ -1,0 +1,35 @@
+ArnoldAtmosphere
+================
+
+Assigns a global atmosphere shader that applies to all objects in
+the scene. This is stored as an "ai:atmosphere" option in Gaffer's
+globals, and translated onto the `options.atmosphere` parameter
+in Arnold.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+shader
+------
+
+The shader to be assigned. This will be stored as an
+option within the scene globals.
