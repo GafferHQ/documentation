@@ -1,0 +1,43 @@
+SceneStats
+==========
+
+Computes aggregate statistics across all scene locations matched by a filter.
+Statistics are generated for an arbitrary number of user-defined input queries,
+so can be used to inspect any property of the scene. For each query,
+the sum, min, max and average values are computed and provided on output plugs.
+Each query can be enabled/disabled on a per-location basis.
+
+> Tip : Nodes such as PrimitiveQuery, AttributeQuery and PrimitiveVariableQuery
+> provide ideal query inputs. The query location should be `${scene:path}` so
+> that the query is repeated for each filtered location.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+scene
+-----
+
+The scene to gather statistics from.
+
+filter
+------
+
+The filter controlling which locations are included in the statistics.
+The input queries are evaluated for each matched location.
+
+queries
+-------
+
+The input values to be queried. Arbitrary numbers of queries may
+be added using the `addQuery()` API method or the `+` button in the
+UI.
+
+out
+---
+
+Outputs the statistics for the `queries` plugs. Each query has a
+corresponding output with the same name.

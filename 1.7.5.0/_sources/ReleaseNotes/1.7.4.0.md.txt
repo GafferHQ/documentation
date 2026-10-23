@@ -1,0 +1,44 @@
+1.7.4.0
+=======
+
+Improvements
+------------
+
+- Cycles : Added support for rendering PointInstancers.
+- SceneInspector : Added PointInstancer section to the Statistics tab.
+- USDMeshLight :
+  - Added node to add necessary attributes to geometry to convert to a USDMeshLight.
+  - Added Arnold, RenderMan, 3Delight and Cycles rendering.
+- MeshLight : Added viewport visualisation of textures.
+- SceneReader : Added support for loading ParticleField3DGaussianSplat USD prims.
+- Arnold : Added support for rendering Gaussian splats. This requires Arnold version `7.5.2` or later.
+- EditScope : Added "Delete Contents" item to NodeEditor tool menu.
+
+Fixes
+-----
+
+- Cycles :
+  - Fixed bug introduced in 1.7.0.0 causing the environment texture of a rotated background light to lose its orientation when the light is modified during an interactive render.
+  - Fixed handling of batch render errors. These now correctly cause `gaffer execute` to return an error status.
+  - Fixed rendering of identical instances with different shaders in batch renders. This also improves the situation in interactive renders substantially, but incorrect shading is still possible when reassigning shaders.
+  - Fixed interactive displacement edits.
+  - Fixed interactive rendering crashes and errors caused by scene edits being made before the render has paused.
+  - Fixed Principled Hair BSDF UI to match Blender 5+.
+  - Fixed crashes when editing shaders on subdivision meshes during interactive renders ([#4913](https://github.com/GafferHQ/gaffer/issues/4913)).
+- NodeEditor : Fixed unavailable context menus on connected checkboxes, switches and preset menus ([#7105](https://github.com/GafferHQ/gaffer/issues/7105), [#5722](https://github.com/GafferHQ/gaffer/issues/5722)).
+- Spreadsheet : Fixed editability of preset menus for plugs with inputs. The menu items are now disabled, since the value can not be edited.
+- PlugLayout : Fixed flicker when the layout is first shown or contents of the layout changes, such as when the layout is filtered, plug visibility activators update, or when Viewer toolbars are first displayed.
+- Arnold, RenderMan : Fixed crash rendering a PointInstancer with a non-leaf prototype and no prototype indices.
+
+API
+---
+
+- BoolWidget : Added `setEditable()` and `getEditable()` methods.
+- Button : Added `setClickable()` and `getClickable()` methods, also available on MenuButton.
+
+Build
+-----
+
+- USD : Fixed build compatibility with USD 25.08.
+- Cortex : Updated to version 10.7.3.1.
+
