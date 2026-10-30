@@ -1,0 +1,26 @@
+<!-- !NO_SCROLLSPY -->
+
+GafferDispatch
+==============
+
+```{eval-rst}
+.. toctree::
+    :titlesonly:
+    :maxdepth: 1
+
+    CopyFiles.md
+    DeleteFiles.md
+    Dispatcher.md
+    FileList.md
+    FrameMask.md
+    LocalDispatcher.md
+    PythonCommand.md
+    RenameFiles.md
+    SystemCommand.md
+    TaskContextProcessor.md
+    TaskContextVariables.md
+    TaskList.md
+    TaskNode.md
+    TaskSwitch.md
+    Wedge.md
+```

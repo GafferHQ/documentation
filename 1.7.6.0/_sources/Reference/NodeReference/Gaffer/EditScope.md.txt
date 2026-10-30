@@ -1,0 +1,12 @@
+EditScope
+=========
+
+A container that interactive tools may make nodes in
+as necessary.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.

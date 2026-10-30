@@ -1,0 +1,41 @@
+ClippingPlane
+=============
+
+Creates an arbitrary clipping plane. This is like the near
+and far clipping planes provided by the Camera node, but
+can be positioned arbitrarily in space. All geometry on
+the positive Z side of the plane is clipped away.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs
+an empty scene.
+
+name
+----
+
+The name of the clipping plane to be created.
+
+sets
+----
+
+A list of sets to include the object in. The
+names should be separated by spaces.
+
+transform
+---------
+
+The transform applied to the object.

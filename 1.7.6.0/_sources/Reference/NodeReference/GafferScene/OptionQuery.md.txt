@@ -1,0 +1,31 @@
+OptionQuery
+===========
+
+Queries global scene options, creating an output for each option.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+scene
+-----
+
+The scene to query the options from.
+
+queries
+-------
+
+The options to be queried - arbitrary numbers of options may be added
+as children of this plug via the user interface, or via python. Each
+child is a `NameValuePlug` whose `name` plug is the option to query,
+and whose `value` plug is the default value to use if the option can
+not be retrieved.
+
+out
+---
+
+The parent plug of the query outputs. The order of outputs corresponds
+to the order of children of `queries`.
