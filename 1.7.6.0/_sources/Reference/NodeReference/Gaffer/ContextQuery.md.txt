@@ -1,0 +1,27 @@
+ContextQuery
+============
+
+Queries variables from the current context, creating outputs for each variable.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+queries
+-------
+
+The context variables to be queried - arbitrary numbers of context
+variables may be added as children of this plug via the user interface,
+or via python. Each child is a `NameValuePlug` whose `name` plug is
+the context variable to query, and whose `value` plug is the default
+value to use if the variable does not exist in the context with an
+appropriate type.
+
+out
+---
+
+The parent plug of the query outputs. The order of outputs corresponds
+to the order of children of `queries`.

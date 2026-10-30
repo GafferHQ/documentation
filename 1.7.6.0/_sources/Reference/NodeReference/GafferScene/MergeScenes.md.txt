@@ -1,0 +1,82 @@
+MergeScenes
+===========
+
+Merges multiple input scenes into a single output scene.
+Merging is performed left to right, starting with `in[0]`.
+
+By default, when more than one input contains the same
+scene location, the location's properties from the leftmost
+input are kept. In this mode, only _new_ locations are merged
+in from the additional inputs. Optionally, the properties
+can be replaced by or merged with the properties of the
+subsequent inputs.
+
+Sets are always merged from all inputs. Where multiple inputs
+have sets with the same name, the sets are merged into a union.
+
+> Caution : When `transformMode` and/or `objectMode` is not `Keep`,
+> bounding box computations have significant overhead. Consider
+> not using these operations, or turning off `adjustBounds`.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scenes
+
+transformMode
+-------------
+
+The method used to merge transforms when the same location
+exists in multiple input scenes. Keep mode keeps the transform
+from the first input, and Replace mode replaces it with the
+transform of the last input.
+
+attributesMode
+--------------
+
+The method used to merge attributes when the same location
+exists in multiple input scenes. Keep mode keeps the attributes
+from the first input, Replace mode replaces them with the attributes
+from the last input, and Merge mode merges all attributes together
+from first to last.
+
+objectMode
+----------
+
+The method used to merge objects when the same location
+exists in multiple input scenes. Keep mode keeps the object
+from the first input, and Replace mode replaces it with the
+object from the last input which has one.
+
+globalsMode
+-----------
+
+The method used to merge scene globals. Keep mode keeps the globals
+from the first input, Replace mode replaces them with the globals
+from the last input, and Merge mode merges all globals together
+from first to last.
+
+adjustBounds
+------------
+
+Adjusts bounding boxes to take account of the merging operation.
+
+> Caution : This has considerable overhead when the `objectsMode` and/or
+> `transformsMode` is not `Keep`.

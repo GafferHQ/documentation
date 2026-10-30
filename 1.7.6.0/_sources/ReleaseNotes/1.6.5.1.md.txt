@@ -1,0 +1,8 @@
+1.6.5.1
+=======
+
+Fixes
+-----
+
+- ImageWriter : Fixed file corruption or crashes caused by `openexr:lineOrder` being set in image metadata.
+
