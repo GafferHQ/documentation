@@ -1,0 +1,8 @@
+1.6.11.1
+========
+
+Fixes
+-----
+
+- Scene Editors : Fixed bug which could cause crashes at shutdown.
+

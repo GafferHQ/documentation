@@ -1,0 +1,8 @@
+1.4.15.1
+========
+
+Fixes
+-----
+
+- PlugPopup : Fixed error when displaying a popup with no PlugValueWidget.
+

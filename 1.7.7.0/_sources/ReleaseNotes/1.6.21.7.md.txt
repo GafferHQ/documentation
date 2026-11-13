@@ -1,0 +1,8 @@
+1.6.21.7
+========
+
+Fixes
+-----
+
+- Arnold : Fixed deadlocks caused by instancing in-memory OpenVDB grids ([#7209](https://github.com/GafferHQ/gaffer/issues/7209)).
+

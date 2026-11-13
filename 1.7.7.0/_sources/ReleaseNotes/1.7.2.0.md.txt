@@ -1,0 +1,37 @@
+1.7.2.0
+=======
+
+Features
+--------
+
+- VisibilityQuery : Added a node for querying the visibility of a particular scene location.
+- PrimitiveVariableType : Added a node for changing the type and interpretation of primitive variables ([#7111](https://github.com/GafferHQ/gaffer/issues/7111)).
+
+Improvements
+------------
+
+- Cycles : Added support for the standard `automaticInstancing` attribute.
+
+Fixes
+-----
+
+- Cycles : Fixed rendering of shaders written with `IECOREUSD_WRITE_CONFORMANT_OSL_SHADERS=1`.
+- MergeMeshes, MergeCurves, MergePoints : Fixed crash when merge is sorted by a primitive variable and none of the locations to merge contain primitives.
+- NodeEditor : Fixed flicker when changing the node being viewed.
+- Linux : Fixed startup from installation directory containing spaces.
+- SceneReader : Fixed loading of float-precision orientations from the USD `PointInstancer.orientationsf` attribute. Previously only the half-precision `orientations` attribute was supported.
+- Viewer : Fixed colourspace handling for PNG files loaded as textures for custom OpenGL shaders.
+- PointInstancer : Fixed potential interactive render update bug.
+- RenderPassEditor, DeleteRenderPasses : Fixed bugs which made it appear that the `renderPass:names` option was allowed to be dependent on the `${renderPass}` context variable.
+
+API
+---
+
+- Switch, NameSwitch : Added support for subclassing in Python.
+- SceneAlgo : Added `renderPassNames()` utility method.
+
+Build
+-----
+
+- Cortex : Updated to version 10.7.1.3.
+

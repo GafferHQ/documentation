@@ -1,0 +1,50 @@
+1.3.8.0
+=======
+
+Features
+--------
+
+- Viewer : Added "Snapshot To Catalogue" command to the right-click menu of the 3D view.
+- RenderPasses : Added new nodes for working with render passes. Render passes are defined as a list of names stored in the `renderPass:names` option in the scene globals, and can be used to dispatch tasks that vary based on those names. This can be useful for purposes such as producing multiple renders with varying object visibility and shading, or for writing variations of a scene to individual files.
+  - RenderPasses : Added a new node for appending render passes to the scene globals.
+  - DeleteRenderPasses : Added a new node for removing render passes from the scene globals.
+  - RenderPassWedge : Added a new node for causing upstream tasks to be dispatched in a range of contexts where the value of the `renderPass` context variable is varied based on the render pass names defined in the `renderPass:names` option.
+
+Improvements
+------------
+
+- GraphEditor : Added drag & drop of files into the graph editor, automatically creating a SceneReader, ImageReader or Reference node as appropriate.
+- ImageTransform, Resample : Improved performance for non-separable filters without scaling, with 2-6x speedups in some benchmark cases.
+- Outputs : Included `renderPass` in the filename for newly created Arnold, Cycles and 3Delight outputs. Allowing rendered images to be written to a specific directory based on the name of the current render pass.
+- GUI Config : Included `renderPass` in the default filename when writing ass files from an ArnoldRender node.
+- NameSwitch/Spreadsheet : Added "Render Pass" preset to `selector` plug.
+
+Fixes
+-----
+
+- InteractiveRender : Fixed unnecessary updates to encapsulated locations when deforming an unrelated object.
+- InteractiveArnoldRender : Fixed creation of new Catalogue image when editing output metadata or pixel filter.
+- GraphEditor : Fixed error caused by additional connections to `dragEnterSignal()`.
+- Windows `Scene/OpenGL/Shader` Menu : Removed `\` at the beginning of menu items.
+- Arnold :
+  - Fixed translation of `UsdPreviewSurface` normal maps.
+  - Fixed translation of `UsdPreviewSurface` `specularColor` fallback value.
+- Scene History : Fixed error caused by `Alt+E` keypress on panels other than the Viewer, HierarchyView, LightEditor or NodeEditor.
+- ImageReader : Fixed crashes caused by null `ustring` metadata values.
+- Exception handling : Fixed memory leak caused by translation of `IECore::Exception` from C++ to Python and back again.
+
+API
+---
+
+- SceneGadget : Added `snapshotToFile()` method.
+- SceneAlgo :
+  - Added `history()` overload for returning computation history independent of a scene location, this is useful when generating history from the globals.
+  - Added `optionHistory()` method which returns a computation history for one specific option.
+- Widget : Added handling for drag & drop from an external application via the existing `dragEnterSignal()`, `dragMoveSignal()`, `dragLeaveSignal()` and `dropSignal()` signals.
+
+Build
+-----
+
+- Cortex : Updated to version 10.5.4.2.
+- Instancer : Fixed ambiguous reference compilation errors when building with Boost 1.70.
+
