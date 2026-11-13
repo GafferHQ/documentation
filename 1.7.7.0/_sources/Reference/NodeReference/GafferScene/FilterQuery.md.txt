@@ -1,0 +1,53 @@
+FilterQuery
+===========
+
+Queries a filter for a particular location in a scene
+and outputs the results.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+scene
+-----
+
+The scene to query the filter for.
+
+filter
+------
+
+The filter to query.
+
+location
+--------
+
+The location within the scene to query the filter at.
+
+> Note : If the location does not exist then the query will not be
+> performed and all outputs will be set to their default values.
+
+exactMatch
+----------
+
+Outputs `True` if the filter matches the location, and `False` otherwise.
+
+descendantMatch
+---------------
+
+Outputs `True` if the filter matches a descendant of the location,
+and `False` otherwise.
+
+ancestorMatch
+-------------
+
+Outputs `True` if the filter matches an ancestor of the location,
+and `False` otherwise.
+
+closestAncestor
+---------------
+
+Outputs the location of the first ancestor matched by the filter.
+In the case of an exact match, this will be the location itself.

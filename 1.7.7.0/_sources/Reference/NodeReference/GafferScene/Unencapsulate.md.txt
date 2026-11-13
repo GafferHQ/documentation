@@ -1,0 +1,39 @@
+Unencapsulate
+=============
+
+Expands capsules created by Encapsulate back into regular scene hierarchy. This discards the
+performance advantages of working with capsules, but is useful for debugging, or when it is
+necessary to alter the internals of a capsule.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+parent
+------
+
+Deprecated. Use `filter` input instead.

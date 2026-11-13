@@ -1,0 +1,49 @@
+1.1.0.0
+=======
+
+Features
+--------
+
+- Image Viewer : Added image comparisons and wipes. Press <kbd>Q</kbd> in Viewer to enable. The primary image is compared to an Output Index set on the currently viewed Catalogue. Comparison modes including `Over`, `Under`, `Difference` and `Replace` can be selected from a dropdown menu. A wipe can be positioned by dragging in the viewer, and toggled using <kbd>W</kbd>.
+- Catalogue : Added Output Index column which can be used to set particular images as numbered outputs that can be referenced from the Viewer and CatalogueSelect nodes.
+
+Fixes
+-----
+
+- Plug : Fixed bug that could prevent `plugDirtiedSignal()` from ever being emitted again if an exception was thrown during parenting. This could cause the UI to stop updating.
+- FileSystemPath (Windows only) :
+  - `.` characters are now excluded from the path entries. These were being inserted in some cases even when the user did not input one.
+  - Fix browsing UNC paths in file browsers.
+- UI :
+	- Fixed one pixel alignment issue with highlighted and disabled icons.
+	- Improved appearance of adjoined widgets.
+	- Clicking on a button no longer assigns focus to it.
+  - Fixed appearance of disabled MenuButtons, so that they match the appearance of disabled Buttons.
+
+API
+---
+
+- Signals :
+  - Added `Trackable::disconnectTrackedConnections()` method.
+  - Added `ScopedConnection` move constructor and move assignment operator.
+- ViewportGadget : Added `setPostProcessShader()`.  This allows the main layer to be rendered to a framebuffer, and processed by a shader before being displayed.  Useful for applying color transforms on the GPU after rendering.
+- GafferImageUI : Added `OpenColorIOAlgo::displayTransformToFramebufferShader()`.  Converts an OCIO processor to a shader suitable for use with `setPostProcessShader()`.
+- ImageView : ImageView now uses a color transform on the viewport instead of ImageGadget.  Should not impact user visible behaviour, but paves the way for future work.
+- ImageGadget : Added functions for setting wipe and blend mode.
+- Path : Added virtual `rootAndNames()` method. This can be overridden to modify the `root` and `names` values as set by `setFromString()`.
+- FileSystemPath :
+  - Added support for Windows paths.
+  - Added `nativeString()` function to return the path as an OS-specific string.
+  - (Windows only) Paths beginning with a single `/` or `\` not followed by a drive letter are interpreted as UNC paths.
+- WidgetAlgo : Improved `joinEdges()` to support a wider range of widget types.
+- OpenColorIOTransform : Consolidated the duplicate `Direction` enums from CDL, LookTransform and LUT in to a single `OpenColorIOTransform::Direction` enum.
+
+Breaking Changes
+----------------
+
+- ImageGadget : Removed setters and getters for `DisplayTransform`, `UseGPU`, `Clipping`, `Exposure`, `Gamma`.  Instead use `ViewportGadget::setPostProcessShader()` to set up a GPU color transform, or set the plug values on `ImageView`.
+- ImageView : Using CPU color transforms is now deprecated.  We can't properly support wipes in CPU mode, and OCIO now offers full quality on the GPU, in addition to the performance being much better.  While the CPU functionality still exists, the UI has been hidden.
+- Signals : Removed flawed `ScopedConnection` copy constructor and assignment operator. Use move construction and assignment instead.
+- ImagePlug : Removed unused `viewName` argument from `viewNames()` and `viewNamesHash()` methods.
+- StandardAttributes : Removed backwards compatibility for StandardAttributes nodes saved from Gaffer `0.95.0` (May 2014) and earlier. If necessary, resave affected files using a recent Gaffer version.
+

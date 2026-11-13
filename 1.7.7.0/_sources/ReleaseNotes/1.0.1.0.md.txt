@@ -1,0 +1,26 @@
+1.0.1.0
+=======
+
+Improvements
+------------
+
+- TweakPlug : Added new tweak modes.
+  - Min : Resulting value will be the lesser of the existing value and the tweak value. For values with multiple components, such as `Color3f`, each component is compared individually.
+  - Max : Same as `Min` except the resulting value is the greater of the existing value and the tweak value.
+  - ListAppend : Values in the tweak list are added to the end of the existing list. If a value is in both the existing list and the tweak list, it is removed from the existing list before being added.
+  - ListPrepend : Same as `ListAppend` except the tweak list is added to the beginning of the existing list.
+  - ListRemove : Values in the tweak list are removed from the existing list.
+- Added horizontal scroll bars to the Light Editor, Scene Inspector and Shader Browser when their content is too wide to fit within the widget.
+
+Fixes
+-----
+
+- LightEditor :
+  - Fixed error when pressing <kbd>Return</kbd> or <kbd>Enter</kbd> with no cells selected.
+  - Fixed error when double-clicking the `Name` column.
+- Catalogue :
+  - Fixed bug that prevented saving of images.
+  - Fixed bugs in column listing for multi-view images.
+- ShaderQuery and ShaderTweaks : Fixed error `TypeError: object of type 'NoneType' has no len()` when clicking "Input" column of a shader row.
+- OSLObject/OSLImage : Fixed bug which resulted in undefined values for derivatives.
+

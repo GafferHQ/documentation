@@ -1,0 +1,8 @@
+1.6.21.8
+========
+
+Fixes
+-----
+
+- Catalogue : Fixed `imageNames` plug not handling renaming of promoted images ([#7234](https://github.com/GafferHQ/gaffer/issues/7234)).
+

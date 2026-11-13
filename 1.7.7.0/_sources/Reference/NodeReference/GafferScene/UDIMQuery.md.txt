@@ -1,0 +1,60 @@
+UDIMQuery
+=========
+
+Gathering information about what UDIMs are present in meshes matching
+the input scene and filter, and which meshes they belong to.
+
+The output is a three level dictionary ( stored as CompoundObjects ), containing information about the selected UDIMs.
+
+The keys of the top level are all the UDIMs containing part of the target meshes.
+The keys of the second level are the meshes which touch that UDIM.
+The keys of the third level are any attributes on that mesh which match extraAttributes, and the values of the third-level dictionary are the attribute values.
+
+An example result, with two udims, and "attributes" set to "bake:resolution", might look like this:
+
+```
+{
+                "1001" : {
+                        "/mesh1" : { "bake:resolution", 512 },
+                        "/mesh2" : { "bake:resolution", 1024 },
+                },
+                "1002" : {
+                        "/mesh1" : { "bake:resolution", 512 },
+                },
+}
+```
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+in
+--
+
+The scene to query UDIMs from.
+
+uvSet
+-----
+
+The name of the primitive variable which drives the UVs to compute UDIMs from.
+Should be a Face-Varying or Vertex interpolated V2f.
+
+attributes
+----------
+
+A space separated list of attribute names ( may use wildcards ), to collect from meshes
+which have UDIMs, and return as part of the output.  Inherited attributes are included.
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+out
+---
+
+A 3 level dictionary of results stored in a CompoundObject, as described in the node description.

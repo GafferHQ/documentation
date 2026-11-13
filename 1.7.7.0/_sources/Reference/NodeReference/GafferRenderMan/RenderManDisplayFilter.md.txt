@@ -1,0 +1,46 @@
+RenderManDisplayFilter
+======================
+
+Assigns a display filter. This is stored as an `ri:displayfilter` option in
+Gaffer's globals, and applied to all render outputs.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+displayFilter
+-------------
+
+The display filter to be assigned. This should be connected to the
+output of a RenderManShader node containing a display filter.
+
+mode
+----
+
+The mode used to combine the filter input with any
+filters that already exist in the scene globals.
+
+- Replace : Removes all pre-existing filter, and replaces them with
+  the new one.
+- InsertFirst : Inserts the new filter so that it will be run before
+  any pre-existing filters.
+- InsertLast : Inserts the new filter so that it will be run after
+  any pre-existing filters.

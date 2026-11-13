@@ -1,0 +1,91 @@
+MeshType
+========
+
+Changes between polygon and subdivision representations
+for mesh objects, and optionally recalculates vertex
+normals for polygon meshes.
+
+Note that currently the Gaffer viewport does not display
+subdivision meshes with smoothing, so the results of using
+this node will not be seen until a render is performed.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+meshType
+--------
+
+The interpolation type to apply to the mesh.
+
+calculatePolygonNormals
+-----------------------
+
+Causes new vertex normals to be calculated for
+polygon meshes. Has no effect for subdivision
+surfaces, since those are naturally smooth and do
+not require surface normals. Vertex normals are
+represented as primitive variables named "N".
+
+overwriteExistingNormals
+------------------------
+
+By default, vertex normals will only be calculated for
+polygon meshes which don't already have them. Turning
+this on will force new normals to be calculated even for
+meshes which had them already.
+
+interpolateBoundary
+-------------------
+
+Specifies which parts of mesh boundaries are forced to exactly meet the boundary.
+Without this forcing, a subdivision surface will naturally shrink back from the boundary as it
+smooths out.
+
+Usually, you want to force both edges and corners to exactly meet the boundary. The main reasons to
+change this are to use `Edge Only` if you want to produce curved edges from polygonal boundaries,
+or to use `None` if you're doing something tricky with seamlessly splitting subdiv meshes by
+providing the split meshes with a border of shared polygons in order to get continuous tangents.
+
+faceVaryingLinearInterpolation
+------------------------------
+
+Specifies where face varying primitive variables should use a simple linear interpolation instead
+of being smoothed.
+
+In order for UVs to correspond to approximately the same texture areas as the original polygons,
+usually you want to, at minimum, pin the outside corners. But pinning the entire boundary causes
+some pretty weird discontinuities, so finding the right compromise is tricky.
+
+See the OpenSubdiv docs for explanation of the details of options like `Corners Plus 1`:
+https://graphics.pixar.com/opensubdiv/docs/subdivision_surfaces.html#schemes-and-options
+
+triangleSubdivisionRule
+-----------------------
+
+Option to use a non-standard `Smooth` subdivision rule that provides slightly better results
+at triangular faces in Catmull-Clark meshes than the standard Catmull-Clark algorithm.

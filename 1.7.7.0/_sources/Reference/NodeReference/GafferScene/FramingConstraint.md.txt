@@ -1,0 +1,82 @@
+FramingConstraint
+=================
+
+Position a camera so that all of a target is visible.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The processed output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs the input scene unchanged.
+
+in
+--
+
+The input scene
+
+filter
+------
+
+The filter used to control which parts of the scene are
+processed. A Filter node should be connected here.
+
+targetScene
+-----------
+
+The scene containing the target location to which cameras are
+pointed. If this is unconnected, the main input scene
+is used instead.
+
+target
+------
+
+The scene location to which the cameras are pointed.
+
+ignoreMissingTarget
+-------------------
+
+Causes the constraint to do nothing if the target location
+doesn't exist in the scene, instead of erroring.
+
+boundMode
+---------
+
+How the camera frustum is fit to the target. `Sphere` approximates the bounding
+box of the target  with a sphere.  `Box` uses the actual bounding box, which
+allows framing closer, but means the camera will move closer or farther depending
+on the exact alignment of the box to the view ( which makes for a bumpy looking
+turntable ).
+
+padding
+-------
+
+Add a border between the edge of the camera frustum and the target.
+0.1 adds a 10% border.  Using negative padding moves the camera closer.
+
+extendFarClip
+-------------
+
+If the target is larger than the current clipping planes, increase
+the far clipping plane to enclose it.
+
+useTargetFrame
+--------------
+
+Use a fixed frame to access the target at.  This can be used to produce a consistent
+framing if the target has high-frequency animation you want to ignore.
+
+targetFrame
+-----------
+
+The frame used to access the target when `useTargetFrame` is set.

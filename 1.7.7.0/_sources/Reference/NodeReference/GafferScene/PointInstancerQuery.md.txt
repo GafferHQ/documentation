@@ -1,0 +1,61 @@
+PointInstancerQuery
+===================
+
+Queries the properties of a single instance within a PointInstancer.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+scene
+-----
+
+The scene to query.
+
+location
+--------
+
+The location of the PointInstancer object.
+
+> Note : If the location does not exist or does not contain a PointInstancer
+> then the query will not be performed and all outputs will be set to their
+> default values.
+
+id
+--
+
+The ID of the instance to query.
+
+> Note : If the ID does not exist then the query will not be
+> performed and all outputs will be set to their default values.
+
+exists
+------
+
+Outputs true if the location contains a PointInstancer and the
+`id` exists within it.
+
+prototype
+---------
+
+Outputs the location of the prototype referenced by the instance.
+
+transform
+---------
+
+Outputs the transform for the instance.
+
+visible
+-------
+
+Outputs the visibility of the instance, as defined by
+the `invisibleIds` primitive variable on the PointInstancer.
+
+attributes
+----------
+
+Outputs the attributes for the instance, as defined
+by the vertex primitive variables on the PointInstancer.

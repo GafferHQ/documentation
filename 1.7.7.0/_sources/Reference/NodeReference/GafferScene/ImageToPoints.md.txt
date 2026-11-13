@@ -1,0 +1,97 @@
+ImageToPoints
+=============
+
+Converts an image into a points primitive, with a point for each pixel
+in the image. Point positions may be defined either by the original
+pixel coordinates or an image layer providing position data.
+Arbitrary image channels may be converted to additional primitive
+variables on the points, and transparent pixels may be omitted
+from the conversion.
+
+> Note : Only pixels within the display window are converted. To
+> include overscan pixels, use a Crop node to extend the display
+> window.
+
+user
+----
+
+Container for user-defined plugs. Nodes
+should never make their own plugs here,
+so users are free to do as they wish.
+
+out
+---
+
+The output scene.
+
+enabled
+-------
+
+The on/off state of the node. When it is off, the node outputs
+an empty scene.
+
+name
+----
+
+The name of the object in the output scene.
+
+sets
+----
+
+A list of sets to include the object in. The
+names should be separated by spaces.
+
+transform
+---------
+
+The transform applied to the object.
+
+image
+-----
+
+The image to be converted into a points primitive.
+
+view
+----
+
+The view within the image to be converted.
+
+position
+--------
+
+The image channels used to provide 3d positions for the points.
+If `None`, the pixel's 2d position within the image is used instead.
+
+primitiveVariables
+------------------
+
+The image channels to be converted to primitive variables on
+the points primitive. The chosen channels are converted using the
+following rules :
+
+- The main `RGB` channels are converted to a colour primitive variable called `Cs`.
+- `<layerName>.RGB` channels are converted to a colour primitive variable called `<layerName>`.
+- Other channels are converted to individual float primitive variables.
+
+width
+-----
+
+The width of the points. If `widthChannel` is used as well, then this acts as
+a multiplier on the channel values.
+
+widthChannel
+------------
+
+The channel used to provide per-point width values for the points primitive.
+
+ignoreTransparent
+-----------------
+
+Omits pixels from the points primitive if their alpha value is less than or equal
+to `alphaThreshold`.
+
+alphaThreshold
+--------------
+
+Threshold used to exclude pixels from the points primitive when `ignoreTransparent`
+is on.

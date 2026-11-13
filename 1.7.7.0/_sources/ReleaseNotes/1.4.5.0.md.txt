@@ -1,0 +1,47 @@
+1.4.5.0
+=======
+
+Features
+--------
+
+- ShaderTweaks : Added support for creating ShaderTweakProxy nodes that allow making input connections to the original network.
+- 3Delight : Added interactive Viewer renderer.
+
+Improvements
+------------
+
+- SetFilter, StandardAttributes, StandardOptions : Added syntax highlighting and auto-complete for set expressions.
+- NodeEditor, UIEditor, PythonEditor : Added popup hint for the <kbd>Ctrl</kbd>+<kbd>Return</kbd> shortcut.
+- CodeWidget : Added highlighting of braces and operators.
+- RenderPassEditor : Added preset menu for choosing a render pass type from the list of available registered types. An "auto" type is included in the list when an auto type function has been registered.
+- OptionTweaks : Tweak `value` plugs can now access metadata registered globally to `option:{tweakName}`, where `{tweakName}` is the value of the tweak's `name` plug.
+- Spreadsheet : Added support for metadata to be automatically forwarded from plugs downstream of a column's `out` plug to the column's default row.
+
+Fixes
+-----
+
+- CodeWidget :
+  - Removed unwanted `\n` prefix in lines passed to `Completers`.
+  - Prevented spurious emission of `editingFinishedSignal()` when showing the completions menu.
+  - Prevented the completion menu from popping up inappropriately when the highlighter was changed.
+- MultiLineTextWidget :
+  - Fixed rendering of disabled widgets, which now show faded text.
+  - Fixed behaviour of `editingFinishedSignal()` to match TextWidget : it is now also emitted when the text is activated (see `activatedSignal()`).
+- MultiLineStringMetadataWidget : The <kbd>Ctrl</kbd>+<kbd>Return</kbd> shortcut now updates the metadata value immediately.
+- UIEditor : The <kbd>Ctrl</kbd>+<kbd>Return</kbd> shortcut now updates the button code immediately.
+- Cryptomatte :
+  - Fixed errors when the input image didn't contain the main `RGBA` channels.
+  - Fixed inaccurate hash.
+- SceneAlgo : Fixed exception handling for Python render adaptors. Previously an exception during adaptor construction caused a `SystemError`.
+- InteractiveRender :
+  - Fixed crash triggered by a render adaptor depending on its `renderer` input to adapt the scene globals.
+  - Removed unintentional ability for render adaptors to change the renderer being used.
+
+API
+---
+
+- TextWidget : Added `selectedText()` convenience method.
+- MultiLineTextWidget : Added `setSelection()` and `getSelection()` methods.
+- SetExpressionPlugValueWidget : Added new editor for set expressions, with syntax highlighting and auto-complete.
+- RenderPassTypeAdaptor : Added `autoTypeFunction()` method.
+
